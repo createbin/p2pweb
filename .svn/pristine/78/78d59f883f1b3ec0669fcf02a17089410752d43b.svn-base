@@ -1,0 +1,394 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.UseBaseInfoModel
+@{
+    ViewData["Title"] = "安全中心";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    #openAccountBtn, .mybtn:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(12);
+    })
+</script>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">安全中心</span>
+        </div>
+        <div class="securitycenter_box">
+            <dl>
+                <dd>
+                    <ul>
+                        <li class="float_left width100"><img src="~/images/bind_icon.png" />已设置</li>
+                        <li class="float_left width100">用户名</li>
+                        <li class="float_right gray1 font_size_12">@Model.UserName</li>
+                        <div class="clear"></div>
+                    </ul>
+                </dd>
+                <dd>
+                    <ul>
+                        <li class="float_left width100">
+                            @if (string.IsNullOrEmpty(Model.Email))
+                            {
+                            <img src="~/images/onbind_icon.png" />
+                            <em>未绑定</em>
+                            }
+                            else
+                            {
+                            <img src="~/images/bind_icon.png" />
+                            <em>已绑定</em>
+                            }
+                        </li>
+                        <li class="float_left width100">绑定邮箱</li>
+                        <li class="float_left width500 font_size_12 gray1">获取账户资金变动通知和投资讯息</li>
+                        <li class="float_left font_size_12 gray1">@Model.Email</li>
+                        <li class="float_right gray1 ">
+                            @if (string.IsNullOrEmpty(Model.Email))
+                            {
+                            <a href="javascript:;" class="clickbind">立即绑定</a>
+                            }
+                            else
+                            {
+                            <a href="javascript:;" class="clickbind">修改</a>
+                            }
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+
+                    <ul class="display_none">
+                        <li class="float_left width100"><img src="~/images/bind_icon.png"  / >已绑定</li>
+                        <li class="float_left width100">绑定邮箱</li>
+                        <li class="float_left width500 font_size_12 gray1">获取账户资金变动通知和投资讯息</li>
+                        <li class="float_left font_size_12 gray1">@Model.Email</li>
+                        <li class="float_right gray1 ">
+                            <a href="javascript:;" class="clickbind">修改</a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+
+                    <ul class="showdiv display_none">
+                        <li>
+                            <label class="width80">电子邮箱：</label>
+                            <input type="email" name="email" class="zfct_input_text3" id="myEmail" />
+                            <button type="button" value="" id="MailVerify" class="zfct_button mybtn" style="width:120px;" >获取验证码</button>
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width80">验证码：</label>
+                            <input type="text" class="zfct_input_text3" name="verifycode" id="verifyEmailCode" />
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width100"></label>
+                            <input id="saveEmailBtn" type="button" value="提交" class="zfct_button mybtn" />
+                        </li>
+                    </ul>
+                </dd>
+                <dd>
+                    <ul class="display-none">
+                        <li class="float_left width100">
+                            <img src="~/images/onbind_icon.png" /><em>未绑定</em>
+
+                            <img src="~/images/bind_icon.png" /><em>已绑定</em>
+                        </li>
+                        <li class="float_left width100">绑定手机</li>
+                        <li class="float_left width500 font_size_12 gray1"> 保障资金安全，是您重要的身份凭证</li>
+
+                        <li class="float_right gray1 ">
+
+                            <a href="javascript:;" class="clickbind">修改</a>
+                            </a>
+                        </li>
+                        <div class="clear">
+                        </div>
+                    </ul>
+                    <ul>
+                        <li class="float_left width100">
+                            <img src="~/images/bind_icon.png" /> 已绑定
+                        </li>
+                        <li class="float_left width100">
+                            绑定手机
+                        </li>
+                        <li class="float_left width500 font_size_12 gray1"> 保障资金安全，是您重要的身份凭证</li>
+                        <li class="float_left font_size_12 gray1">@Model.Phone</li>
+                        <li class="float_right gray1 ">
+                            <a href="javascript:;" class="clickbind">修改</a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+
+                    <ul class="showdiv display_none">
+                        <li>
+                            <label class="width80">手机号：</label>
+                            <input type="text" name="text" class="zfct_input_text3" id="phoneNumber" />
+                            <button type="button" value="" id="PhoneVerify" class="zfct_button mybtn" style="width:120px;" >获取验证码</button>
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width80">验证码：</label>
+                            <input type="text" class="zfct_input_text3" name="verifycode" id="verifyPhoneCode" />
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width100"></label>
+                            <button type="button" value="" class="zfct_button mybtn" id="savePhoneBtn" >提交</button>
+                        </li>
+                    </ul>
+                </dd>
+                <dd>
+                    <ul>
+                        <li class="float_left width100">
+                            <img src="~/images/bind_icon.png" / > 已设置
+                        </li>
+                        <li class="float_left width100">
+                            登录密码
+                        </li>
+                        <li class="float_left width500 font_size_12 gray1"> </li>
+                        <li class="float_right gray1 ">
+                            <a href="javascript:;" class="clickbind">修改</a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <ul class="showdiv display-none">
+                        <li>
+                            <label class="width100">旧密码：</label>
+                            <input type="password" name="oldpassword" class="zfct_input_text3" id="oldPassword" />
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width100">新密码：</label>
+                            <input type="password" name="newpassword" class="zfct_input_text3" id="newPassword" />
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width100">确定新密码：</label>
+                            <input type="password" name="shownewpassword" class="zfct_input_text3" id="surePassword" />
+                            <em class="red">*</em>
+                        </li>
+                        <li>
+                            <label class="width100"></label>
+                            <input type="submit" value="提交" class="zfct_button mybtn" id="savePwdBtn" />
+                        </li>
+                    </ul>
+                </dd>
+                @*<dd>
+                    <ul>
+                        <li class="float_left width100">
+                            @if (!Model.JieSuan || !Model.BoHai)
+                            {
+                            <img src="~/images/onbind_icon.png" / ><em>未开户</em>
+                            }
+                            else
+                            {
+                            <img src="~/images/bind_icon.png" / ><em>已设置</em>
+                            }
+                        </li>
+
+                        <li class="float_left width100">
+                            存管平台
+                        </li>
+                        <li class="float_left width500 font_size_12 gray1"> </li>
+                        <li class="float_right gray1 ">
+                            @if (!Model.JieSuan)
+                            {
+                                <a id="openAccountBtn">去开户</a>
+                            }
+                            else if (!Model.BoHai)
+                            {
+                                <a id="openAccountBtn">去开户</a>
+                            }
+                            else
+                            {
+                                <a href="#" onclick="ChangePwd()">修改密码</a>
+                            }
+                        </li>
+                        <div class="clear">
+                        </div>
+                    </ul>
+                </dd>*@
+                <dd>
+                    <ul>
+                        @if (!string.IsNullOrEmpty(ViewBag.InvestType))
+                        {
+                        <li class="float_left width100"><img src="~/images/bind_icon.png" />已评测</li>
+                        <li class="float_left width100">风险评测</li>
+                        <li class="float_left width100">@ViewBag.InvestType</li>
+                        <li class="float_right gray1 font_size_12"><a href="/SpecialTopic/RiskingTestResult?redirctType=2">查看</a></li>
+                        }
+                        else
+                        {
+                        <li class="float_left width100"><img src="~/images/onbind_icon.png" />未评测</li>
+                        <li class="float_left width100">风险评测</li>
+                        <li class="float_right gray1 font_size_12"><a href="/SpecialTopic/RiskingTest?redirctType=2">去评测</a></li>
+                        }
+                        <div class="clear"></div>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<script>
+    function newWin(url) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('style', 'display:none');
+        a.setAttribute('target', '_blank');
+        document.body.appendChild(a);
+        a.click();
+        a.parentNode.removeChild(a);
+    }
+
+    function OpenAccount() {
+        $.post("OpenAccount", function (result) {
+            if (result.success) {
+                location.href = result.msg;
+            } else {
+                layer.alert(result.msg);
+            }
+        });
+    }
+
+    function ChangeSuccess() {
+        setTimeout(function () {
+            window.location.href = "/MyAccount/SecurityCenter";
+        }, 1000);
+    }
+    $(function () {
+        var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+        var passWordRegu = /^[A-Za-z0-9]{6,16}$/;//密码正则
+        var wait = 120;
+        function time(o) {
+            if (wait == 0) {
+                wait = 120;
+                $(o).removeAttr("disabled");
+                $(o).val("获取验证码");
+            }
+            else {
+                wait--;
+                $(o).attr("disabled", true);
+                $(o).val("重新发送(" + wait + ")");
+                timeout = setTimeout(function () { time(o) }, 1000)
+            }
+        }
+        $(".clickbind").click(function () {
+            $(this).parent().parent().siblings(".showdiv").slideToggle();
+        });
+        $("#MailVerify").click(function () {
+            var email = $("#myEmail").val();
+            $.ajax({
+                url: "SendEmialCode?emial=" + email,
+                success: function (data) {
+                    layer.alert(data.msg);
+                    if (data.success) {
+                        time($("#MailVerify"));
+                    }
+                }
+            });
+        });
+        $("#saveEmailBtn").click(function () {
+            var verCode = $("#verifyEmailCode").val();
+            var email = $("#myEmail").val();
+            $.ajax({
+                url: "ChangeEmail",
+                data:
+                    {
+                        email: email,
+                        verCode: verCode
+                    },
+                success: function (data) {
+                    if (data.success) {
+                        layer.alert("邮箱绑定成功");
+                        ChangeSuccess();
+                    }
+                    else {
+                        layer.alert("邮箱绑定失败");
+                    }
+                }
+            });
+        });
+        $("#PhoneVerify").click(function () {
+            var phone = $("#phoneNumber").val();
+            var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+            if (!phoneRegu.test(phone)) {
+                layer.alert("手机号码格式不正确");
+                return false;
+            }
+            $.ajax({
+                url: "/Customer/PhoneValidCodeNoVerifyCode?phone=" + phone,
+                success: function (data) {
+                    layer.alert(data.msg);
+                    if (data.success) {
+                        time($("#PhoneVerify"));
+                    }
+                }
+            });
+        });
+        $("#savePhoneBtn").click(function () {
+            var phone = $("#phoneNumber").val();
+            var verifyCode = $("#verifyPhoneCode").val();
+            var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+            if (!phoneRegu.test(phone)) {
+                layer.alert("手机号码格式不正确");
+                return false;
+            }
+            if (verifyCode.length == 0) {
+                layer.alert("请输入手机验证码");
+                return false;
+            }
+            $.ajax({
+                url: "ChangePhone",
+                data:
+                    {
+                        phone: phone,
+                        verCode: verifyCode
+                    },
+                success: function (data) {
+                    layer.alert(data.msg);
+                    ChangeSuccess();
+                }
+            });
+        });
+        $("#savePwdBtn").click(function () {
+            var oldPwd = $("#oldPassword").val();
+            var newPwd = $("#newPassword").val();
+            var surePwd = $("#surePassword").val();
+            var passWordRe = new RegExp(passWordRegu);
+            if (!passWordRe.test(newPwd)) {
+                layer.alert("密码格式不正确");
+                return false;
+            }
+            if (newPwd != surePwd) {
+                layer.alert("两次密码输入不一致");
+                return false;
+            }
+            $.ajax({
+                url: "ChangePassword",
+                data:
+                    {
+                        newPwd: newPwd,
+                        oldPwd: oldPwd
+                    },
+                success: function (data) {
+                    layer.alert(data.msg);
+                    if (data.success) {
+                        ChangeSuccess();
+                    }
+                }
+            });
+        });
+    });
+</script>

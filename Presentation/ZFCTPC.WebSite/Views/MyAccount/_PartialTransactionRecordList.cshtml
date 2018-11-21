@@ -1,0 +1,55 @@
+﻿@model List<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RTradingModel>
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+}
+else
+{
+    if (ViewData["type"].Equals(1))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TradingDate</td>
+                <td>
+                    <span class="redenvelope_name" title="@item.TradingName">@item.TradingName</span>
+
+                </td>
+                <td>@item.TradingType</td>
+                <td>@string.Format("{0:C}", item.TradingMoney)</td>
+                <td>@item.TradingStatus</td>
+            </tr>
+        }
+
+    }
+    else if (ViewData["type"].Equals(8) || ViewData["type"].Equals(4))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TradingOrderNo</td>
+                <td>@string.Format("{0:C}", item.TradingMoney)</td>
+                <td>@string.Format("{0:C}", item.TrandingAccountMoney)</td>
+                <td>@string.Format("{0:C}", item.FTrandingAccountMoney)</td>
+                <td>@item.TradingStatus</td>
+                <td>@item.TradingDate</td>
+            </tr>
+        }
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.TradingOrderNo </td>
+                <td> @string.Format("{0:C}", item.TradingMoney) </td>
+                <td> @string.Format("{0:C}", item.TrandingAccountMoney) </td>
+                <td> @item.TradingStatus </td>
+                <td> @item.TradingDate </td>
+            </tr>
+        }
+    }
+}
+<input id="TotalData" type="hidden" value="@ViewData["TotalData"].ToString()" />

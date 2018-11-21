@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "银行存管-银行卡管理";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(7);
+    });
+</script>
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <dl class="float_left">
+                <dd class="active" style="width:75px;">
+                    我的投资户
+                </dd>
+                <dd>
+                    我的融资户
+                </dd>
+                <div class="clear"></div>
+            </dl>
+            <img src="~/images/bohai/bohai_logo.png" class="float_right" style="padding-top:12px" width="250" height="34" />
+            <div class="clear"></div>
+        </div>
+        <div class="my_assets_tab">
+            <!------------我的投资户 start---------->
+            <div>
+                <div style="height:15px;"></div>
+                <div class="bank_info_dl">
+                    <dl>
+                        <dd>
+                            <a href="BankCardManage">
+                                存管信息
+                            </a>
+
+                        </dd>
+                        <dd class="active">
+                            <a href="#">
+                                银行卡管理
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageThird">
+                                授权管理
+                            </a>
+
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <div style="height:15px;"></div>
+                <p>
+                    <em class=" font_size_15 padding_left_15 bold margin_right_15">在绑银行卡</em>
+                    <a href="javascript:;" class="blue font_size_12" onclick="UpdateBankInfo();">
+                        刷新
+                    </a>
+                </p>
+                <div style="height: 30px;"></div>
+                <div class="bank_show_box">
+                </div>
+            </div>
+            <!------------我的投资户 end---------->
+            <!--------------我的融资户 start---------->
+            <div style="display:none">
+                <div style="height:15px;"></div>
+                <div class="bank_info_dl">
+                    <dl>
+                        <dd>
+                            <a href="BankCardManage">
+                                存管信息
+                            </a>
+
+                        </dd>
+                        <dd class="active">
+                            <a href="#">
+                                银行卡管理
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageThird">
+                                授权管理
+                            </a>
+
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <div style="height:15px;"></div>
+                <p>
+                    <em class=" font_size_15 padding_left_15 bold margin_right_15">在绑银行卡</em>
+                    <a href="javascript:;" class="blue font_size_12" onclick="UpdateBankInfo();">
+                        刷新
+                    </a>
+                </p>
+                <div style="height: 30px;"></div>
+                <div class="bank_show_box">
+                </div>
+            </div>
+            <!--------------我的融资户 end---------->
+        </div>
+    </div>
+</div>
+
+<!-----------银行卡绑定 蒙层  start------------>
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<div class="bank_tips_page" id="bank_tips_page" style="display:none">
+    <div class="bank_tips_head">
+        温馨提示
+        <em>
+            ×
+        </em>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+    <div style="height:40px;"></div>
+    <p class="text_align_center font_size_20 ">
+        银行卡正在绑定中,请稍后...
+    </p>
+</div>
+<!-----------银行卡绑定 蒙层  end------------>
+<!-------------如果没有开户点击 银行管理弹出层 start---------------->
+<div class="bank_tips_page1 text_align_center" id="openaccount_tips_page" style="display:none">
+    <div class="bank_tips_head">
+        温馨提示
+        <em>
+            ×
+        </em>
+    </div>
+    <div style="height:30px;"></div>
+    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+    <div style="height:20px;"></div>
+    <p class="text_align_center font_size_20 ">
+        您需要先完成开户操作，才能进行绑卡喔。
+    </p>
+    <div style="height:30px;"></div>
+
+    @if (ViewBag.IsJieSuan == "1")
+    {
+        <a href="OpenAccountInfo" class="bangka">
+            前往开通结算中心存管账户
+        </a>
+    }
+    else if (ViewBag.IsBoHai == "1")
+    {
+        <a href="OpenAccountInfo" class="bangka">
+            前往开通渤海银行存管账户
+        </a>
+    }
+    </div>
+<!-------------如果没有开户点击 银行管理弹出层 end---------------->
+<script>
+    $(function () {
+        $('.bank_show_box').load('MyBankInfos');
+    })
+    $(".bank_tips_page .bank_tips_head em").click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page").hide();
+    });
+    $(".bank_tips_page1 .bank_tips_head em").click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page1").hide();
+    });
+    $("#changeNumber").click(function () {
+        $(this).toggleClass("open");
+        $(".changenubmer_box").slideToggle();
+
+    });
+    $(".bank_show_box").children(":not(':last')").mouseover(function () {
+        $(this).find(".bank_mask").show();
+        $(this).find("a.change_bank").show();
+    })
+    $(".bank_show_box").children(":not(':last')").mouseleave(function () {
+        $(this).find(".bank_mask").hide();
+        $(this).find("a.change_bank").hide();
+    });
+    $(".my_assets_title dl dd").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var _index = $(this).index();
+        $(".my_assets_tab > div").eq(_index).show().siblings().hide();
+    });
+</script>
+
+<script src="/js/Tools/zf.tools.js"></script>
+<script>
+    function ChangeCard() {
+       @if (ViewBag.IsJieSuan == "1" && ViewBag.IsBoHai == "1") {
+           <Text>
+        $.ajaxSetup({ async: false });
+        $.post("ChangeCard", function (result) {
+            if (result.success) {
+                $("#bank_tips_page").show();
+                newWin(result.msg);
+            } else {
+                layer.alert(result.msg);
+            }
+        });
+        </Text>
+       } else {
+           <Text>  
+        $("#openaccount_tips_page").show();
+        </Text>
+       }
+    }
+
+    function newWin(url) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('style', 'display:none');
+        a.setAttribute('target', '_blank');
+        document.body.appendChild(a);
+        a.click();
+        a.parentNode.removeChild(a);
+    }
+
+    function UpdateBankInfo() {
+        $.post('UpdateBankInfos', function (data) { 
+            if (data.success) { 
+                $('.bank_show_box').load('MyBankInfos');
+            }
+        });
+    }
+</script>
+

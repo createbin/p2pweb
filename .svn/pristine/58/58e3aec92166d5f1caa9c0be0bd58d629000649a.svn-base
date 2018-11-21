@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHeadFootE.cshtml";
+    ViewData["Title"] = "企业注册第三步";
+
+}
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/common/build.css" rel="stylesheet" />
+
+<div class="enterprise_login_box">
+    <div style="height:40px;"></div>
+    <div class="forgetpassword_box">
+        <p class="padding_left_65 font_size_18">企业注册</p>
+        <div style="height:50px;"></div>
+        <div class="forgetpassword_step" >
+            <ul style="width:680px">
+                <li class="">
+                    <em class="gray1">Step 1 </em><em class="gray1">填写基本信息</em>
+                </li>
+                <li class="">
+                    <em class="gray1">Step 2 </em><em class="gray1">阅读服务条款</em>
+                </li>
+                <li class="forget_border_bottom blue margin-right-none">
+                    <em class="">Step 3</em><em class="">注册成功</em>
+                </li>
+                <div class="clear"></div>
+            </ul>
+
+        </div>
+        <div style="height:80px;"></div>
+        <p class="text_align_center">
+            <img src="~/images/enterprise/bind_icon.png" style="vertical-align:-3px" />
+            <em class="margin_left_5 font_size_16">注册成功!</em>
+        </p>
+        <div style="height:80px;"></div>
+        <div class="zfct_form_group text_align_center">
+            <button id="verifyBtn" class="zfct_login_button">
+                立即登录
+            </button>
+        </div>
+    </div>
+    <div style="height:40px;"></div>
+</div>
+
+<script>
+    $(function () {       
+        $("#checkbox8").change(function () {
+            if ($(this).is(":checked") === true) {
+                $(".radio_check").show();
+                $(".radio_check_none").hide();
+            }
+            if ($(this).is(":checked") === false){
+                $(".radio_check").hide();
+                $(".radio_check_none").show();
+            }
+        });
+    });    
+</script>
+
+

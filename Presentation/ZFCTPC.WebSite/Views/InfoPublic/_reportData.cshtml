@@ -1,0 +1,29 @@
+﻿@using ZFCTPC.Data.ApiModel.Promotion
+@{ 
+    Layout = null;
+    var managizeList = ViewBag.CompanyManagize as List<tbInternalMagazine>;//公司内刊
+}
+@if (managizeList != null)
+{
+    for (int i = 0; i < managizeList.Count; i++)
+    {
+        <li>
+            <a href="@managizeList.ElementAt(i).Skiplinks" target="_blank">
+                <img src="@managizeList.ElementAt(i).ImageUrl" />
+                <p>
+                    <em>@managizeList.ElementAt(i).Title</em>
+                    @if (managizeList.ElementAt(i).PublishTime == null)
+                    {
+
+                        <em class="float_right">发布时间:<text>@managizeList.ElementAt(i).CreateDate.ToString("yyyy-MM-dd")</text></em>
+                    }
+                    else
+                    {
+                        <em class="float_right">发布时间:<text>@managizeList.ElementAt(i).PublishTime.Value.ToString("yyyy-MM-dd")</text></em>
+                    }
+                </p>
+            </a>
+        </li>
+    }
+}
+<div class="clear"></div>

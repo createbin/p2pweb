@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "联系我们-信息披露";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(10);
+    })
+</script>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24 bold">联系我们</p>
+        <div style="height:40px;"></div>
+        <img src="~/images/public/map.png" class="img-margin"  />
+        <div style="height:50px;"></div>
+        <div class="contant_us_box">
+            <div class="headquarter float_left">
+                <p >公司总部</p>
+                <div style="height:10px;"></div>
+                <p style="line-height:20px;">公司地址：<em class="gray">南京市建邺区中心商务区H地块紫金西城中心<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   01幢1001-1002室</em></p>
+                <p style="height:10px"></p>
+                <p>联系电话：<em class="gray">400-025-1002</em></p>
+                <p>邮政邮编：<em class="gray">210019</em></p>
+            </div>
+            <div class="headquarter float_right">
+                <p>客户服务</p>
+                <div style="height:10px;"></div>
+                <p>客服热线：<em class="gray">400-025-1002</em></p>
+                <p>工作时间：<em class="gray">周一~周五  9:00~17:30</em></p>
+                <p>在线客服：<a onclick="doyoo.util.openChat('g=10060121');return false;" href="javascript:void(0);"><em class="gray kefu">在线客服</em></a></p>
+                <p>客服邮箱：<em class="gray">zfctkf@chinazfct.com</em></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

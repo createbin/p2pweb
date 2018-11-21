@@ -1,0 +1,549 @@
+﻿@{
+    ViewData["Title"] = "金秋理财季，豪礼送不停";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="hoceremony_banner">
+    <div class="hoceremony_banner1"></div>
+    <div class="hoceremony_banner2"></div>
+    <div class="hoceremony_banner3"></div>
+    <div class="hoceremony_banner4"></div>
+    <div class="hoceremony_banner5"></div>
+</div>
+
+<div class="hoceremony_content">
+    <div class="hoceremony_img02"></div>
+    <div class="hoceremony_img03"></div>
+    <div class="hoceremony_img04"></div>
+    <div class="hoceremony_img05"></div>
+    <div class="hoceremony_img06"></div>
+    <div class="hoceremony_img07"></div>
+    <div class="hoceremony_img08">
+        <div style="height:20px;"></div>
+        <div class="hoceremony_tab">
+            <p class="text_center font_size_30 bold" style="color:#e87843">
+                活动奖励计算器
+            </p>
+            <div style="height:50px"></div>
+            <ul>
+                <li class="selected">
+                    <div style="height:65px;"></div>
+                    <img src="~/images/activity/hoceremony/jiangpin1.png" />
+                    <p class="margin_top_25 text_center">空气净化器</p>
+                </li>
+                <li>
+                    <img src="~/images/activity/hoceremony/jiangpin2.png" />
+                    <p class="margin_top_25 text_center">四件套/拉杆箱</p>
+                </li>
+                <li>
+                    <div style="height:30px;"></div>
+                    <img src="~/images/activity/hoceremony/jiangpin3.png" />
+                    <p class="margin_top_35 text_center">扫地机器人</p>
+                </li>
+                <li>
+                    <div style="height:50px;"></div>
+                    <img src="~/images/activity/hoceremony/jiangpin4.png" />
+                    <p class="margin_top_40 text_center">小米电视</p>
+                </li>
+                <li>
+                    <img src="~/images/activity/hoceremony/jiangpin5.png" />
+                    <p class="margin_top_20 text_center">iphone 8plus</p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <div style="height:40px;"></div>
+            <div class="hoceremony_tab_box">
+                <div class="hoceremony_tab_box1 position-relative">
+                    <em class="sanjiao">
+
+                    </em>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th><p>方案</p><p class="margin_top_5 font_size_16">(可供参考)</p></th>
+                            <th>新增投资金额(元)</th>
+                            <th>投资期限(月)</th>
+                            <th class="border-right-none">新增年化投资金额(万元)</th>
+                        </tr>
+                        <tr>
+                            <td>一目了然型</td>
+                            <td class="red4">20000</td>
+                            <td class="xuanze1">
+                                <dl>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>1</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>3</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>6</em>
+                                    </dd>
+                                    <dd class="position-relative">
+                                        <i class="tuijian">
+                                            
+                                        </i>
+                                        <img src="~/images/activity/hoceremony/gouxuan1.png" />
+                                        <em>12</em>
+                                    </dd>
+                                    
+                                </dl>
+                            </td>
+                            <td class="border-right-none">2</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="border-bottom-none">
+                                精挑细算型
+                            </td>
+                            <td class="red4">
+                                0
+                            </td>
+                            <td>1</td>
+                            <td class="border-right-none">0</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                0
+                            </td>
+                            <td>3</td>
+                            <td class="border-right-none">0</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                20000
+                            </td>
+                            <td>6</td>
+                            <td class="border-right-none">1</td>
+                        </tr>
+                        <tr class="">
+                            <td class="red4 border-bottom-none">
+                                10000
+                            </td>
+                            <td class="border-bottom-none">12</td>
+                            <td class="border-bottom-none border-right-none">1</td>
+                        </tr>
+                    </table>
+                    <div style="height:30px"></div>
+                    <p class="font_size_16 gray1">友情提示：若活动期间内有回款，必须将回款金额复投后，再追加投资的金额才会计入以上活动统计。</p>
+                    <a href="/myinvest/recommendedlist" class="activity_invest_now">
+                        立即投资
+                    </a>
+                </div>
+                <div class="hoceremony_tab_box1 hoceremony_tab_box2 position-relative display-none">
+                    <em class="sanjiao">
+
+                    </em>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th><p>方案</p><p class="margin_top_5 font_size_16">(可供参考)</p></th>
+                            <th>新增投资金额(元)</th>
+                            <th>投资期限(月)</th>
+                            <th class="border-right-none">新增年化投资金额(万元)</th>
+                        </tr>
+                        <tr>
+                            <td>一目了然型</td>
+                            <td class="red4">50000</td>
+                            <td class="xuanze2">
+                                <dl class="">
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>1</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>3</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>6</em>
+                                    </dd>
+                                    <dd class="position-relative">
+                                        <i class="tuijian">
+
+                                        </i>
+                                        <img src="~/images/activity/hoceremony/gouxuan1.png" />
+                                        <em>12</em>
+                                    </dd>
+
+                                </dl>
+                            </td>
+                            <td class="border-right-none">5</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="border-bottom-none">
+                                精挑细算型
+                            </td>
+                            <td class="red4">
+                                0
+                            </td>
+                            <td>1</td>
+                            <td class="border-right-none">0</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                0
+                            </td>
+                            <td>3</td>
+                            <td class="border-right-none">0</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                60000
+                            </td>
+                            <td>6</td>
+                            <td class="border-right-none">3</td>
+                        </tr>
+                        <tr class="">
+                            <td class="red4 border-bottom-none">
+                                20000
+                            </td>
+                            <td class="border-bottom-none">12</td>
+                            <td class="border-bottom-none border-right-none">2</td>
+                        </tr>
+                    </table>
+                    <div style="height:30px"></div>
+                    <p class="font_size_16 gray1">友情提示：若活动期间内有回款，必须将回款金额复投后，再追加投资的金额才会计入以上活动统计。</p>
+                    <a href="/myinvest/recommendedlist" class="activity_invest_now">
+                        立即投资
+                    </a>
+                </div>
+                <div class="hoceremony_tab_box1 hoceremony_tab_box3 position-relative display-none">
+                    <em class="sanjiao">
+
+                    </em>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th><p>方案</p><p class="margin_top_5 font_size_16">(可供参考)</p></th>
+                            <th>新增投资金额(元)</th>
+                            <th>投资期限(月)</th>
+                            <th class="border-right-none">新增年化投资金额(万元)</th>
+                        </tr>
+                        <tr>
+                            <td>一目了然型</td>
+                            <td class="red4">100000</td>
+                            <td class="xuanze3">
+                                <dl class="">
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>1</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>3</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>6</em>
+                                    </dd>
+                                    <dd class="position-relative">
+                                        <i class="tuijian">
+
+                                        </i>
+                                        <img src="~/images/activity/hoceremony/gouxuan1.png" />
+                                        <em>12</em>
+                                    </dd>
+
+                                </dl>
+                            </td>
+                            <td class="border-right-none">10</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="border-bottom-none">
+                                精挑细算型
+                            </td>
+                            <td class="red4">
+                                240000
+                            </td>
+                            <td>1</td>
+                            <td class="border-right-none">2</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                200000
+                            </td>
+                            <td>3</td>
+                            <td class="border-right-none">5</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                60000
+                            </td>
+                            <td>6</td>
+                            <td class="border-right-none">3</td>
+                        </tr>
+                        <tr class="">
+                            <td class="red4 border-bottom-none">
+                               0
+                            </td>
+                            <td class="border-bottom-none">12</td>
+                            <td class="border-bottom-none border-right-none">0</td>
+                        </tr>
+                    </table>
+                    <div style="height:30px"></div>
+                    <p class="font_size_16 gray1">友情提示：若活动期间内有回款，必须将回款金额复投后，再追加投资的金额才会计入以上活动统计。</p>
+                    <a href="/myinvest/recommendedlist" class="activity_invest_now">
+                        立即投资
+                    </a>
+                </div>
+                <div class="hoceremony_tab_box1 hoceremony_tab_box4 position-relative display-none">
+                    <em class="sanjiao">
+
+                    </em>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th ><p>方案</p><p class="margin_top_5 font_size_16">(可供参考)</p></th>
+                            <th>新增投资金额(元)</th>
+                            <th>投资期限(月)</th>
+                            <th class="border-right-none">新增年化投资金额(万元)</th>
+                        </tr>
+                        <tr>
+                            <td>一目了然型</td>
+                            <td class="red4">150000</td>
+                            <td class="xuanze4">
+                                <dl class="">
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>1</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>3</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>6</em>
+                                    </dd>
+                                    <dd class="position-relative">
+                                        <i class="tuijian">
+
+                                        </i>
+                                        <img src="~/images/activity/hoceremony/gouxuan1.png" />
+                                        <em>12</em>
+                                    </dd>
+
+                                </dl>
+                            </td>
+                            <td class="border-right-none">15</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="border-bottom-none">
+                                精挑细算型
+                            </td>
+                            <td class="red4">
+                                120000
+                            </td>
+                            <td>1</td>
+                            <td class="border-right-none">1</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                80000
+                            </td>
+                            <td>3</td>
+                            <td class="border-right-none">2</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                140000
+                            </td>
+                            <td>6</td>
+                            <td class="border-right-none">7</td>
+                        </tr>
+                        <tr class="">
+                            <td class="red4 border-bottom-none">
+                                50000
+                            </td>
+                            <td class="border-bottom-none">12</td>
+                            <td class="border-bottom-none border-right-none">5</td>
+                        </tr>
+                    </table>
+                    <div style="height:30px"></div>
+                    <p class="font_size_16 gray1">友情提示：若活动期间内有回款，必须将回款金额复投后，再追加投资的金额才会计入以上活动统计。</p>
+                    <a href="/myinvest/recommendedlist" class="activity_invest_now">
+                        立即投资
+                    </a>
+                </div>
+
+                <div class="hoceremony_tab_box1 hoceremony_tab_box5 position-relative display-none">
+                    <em class="sanjiao">
+
+                    </em>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th><p>方案</p><p class="margin_top_5 font_size_16">(可供参考)</p></th>
+                            <th>新增投资金额(元)</th>
+                            <th>投资期限(月)</th>
+                            <th class="border-right-none">新增年化投资金额(万元)</th>
+                        </tr>
+                        <tr>
+                            <td>一目了然型</td>
+                            <td class="red4">200000</td>
+                            <td class="xuanze5">
+                                <dl class="">
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>1</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>3</em>
+                                    </dd>
+                                    <dd>
+                                        <img src="~/images/activity/hoceremony/gouxuan.png" />
+                                        <em>6</em>
+                                    </dd>
+                                    <dd class="position-relative">
+                                        <i class="tuijian">
+
+                                        </i>
+                                        <img src="~/images/activity/hoceremony/gouxuan1.png" />
+                                        <em>12</em>
+                                    </dd>
+
+                                </dl>
+                            </td>
+                            <td class="border-right-none">20</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" class="border-bottom-none">
+                                精挑细算型
+                            </td>
+                            <td class="red4">
+                                120000
+                            </td>
+                            <td>1</td>
+                            <td class="border-right-none">1</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                80000
+                            </td>
+                            <td>3</td>
+                            <td class="border-right-none">2</td>
+                        </tr>
+                        <tr>
+                            <td class="red4">
+                                140000
+                            </td>
+                            <td>6</td>
+                            <td class="border-right-none">7</td>
+                        </tr>
+                        <tr class="">
+                            <td class="red4 border-bottom-none">
+                                100000
+                            </td>
+                            <td class="border-bottom-none">12</td>
+                            <td class="border-bottom-none border-right-none">10</td>
+                        </tr>
+                    </table>
+                    <div style="height:30px"></div>
+                    <p class="font_size_16 gray1">友情提示：若活动期间内有回款，必须将回款金额复投后，再追加投资的金额才会计入以上活动统计。</p>
+                    <a href="/myinvest/recommendedlist" class="activity_invest_now">
+                        立即投资
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hoceremony_img09"></div>
+    <div class="hoceremony_img10">
+        <div style="height:80px"></div>
+        <div class="activity2_infor">
+            <div class="activity2_infor_table">
+                <ul>
+                    <li>
+                        <p class="float_left">288元现金+100元红包</p>
+                        <p class="float_right">累计复投金额≥100000元</p>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <p class="float_left">128元现金+80元红包</p>
+                        <p class="float_right">50000 ≤ 累计复投金额 < 100000元</p>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <p class="float_left">28元现金+50元红包</p>
+                        <p class="float_right">10000 ≤ 累计复投金额 < 50000元</p>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <p class="float_left">15元现金+20元红包</p>
+                        <p class="float_right">5000 ≤ 累计复投金额 < 10000元</p>
+                        <div class="clear"></div>
+                    </li>
+                    <li class="border-bottom-none">
+                        <p class="float_left">3元现金+20元红包</p>
+                        <p class="float_right">1000 ≤ 累计复投金额 < 5000元</p>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+                       
+            </div>
+            <div style="height:50px;"></div>       
+            <p class="text_center font_size_20">您在活动期间内预计回款金额为<em style="vertical-align:baseline;font-size:28px;">@ViewBag.InvestedMoney</em>元,复投最高可得<em style="vertical-align:baseline;font-size:28px;">@ViewBag.HeightReward</em>元现金+<em style="vertical-align:baseline;font-size:28px;">@ViewBag.RedReward</em>元红包</p>
+            @if (string.IsNullOrEmpty(ViewBag.userName))
+            {
+                <a href="/Customer/Login?returnUrl=/Activity/Activity2" class="activity2_infor_a">
+                    登录查看
+                </a>
+            }
+            else
+            {
+                <a href="/myinvest/recommendedlist" class="activity2_infor_a">
+                    立即投资
+                </a>
+            }
+        </div>
+    </div>
+    <div class="hoceremony_img11"></div>
+    <div class="hoceremony_img12">
+        <div class="activity2_rule white font_size_16 ">
+            <div style="height:70px;"></div>
+            <p class="font_size_30 white text_center">活动规则</p>
+            <div style="height:40px;"></div>
+            <p>1. 本次活动时间：2017年10月28日00:00:00--2017年11月28日23:59:59；</p>
+            <p>2. 本次活动与平台其他活动可同时参与，包括新手投资488元返现奖励、邀请返现奖励与标的加息奖励；</p>           
+            <p>3. 计算公式：年化投资金额=投资金额×投资期限/12个月，如用户在平台投资3个月标期，金额5万元，则年化投资金额=50000×3/12=12500元；</p>           
+            <p>4. 奖品不限数量，投资达标即可获取, 单个账户参加的单一活动只能获得一次奖励；</p>
+            <p>5. 所有奖励将于活动结束后的14个工作日发放，届时平台客服人员会与您联系，请保持手机号码畅通；</p>
+            <p>6.实物奖品按国家税法规定税费需用户自理，可按实物价值八折折现兑换.</p>
+            <p>7. 平台债权转让标不参加本次活动；</p>
+            <p>8. 本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var sUserAgent = navigator.userAgent.toLowerCase();
+
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+
+
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+
+        window.location.href = 'http://m.chinazfct.com/activity/Activity6';
+
+    } else {
+
+        window.location = '#';
+
+    } 
+</script>
+<script src="~/js/activity/activity.js"></script>

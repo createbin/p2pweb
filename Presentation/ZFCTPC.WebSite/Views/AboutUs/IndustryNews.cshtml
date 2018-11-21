@@ -1,0 +1,186 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "行业动态__关于我们_中房创投";
+    ViewData["Description"] = "中房创投为用户提供有关互联网理财,P2P理财,个人理财方面最新资讯及行业动态；中房创投,中房集团旗下,践行合规的互联网金融平台";
+    ViewData["Keywords"] = "理财资讯,互联网理财,P2P理财,个人理财";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var IndustryNews = ViewBag.IndustryNews != null ? ViewBag.IndustryNews as List<NewsDetail> : null;
+}
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>
+@*<div style="border-top:1px solid #f0f0f0"></div>*@
+
+<div class="aboutus_nav">
+    <ul>
+        @*<li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li ><a href="/AboutUs/ContactUs">联系我们</a></li>*@
+        <li class=" border-left"><a href="/AboutUs/PlatformAnnouncement ">平台公告</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li ><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px;"></div>
+
+<div class="aboutus_industry">
+    <ul >
+        @if (IndustryNews != null)
+        {
+            for (int i = 0; i < IndustryNews.Count; i++)
+            {
+                <li>
+                    <a href="/AboutUs/IndustryNewsDetail?id=@IndustryNews.ElementAt(i).Id">
+                        <img src="@IndustryNews.ElementAt(i).ImageUrl" width="334" height="204"/>
+                        <h3 class="font_size_18 font-weight black margin_top_10">
+                            @IndustryNews.ElementAt(i).Title
+                        </h3>
+                        <span class="short_botton_line"></span>
+                        <p class="gray margin_top_20">
+                            @IndustryNews.ElementAt(i).Short
+                        </p>
+                        <div style="height:50px"></div>
+                        <div class="gray1 font_size_12 ">
+                            <em class="padding_left_20">@IndustryNews.ElementAt(i).SkipUrl</em>
+                            <em class="padding_right_20 float_right">@IndustryNews.ElementAt(i).CreateTime.ToString("yyyy-MM-dd")</em>
+                        </div>
+                    </a>
+                </li>
+            }
+        }
+
+        @*<li>
+            <a href="">
+                <img src="~/images/banner/president_banner2.jpg" />
+                <h3 class="font_size_18 font-weight black margin_top_10">
+                    中房中融受邀出席“一带一路”沿线国家中小企业合作论...
+                </h3>
+                <span class="short_botton_line"></span>
+                <p class="gray margin_top_20">
+                    中国中小商业企业协会联合中华职教社、北京外国语大学国际商学院等单位共同举办。
+                </p>
+                <div style="height:50px"></div>
+                <div class="gray1 font_size_12 ">
+                    <em class="padding_left_20">七月新闻刊</em>
+                    <em class="padding_right_20 float_right">2017-07-24</em>
+                </div>
+            </a>
+        </li>
+        <li class="margin-right-none">
+            <a href="">
+                <img src="~/images/banner/president_banner2.jpg" />
+                <h3 class="font_size_18 font-weight black margin_top_10">
+                    中房中融受邀出席“一带一路”沿线国家中小企业合作论...
+                </h3>
+                <span class="short_botton_line"></span>
+                <p class="gray margin_top_20">
+                    中国中小商业企业协会联合中华职教社、北京外国语大学国际商学院等单位共同举办。
+                </p>
+                <div style="height:50px"></div>
+                <div class="gray1 font_size_12 ">
+                    <em class="padding_left_20">七月新闻刊</em>
+                    <em class="padding_right_20 float_right">2017-07-24</em>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <img src="~/images/banner/president_banner2.jpg" />
+                <h3 class="font_size_18 font-weight black margin_top_10">
+                    中房中融受邀出席“一带一路”沿线国家中小企业合作论...
+                </h3>
+                <span class="short_botton_line"></span>
+                <p class="gray margin_top_20">
+                    中国中小商业企业协会联合中华职教社、北京外国语大学国际商学院等单位共同举办。
+                </p>
+                <div style="height:50px"></div>
+                <div class="gray1 font_size_12 ">
+                    <em class="padding_left_20">七月新闻刊</em>
+                    <em class="padding_right_20 float_right">2017-07-24</em>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <img src="~/images/banner/president_banner2.jpg" />
+                <h3 class="font_size_18 font-weight black margin_top_10">
+                    中房中融受邀出席“一带一路”沿线国家中小企业合作论...
+                </h3>
+                <span class="short_botton_line"></span>
+                <p class="gray margin_top_20">
+                    中国中小商业企业协会联合中华职教社、北京外国语大学国际商学院等单位共同举办。
+                </p>
+                <div style="height:50px"></div>
+                <div class="gray1 font_size_12 ">
+                    <em class="padding_left_20">七月新闻刊</em>
+                    <em class="padding_right_20 float_right">2017-07-24</em>
+                </div>
+            </a>
+        </li>
+        <li class="margin-right-none">
+            <a href="">
+                <img src="~/images/banner/president_banner2.jpg" />
+                <h3 class="font_size_18 font-weight black margin_top_10">
+                    中房中融受邀出席“一带一路”沿线国家中小企业合作论...
+                </h3>
+                <span class="short_botton_line"></span>
+                <p class="gray margin_top_20">
+                    中国中小商业企业协会联合中华职教社、北京外国语大学国际商学院等单位共同举办。
+                </p>
+                <div style="height:50px"></div>
+                <div class="gray1 font_size_12 ">
+                    <em class="padding_left_20">七月新闻刊</em>
+                    <em class="padding_right_20 float_right">2017-07-24</em>
+                </div>
+            </a>
+        </li>*@
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:50px;"></div>
+<div style="text-align:center">
+    <div class="pager_box">
+        <div id="pager" class="pager_div"></div><span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+    </div>
+</div>
+<div style="height:40px;"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: @ViewBag.Count,
+            showData: @ViewBag.PageSize,
+            current:@ViewBag.CurrentPage,
+            coping: true,
+            prevContent:'<',
+            nextContent:'>'
+        });
+        function pageCallback(index,jq) {
+            location.href ="/AboutUs/IndustryNews?p="+index.getCurrent()+"&ps="+6;
+        }
+    });
+</script>
+

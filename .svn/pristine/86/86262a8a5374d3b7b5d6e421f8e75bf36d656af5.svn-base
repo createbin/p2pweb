@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewData["Title"] = "三重大礼闹元宵";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+
+<div class="lantern_bg">
+    <div style="height:77px;"></div>
+    <img src="~/images/activity/lanternfestival/banner_ele.png" class="img-margin" />
+     <div style="height:280px;"></div>
+    <img src="~/images/activity/lanternfestival/latfer_title1.png" class="img-margin" /> 
+    <div style="height:25px;"></div>
+    <div class="lantern_box1">
+        <div class="lantern_box1_content1">
+            <p class="position-relative">
+                <em class="bold font_size_18">1.</em>在3月2日~3月31日之内，平台已注册用户（2018.03.02之前完成注册的用户）可发出邀请，<font class="lanter_red font-weight">被邀请人自注册起，活动期内</font>发生任一投资，<font class="lanter_red font-weight">初始邀请人</font>即可获得被邀请人当次投资金额的<font class="lanter_red font-weight">0.2%返现，被邀请人</font>则将获得自己投资金额的<font class="lanter_red font-weight">0.3%返现</font>。
+            </p>
+        </div>
+        <div style="height:5px;"></div>
+        <div class="lantern_box1_content1">
+            <p class="position-relative">
+                <em class="bold font_size_18">2.</em>若<font class="lanter_red font-weight">被邀请人也邀请自己好友</font>，则<font class="lanter_red font-weight">初始邀请人</font>获得对方好友当次投资金额的<font class="lanter_red font-weight">0.1%返现，被邀请人</font>与好友收益规则如<font class="lanter_red font-weight">第一条所示</font>。
+            </p>
+        </div>
+    </div>
+    <div class="lianjie">
+        <img src="~/images/activity/lanternfestival/lianjie.png" />
+    </div>
+    <div style="margin-top:-145px;">
+        <img src="~/images/activity/lanternfestival/latfer_title2.png" class="img-margin" />
+        <div style="height:25px;"></div>
+        <div class="lantern_box2">
+            <p class="text_align_center">
+                在3月2日~3月31日之内，被邀请人累计投资金额达到一定档位，邀请人即可获得相应返现奖励。
+            </p>
+            <div style="height:35px;"></div>
+            <ul>
+                <li class="font_size_18 bold">
+                    好友累计投资金额档位(元)
+                </li>
+                <li class="font_size_18 bold">
+                    邀请人奖励
+                </li>
+                <li class="font_size_16 bold">
+                    50000-99999
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">58元</em>返现奖励
+                </li>
+                <li class="font_size_16 bold">
+                    100000-199999
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">158元</em>返现奖励
+                </li>
+                <li class="font_size_16 bold">
+                    200000-499999
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">258元</em>返现奖励
+                </li>
+                <li class="font_size_16 bold">
+                    500000-999999
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">558元</em>返现奖励
+                </li>
+                <li class="font_size_16 bold">
+                    1000000及以上
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">888元</em>返现奖励
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="lianjie" style="text-align:right;">
+        <img src="~/images/activity/lanternfestival/lianjie1.png" />
+    </div>
+    <div style="margin-top:-145px;">
+        <img src="~/images/activity/lanternfestival/latfer_title3.png" class="img-margin" />
+        <div style="height:25px;"></div>
+        <div class="lantern_box2">
+            <p class="text_align_center">
+                无论新老用户，在本月投资，每满50000元投资金额即可获得以下奖励，奖励按月累计发放。
+            </p>
+            <div style="height:35px;"></div>
+            <ul>
+                <li class="font_size_18 bold">
+                    产品标期
+                </li>
+                <li class="font_size_18 bold">
+                    奖励(每满50000元)
+                </li>
+                <li class="font_size_16 bold">
+                    1个月
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">10元</em>
+                </li>
+                <li class="font_size_16 bold">
+                    3个月
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">38元</em>
+                </li>
+                <li class="font_size_16 bold">
+                    6个月
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">88元</em>
+                </li>
+                <li class="font_size_16 bold">
+                    12个月
+                </li>
+                <li class="font_size_16 bold">
+                    <em class="lanter_red">188元</em>
+                </li>
+
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+   
+    <div style="height:60px;"></div>
+    <div class="lantern_rule">
+        <div class="font_size_28 bold text_align_center">
+            活动规则
+        </div>
+        <div style="height:50px;"></div>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">1.</em>活动日期为2018年3月2日~3月31日；
+        </p>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">2.</em>累投奖励按照最高奖励规则计算，不重复享受；
+        </p>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">3.</em>本次活动新手专享、债权转让类投资产品不予参加；
+        </p>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">4.</em>被邀请人需为新注册用户方可参与活动获得返利；
+        </p>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">5.</em>活动返利在活动结束后统一在5-7个工作日内发放；
+        </p>
+        <p class="font_size_16">
+            <em class="padding_right_20 bold">6.</em>本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:60px;"></div>
+</div>

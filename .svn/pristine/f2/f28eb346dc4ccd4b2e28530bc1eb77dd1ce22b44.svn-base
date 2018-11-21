@@ -1,0 +1,104 @@
+﻿@using ZFCTPC.Core.Enums
+@model ZFCTPC.Data.ApiModelReturn.ReturnPageData<ZFCTPC.Data.ApiModelReturn.LoanReturnModels.RLoanAbstractLable>
+
+
+@if (Model != null && Model.Total > 0)
+{
+    <input type="hidden" id="total" value="@ViewBag.Total"/>
+    foreach (var loan in Model.PagingData)
+    {
+        var loanstate= loan.LoanStateId != (int)ProjectStateEnum.Tender ? "recommend_list_box1" : "recommend_list_box";
+        <div class="@loanstate"  onclick="toDetail(@loan.LoanId)" style="cursor: pointer">
+            @{
+                if (loan.LoanStateId != (int) ProjectStateEnum.Tender)
+                {
+                    <div class="recommend_list_box_recharge">
+                    </div>
+                }
+            }
+            <div class="recommend_list_box_head">
+                <p class="font_size_16 blue float_left">
+                    @loan.LoanName
+                </p>
+                <div class="zfct_page2_content float_left margin_left_20">
+                    <dl>
+                        @if (!string.IsNullOrEmpty(loan.LableIcons))
+                        {
+                            foreach (var lable in loan.LableIcons.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <dd>
+                                    <img src="@(lable)"/>
+                                </dd>
+                            }
+                        }
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="height: 25px"></div>
+            <ul>
+                <li style="width: 213px">
+                    <p class="roboto red">
+                        @{
+                            if (loan.HikeRate == null)
+                            {
+                                <em class="font_size_30">@(loan.YearRate)%</em>
+                            }
+                            else
+                            {
+                                <em class="font_size_30">@(loan.OriginalRate)</em>
+                                <em class="font_size_24">+@(loan.HikeRate)%</em>
+                            }
+                        }
+
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_10">预期年化收益率</p>
+                </li>
+                <li style="width: 200px">
+                    <p class="roboto font_size_24"><em>@(loan.Period)</em>个月
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_15">投资期限</p>
+                </li>
+                <li style="width: 195px">
+                    <p class="roboto font_size_14"><em>@loan.LeastMoney</em>元
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_15">起投金额</p>
+                </li>
+                <li style="width: 195px">
+                    <p class="roboto font_size_14"><em>@loan.SurplusMoney</em>元
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_15">剩余可投</p>
+                </li>
+                <li style="width: 210px">
+                    <div style="height: 13px"></div>
+                    <div class="zfct_progress" style="padding: 0px">
+                        <div class="progress_bar" style="width: 180px">
+
+                            <div class="pro-bar">
+                                <div class="progress-bar-inner " style="background-color: #1a9bfc; width: @(loan.LoanSpeed)%;" data-value="89" data-percentage-value="89">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <p class="gray1 font_size_12 margin_top_18">
+                        投资进度 : <em>@(loan.LoanSpeed)%</em>
+                    </p>
+                </li>
+                <li class="border-right-none">
+                    <button class="@(loan.LoanStateId == (int)ProjectStateEnum.Tender ? "recommend_button_invest" : "recommend_button_recharge")" style="cursor: pointer">
+                        @(loan.LoanState)
+                    </button>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    }
+}
+<script>
+    var toDetail = function(loanId) {
+        location.href = "/myinvest/investdetail?loanid=" + loanId;
+    }
+</script>

@@ -1,0 +1,90 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Activity;
+@{
+    ViewData["Title"] = "开年大吉,首月旺财";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var InvestedMoney = ViewBag.InvestedMoney as InvestedReward;
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="openyear_bg">
+    <div style="height:85px;"></div>
+    <img src="~/images/activity/openyear/openyear_banner.png" class="img-margin" />
+    <div style="height:95px"></div>
+    <p class="font_size_28 bold text_align_center" style="color:#ffead5">
+        活动期间，您回款的资金在投资3月、6月、12月标的后，将累计计算复投
+    </p>
+    <p style="height:20px;"></p>
+    <p class="font_size_28 bold text_align_center" style="color:#ffead5">
+        投资金额，达到一定金额后，即可获得现金奖励！
+    </p>
+    <div style="height:70px"></div>
+    <div class="openyear_table">
+        <table>
+            <tr>
+                <td style="width:40%">58元现金</td>
+                <td style="width:60%">10000 ≤ 累计复投金额 < 30000元</td>
+            </tr>
+            <tr>
+                <td>188元现金</td>
+                <td>30000 ≤ 累计复投金额 < 50000元</td>
+            </tr>
+            <tr>
+                <td>288元现金</td>
+                <td>50000 ≤ 累计复投金额 < 100000元</td>
+            </tr>
+            <tr>
+                <td>588元现金</td>
+                <td>100000元 ≤ 累计复投金额</td>
+            </tr>
+        </table>
+    </div>
+    <div style="height:60px;"></div>
+    <p style="color:#ffead5" class="font_size_24 bold text_align_center">
+        您在活动期间内预计回款金额为
+        @if (InvestedMoney == null)
+        {
+            <em class="font_size_36">******</em><em>元，复投最高可得 </em><em class="font_size_36">***</em>
+        }
+        else
+        {
+            <em class="font_size_36 open_yellow">@InvestedMoney.RedReward</em><em> 元，复投最高可得 </em><em class="font_size_36 open_yellow">@InvestedMoney.HeightReward</em>
+        }
+        
+        元现金
+    </p>
+    <div style="height:50px;"></div>
+    @if (string.IsNullOrEmpty(ViewBag.userName))
+    {
+        <a href="/Customer/Login?returnUrl=/Activity/Activity11" class="newyear_button_login">
+            <em>登录查看</em>
+        </a>
+
+    }
+    else
+    {
+        <a href="/myinvest/recommendedlist" class="newyear_button_invest">
+            <em>立即投资</em>
+        </a>
+
+    }
+    <div style="height:50px;"></div>
+    <div class="openyear_rule">
+        <div class="font_size_36 text_align_center bold" style="color:#cf150b">
+            活动规则
+        </div>
+        <div style="height:50px;"></div>
+        <p>
+            1. 本次活动时间：2018年1月1日00:00:00--2018年1月31日23:59:59；
+        </p>
+        <p>
+            2. 本活动与平台其它活动可同时参与，包括标的加息奖励、邀请返现奖励、辞旧迎新活动；
+        </p>
+        <p>
+            3. 投资仅限3月及以上标的参与，平台债权转让标不可参与；
+        </p>
+        <p>
+            4. 本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:50px;"></div>
+</div>

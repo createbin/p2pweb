@@ -1,0 +1,54 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserBankInfo
+        <!------已经绑定成功的银行卡 start------->
+@if (Model.BankInfos != null && Model.BankInfos.Count() > 0)
+{
+    foreach (var item in Model.BankInfos)
+    {
+        <div class="bank_show_success">
+            <div class="bank_show_success_head">
+                @if (!string.IsNullOrEmpty(item.BankUrl))
+                {
+                    <img src="@Url.Content(ViewBag.Url + item.BankUrl)" />
+                }
+                else
+                {
+                    <img src="~/images/bohai/zhaoshang_icon.png" />
+                }
+                <em>
+                    @item.BankName
+                </em>
+                @*<em class="margin_left_5">借记卡</em>*@
+            </div>
+            <div style="height: 30px;"></div>
+            <p class="font_size_22 text_align_center">
+                @item.CardNumber
+            </p>
+            <div style="height: 15px;"></div>
+            <p class="font_size_14 padding_left_35">
+                @*<em>xx</em> | <em>江苏 南京</em>*@
+            </p>
+            <div class="bank_mask">
+
+            </div>
+            <a href="javascript:;" class="change_bank" onclick="ChangeCard()">
+                修改
+            </a>
+        </div>
+
+    }
+}
+
+<!------已经绑定成功的银行卡 end------->
+<!-------再绑定新的银行卡 start---------------->
+<div class="bank_show_success text_align_center" onclick="ChangeCard()">
+    <a href="">
+        <div style="height: 30px;"></div>
+        <p class="gray1 font_size_18 text_align_center">
+            绑定新的银行卡
+        </p>
+        <div style="height: 20px;"></div>
+        <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 50px; color: #cccccc"></i>
+    </a>
+
+</div>
+<!-------再绑定新的银行卡 end---------------->

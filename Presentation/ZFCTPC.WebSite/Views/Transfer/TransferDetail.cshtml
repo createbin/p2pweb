@@ -1,0 +1,354 @@
+﻿@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ZFCTPC.Core.Enums
+@using ZFCTPC.Data.ApiModelReturn.InvestModelReturns
+@using ZFCTPC.Data.ApiModelReturn.LoanReturnModels
+@using ZFCTPC.Data.ApiModelReturn.Transfers
+@using ZFCTPC.Data.Enums
+
+@{
+    ViewData["Title"] = "债权转让详情页";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var transferDetail = ViewBag.TransferDetail as RTansferDetail;
+    var isLogin = ViewBag.IsLogin;
+    var lonerInfo = ViewBag.LonerInfo as LoanerInfo;
+    var repaymentPlan = ViewBag.RepaymentPlan as RepaymentPlan;
+    var invester = ViewBag.Invester as RLoanInvester;
+    var openAccount = ViewBag.OpenAccount;
+    var remainMoney = ViewBag.RemainMoney;
+}
+
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/common/build.css" rel="stylesheet" />
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(2);
+    })
+</script>
+<input type="hidden" id="investMoney" value="@(transferDetail.SurplusMoney)" />
+<input type="hidden" id="loanId" value="@(transferDetail.LoanId)" />
+<input type="hidden" id="transferId" value="@(transferDetail.TransferId)" />
+@*<div class="invest_lubo">
+        <img src="~/images/banner/invest_detail_banner.jpg" class="img-responsive" />
+    </div>*@
+<div style="height:25px;"></div>
+
+<div class="invest_detail_page">
+    <span class="gray font_size_12">
+        我要投资&nbsp;>&nbsp;<em onclick="toClaimsList()">债权转让</em>&nbsp;>&nbsp;<em class="gray2">@(transferDetail.LoanName)</em>
+    </span>
+    <div style="height:20px;"></div>
+    <div class="invest_detai_top">
+        <div class="invest_detail_top_left float_left ">
+            <div class="invest_detail_top_title">
+                <span>
+                    @(transferDetail.LoanName)
+                </span>
+            </div>
+            <div class="invest_detail_top_content position-relative">
+                <div style="height:20px;"></div>
+                <div style="height:35px"></div>
+                <ul class="font_size_20">
+                    <li class="red">
+                        <em class="font_size_40">@(transferDetail.YearRate)</em>%
+                        <p class="font_size_14 margin_top_20 gray">预期年化收益率</p>
+                    </li>
+
+                    <li class="font_size_20">
+                        ¥&nbsp;<em class="">@(transferDetail.SurplusMoney)</em>&nbsp;<font class="font_size_14 gray">元</font>
+                        <p class="font_size_14 margin_top_20 gray">转让价格</p>
+                    </li>
+                    <li>
+                        <em class="font_size_20">@(transferDetail.RemainDay)</em>&nbsp;<text class="font_size_14 gray">天</text>
+                        <p class="font_size_14 margin_top_20 gray">剩余天数</p>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div style="height:20px;"></div>
+
+                <dl class="gray font_size_14 transfer_detail">
+                    <dd>
+                        计息日期：<em class="gray2">满标日计息</em>
+                    </dd>
+                    <dd>
+                        还款方式：<em class="gray2">@(transferDetail.RepaymentType)</em>
+                    </dd>
+                    <dd class="text_align_right padding-right-none">
+                        产品类型：<em class="gray2">@(transferDetail.ProductType)</em>
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+                <div style="height:10px;"></div>
+                <p>原始债权信息</p>
+                <div style="height:10px;"></div>
+                <div class="my_assets_tab_box my_assets_tab_box_signal">
+                    <div class="">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr class="">
+                                    <th>债权人</th>
+                                    <th>原始年化收益率</th>
+                                    <th>债权价值</th>
+                                    <th>原始项目期限</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@(transferDetail.TransferName)</td>
+                                    <td>@(transferDetail.LoanRate)%</td>
+                                    <td>@(transferDetail.InvestMoney)</td>
+                                    <td>@(transferDetail.Period)个月</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="height:30px;"></div>
+            </div>
+        </div>
+        <!----------------可投项目 strat------------------------->
+        <div class="invest_detail_top_right float_right">
+            <div class="zfct_form_group margin_bottom_35">
+            </div>
+            <div class="zfct_form_group margin_bottom_35">
+                <label class="width80 gray ">账户余额</label>
+                <label class="width160 ">¥&nbsp;<em class=" font_size_16">@(ViewBag.remainMoney)</em>&nbsp;元</label>
+                <a href="javascript:void(0);" class="recharge_now" id="recharge_now">
+                    立即充值
+                </a>
+            </div>
+            <div class="zfct_form_group margin_bottom_35">
+                <label class="width80 gray ">购买金额</label>
+                <span class="float_right text_align_right margin_right_10">¥<em>@(transferDetail.SurplusMoney)</em>&nbsp;元</span>
+            </div>
+            <div style="height:90px;"></div>
+            <div class="zfct_form_group margin_bottom_15">
+                <div class="checkbox checkbox-info checkbox-circle ">
+                    <input id="checkbox8" class="styled" type="checkbox" checked style="margin:0px">
+                    <label for="checkbox8" class="font_size_12" id="tp">
+                        <em class="gray1">我接受&nbsp;<font class="gray2 bottom_line">隐私政策</font>&nbsp;<a href="javascript:void(0);" class="gray1" onclick="javascript:OpenWindow('/TermsPrivacy/PrivacyPolicy', 800, 500, true) ">(阅读)</a></em>
+                    </label>
+                </div>
+            </div>
+            <div class="zfct_form_group">
+                <a href="javascript:viod(0);" id="@(transferDetail.TransferStateId==(int)ProjectStateEnum.HasThrough?"invest": "investCannot")" class="@(transferDetail.TransferStateId==(int)ProjectStateEnum.HasThrough?"invest_now": "invest_cannot")" data-hello="@transferDetail.TransferStateId">
+                    @(transferDetail.TransferState)
+                </a>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="invest_detail_down">
+        <div class="invest_detail_tab">
+            <ul>
+                <li class="active">项目详情</li>
+                <li>还款计划</li>
+                <li>投资记录</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="invest_detail_tab_box">
+                <div class="project_details">
+                    @if (!isLogin)
+                    {
+                        <div class="login_first">
+                            <img src="~/images/lock.png" class="img-margin" />
+                            <p class="margin_top_10 text_align_center gray1 font_size_16">请登录后查看</p>
+                            <button class="login_first_button" id="boxLogin">登录</button>
+                        </div>
+                    }
+                    else
+                    {
+                        if (lonerInfo != null)
+                        {
+                            <h3> 1. 借款人信息</h3>
+                            <div style="height:25px;"></div>
+                            <p class="font_size_14">
+                                @(lonerInfo.loanerIntro ?? "")
+                            </p>
+                            <div style="height:40px"></div>
+                            <h3>2. 还款来源</h3>
+                            <div style="height:25px;"></div>
+                            @(lonerInfo.repaymentResource ?? "")
+                            <div style="height:40px"></div>
+                            <h3>3. 项目资料</h3>
+                            <div style="height:25px"></div>
+                            <dl class="img_large">
+                                @if (lonerInfo.annexes.Any())
+                                {
+                                    foreach (var lonerInfoAnnex in lonerInfo.annexes)
+                                    {
+                                        <dd>
+                                            <img src="@(lonerInfoAnnex.AnnexURl)" width="210" height="150" />
+                                        </dd>
+                                    }
+                                }
+                                <div class="clear"></div>
+                            </dl>
+                            <div class="photo-mask"></div>
+                            <div class="photo-panel">
+                                <div class="photo-div">
+                                    <div class="photo-left">
+                                        <div class="arrow-prv"></div>
+                                    </div>
+                                    <div class="photo-img">
+                                        <div class="photo-bar">
+                                            <div class="photo-close"></div>
+                                        </div>
+
+                                        <div class="photo-view-h">
+                                            <img src="" />
+                                        </div>
+                                    </div>
+                                    <div class="photo-right">
+                                        <div class="arrow-next"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                </div>
+                <div class="repayment_plan display-none">
+                    @Html.Partial("_PartialRepaymentPlan", repaymentPlan)
+                </div>
+                <div class="investment_record display-none">
+                    @Html.Partial("_PartialTransferInvester", invester)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------蒙板start-->
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<!--蒙板end-->
+<!---------------------尚未开户  strat----------------->
+<div class="openaccount display-none" id="openAccount">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="openAccountClose"></button>
+        <div style="height:60px;"></div>
+        <img src="~/images/noopenaccount_icon.png" class="img-margin" />
+        <div style="height:40px;"></div>
+        <p class="font_size_16 text_align_center">尚未开户，请前往账户开户！</p>
+        <div style="height:40px;"></div>
+        <div class="zfct_form_group">
+            <button class="open_account margin_left_20 margin_right_15" id="toOpenAccount">
+                去开户
+            </button>
+            <button class="cancel_account margin_right_20" id="openAccountCancel">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<!---------------------尚未开户  end-------------->
+<!----------------余额不足  start--------------------->
+<div class="nomomey display-none" id="lessMoeny">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="lessMoneyClose"></button>
+        <div style="height:50px;"></div>
+        <img src="~/images/insufficient_balance.png" class="img-margin" />
+        <div style="height:25px;"></div>
+        <p class="font_size_16 text_align_center">账户余额不足，请充值后进行投资！</p>
+        <div style="height:25px;"></div>
+        <div class="zfct_form_group">
+            <button class="open_account margin_left_20 margin_right_15" style="background:#ec4961" id="toRecharge">
+                马上充值
+            </button>
+            <button class="cancel_account margin_right_20" id="rechargeCancel">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<!----------------余额不足  start--------------------->
+<!----------------风险测评 start-------------------->
+<div class="riskingtest " id="riskingTest" style="display:none;">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="openRiskingtestClose"></button>
+        <div style="height:50px;"></div>
+        <img src="~/images/risking_icon.png" class="img-margin" />
+        <div style="height:30px;"></div>
+        <p class="font_size_16 text_align_center">为了更好的为您提供投资理财服务，您还需要完成风险评测</p>
+        <div style="height:30px;"></div>
+        <div class="zfct_form_group">
+            <a href="/SpecialTopic/RiskingTest?redirctType=4&itemid=@transferDetail.TransferId" class="riskingtest_button" id="toRiskingTest">
+                去测评
+            </a>
+        </div>
+    </div>
+</div>
+<!----------------风险测评 end-------------------->
+<div style="height:20px"></div>
+<script>
+    var isLogin = '@isLogin';
+    var openAccount = '@openAccount';
+    var remainMoney = '@remainMoney';
+</script>
+<script>
+    var img_index = 0;
+    var img_src = "";
+
+    $(function () {
+        //计算居中位置
+        var mg_top = ((parseInt($(window).height()) - parseInt($(".photo-div").height())) / 2);
+
+        $(".photo-div").css({
+            "margin-top": "" + mg_top + "px"
+        });
+        //关闭
+        $(".photo-close").click(function () {
+            $(".photo-mask").hide();
+            $(".photo-panel").hide();
+        });
+        //下一张
+        $(".photo-panel .photo-div .arrow-next").click(function () {
+            img_index++;
+            if (img_index >= $("dl.img_large dd img").length) {
+                img_index = 0;
+            }
+            img_src = $("dl.img_large dd img").eq(img_index).attr("src");
+            photoView($("dl.img_large dd img"));
+        });
+        //上一张
+        $(".photo-panel .photo-div .arrow-prv").click(function () {
+            img_index--;
+            if (img_index < 0) {
+                img_index = $("dl.img_large dd img").length - 1;
+            }
+            img_src = $("dl.img_large dd img").eq(img_index).attr("src");
+            photoView($("dl.img_large dd img"));
+        });
+        //如何调用？
+        $("dl.img_large dd img").click(function () {
+            $(".photo-mask").show();
+            $(".photo-panel").show();
+            img_src = $(this).attr("src");
+            img_index = $(this).index();
+            photoView($(this));
+        });
+
+    });
+    //自适应预览
+    function photoView(obj) {
+        if ($(obj).width() >= $(obj).height()) {
+            $(".photo-panel .photo-div .photo-img .photo-view-h").attr("class", "photo-view-w");
+            $(".photo-panel .photo-div .photo-img .photo-view-w img").attr("src", img_src);
+        } else {
+            $(".photo-panel .photo-div .photo-img .photo-view-w").attr("class", "photo-view-h");
+            $(".photo-panel .photo-div .photo-img .photo-view-h img").attr("src", img_src);
+        }
+        //此处写调试日志
+        console.log(img_index);
+    }
+</script>
+
+<script src="~/js/invests/transferDetail.js?version=0.02"></script>

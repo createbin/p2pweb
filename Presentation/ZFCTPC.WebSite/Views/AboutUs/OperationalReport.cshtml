@@ -1,0 +1,110 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.News
+@{
+    ViewData["Title"] = "运营报告_关于我们_中房创投";
+    ViewData["Description"] = "中房创投践行合规，定期披露平台信息，保证投资者的网贷安全，让投资者放心网贷";
+    ViewData["Keywords"] = "运营报告,信息披露,中房创投官网,国资控股,中房集团,银行资金存管";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    List<MagazineReturnModel> managizeList = ViewBag.CompanyManagize != null ? ViewBag.CompanyManagize.ReturnData.ManagizeList as List<MagazineReturnModel> : null;//公司内刊
+}
+
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+@*<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>*@
+<div style="border-top:1px solid #f0f0f0"></div>
+
+<div class="aboutus_nav">
+    <ul>
+        <li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li class=""><a href="/AboutUs/ContactUs">联系我们</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px;"></div>
+
+<div class="enterprise_box1">
+    @*<ul>
+        @if (managizeList != null)
+        {
+            for (var i = 0; i < managizeList.Count; i++)
+            {
+                <li>
+                    <a href="@managizeList.ElementAt(i).Skiplinks">
+                        <p class="margin_bottom_25 text_align_center font_size_16 bold">@managizeList.ElementAt(i).Title</p>
+                        <div style="height:20px;"></div>
+                        <img src="@managizeList.ElementAt(i).ImageUrl" width="325" height="300" class="img-margin" />
+                    </a>
+                </li>
+            }
+        }
+        <div class="clear"></div>
+    </ul>*@
+    <div style="height:30px;"></div>
+    <dl>
+        <dd>2017</dd>
+    </dl>
+    <ul>
+        @if (managizeList != null)
+        {
+            for (int i = 0; i < managizeList.Count; i++)
+            {
+                <li>
+                    <a href="@managizeList.ElementAt(i).Skiplinks" target="_blank">
+                        <img src="@managizeList.ElementAt(i).ImageUrl" />
+                        <p>
+                            <em>@managizeList.ElementAt(i).Title</em>
+                            <em class="float_right">发布时间:<text>@managizeList.ElementAt(i).CreateDate.ToString("yyyy-MM-dd")</text></em>
+                        </p>
+                    </a>
+                </li>
+
+            }
+
+        }
+        
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:50px;"></div>
+@*<div style="text-align:center">
+    <div class="pager_box">
+        <div id="pager" class="pager_div"></div><span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+    </div>
+</div>
+<div style="height:40px;"></div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: @ViewBag.Count,
+            showData: @ViewBag.PageSize,
+            current:@ViewBag.CurrentPage,
+            coping: true,
+            prevContent:'<',
+            nextContent:'>'
+        });
+        function pageCallback(index,jq) {
+            location.href ="/AboutUs/EnterpriseInsideMagazine?p="+index.getCurrent()+"&ps="+6;
+        }
+    })
+</script>*@

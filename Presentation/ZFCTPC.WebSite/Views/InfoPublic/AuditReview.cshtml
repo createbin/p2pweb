@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "审计审核";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+<script>
+    $(function () {
+        navActive(3);       
+        FirstActive(0);
+        PublicActive(8);
+    })
+</script>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24 bold">审计审核</p>
+        <div style="height:40px;"></div>
+        <div class="auditreview_content">
+            <ul>
+                <li>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/flyjs.pdf" target="_blank">
+                        <img src="~/images/public/flyjs.png" class="img-margin" style="border:1px solid #f0f0f0;box-sizing:border-box" />
+                        <p class="margin_top_25  font_size_15">
+                            中房创投合规法律意见书
+                        </p>
+
+                    </a>
+
+                </li>
+                <li>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/zxsjbg.pdf" target="_blank">
+                        <img src="~/images/public/shenhe2.png" class="img-margin" />
+                        <p class="margin_top_25  font_size_15">
+                            中房创投专项审计报告
+                        </p>
+
+                    </a>
+
+                </li>
+                <li > 
+                    <a href="http://admin.chinazfct.com/ManagementSystem/sjbg2017.pdf" target="_blank">
+                        <img src="~/images/public/shenhe1.png" class="img-margin" />
+                        <p class="margin_top_25  font_size_15">
+                            中房创投2017年审计报告
+                        </p>
+
+                    </a>
+                         
+                </li>
+                <li>
+                   <a href="http://admin.chinazfct.com/sjbg.pdf" target="_blank">
+                       <img src="~/images/public/shenhe.png" class="img-margin" />
+                       <p class="margin_top_25  font_size_15">
+                           中房创投2016年审计报告
+                       </p>   
+                   </a>
+                                      
+                </li>
+                <div class="clear"></div>
+            </ul>
+            @*<div class="audit_box">
+               
+                <div>
+                    <img src="~/images/public/audit_statistics2017.png" />
+                </div>
+                <div style="display:none">
+                    <img src="~/images/public/audit_statistics2016.png" />
+                </div>
+            </div>*@
+            @*<ul>
+               
+                <li class="bold font_size_16">
+                    2017年
+                </li>
+                <li class="">
+                    →2016年
+                </li>
+                <div class="clear"></div>
+            </ul>*@
+        </div>
+    </div>
+</div>
+
+
+@*<div id="risk_mask" class="risk_mask" style="display:none;"></div>*@
+@*<div class="yyzz_box1" style="display:none">
+    
+    <img src="~/images/close_down.png" class="yyzz_box_close" />
+</div>*@
+
+@*<script>
+    $(".auditreview_content ul li").click(function () {
+        $("#risk_mask").show();
+        var attr_src = $(this).find("img").attr("src");
+        $('<img src="' + attr_src + '" />').appendTo(".yyzz_box1");
+        $(".yyzz_box1").show();
+    })
+    $(".yyzz_box_close").click(function () {
+        $("#risk_mask").hide();
+        $(".yyzz_box1 img:last").remove();
+        $(".yyzz_box1").hide();
+        
+    })
+</script>*@
+

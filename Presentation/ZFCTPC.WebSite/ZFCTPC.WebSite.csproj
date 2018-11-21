@@ -1,0 +1,118 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="wwwroot\Areas\**" />
+    <Content Remove="wwwroot\Areas\**" />
+    <EmbeddedResource Remove="wwwroot\Areas\**" />
+    <None Remove="wwwroot\Areas\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\AboutUs\ContactUs.cshtml" />
+    <None Include="Views\AboutUs\ContactUsDetails.cshtml" />
+    <None Include="Views\AboutUs\EnterpriseInsideMagazine.cshtml" />
+    <None Include="Views\AboutUs\GroupDynamics.cshtml" />
+    <None Include="Views\AboutUs\Index.cshtml" />
+    <None Include="Views\AboutUs\IndustryNews.cshtml" />
+    <None Include="Views\AboutUs\IndustryNewsDetail.cshtml" />
+    <None Include="Views\AboutUs\OperationalReport.cshtml" />
+    <None Include="Views\AboutUs\PlatformAnnouncement.cshtml" />
+    <None Include="Views\AboutUs\PlatformDetail.cshtml" />
+    <None Include="Views\AboutUs\PresidentColumn.cshtml" />
+    <None Include="Views\AboutUs\PresidentColumnDetail.cshtml" />
+    <None Include="Views\AboutUs\Recruitment.cshtml" />
+    <None Include="Views\Activity\Activity1.cshtml" />
+    <None Include="Views\Activity\Activity15.cshtml" />
+    <None Include="Views\Activity\Activity6.cshtml" />
+    <None Include="Views\Activity\Index.cshtml" />
+    <None Include="Views\Customer\ForgetPassword.cshtml" />
+    <None Include="Views\Customer\ForgetPassword2.cshtml" />
+    <None Include="Views\Customer\ForgetPassword3.cshtml" />
+    <None Include="Views\Customer\Login.cshtml" />
+    <None Include="Views\Customer\Register.cshtml" />
+    <None Include="Views\HelpCenter\HelpCenterList.cshtml" />
+    <None Include="Views\HelpCenter\Index.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Index_bak.cshtml" />
+    <None Include="Views\Home\_PartialLoanList.cshtml" />
+    <None Include="Views\MyAccount\BankCardManage.cshtml" />
+    <None Include="Views\MyAccount\ClaimsTransfer.cshtml" />
+    <None Include="Views\MyAccount\HuiFuReturnUrl.cshtml" />
+    <None Include="Views\MyAccount\Index.cshtml" />
+    <None Include="Views\MyAccount\InvitationToReward.cshtml" />
+    <None Include="Views\MyAccount\LoanStatistics.cshtml" />
+    <None Include="Views\MyAccount\MyInvestList.cshtml" />
+    <None Include="Views\MyAccount\MyLoan.cshtml" />
+    <None Include="Views\MyAccount\MyRedEnvelope.cshtml" />
+    <None Include="Views\MyAccount\MyRepaymentPlan.cshtml" />
+    <None Include="Views\MyAccount\OpenAccountInfo.cshtml" />
+    <None Include="Views\MyAccount\Recharge.cshtml" />
+    <None Include="Views\MyAccount\RechargeAndWithdraw.cshtml" />
+    <None Include="Views\MyAccount\RepaymentNow.cshtml" />
+    <None Include="Views\MyAccount\SecurityCenter.cshtml" />
+    <None Include="Views\MyAccount\SignalRepaymentPlan.cshtml" />
+    <None Include="Views\MyAccount\TransactionRecord.cshtml" />
+    <None Include="Views\MyAccount\Withdrawal.cshtml" />
+    <None Include="Views\MyAccount\_PartialCanTransferList.cshtml" />
+    <None Include="Views\MyAccount\_PartialClaimsTransferList.cshtml" />
+    <None Include="Views\MyAccount\_PartialInvestList.cshtml" />
+    <None Include="Views\MyAccount\_PartialLoanList.cshtml" />
+    <None Include="Views\MyAccount\_PartialLoanStatisticsList.cshtml" />
+    <None Include="Views\MyAccount\_PartialRedList.cshtml" />
+    <None Include="Views\MyAccount\_PartialRePayList.cshtml" />
+    <None Include="Views\MyAccount\_PartialTransactionRecordList.cshtml" />
+    <None Include="Views\MyInvest\ClaimsList.cshtml" />
+    <None Include="Views\MyInvest\DreamList.cshtml" />
+    <None Include="Views\MyInvest\InvestDetail.cshtml" />
+    <None Include="Views\MyInvest\InvestmentList.cshtml" />
+    <None Include="Views\MyInvest\NewHandList.cshtml" />
+    <None Include="Views\MyInvest\RecommendedList.cshtml" />
+    <None Include="Views\MyInvest\WiseList.cshtml" />
+    <None Include="Views\MyInvest\_PartialLoanInvester.cshtml" />
+    <None Include="Views\MyInvest\_PartialLoanList.cshtml" />
+    <None Include="Views\MyInvest\_PartialRepaymentPlan.cshtml" />
+    <None Include="Views\NewHandGuide\Index.cshtml" />
+    <None Include="Views\Security\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LayoutHeadFoot.cshtml" />
+    <None Include="Views\Shared\_LayoutHeadFoot让74.cshtml" />
+    <None Include="Views\Shared\_MyAccountLeft.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\SpecialTopic\Index.cshtml" />
+    <None Include="Views\TermsPrivacy\PrivacyPolicy.cshtml" />
+    <None Include="Views\TermsPrivacy\UseAgreement.cshtml" />
+    <None Include="Views\Transfer\ClaimsList.cshtml" />
+    <None Include="Views\Transfer\Index.cshtml" />
+    <None Include="Views\Transfer\TransferDetail.cshtml" />
+    <None Include="Views\Transfer\_PartialClaimsList.cshtml" />
+    <None Include="Views\Transfer\_PartialRepaymentPlan.cshtml" />
+    <None Include="Views\Transfer\_PartialTransferInvester.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\ZFCTPC.Core\ZFCTPC.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\ZFCTPC.Data\ZFCTPC.Data.csproj" />
+    <ProjectReference Include="..\..\Libraries\ZFCTPC.Service\ZFCTPC.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Enterprise\Data\" />
+    <Folder Include="Extensions\Redirct\" />
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties App_3Data_4ZfctApi_1json__JSONSchema="http://json.schemastore.org/commands" /></VisualStudio></ProjectExtensions>
+
+</Project>

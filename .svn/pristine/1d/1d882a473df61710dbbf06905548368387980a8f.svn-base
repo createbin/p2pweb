@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewData["Title"] = "管理制度";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(11);
+    })
+</script>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24 bold">管理制度</p>
+        <div style="height:20px;"></div>
+        <div class="management_box">
+            <dl>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/出借人评估及分类制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            出借人评估及分类制度
+                        </p>
+                    </a>
+                    
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/出借人适当性制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            出借人适当性制度
+                        </p>
+                    </a>
+                   
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/档案及信息保存制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            档案及信息保存制度
+                        </p>
+                    </a>
+                   
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/风控制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            风控制度
+                        </p>
+                    </a>
+                   
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/风险揭示制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            风险揭示制度
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/公司内部控制管理办法.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            公司内部控制管理办法
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/会员注册制度及协议文本.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            会员注册制度及协议文本
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/交易流程及规则.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            交易流程及规则
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/借款人评估及分类制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            借款人评估及分类制度
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/内审制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            内审制度
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/网络与信息安全管理制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            网络与信息安全管理制度
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/信息披露管理制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            信息披露管理制度
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/逾期处理办法.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            逾期处理办法
+                        </p>
+                    </a>
+
+                </dd>
+                <dd>
+                    <a href="http://admin.chinazfct.com/ManagementSystem/重大事件的发现报告及处置制度.pdf" target="_blank">
+                        <img src="~/images/public/management_icon.png" class="img-margin" />
+                        <p class="text_align_center">
+                            重大事件的发现报告及处置制度
+                        </p>
+                    </a>
+
+                </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>       
+    </div>
+</div>
+

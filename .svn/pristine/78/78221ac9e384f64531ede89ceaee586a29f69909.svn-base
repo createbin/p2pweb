@@ -1,0 +1,270 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Activity;
+@{
+    ViewData["Title"] = "感恩钜惠";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var InvestedMoney = ViewBag.InvestedMoney as InvestedReward;
+    var InvestPersonRank = ViewBag.InvestPersonRank as List<InvestPerson>;
+    //var RankList = ViewBag.RankList as List<InvestPerson>;
+}
+
+@*<style>
+   .right_suspension {
+        top: 60px !important;
+    }
+</style>*@
+
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="thanksgivingh_box">
+    <div style="height:660px;"></div>
+    @*<img src="~/images/activity/thanksgivinghuge/quartet.png" class="img-margin" />
+    <div style="height:50px"></div>*@
+    <div class="activity_page1 position-relative">
+      
+            <img src="~/images/activity/thanksgivinghuge/activity_title1.png" class="img-margin" />
+            <div style="height:20px;"></div>
+            <div class="activity_box1 white">
+                <div style="height:80px;"></div>
+                <p>活动期间，您在平台投资可累加年化投资金额，达到一定金额后，即可获得对应奖品。</p>
+                <div style="height:30px"></div>
+                <p style="color:#ffbddc">计算公式：年化投资金额＝投资金额＊投资期限（月）／12个月</p>
+                <div style="height:30px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act1_1.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act1_2.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act1_3.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act1_4.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act1_5.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <span style="font-size:18px; display:block" class="text_align_center">
+                    我的累计年化投资金额
+                    @if (InvestedMoney != null)
+                    {
+                        <em style="color:#ffbd3f; font-size:22px">@(InvestedMoney.RedReward) 元。</em>
+                    }
+                    else
+                    {
+                        <em style="color:#ffbd3f; font-size:22px">* * * * * * 元。</em>
+                    }
+                </span>
+                @if (string.IsNullOrEmpty(ViewBag.userName))
+                {
+                    <a href="/Customer/Login?returnUrl=/Activity/Activity4" class="thanksgivingh_login_button "></a>
+                }
+                else
+                {
+                    <a href="/myinvest/recommendedlist" class="thanksgivingh_invest_button "></a>
+                }
+
+            </div>
+    
+    </div>
+    @if (InvestPersonRank != null && InvestPersonRank.Count > 0)
+    {
+        <div class="thanksgivingh_marquee">
+            <ul class="mulitline">
+                @for (int i = 0; i < InvestPersonRank.Count; i++)
+                {
+                    <li>刚刚，@(InvestPersonRank[i].Name)投资了@(InvestPersonRank[i].Period)月标@(InvestPersonRank[i].Money)元 </li>
+                }
+            </ul>
+        </div>
+    }
+    @*<div class="thanksgiving_nav">
+        <ul>
+            <a href="#activity_page1">
+                <li class="nav_bg">
+                    <img src="~/images/activity/thanksgivinghuge/nav_text1.png" />
+                </li>
+            </a>
+            <a href="#activity_page2">
+                <li class="nav_bg">
+                    <img src="~/images/activity/thanksgivinghuge/nav_text2.png" />
+                </li>
+            </a>
+
+        </ul>
+    </div>*@
+    <div style="height:60px;"></div>
+    @*<div class="activity_page1">
+        <img src="~/images/activity/thanksgivinghuge/activity_title2.png" class="img-margin" />
+        <div style="height:20px;"></div>
+        <div class="activity_box2 white">
+            <div style="height:80px;"></div>
+            <p>活动期间，您回款的资金在投资3个月，6个月，12个月标的后，将累计计算复投年化投资金额，达到一定金额</p>
+            <p>后，即可获得现金奖励！</p>
+            <div style="height:30px"></div>
+            <p style="color:#ffbddc">
+                计算公式：年化投资金额＝投资金额＊投资期限（月）／12个月
+            </p>
+            <div style="height:30px;"></div>
+            <img src="~/images/activity/thanksgivinghuge/img_act2_table.png" class="img-margin" />
+            <div style="height:30px;"></div>
+            <span style="font-size:18px;display:block" class="text_align_center">
+                您在活动期间内预计回款金额为<em style="color:#ffbd3f; font-size:22px">* * * * * *元,</em> 复投最高可投<em style="color:#ffbd3f; font-size:22px;">* * *元</em> 现金。
+            </span>
+            <div style="height:20px;"></div>
+            <a href="" class="thanksgivingh_login_button">
+
+            </a>
+            
+        </div>
+    </div>
+    <div style="height:60px;"></div>*@
+    @*<div class="activity_page2">     
+            <img src="~/images/activity/thanksgivinghuge/activity_title3.png" class="img-margin" />
+            <div style="height:20px;"></div>
+            <div class="activity_box3 white">
+                <div style="height:60px;"></div>
+                <p>活动期间，累计投资年化金额排名前5的用户，可额外获得丰厚大奖！</p>
+
+                <div style="height:20px"></div>
+                <p style="color:#ffbddc">
+                    计算公式：年化投资金额＝投资金额＊投资期限（月）／12个月
+                </p>
+                <div style="height:30px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act3_1.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act3_2.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act3_3.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act3_4.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/img_act3_5.png" class="img-margin" />
+                <div style="height:30px;"></div>
+                <img src="~/images/activity/thanksgivinghuge/phb.png" class="img-margin" />
+                <div style="height:20px;"></div>
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="tr_bg">
+                        <th>排名</th>
+                        <th>上板金主</th>
+                        <th class="border-right-none">累计年化投资金额</th>
+                    </tr>
+                    <tr>
+                        <td style="color:#ffbd3f">
+                            <img src="~/images/activity/thanksgivinghuge/jinpai.png" /><em class="bold">NO.1</em>
+                        </td>
+                        <td>
+                            赵**
+                        </td>
+                        <td class="border-right-none">
+                            2000881元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#cecece">
+                            <img src="~/images/activity/thanksgivinghuge/yinpai.png" /><em class="bold">NO.2</em>
+                        </td>
+                        <td>
+                            赵**
+                        </td>
+                        <td class="border-right-none">
+                            2000881元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#da9930">
+                            <img src="~/images/activity/thanksgivinghuge/tongpai.png" /><em class="bold">NO.3</em>
+                        </td>
+                        <td>
+                            赵**
+                        </td>
+                        <td class="border-right-none">
+                            2000881元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="bold">
+                            NO.4
+                        </td>
+                        <td>
+                            赵**
+                        </td>
+                        <td class="border-right-none">
+                            2000881元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border-bottom-none bold">
+                            NO.5
+                        </td>
+                        <td class="border-bottom-none">
+                            赵**
+                        </td>
+                        <td class="border-bottom-none border-right-none">
+                            2000881元
+                        </td>
+                    </tr>
+                </table>
+                <div style="height:40px;"></div>
+                <span style="font-size:18px; display:block" class="text_align_center">我的累计年化投资金额 <em style="color:#ffbd3f; font-size:22px">* * * * * * 元。</em></span>
+                <div style="height:5px;"></div>
+                <a href="" class="thanksgivingh_login_button">
+                </a>
+            </div>
+      
+    </div>*@
+    @*<div style="height:60px;"></div>*@
+    <div class="activity_box4">
+        <div style="height:50px;"></div>
+        <img src="~/images/activity/thanksgivinghuge/hdgz.png" class="img-margin" />
+        <div style="height:30px;"></div>
+        <p class="">
+            <em class="">1</em>本次活动时间：2017年12月1日00:00:00--2017年12月31日23:59:59；
+        </p>
+        <p>
+            <em class="">2</em>本次活动与平台其它活动同时参与，包括邀请返现奖励与标的加息奖励；
+        </p>
+        <p>
+            <em class="">3</em>计算公式：年化投资金额=投资金额×投资期限/12个月；
+        </p>
+        <div class="example">
+            例子：用户在平台投资3个月标期，金额5万元，则年化投资金额=50000×3/12=12500元。
+        </div>
+        <p>
+            <em class="">4</em>奖品不限数量，投资达标即可获取, 单个账户参加的单一活动只能获得一次奖励；
+        </p>
+
+        <p>
+            <em class="">5</em>实物奖品按国家税法规定税费需用户自理,奖品将于活动结束后的14个工作日发放，届时平台客服人员会与您联系，<br />请保持手机号码畅通；
+        </p>
+        <p>
+            <em class="">6</em>平台债权转让标和新手标不参加本次活动；
+        </p>
+        <p>
+            <em class="">7</em>本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:40px;"></div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        //单行应用
+        var _wrap = $('ul.mulitline'); //定义滚动区域
+        var _interval = 2000; //定义滚动间隙时间
+        var _moving; //需要清除的动画
+        _wrap.hover(function () {
+            clearInterval(_moving); //当鼠标在滚动区域中时,停止滚动
+
+        }, function () {
+            _moving = setInterval(function () {
+                var _field = _wrap.find('li:first'); //此变量不可放置于函数起始处,li:first取值是变化的
+                var _h = _field.height(); //取得每次滚动高度
+
+                _field.animate({ marginTop: -_h + 'px' }, 600, function () { //通过取负margin值,隐藏第一行
+                    _field.css('marginTop', 0).appendTo(_wrap); //隐藏后,将该行的margin值置零,并插入到最后,实现无缝滚动
+                })
+            }, _interval) //滚动间隔时间取决于_interval
+        }).trigger('mouseleave'); //函数载入时,模拟执行mouseleave,即自动滚动
+
+        $(".thanksgiving_nav ul li").click(function () {
+            $(this).addClass("nav_bg1").parent().siblings().find("li").removeClass("nav_bg1");
+        })
+
+    });
+</script>	

@@ -1,0 +1,172 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Invites
+@{
+    ViewData["Title"] = "投资有奖励，任务收益高";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var statics = ViewBag.Statistics as InviteStatistics;
+}
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+
+<div class="rewards_box">
+    <div class="rewards_banner">
+        <img src="~/images/activity/haverewards/rewards_banner.png" class="img-margin" />
+    </div>
+    <div style="height:330px;"></div>
+    <div class="rewards_more">
+        <div style="height:280px;"></div>
+        <p class="font_size_18">
+            活动期间，投资<em>3月及以上标期</em>，达到<em>一定金额</em>，可获得<em>现金奖励</em>。
+            若开启<em>组团任务</em>，还可以<em>额外获得奖励</em>。
+        </p>
+        <div style="height:210px;"></div>
+        <a href="/myinvest/recommendedlist" class="rewards_a">
+            立即投资
+        </a>
+    </div>
+    <div style="height:50px;"></div>
+    <div class="rewards_team">
+        <img src="~/images/activity/haverewards/rewards_team_title.png" class="img-margin" />
+        <div style="height:25px;"></div>
+        <p class="font_size_18">
+            活动期间，投资<em>邀请好友成功注册并投资3月及以上标期</em>，投资金额达标后,<em>邀请人</em>
+            可获得<em>现金奖励</em>。
+        </p>
+        <div style="height:45px"></div>
+        <table cellpadding="0" cellspacing="0" >
+            <tr>
+                <td></td>
+                <td>
+                    邀请新用户数
+                </td>
+                <td>
+                    新用户投资金额
+                </td>
+                <td>
+                    现金奖励
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    模式一
+                </td>
+                <td class="reward_yellow">
+                    至少一人
+                </td>
+                <td class="reward_yellow">
+                    投资1000元
+                </td>
+                <td class="reward_yellow">
+                    3元 × 达标人数
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    模式二
+                </td>
+                <td class="reward_yellow">
+                    至少两人
+                </td>
+                <td class="reward_yellow">
+                    分别投资10000元
+                </td>
+                <td class="reward_yellow">
+                    50元 × 达标人数
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    模式三
+                </td>
+                <td class="reward_yellow">
+                    至少两人
+                </td>
+                <td class="reward_yellow">
+                    分别投资50000元
+                </td>
+                <td class="reward_yellow">
+                    400元 × 达标人数
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    模式四
+                </td>
+                <td class="reward_yellow">
+                    至少两人
+                </td>
+                <td class="reward_yellow">
+                    分别投资100000元
+                </td>
+                <td class="reward_yellow">
+                    1000元 × 达标人数
+                </td>
+            </tr>
+        </table>
+        <div style="height:45px;"></div>
+        <div class="font_size_18 white">
+            举个栗子
+        </div>
+        <div style="height:25px;"></div>
+        <div class="font_size_18 white line_height_30">
+            1、小果活动期间<em class="reward_yellow">累投金额共计15万</em>，但活动期间他并未邀请好友注册投资，则小果可获得的<em class="reward_yellow">现金奖励为858元</em>；
+        </div>
+        <div style="height:5px;"></div>
+        <div class="font_size_18 white line_height_30">
+            2、小花活动期间<em class="reward_yellow">累投金额共计15万</em>，活动期间他<em class="reward_yellow">邀请了5个好友注册投资</em>，其中<em class="reward_yellow">1个好友</em>在活动期间分别<em class="reward_yellow">投资了1000元</em>，另外<em class="reward_yellow">4个好友未投资</em>，则小花最后可获得的<em class="reward_yellow">现金奖励为858+3=861元</em>；若<em class="reward_yellow">4个好友分别投资10000元</em>，则张三最后可获得的<em class="reward_yellow">现金奖励为858+80×4=1178元</em>；
+        </div>
+        <div style="height:5px;"></div>
+        <div class="font_size_18 white line_height_30">
+            3、小李活动期间<em class="reward_yellow">累投金额共计15万</em>，活动期间他还<em class="reward_yellow">邀请了5个好友注册投资</em>，且这5人在活动期间的<em class="reward_yellow">投资额都达到了100000元</em>，则小李可获得的<em class="reward_yellow">现金奖励为858+1000×5=5858元</em>。
+        </div>
+        <div style="height:20px"></div>
+        <div class="rewards_link">
+            @if (ViewBag.IsLogin)
+            {
+                <p class="font_size_18  text-center">
+                    我的邀请链接
+                </p>
+                <div style="height:15px;"></div>
+                <p class="invitation_link"><em id="inviteUrl">@(statics.inviteUrl)</em><em class="reward_copy" id="invitation_copy_url">复制</em></p>
+            }
+            else
+            {
+                <a href="/Customer/Login?returnUrl=/Activity/Activity13" class="rewards_button">
+                    登录邀请
+                </a>
+            }
+        </div>
+    </div>
+    <div style="height:50px;"></div>
+    <div class="rewards_rule">
+        <img src="~/images/activity/haverewards/rewards_rule.png"class="img-margin" />
+        <div style="height:40px"></div>
+        <p>
+            1.本次活动时间：2018年2月1日00:00:00--2018年2月28日23:59:59；
+        </p>
+        <p>
+            2.投资的现金奖励按照最高奖励进行计算，邀请的新用户需在活动期间内完成注册并投资达标，邀请奖励才有效;
+        </p>
+        <p>
+            3.本次活动不与平台其它活动叠加；
+        </p>
+        <p>
+            4.活动仅限3月及以上标的参与，平台债权转让标不参加本次活动；
+        </p>
+        <p>
+            5.本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:100px;"></div>
+</div>
+<script src="~/js/activity/clipboard.min.js"></script>
+
+<script>
+    var clipboard2 = new Clipboard('#invitation_copy_url',
+        {
+            target: function () {
+                return document.querySelector('#inviteUrl');
+            }
+        });
+    clipboard2.on('success', function (e) {
+        layer.msg('复制成功');
+    });
+</script>

@@ -1,0 +1,152 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RMyRepayLoans
+
+
+@if (Model == null || Model.Count <= 0)
+{
+    <!---------------暂无数据  start---------->
+    <div style="display:none">
+        <div style="height:40px;"></div>
+        <img src="~/images/enterprise/nojilu.png" class="img-margin" />
+        <p class="text_align_center margin_top_5">
+            暂无数据
+        </p>
+        <div style="height:40px;"></div>
+    </div>
+    <!---------------暂无数据  end------------>
+}
+else
+{
+    <input type="hidden" id="total" value="@(Model.Count)"/>
+    foreach (var payed in Model.RepayLoans)
+    {
+        <div class="daihuankuan_product daihuankuan_productq1">
+            <div style="height:10px"></div>
+            <p>
+                <em class="blue">▌</em>@(payed.LoanName)
+                <a href="javascript:;" class="blue margin_left_15 font_size_12" onclick="DownLoanFile(@payed.LoanId)">合同下载</a>
+            </p>
+            <div style="height:10px;"></div>
+            <p>
+                <span>
+                    <em>已结清还款总额</em>
+                    <em class="red1">@(payed.RepayLoanPlans.Sum(p=>p.PayPrincipal))</em> <em class="gray">元</em>
+                </span>
+                <span class="">
+                    <em>已结清还款期数</em>
+                    <em class="red1 ">@(payed.RepayLoanPlans.Count)</em> <em class="gray"> 期</em>
+                </span>
+            </p>
+
+            <p class="blue text_align_center seeMore">
+                点击查看融资项目及还款详情
+                <em class="padding_left_5"><i class="fa fa-caret-down " aria-hidden="true"></i></em>
+            </p>
+            <div class="moreinfor" style="display:none">
+                <p>
+                    <span>
+                        <em>融资金额</em>
+                        <em class="  ">@(payed.LoanMoney)</em> <em class="gray">元</em>
+                    </span>
+                    <span class="">
+                        <em>融资期限</em>
+                        <em class="red1 ">@(payed.LoanPeriod)</em> <em class="gray"> 期</em>
+                    </span>
+                    <span>
+                        <em>融资利率</em>
+                        <em class="  ">@(payed.LoanRate)%</em>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        <em>放款时间</em>
+                        <em class="  ">@(payed.FullDate)</em>
+                    </span>
+                    <span class="">
+                        <em>还款方式</em>
+                        <em class=" ">@(payed.RepayTypeName)</em>
+                    </span>
+
+                </p>
+                <div style="height:20px"></div>
+                <div class="moreinfor_table">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                还款期数
+                            </td>
+                            <td>
+                                应还日期
+                            </td>
+                            <td>
+                                应还本金(元)
+                            </td>
+                            <td>
+                                应还利息(元)
+                            </td>
+                            <td>
+                                应还服务费(元)
+                            </td>
+                            <td>
+                                逾期罚金(元)
+                            </td>
+                            <td>
+                                还款总额(元)
+                            </td>
+                            <td>
+                                还款日期
+                            </td>
+                        </tr>
+                        @foreach (var payedPlan in payed.RepayLoanPlans)
+                        {
+                            <tr>
+                                <td>
+                                    @(payedPlan.Period)期
+                                </td>
+                                <td>
+                                    @(payedPlan.PayDate)
+                                </td>
+                                <td>
+                                    @(payedPlan.PayMoney)
+                                </td>
+                                <td>
+                                    @(payedPlan.PayRate)
+                                </td>
+                                <td>
+                                    @(payedPlan.PayServiceFee)
+                                </td>
+                                <td>
+                                    @(payedPlan.OverRateMoney)
+                                </td>
+                                <td>
+                                    @(payedPlan.PayPrincipal)
+                                </td>
+                                <td>
+                                    @(payedPlan.CollectDate)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+    }
+}
+
+<script>
+    $(".seeMore").click(function () {
+        $(this).parent().find(".moreinfor").slideDown();
+        $(this).hide();
+    })
+
+    function DownLoanFile(id) {
+        $.post("/MyAccount/LoanerFile", { id: id }, function (result) {
+            if (result.success) {
+                newWin(result.msg);
+            } else {
+                layer.alert(result.msg);
+            }
+        });
+    }
+
+</script>

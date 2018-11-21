@@ -1,0 +1,183 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using ZFCTPC.Core.Enums
+@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.Transfers
+@using ZFCTPC.Data.ApiModelReturn.News
+@{
+    ViewData["Title"] = "债权转让_债权转让列表页_中房创投";
+    ViewData["Description"] = "中房创投为投资用户提供债权转让，债务认购等理财项目。债权转让为了满足用户资金流动性需求，按照平台的债权转让规则将符合条件的债权进行自由定价和转让，由其它投资者购买的债权";
+    ViewData["Keywords"] = "中房创投,债权转让,债权认购,债权购买,债权市场";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var listInfo = ViewBag.TransferList as ReturnPageData<RTansferAbstract>;
+    List<tbAdvertising> banner = ViewBag.Banner != null ? ViewBag.Banner.ReturnData.NewList as List<tbAdvertising> : null;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(2);
+    })
+</script>
+@*<div class="invest_lubo">
+    
+    @if (banner != null && banner.Count > 0)
+    {
+        <a href="@banner.ElementAt(0).Skiplinks"><img src="@banner.ElementAt(0).ImageUrl" class="img-responsive" /></a>
+        }
+        else
+        {
+        <img src = "~/images/banner/invest_detail_banner.jpg" class="img-responsive" />
+    }
+</div>*@
+<div style="border-top:1px solid #f0f0f0"></div>
+<div class="invest_class">
+    <ul class="invest_class_box">
+        <li id="newHandLoan">
+            <em class="newer_num">@(ViewBag.NewHandCount)</em>
+            <img src="~/images/icon_cainiao.png" class="img-margin"/>
+            <p>优选计划</p>
+        </li>
+        <li id="wiseLoan">
+            <em class="newer_num">@(ViewBag.WiseCount)</em>
+            <img src="~/images/icon_zhixuan.png" class="img-margin"/>
+            <p>智选计划</p>
+        </li>
+        <li id="dreamLoan">
+            <em class="newer_num1">@(ViewBag.DreamCount)</em>
+            <img src="~/images/icon_dream.png" class="img-margin"/>
+            <p>梦想计划</p>
+        </li>
+        <li id="transfer">
+            <em class="newer_num">@(ViewBag.TransferCount)</em>
+            <img src="~/images/icon_zhaiquan-select.png" class="img-margin"/>
+            <p  class="blue">债权转让</p>
+        </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+
+<div style="height:10px;"></div>
+<div class="invest_list">
+    @if (listInfo != null && listInfo.PagingData.Any())
+    {
+        foreach (var transfer in listInfo.PagingData)
+        {
+            <div class="invest_list_box">
+                <span class="invest_list_box_title">
+                    <em class="font_size_16">@(transfer.LoanName)</em>
+
+                </span>
+                <div class="invest_list_content">
+                    <dl>
+                        <dd class="width235 text_align_center">
+                            <p class="red ">
+                                <text class="font_size_40">@(transfer.YearRate)<em class="font_size_22">%</em></text>
+                            </p>
+                            <p class="font_size_14 margin_top_15 ">预期年化收益率</p>
+                        </dd>
+                        <dd class="width235 text_align_center">
+                            <div style="height: 15px;"></div>
+                            <p class="font_size_16">
+                                ¥&nbsp;<text class="font_size_24">@(transfer.SurplusMoney)</text>&nbsp;元
+                            </p>
+                            <p class="font_size_14 margin_top_10 text_align_center">转让金额</p>
+                        </dd>
+                        <dd class="width235 text_align_center">
+                            <div style="height: 15px;"></div>
+                            <p class="font_size_16">
+                                <text class="font_size_24">@(transfer.RemainDay)</text>&nbsp;&nbsp;天
+                            </p>
+                            <p class="font_size_14 margin_top_10 text_align_center">剩余天数</p>
+                        </dd>
+                        <dd class="width235 text_align_center">
+                            <div style="height: 15px"></div>
+                            <p class="font_size_16">
+                                ¥&nbsp;<text class="font_size_24">@(transfer.SurplusMoney)</text>&nbsp;元
+                            </p>
+                            <p class="font_size_14 margin_top_10 text_align_center">剩余可投</p>
+                        </dd>
+                        <dd class="width235">
+                            <div style="height: 15px;"></div>
+                            <button class="@(transfer.TransferStateId==(int)ProjectStateEnum.HasThrough? "invest_list_button":"transfer_list_button")" data-hello="@(transfer.TransferStateId)" >
+                                @(transfer.TransferState)
+                            </button>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div style="height:20px;"></div>
+<div class="invest_tips">
+    <p class="font_size_12 gray">中房创投提醒您：理财非存款，投资需谨慎！</p>
+</div>
+
+@*<div id="pager"></div>共@((ViewBag.Count+ ViewBag.PageSize-1)/ ViewBag.PageSize)页*@
+<!-------------分页  start--------------->
+<div style="text-align:center">
+    <div class="pager_box">
+        <div id="pager" class="pager_div"></div><span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+    </div>
+</div>
+<!------------------分页 end--------->
+<div style="height:40px"></div>
+<script>
+
+    $(function () {
+       
+
+        $('#newHandLoan').click(function() {
+            location.href = "/MyInvest/newHandList";
+        });
+        $('#wiseLoan').click(function() {
+            location.href = "/MyInvest/WiseList";
+        });
+        $('#dreamLoan').click(function() {
+            location.href = "/MyInvest/DreamList";
+        });
+        $('.invest_list_button,.transfer_list_button').on("click",
+            function() {
+                var loanId = $(this).data("hello");
+                location.href = "/transfer/transferDetail?transferId=" + loanId;
+            });
+
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: @ViewBag.Count,
+            showData: @ViewBag.PageSize,
+            current:@ViewBag.CurrentPage,
+            coping: true,
+            prevContent:'<',
+            nextContent:'>'
+        });
+        $(".invest_list_content").mouseover(function () {
+            $(this).addClass("invest_list_content_shadow");
+        });
+        $(".invest_list_content").mouseleave(function () {
+            $(this).removeClass("invest_list_content_shadow");
+        });
+        $("button.invest_list_button").mouseover(function () {
+            $(this).css("background-color", "#3fabfc");
+            $(this).parent().parent().parent().addClass("invest_list_content_shadow");
+        });
+        $("button.invest_list_button").mouseleave(function () {
+            $(this).css("background-color", "#1a9bfc");
+            $(this).parent().parent().parent().removeClass("invest_list_content_shadow");
+        });
+        function pageCallback(index,jq) {
+            location.href ="/transfer/index?p="+index.getCurrent()+"&ps="+@ViewBag.PageSize;
+        }
+    })
+</script>
+
+

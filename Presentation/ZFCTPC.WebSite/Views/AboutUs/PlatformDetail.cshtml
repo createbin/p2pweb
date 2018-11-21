@@ -1,0 +1,79 @@
+﻿@using  ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "平台公告详情页";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var platformDetail = ViewBag.platformDetail as NewsDetailReturnModel;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>
+@*<div style="border-top:1px solid #f0f0f0"></div>*@
+
+<div class="aboutus_nav">
+    <ul>
+        @*<li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li ><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li class=""><a href="/AboutUs/ContactUs">联系我们</a></li>*@
+        <li class="aboutus_nav_click border-left"><a href="/AboutUs/PlatformAnnouncement ">平台公告</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px;"></div>
+<p class="font_size_12 gray1" style="width:1200px; margin:0 auto"><em class="">关于我们</em>&nbsp;>&nbsp;<em class="gray2"><a href="@Url.Action("PlatformAnnouncement","AboutUs")">平台公告</a></em>&nbsp;>&nbsp;<em>动态详情</em></p>
+<div style="height:20px;"></div>
+<div class="aboutus_detail">
+    <div class="aboutus_detail_content text_align_center">
+        <h3 class="font_size_16 bold ">@platformDetail.Title</h3>
+        <div style="height:20px;"></div>
+        <span class="text_align_center gray1">@*<em>@platformDetail.SkipLink</em>*@<em class="margin_left_40">@platformDetail.CreatedOnUtc.ToString("yyyy-MM-dd")</em></span>
+        <div style="height:50px;"></div>
+        <div>
+            @Html.Raw(platformDetail.Full)
+        </div>
+        @*<p>
+            中国中小商业企业协会联合中华职教社、
+            北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小企业合作论坛。
+            本次会议是继“一带一路”国际合作高峰论坛后，在北京举行的一次全面贯彻落实论坛精神、推动中小企业创新发展的盛会。
+        </p>
+        <div style="height:40px;"></div>
+        <img src="~/images/banner/president_banner2.jpg" class="img-margin" />
+        <div style="height:40px;"></div>
+        <p>
+            中国中小商业企业协会联合中华职教社、
+            北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小企业合作论坛。本次会议是继“一带一路”国际合作高峰论坛后，在北京举行的一次全面贯彻落实论坛精神、推动中小企业创新发展的盛会。
+        </p>
+        <p>
+            中华职教社、
+            北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小
+            企业合作论坛。本次会议是继“一带一路”国际合作高峰论坛后，在北京举行的一次全面贯彻落实论坛精神、推动中小企业创新发展的盛会。
+            北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小北京外国语大学国际商学院等单位共同举办2017 “一带一路”沿线国家中小。
+        </p>*@
+        <div style="height:40px"></div>
+        @*<i class="icon icon iconfont"></i>*@
+        <a class="return_back" href="javascript:history.go(-1);">          
+            <返回
+        </a>
+    </div>
+</div>
+

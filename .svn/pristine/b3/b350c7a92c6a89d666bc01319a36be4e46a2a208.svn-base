@@ -1,0 +1,286 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Customer
+@model ZFCTPC.Data.ApiModelReturn.Customer.RCompanyStatics
+@{
+    ViewData["Title"] = "融资管理-融资统计";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var isNull = Model == null;
+}
+<script src="~/js/echarts/echarts.min.js"></script>
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(3);
+    })
+</script>
+
+<div style="height:20px;"></div>
+@if (!isNull&&Model.LoanStatics != null)
+{
+    <input type="hidden" id="oneMonth" data-count="@(Model.LoanStatics.First(p => p.MonthType == "1").MonthCount)" data-money="@(Model.LoanStatics.First(p => p.MonthType == "1").MonthMoney)"/>
+    <input type="hidden" id="threeMonth" data-count="@(Model.LoanStatics.First(p => p.MonthType == "3").MonthCount)" data-money="@(Model.LoanStatics.First(p => p.MonthType == "3").MonthMoney)"/>
+    <input type="hidden" id="sixMonth" data-count="@(Model.LoanStatics.First(p => p.MonthType == "6").MonthCount)" data-money="@(Model.LoanStatics.First(p => p.MonthType == "6").MonthMoney)"/>
+    <input type="hidden" id="twelfMonth" data-count="@(Model.LoanStatics.First(p => p.MonthType == "12").MonthCount)" data-money="@(Model.LoanStatics.First(p => p.MonthType == "12").MonthMoney)"/>
+}
+else
+{
+    <input type="hidden" id="oneMonth" data-count="0" data-money="0.00"/>
+    <input type="hidden" id="threeMonth" data-count="0" data-money="0.00"/>
+    <input type="hidden" id="sixMonth" data-count="0" data-money="0.00"/>
+    <input type="hidden" id="twelfMonth" data-count="0" data-money="0.00"/>
+}
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">融资统计</span>
+        </div>
+        <div style="height:30px;"></div>
+        <div class="financial_statistics_box1">
+            <ul>
+                <li>
+                    <p>
+                        累计融资笔数(笔)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull?"0":Model.AllLoanCount)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        累计融资金额(元)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0.00" : Model.AllLoanMoney)
+                    </p>
+                </li>
+            </ul>
+            <div style="height:20px;"></div>
+            <div class="echat_box">
+                <div class="echat_box_left float_left ">
+                    <div id="investor_momey" style="width:400px; height:350px; margin-left:80px; margin-right:80px;">
+
+                    </div>
+                </div>
+                <div class="echat_box_right float_right">
+                    <div id="investor_chart" style="width:300px; height:300px; margin-left:80px;">
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">还款统计</span>
+        </div>
+        <div style="height:30px;"></div>
+        <div class="financial_statistics_box2">
+            <ul>
+                <li>
+                    <p>
+                        累计还款笔数(笔)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0" : Model.RepayedPlanCount)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        累计还款金额(元)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0.00" : Model.RepayedPlanMoney)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        剩余待还笔数(笔)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0" : Model.RepayingPlanCount)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        剩余待还金额(元)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0.00" : Model.RepayingPlanMoney)
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div style="height:30px;"></div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">还款逾期统计</span>
+        </div>
+        <div style="height:30px;"></div>
+        <div class="financial_statistics_box1">
+            <ul>
+                <li>
+                    <p>
+                        历史逾期次数(笔)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0" : Model.OverduePlanCount)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        历史逾期金额(元)
+                    </p>
+                    <p class="red1 margin_top_25 font_size_20">
+                        @(isNull ? "0.00" : Model.OverduePlanMoney)
+                    </p>
+                </li>
+
+            </ul>
+        </div>
+        <div style="height:30px;"></div>
+    </div>
+</div>
+
+<script>
+    //累计融资笔数
+    var investor_momey = echarts.init(document.getElementById('investor_momey'));
+    var oneCount = $("#oneMonth").data("count");
+    var oneMoney = $("#oneMonth").data("money");
+    var threeCount = $("#threeMonth").data("count");
+    var threeMoney = $("#threeMonth").data("money");
+    var sixCount = $("#sixMonth").data("count");
+    var sixMoney = $("#sixMonth").data("money");
+    var twelfCount = $("#twelfMonth").data("count");
+    var twelfMoney = $("#twelfMonth").data("money");
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['1月期', '3月期', '6月期', '12月期']
+        },
+        series: [
+            {
+                name: '融资期限统计',
+                type: 'pie',
+                radius: ['30%', '45%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '16',
+                            fontWeight: 'normal'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {
+                        value: oneCount, name: '1月期', itemStyle: {
+                            normal: {
+                                color: '#ec4961'
+                            }
+
+                        }
+                    },
+                    {
+                        value: threeCount, name: '3月期', itemStyle: {
+                            normal: {
+                                color: '#1a9bfc'
+                            }
+                        }
+                    },
+                    {
+                        value: sixCount, name: '6月期', itemStyle: {
+                            normal: {
+
+                                color: '#ffc77e'
+                            }
+
+                        }
+
+                    },
+                    {
+                        value: twelfCount, name: '12月期', itemStyle: {
+                            normal: {
+
+                                color: '#2bdbdd'
+                            }
+
+                        }
+                    },
+
+                ]
+            }
+        ]
+    };
+    investor_momey.setOption(option);
+
+    //累计融资金额
+    var investor_chart = echarts.init(document.getElementById('investor_chart'));
+    option = {
+        color: ['#1a9bfc'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                show: true,
+                type: 'category',
+                data: ['1月期', '3月期', '6月期', '12月期'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis: [
+            {
+                show: true,
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '投资金额',
+                type: 'bar',
+                barWidth: '60%',
+                data: [oneMoney, threeMoney, sixMoney, twelfMoney]
+            }
+        ]
+    };
+    investor_chart.setOption(option);
+</script>
+
+
+

@@ -1,0 +1,908 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using ZFCTPC.Data.ApiModelReturn.InvestModelReturns
+@using ZFCTPC.Data.ApiModelReturn.News
+@using System.Security.Claims
+@using ZFCTPC.Core.Helpers
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "中房创投 - 中房集团控股网贷平台_新手送488元现金";
+    ViewData["Description"] = "中房创投是中房集团旗下互联网金融P2P理财平台,资金银行存管,为有投融资需求的中小微企业以及个人提供高效便捷、安全合规的网络借贷信息中介服务；目前新手活动火热进行，专享488元现金等你来拿！";
+    ViewData["Keywords"] = "中房创投,中房创投官网,互联网金融,P2P网贷,网络借贷平台,P2P投资理财平台,手机理财,个人理财";
+    var statistics = ViewBag.Statistics as HomeStatistics;
+    var newHand = ViewBag.NewHand as HomeLoanModel;
+    var wise = ViewBag.Wise as HomeLoanModel;
+    var dream = ViewBag.Dream as HomeLoanModel;
+    var newHandInvestor = ViewBag.NewHandInvestor as List<string>;
+    var wiseInvestor = ViewBag.WiseInvestor as List<string>;
+    var dreamInvestor = ViewBag.DreamInvestor as List<string>;
+    List<tbAdvertising> banner = ViewBag.Banner != null ? ViewBag.Banner.ReturnData.NewList as List<tbAdvertising> : null;//首页轮播
+    List<tbAdvertising> pcColumn = ViewBag.PCIndexColumn != null ? ViewBag.PCIndexColumn.ReturnData.NewList as List<tbAdvertising> : null;//首页通栏
+    NewsReturnModel webNotice = ViewBag.WebNotice != null ? ViewBag.WebNotice.ReturnData as NewsReturnModel : null;//banner公告   平台公告
+    var companyActivity = ViewBag.CompanyActivity != null ? ViewBag.CompanyActivity.ReturnData as NewsReturnModel : null;//集团动态
+    NewsReturnModel leaderTalk = ViewBag.LeaderTalk != null ? ViewBag.LeaderTalk.ReturnData as NewsReturnModel : null;//领导有话说
+    List<MagazineReturnModel> managizeList = ViewBag.CompanyManagize != null ? ViewBag.CompanyManagize.ReturnData.ManagizeList as List<MagazineReturnModel> : null;//公司内刊
+    var user = "";
+    if (User.FindFirst(ClaimTypes.Name) != null)
+    {
+        user = User.FindFirst(ClaimTypes.Name).Value;
+    }
+}
+@*<link href="~/css/common/style.css" rel="stylesheet" />
+    <link href="~/css/index.css" rel="stylesheet" />*@
+<link href="~/css/common/jquery.hiSlider.min.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        navActive(1);
+    })
+</script>
+
+<style>
+    .cir_box{
+        bottom:10px !important;
+    }
+    .hiSlider-title {
+       
+        bottom: 5px;
+    }
+   
+</style>
+<!------------------banner   start--------------------->
+<div class="zfct_banner" >
+    @if (string.IsNullOrEmpty(user))
+    {
+    <!--------------------banner 浮动广告  start------->
+        <div class="floating_ads">
+            <div class="floating_ads_location">
+                <div class="ads_location_circle">
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18">预期年化收益率</p>
+                    <div style="height:40px;"></div>
+                    <p style="color:#fc673d"><em class="annualized_rate">5.6</em>&nbsp;<text class="font_size_30">~</text>&nbsp;<em class="annualized_rate">11.11</em><em class="font_size_30">%</em></p>
+                                      
+                </div>
+                <div style="height:10px"></div>
+
+                <a href="/Customer/Register" class="ads_register">
+                    注册领取488元红包
+                </a>
+                <div style="height:20px;"></div>
+                <div class="text_align_center">
+                    已有账号？<a href="/Customer/Login" class="blue">立即登录</a>
+                </div>
+                <div style="height:10px"></div>
+                @*else
+                    {
+                        <a href="/MyAccount/Index" class="ads_register">
+                            进入我的账户
+                        </a>
+
+                    }*@
+            </div>
+            <div class="invest_banner_tips">
+                理财有风险 投资需谨慎
+            </div>
+        </div>
+    <!--------------------banner 浮动广告   end--------------->
+    }
+    @if (!string.IsNullOrEmpty(user))
+    {
+        <div class="floating_ads">
+            <div class="floating_ads_location_1">             
+            </div>
+            <div class="invest_banner_tips">
+                理财有风险 投资需谨慎
+            </div>
+        </div>
+
+    }
+
+    <div class="lubo">
+        <ul class="lubo_box">
+            @if (banner != null && banner.Count > 0)
+            {
+                for (int i = 0; i < banner.Count; i++)
+                {
+                    if (i == 0)
+                    {
+
+                        <li style=" opacity: 1;filter:alpha(opacity=100);"><a class="home-banner"  href="javascript:void(0)" data-url="@banner.ElementAt(i).Skiplinks" style="background:url(@banner.ElementAt(i).ImageUrl) center top no-repeat"></a></li>
+                    }
+                    else
+                    {
+                        <li><a class="home-banner"  href="javascript:void(0)" data-url="@banner.ElementAt(i).Skiplinks" style="background:url(@banner.ElementAt(i).ImageUrl) center top no-repeat"></a></li>
+                    }
+                }
+
+            }
+        </ul>
+    </div>
+</div>
+<!------------------banner   end--------------------------->
+<!-----------------公告  start---------------------->
+<div class="zfct_announcement">
+    <div class="announcement_content">
+        <div class="float_left announcement_icon blue">公告</div>
+        <div class="float_left announcement_cycle margin_left_20">
+            <ul>
+                @if (webNotice != null && webNotice.NewsList.Count > 0)
+                {
+                    for (int i = 0; i < webNotice.NewsList.Count; i++)
+                    {
+                        <li>
+                            <a href="/AboutUs/PlatformDetail?id=@webNotice.NewsList.ElementAt(i).Id">
+                                @webNotice.NewsList.ElementAt(i).Title
+                            </a>
+                        </li>
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!------------------公告  end-------------------------->
+<div class="gray_bg">
+    <div style="height:10px;"></div>
+    <!-----------------交易额start----------------------->
+    <div class="zfct_page">
+        <div class="zfct_page_box1">
+            <dl>
+                <dd>累计交易金额<em class="margin_left_20 red">￥<text class="bold font_size_16 yy-bigNum">@String.Format("{0:N}", statistics.allTranscationMoney)</text>&nbsp;&nbsp;元</em></dd>
+                <dd>累计投资人赚取利益<em class="margin_left_20 red">￥<text class="bold font_size_16 yy-bigNum">@String.Format("{0:N}", statistics.allProfitMoney)</text>&nbsp;&nbsp;元</em></dd>
+                <dd>用户数<em class="margin_left_20 red"><text class="bold font_size_16 yy-bigNum">@(statistics.allUser)</text>&nbsp;&nbsp;人</em></dd>
+                <dd class="margin_right_none">安全运营天数<em class="margin_left_20 red"><text class="bold font_size_16 yy-bigNum">@(statistics.secureDay)</text>&nbsp;&nbsp;天</em></dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+        <div class="zfct_page_box2">
+            <dl>
+                <dd>
+                    <img src="~/images/zfct_background.png" />
+                    <span>
+                        <p class="font_size_16">央企背景</p>
+                         <div style="height:22px"></div>   
+                        <p class="font_size_14 gray1">中房集团旗下互金平台品牌稳实力强</p>
+                    </span>
+                </dd>
+                <dd>
+                    <img src="~/images/bank.png" />
+                    <span>
+                        <p class="font_size_16 ">银行存管</p>
+                        <div style="height:22px"></div>  
+                        <p class="font_size_14 gray1">银行资金存管<text  class="white">管管管管</text>账户安全可靠</p>
+                    </span>
+                </dd>
+                <dd class="margin_right_none">
+                    <img src="~/images/help.png" />
+                    <span>
+                        <p class="font_size_16">公益基金</p>
+                        <div style="height:22px"></div>  
+                        <p class="font_size_14 gray1">让每一分收益都更有意义社会责任我的责任</p>
+                    </span>
+                </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+    </div>
+    <!---------------- 交易额   end--------------------->
+    <div style="height:20px;"></div>
+    <!------------------菜鸟计划 start------------------>
+    <div class="zfct_page2">
+        <a href="/myinvest/newhandlist">
+            <div class="zfct_page2_box1 float_left position-relative text_align_center">
+                <div style="height:50px"></div>
+                <p class="font_size_30 white bold">优选计划</p>
+                <div style="height:40px"></div>
+                <p class="font_size_16 white">新手专享</p>
+                <p class="font_size_16 white margin_top_10">强力推荐&nbsp;收益无忧</p>
+                <div class="zfct_more_div1">
+                    <em class="">查看更多</em>
+                </div>
+            </div>
+        </a>
+
+        <div class="zfct_page2_box2 float_left">
+            @if (newHand.loanInfos != null)
+            {
+                var newInfo = newHand.loanInfos[0];
+                <div class="zfct_page2_box2_head">
+                    <span style="padding-left: 20px">
+                        <text class="font_size_16 newhand_title">@(newInfo.loanName)</text><em class="font_size_12 margin_left_10" style="vertical-align:19px; display:inline-block"><text class="red font_size_14">98%</text>投资人的优先选择</em>
+                    </span>
+                    <span class="float_right font_size_12 newer_cycle gray1" style="padding-right:20px;width:170px">
+                        <ul>
+                            @if (newHandInvestor != null && newHandInvestor.Any())
+                            {
+                                foreach (var model in newHandInvestor)
+                                {
+                                    <li>@Html.Raw(model)</li>
+                                }
+                            }
+                        </ul>
+                    </span>
+                </div>
+                <div class="zfct_page2_box2_center position-relative" style="height:319px">
+                    @*<div class="new_hand">
+
+                    </div>*@
+                    <div style="height: 34px;"></div>
+                    <p class="font_size_14 text_align_center height_60 line_height_60">
+                        预期年化收益率
+                        @if (newInfo.originalRate == null)
+                        {
+                            <em class="red margin_left_24">
+                                <text class="font_size_65">@(newInfo.yieldRate)</text><text class="font_size_28">%</text>
+                            </em>
+                        }
+                        else
+                        {
+                            <em class="red margin_left_10">
+                                <text class="font_size_65">@(newInfo.originalRate)</text><text class="font_size_28">%</text>
+                            </em>
+                            if (newInfo.hikeRate != null)
+                            {
+                                <em class="jiaxi">+<font>@(newInfo.hikeRate)</font>%</em>
+                            }
+                        }
+
+
+                    </p>
+                    <div style="height: 38px;"></div>
+                    <dl>
+                        <dd>
+                            <p class="font_size_14">
+                                <em class="font_size_18 font-weight">@(newInfo.period)</em>个月
+                            </p>
+                            <p class="font_size_14 margin_top_15 gray1">投资期限</p>
+                        </dd>
+                        <dd>
+                            <p class="font_size_16">@(newInfo.repaymentType)</p>
+                            <p class="font_size_14 margin_top_15 gray1">还款方式</p>
+                        </dd>
+                        <dd class="border-right-none">
+                            <p class="font_size_14">￥<em class="font_size_18 font-weight">@(newInfo.surplusMoney)</em>元</p>
+                            <p class="font_size_14 margin_top_15 gray1">剩余可投资金额</p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                    <div style="height: 25px"></div>
+                    <!---------进度条 start---------->
+                    <div class="zfct_progress" style="padding:0 56px">
+                        <div class="progress_bar">
+
+                            <div class="pro-bar">
+                                <div class="progress-bar-inner" style="background-color: #fd9940; width:@(newInfo.loanSpeed)%;" data-value="89" data-percentage-value="89">
+                                    <em class="progress-bar-percentage yellow">@(newInfo.loanSpeed)%</em>
+                                </div>
+
+                                <div style="height: 5px;"></div>
+                                <span class="font_size_12 position-relative">
+                                    <em>进度</em>
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------进度条 end--------------------->
+                    <div style="height: 15px"></div>
+                    <div class="immediate_invest">
+                        <a href="/myinvest/investdetail?loanId=@(newInfo.loanId)">
+                            @(newInfo.loanState)
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="zfct_page2_box3 float_left">
+            <div class="zfct_page2_box2_head">
+                <span style="padding-left: 20px">
+                    <text class="font_size_16">集团动态</text>
+                </span>
+                <a href="/AboutUs/GroupDynamics" class="gray1">
+                    <span class="float_right font_size_12 newer_cycle" style="padding-right:20px">
+                        <em class="zfct_more">更多</em>
+                    </span>
+                </a>
+            </div>
+            <div class="zfct_page2_box3_content">
+                <ul class="hiSlider hiSlider1">
+                    @if (companyActivity != null && companyActivity.NewsList.Count > 0)
+                    {
+                        for (int i = 0; i < companyActivity.NewsList.Count; i++)
+                        {
+                            if (companyActivity.NewsList.ElementAt(i).Title != null && companyActivity.NewsList.ElementAt(i).Title.Length > 10)
+                            {
+                                companyActivity.NewsList.ElementAt(i).Title = companyActivity.NewsList.ElementAt(i).Title.Substring(0, 15)+"...";
+
+                            }
+                            <li data-title="@companyActivity.NewsList.ElementAt(i).Title" class="hiSlider-item"><a href="/AboutUs/ContactUsDetails?id=@companyActivity.NewsList.ElementAt(i).Id"><img src="@companyActivity.NewsList.ElementAt(i).PicUrl" alt="33333" style="border-radius:5px; width:335px;height:280px;"></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-------------------菜鸟计划  end--------------->
+    <div style="height:20px;"></div>
+    <!-----------------智选计划  start--------------------->
+    <div class="zfct_page3">
+        <div class="zfct_page3_box1 float_left position-relative">
+            <a href="/myInvest/wiselist">
+                <div class="zfct_page2_box1 float_left zfct_page2_box_zhixuan text_align_center">
+                    <div style="height:50px"></div>
+                    <p class="font_size_30 white bold">智选计划</p>
+                    <div style="height:40px"></div>
+                    <p class="font_size_16 white">期限任选</p>
+                    <p class="font_size_16 white margin_top_10">灵活方便</p>
+                    <div class="zfct_more_div1">
+                        <em class=" ">查看更多</em>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="zfct_page3_box2 float_left ">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">智选计划</text><em class="font_size_12 margin_left_10"><text class="red font_size_14">98%</text>白领的最佳投资选择</em>
+                </span>
+                <span class="float_right font_size_12 newer_cycle gray1" style="padding-right:20px">
+                    <ul>
+                        @if (wiseInvestor != null && wiseInvestor.Any())
+                        {
+                            foreach (var model in wiseInvestor)
+                            {
+                                <li>@Html.Raw(model)</li>
+                            }
+                        }
+                    </ul>
+                </span>
+            </div>
+            <div class="zfct_page3_box2_content">
+                @if (wise.loanInfos.Any())
+            {
+                int count = -1;
+                foreach (var info in wise.loanInfos)
+                {
+                    count++;
+                        <div class="zfct_smart_plan float_left zfct_page2_box2_center @(count==1?"border-right-none":"")">
+                            <div class="zfct_smart_plan_title">
+                                <span class="font_size_12">@(info.loanName)</span>
+                                <a href="" class="font_size_12" @(info.isRedPackage ? "" : "hidden")>
+                                    <span class="red_envelopes margin_left_5">
+                                        红包
+                                    </span>
+                                </a>
+                                <a href="" class="font_size_12" @(info.isTransfer ? "" : "hidden")>
+                                    <span class="transferable margin_left_5">
+                                        可转让
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div style="height:15px"></div>
+                            <p class="font_size_14 text_align_center height_60 line_height_60">预期年化收益率
+
+                                @if (info.originalRate == null)
+                                {
+                                    <em class="red margin_left_10">
+                                        <text class="font_size_60">@(info.yieldRate)</text><text class="font_size_22">%</text>
+                                    </em>
+                                }
+                                else
+                                {
+                                    <em class="red margin_left_10">
+                                        <text class="font_size_60">@(info.originalRate)</text><text class="font_size_22">%</text>
+                                    </em>
+                                    if (info.hikeRate != null)
+                                    {
+                                        <em class="jiaxi">+<font>@(info.hikeRate)</font>%</em>
+                                    }
+                                }
+                            </p>
+                            <div style="height:30px;"></div>
+                            <dl>
+                                <dd>
+                                    <p class="font_size_14"><em class="font_size_18 font-weight">@(info.period)</em>个月</p>
+                                    <p class="font_size_14 margin_top_10 gray1">投资期限</p>
+                                </dd>
+                                <dd>
+                                    <p class="font_size_14">@(info.repaymentType)</p>
+                                    <p class="font_size_14 margin_top_10 gray1">还款方式</p>
+                                </dd>
+                                <dd class="border-right-none">
+                                    <p class="font_size_14">￥<em class="font_size_16 font-weight">@(info.surplusMoney)</em>元</p>
+                                    <p class="font_size_14 margin_top_10 gray1">剩余可投资金额</p>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <div style="height:25px"></div>
+                            <!---------进度条 start---------->
+                            <div class="zfct_progress" style="padding:0 45px">
+                                <div class="progress_bar">
+                                    <div class="pro-bar">
+                                        <div class="progress-bar-inner progress-bar-inner-blue" style="background-color: #1a9bfc; width:@(info.loanSpeed)%;" data-value="50" data-percentage-value="50">
+                                            <em class="progress-bar-percentage blue">@(info.loanSpeed)%</em>
+                                        </div>
+
+                                        <div style="height:5px;"></div>
+                                        <span class="font_size_12 position-relative">
+                                            <em>进度</em>
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-----------进度条 end--------------------->
+                            <div style="height:15px"></div>
+                            <div class="immediate_invest" style="width:auto">
+                                <a href="/myinvest/investdetail?loanId=@(info.loanId)" class="@(info.loanStateId!=20?"blue_invest_all":"blue_invest")">
+                                    @(info.loanState)
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!------------------智选计划   end---------------->
+    <div style="height:20px;"></div>
+    <!--------------梦想计划 start------------------->
+    <div class="zfct_page3">
+        <div class="zfct_page3_box1 float_left position-relative">
+            <a href="/myInvest/dreamList">
+                <div class="zfct_page2_box1 float_left zfct_page2_box1_mengxiang text_align_center">
+                    <div style="height:50px"></div>
+                    <p class="font_size_30 white bold">梦想计划</p>
+                    <div style="height:40px"></div>
+                    <p class="font_size_16 white">要有梦想</p>
+                    <p class="font_size_16 white margin_top_10">更要有能力实现梦想</p>
+                    <div class="zfct_more_div1">
+                        <em class="">查看更多</em>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zfct_page3_box2 float_left">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">梦想计划</text><em class="font_size_12 margin_left_10"><text class="red font_size_14">93%</text>人群为梦想买单</em>
+                </span>
+                <span class="float_right font_size_12 newer_cycle gray1" style="padding-right:20px">
+                    <ul>
+                        @if (dreamInvestor != null && dreamInvestor.Any())
+                        {
+                            foreach (var model in dreamInvestor)
+                            {
+                                <li>@Html.Raw(model)</li>
+                            }
+                        }
+                    </ul>
+                </span>
+            </div>
+            <div class="zfct_page3_box2_content">
+                @if (dream.loanInfos.Any())
+            {
+                int count = -1;
+                foreach (var info in dream.loanInfos)
+                {
+                    count++;
+                        <div class="zfct_smart_plan float_left zfct_page2_box2_center @(count==1? "border-right-none":"")">
+                            <div class="zfct_smart_plan_title">
+                                <span class="font_size_12">@(info.loanName)</span>
+                                <a href="" class="font_size_12" @(info.isRedPackage ? "" : "hidden")>
+                                    <span class="red_envelopes margin_left_5">
+                                        红包
+                                    </span>
+                                </a>
+                                <a href="" class="font_size_12" @(info.isTransfer ? "" : "hidden")>
+                                    <span class="transferable margin_left_5">
+                                        可转让
+                                    </span>
+                                </a>
+                            </div>
+                            <div style="height:15px;"></div>
+                            <p class="font_size_14 text_align_center height_60 line_height_60">
+                                预期年化收益率
+                                @if (info.originalRate == null)
+                                {
+                                    <em class="red margin_left_10">
+                                        <text class="font_size_60">@(info.yieldRate)</text><text class="font_size_22">%</text>
+                                    </em>
+                                }
+                                else
+                                {
+                                    <em class="red margin_left_10">
+                                        <text class="font_size_60">@(info.originalRate)</text><text class="font_size_22">%</text>
+                                    </em>
+                                    if (info.hikeRate != null)
+                                    {
+                                        <em class="jiaxi">+<font>@(info.hikeRate)</font>%</em>
+                                    }
+                                }
+                            </p>
+                            <div style="height: 30px;"></div>
+                            <dl>
+                                <dd>
+                                    <p class="font_size_14">
+                                        <em class="font_size_18 font-weight">@(info.period)</em>个月
+                                    </p>
+                                    <p class="font_size_14 margin_top_10 gray1">投资期限</p>
+                                </dd>
+                                <dd>
+                                    <p class="font_size_14">@(info.repaymentType)</p>
+                                    <p class="font_size_14 margin_top_10 gray1">还款方式</p>
+                                </dd>
+                                <dd class="border-right-none">
+                                    <p class="font_size_14">
+                                        ￥<em class="font_size_16 font-weight">@(info.surplusMoney)</em>元
+                                    </p>
+                                    <p class="font_size_14 margin_top_10 gray1">剩余可投资金额</p>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <div style="height: 25px"></div>
+                            <!---------进度条 start---------->
+                            <div class="zfct_progress" style="padding:0 45px">
+                                <div class="progress_bar">
+                                    <div class="pro-bar">
+                                        <div class="progress-bar-inner progress-bar-inner-blue" style="background-color: #1a9bfc; width: @(info.loanSpeed)%;" data-value="50" data-percentage-value="50">
+                                            <em class="progress-bar-percentage blue">@(info.loanSpeed)%</em>
+                                        </div>
+
+                                        <div style="height: 5px;"></div>
+                                        <span class="font_size_12 position-relative">
+                                            <em>进度</em>
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-----------进度条 end--------------------->
+                            <div style="height: 15px"></div>
+                            <div class="immediate_invest" style="width:auto">
+                                <a href="/myinvest/investdetail?loanId=@(info.loanId)" class="@(info.loanStateId!=20?"blue_invest_all":"blue_invest")">
+                                    @(info.loanState)
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--------------梦想计划  end------------------>
+    <div style="height:20px"></div>
+    <div class="zfct_activity">
+        @if (pcColumn != null&& pcColumn.Count>0)
+        {
+            <a href="@pcColumn.ElementAt(0).Skiplinks"><img src="@pcColumn.ElementAt(0).ImageUrl" /></a>
+        }
+        else
+        {
+            <img src="~/images/zfct_activity.jpg" />
+        }
+    </div>
+    <div style="height:20px;"></div>
+    <!-----------VIP产品  start----------------------->
+    @*<div class="afct_page_vip">
+            <div style="height:30px"></div>
+            <p class="font_size_24 text_align_center white">VIP尊享产品</p>
+            <div style="height:5px;"></div>
+            <dl>
+                <dd>
+                    Vip专享收益
+                </dd>
+                <dd>
+                    Vip专享优质项目
+                </dd>
+                <dd>
+                    Vip专属服务
+                </dd>
+                <div class="clear"></div>
+            </dl>
+            <div style="height:5px;"></div>
+            <div class="afct_page_vip_content ">
+                <ul>
+                    <li>
+                        <p class="red font_size_16"><text class="font_size_55">10.9</text>%</p>
+                        <div style="height:5px;"></div>
+                        <p class=" gray">预期年化收益率</p>
+                    </li>
+                    <li>
+                        <p class="font_size_18 black">1个月</p>
+                        <div style="height:18px;"></div>
+                        <p class="font_size_14  gray">投资期限</p>
+                    </li>
+                    <li>
+                        <p class="font_size_18 black">到期还本付息</p>
+                        <div style="height:18px;"></div>
+                        <p class="font_size_14  gray">还款方式</p>
+                    </li>
+                    <li class="margin-right-none">
+                        <p class="font_size_18 black">￥<em class="font_size_30">12,922</em>元</p>
+                        <div style="height:13px;"></div>
+                        <p class="font_size_14  gray">剩余可投金额</p>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <a href="" class="invest_red">
+                    立即投资
+                </a>
+            </div>
+            <div style="height:18px"></div>
+        </div>*@
+    <!-----------VIP产品   end-------------------------------->
+    @*<div style="height:20px;"></div>*@
+    <!----------------公司内刊 start----------------------->
+    <div class="zfct_page4">
+        <div class="zfct_page4_box1 ">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">总裁专栏</text>
+                </span>
+                <a href="/AboutUs/PresidentColumn" class="gray1">
+                    <span class="float_right font_size_12" style="padding-right:20px">
+                        <em class="zfct_more">更多</em>
+                    </span>
+                </a>
+            </div>
+            @if (leaderTalk != null && leaderTalk.NewsList.Count > 0)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    <a href="/AboutUs/PresidentColumnDetail?id=@leaderTalk.NewsList.ElementAt(0).Id" >
+                        <div class="zfct_page4_box1_content ">
+                            <div class="zfct_page4_box1_content_head">
+                                <div class="float_left">
+                                    <img src="~/images/tf_image.png" width="68" height="68" style="border-radius:68px" />
+                                </div>
+                                <div class="float_left margin_top_10 margin_left_20">
+                                    <h3 class="font_size_16 font-weight " style="margin-top:3px;">专访中房创投田峰：</h3>
+                                    <div style="height:2px;"></div>
+                                    <h3 class="font_size_16 font-weight">@leaderTalk.NewsList.ElementAt(0).Title</h3>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div style="height:20px;"></div>
+                            <div class="">
+                                <p class="font_size_14">
+                                    @if(leaderTalk.NewsList.ElementAt(0).Short!=null&& leaderTalk.NewsList.ElementAt(0).Short.Length > 150)
+                                    {
+                                        leaderTalk.NewsList.ElementAt(0).Short = leaderTalk.NewsList.ElementAt(0).Short.Substring(0, 120) + "...";
+                                    }
+                                    @leaderTalk.NewsList.ElementAt(0).Short
+                                </p>
+                            </div>
+                            <div style="height:20px;"></div>
+                            <em class="gray font_size_12 float_right" style="font-style:italic">@leaderTalk.NewsList.ElementAt(0).SkipLink</em>
+                        </div>
+                    </a>
+
+                }
+            }
+        </div>
+        <div class="zfct_page4_box2">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">公司内刊</text>
+                </span>
+                <a href="/AboutUs/EnterpriseInsideMagazine" class="gray1">
+                    <span class="float_right font_size_12" style="padding-right:20px">
+                        <em class="zfct_more">更多</em>
+                    </span>
+                </a>
+            </div>
+            <div class="zfct_page4_box2_content">
+                @if (managizeList != null && managizeList.Count > 0)
+                {
+                    @for (int i = 0; i < managizeList.Count && i < 1; i++)
+                    {
+                        <div style="height:20px;"></div>
+                        <a href="@managizeList.ElementAt(i).Skiplinks" target="_blank">
+                            <img src="@managizeList.ElementAt(i).ImageUrl" class="img-margin " width="200" height="235" style="border-radius:5px;" />
+                            <p class="font_size_16 text_align_center margin_top_10">@managizeList.ElementAt(i).Title</p>
+                        </a>
+                       
+
+                    }
+
+                }
+            </div>
+        </div>
+        <div class="zfct_page4_box3">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">平台公告</text>
+                </span>
+                <a href="/AboutUs/PlatformAnnouncement" class="gray1">
+                    <span class="float_right font_size_12" style="padding-right:20px">
+                        <em class="zfct_more">更多</em>
+                    </span>
+                </a>
+            </div>
+            <div class="zfct_page4_box3_content">
+                <ul>
+                    @if (webNotice != null && webNotice.NewsList.Count > 0)
+            {
+                for (int i = 0; i < webNotice.NewsList.Count; i++)
+                {
+                            <li>
+                                <a href="/AboutUs/PlatformDetail?id=@webNotice.NewsList.ElementAt(i).Id">
+                                    <span  class="annoucelength"><em class="gray1  margin_right_5">•</em><em class="">@webNotice.NewsList.ElementAt(i).Title</em></span>
+                                    @if (webNotice.NewsList.ElementAt(i).CreateTime.ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd"))
+                                    {
+                                        <em class=" new_border2" style="display:block; float:left">new</em>
+                                    }
+                                    <em class="font_size_12 float_right" style="display:block">@webNotice.NewsList.ElementAt(i).CreateTime.ToString("yyyy-MM-dd")</em>
+                                </a>
+                               
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div><div class="clear"></div>
+    </div><!-----------------公司内刊  end--------------------->
+    <div style="height:20px;"></div>
+    <!-------------------合作机构  start---------------------->
+    @*<div class="cooperative_organization">       
+          <div class="cooperative_head">
+               合作机构
+          </div>
+        <div class="cooperative_contnet1">
+            <div class="cooperative_contnet" id="Marquee_x">
+
+                <ul id="yqlj">
+
+                    <li>
+                        <div><img src="~/images/cooperation/zf1.png"></div>
+                        <div><img src="~/images/cooperation/zfll.png" /></div>
+                        <div><img src="~/images/cooperation/zfs.png" /></div>
+                        <div><img src="~/images/cooperation/aliyun.png" /></div>
+                        <div><img src="~/images/cooperation/huifu.png" /></div>
+                        <div><img src="~/images/cooperation/tongdun.png" /></div>
+                        <div><img src="~/images/cooperation/deheng.png" /></div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+    </div>*@
+    <div class="cooperative_organization">
+        <div class="cooperative_box1 float_left">
+            <div class="cooperative_head font_size_16">
+                集团链接
+            </div>
+            <div class="cooperative_dl">
+                <dl>
+                    <a href="http://www.cred.com/" target="_blank">
+                        <dd>
+                            <img src="~/images/cooperation/zf1.png" />
+                        </dd>
+                    </a>
+                    <a href="http://www.cred100.cn/ " target="_blank">
+                        <dd>
+                            <img src="~/images/cooperation/zfll.png" />
+                        </dd>
+                    </a>
+                    <a href="http://www.zfsqfw.com/" target="_blank">
+                        <dd class="margin-right-none">
+                            <img src="~/images/cooperation/zfs.png" />
+                        </dd>
+                    </a>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+        </div>
+        <div class="cooperative_box2 float_left">
+            <div class="cooperative_head font_size_16">
+                合作机构
+            </div>
+            <div class="cooperative_contnet1">
+                <div class="cooperative_contnet" id="Marquee_x">
+
+                    <ul id="yqlj">
+
+                        <li>                            
+                            <div><img src="~/images/cooperation/aliyun.png" /></div>
+                            <div><img src="~/images/cooperation/huifu.png" /></div>
+                            <div><img src="~/images/cooperation/tongdun.png" /></div>
+                            <div><img src="~/images/cooperation/deheng.png" /></div>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--------------------合作机构   end--------------------->
+    <div style="height:40px;"></div>
+</div>
+@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+<script src="~/js/lubotu.js"></script>
+<script src="~/js/marquee.js"></script>
+<script src="~/js/jquery.hiSlider.min.js"></script>
+<script src="~/js/jQuery-jcMarquee.js"></script>
+<script src="~/js/numLoop.min.js"></script>
+<script>
+    $(function () {
+        $('.home-banner').click(function () {
+            var url = $('.home-banner').eq(jQuery('.cir_box').find(".cir_on").val()).data("url");
+            if (url) {
+                window.open(url);
+            }
+
+        })
+        $(".lubo").lubo({
+
+        });//banner轮播
+
+        $(".announcement_cycle").marquee({
+            interval: 3000,                 //间隔时间（毫秒）
+            speed: 500,                     //移动速度（毫秒）
+            showNum: 1,                     //显示个数
+            stepLen: 1,                     //每次滚动步长
+            type: 'vertical'             //水平滚动 - horizontal / 垂直滚动 - vertical
+        });
+        $(".newer_cycle").marquee({
+            interval: 2000,                 //间隔时间（毫秒）
+            speed: 500,                     //移动速度（毫秒）
+            showNum: 1,                     //显示个数
+            stepLen: 1,                     //每次滚动步长
+            type: 'vertical'             //水平滚动 - horizontal / 垂直滚动 - vertical
+        });
+        $('.hiSlider1').hiSlider();
+        $(".yy-bigNum").numLoop().startNumLoop();//动态数字
+
+        $('#Marquee_x').jcMarquee({ 'marquee': 'x', 'margin_right': '20px', 'speed': 30 });//合作机构
+
+        $(".zfct_page2_box2_center").mouseover(function () {
+            $(this).addClass("zfct_page2_box2_center_shadow");
+        });
+        $(".zfct_page2_box2_center").mouseleave(function () {
+            $(this).removeClass("zfct_page2_box2_center_shadow");
+        });
+        $(".immediate_invest a").mouseover(function () {
+            $(this).css("background-color","#fda658 ");
+        });
+        $(".immediate_invest a").mouseleave(function () {
+            $(this).css("background-color", "#fd9940");
+        });
+        $(".immediate_invest a.blue_invest").mouseover(function () {
+            $(this).css("background-color", "#3fabfc");
+        });
+        $(".immediate_invest a.blue_invest").mouseleave(function () {
+            $(this).css("background-color", "#1a9bfc");
+        });
+        $(".immediate_invest a.blue_invest_all").mouseover(function () {
+            $(this).css("background-color", "#a5d8ff");
+        });
+        $(".immediate_invest a.blue_invest_all").mouseleave(function () {
+            $(this).css("background-color", "#b1dbfb");
+        });
+
+       
+
+    })
+
+
+</script>

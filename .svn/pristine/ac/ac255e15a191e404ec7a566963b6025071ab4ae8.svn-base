@@ -1,0 +1,470 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Customer
+
+@{
+    ViewData["Title"] = "银行存管";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var companyInfo = ViewBag.CompanyInfo as RCompanyRealInfo;
+}
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(5);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        存管信息
+                    </a>
+
+                </li>
+                <li>
+                    <a href="EnterpriseAManagement">
+                        授权管理
+                    </a>
+
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+    </div>
+    @if (companyInfo == null)
+    {
+        @("请重新登陆企业帐号")
+    }
+    else
+    {
+        <div class="my_collect_page">
+            <div style="height:30px;"></div>
+            <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+            @if (companyInfo.JieSuan == "0")
+            {
+                <!---------完善企业信息，才能进行银行存管开户----------->
+                <div>
+                    <p class="margin_top_25 text_align_center bold font_size_18">
+                        您需要先完善企业信息，才能进行银行存管开户噢
+                    </p>
+                    <div style="height:40px;"></div>
+                    <a href="EnterpriseOpenAccount" class="gotoshouquan" style="background:#1b9bfc">
+                        前往完善
+                    </a>
+                    <div style="height:30px;"></div>
+                </div>
+                <!--------------渤海银行存管开户----------->
+            }
+            else if (companyInfo.BoHai == "0" && companyInfo.OnceBoHai == "0")
+            {
+
+                <div>
+                    <p class="margin_top_25 text_align_center bold font_size_18">
+                        渤海银行存管开户
+                    </p>
+                    <div style="height:40px;"></div>
+                    <div class="enterprise_form enterprise_form1" style=" width:360px;margin:0 auto;">
+                        <form>
+                            <div class="zfct_form_group">
+                                <label>
+                                    对公账户户名
+                                </label>
+                                <em>
+                                    @(companyInfo.CompanyName)
+                                </em>
+                            </div>
+                            <div class="zfct_form_group margin_top_15">
+                                <label>
+                                    对公账号
+                                </label>
+                                <input id="accountNo" type="text" placeholder="请输入对公账号" class="enterprise_input" style="width:220px;" />
+                            </div>
+                            <div class="zfct_form_group margin_top_15">
+                                <label>
+                                    清算行号
+                                </label>
+                                <input id="accountBank" type="text" placeholder="请输入对公账号" class="enterprise_input" style="width:220px;" />
+                            </div>
+                            <div style="height:10px"></div>
+                            <a href="javascript:void(0);" class="gotoshouquan" style="background:#1b9bfc">
+                                前往渤海银行开户
+                            </a>
+                        </form>
+                    </div>
+                    <div style="height:40px;"></div>
+                </div>
+            }
+            else if (companyInfo.BoHai == "0" && companyInfo.OnceBoHai == "1")
+            {
+                <div class="text_align_center" id="errorBox">
+                    <p class="red1 font_size_18 bold">
+                        企业信息审核失败 <img src="~/images/bohai/kaihu_tips.png" class="img_tips" />
+                    </p>
+                    <div style="height:30px;"></div>
+                    <div class="text_align_center">
+                        <button class="repayment_confirm" id="reCommit">
+                            重新验证
+                        </button>
+                    </div>
+                </div>
+            }
+            else if (companyInfo.BoHai == "1")
+            {
+                <!--------------展示渤海银行存管信息----------->
+                <div>
+                    <div style="height: 40px;"></div>
+                    <div class="enterprise_form enterprise_form1" style="width: 350px; margin: 0 auto;">
+                        <form>
+                            <div class="zfct_form_group">
+                                <label>
+                                    对公账户户名
+                                </label>
+                                <em>
+                                    @(companyInfo.CompanyName)
+                                </em>
+                            </div>
+                            <div class="zfct_form_group margin_top_15">
+                                <label>
+                                    对公账号
+                                </label>
+                                <em>
+                                    @(companyInfo.AccountNo)
+                                </em>
+                            </div>
+                            <div class="zfct_form_group margin_top_15">
+                                <label>
+                                    清算行号
+                                </label>
+                                <em>
+                                    @(companyInfo.AccountBk)
+                                </em>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div style="height: 40px;"></div>
+                </div>
+            }
+
+
+        </div>
+    }
+    <!------------不是渤海银行 转账操作 start -------------->
+    @*<div class="my_collect_page">
+            <div class="bohai_transfer ">
+                <div style="height:30px;"></div>
+                <div class="recharge_box" style="width:880px;">
+                    <p>
+                        温馨提示：
+                    </p>
+                    <p>
+                        1. 请使用登记的对公账号转账至线下充值账户以完成实名认证。
+                    </p>
+                    <p>
+                        2. 请按下文提示转账要求金额，不可多或少转，可能会影响实名开户。
+                    </p>
+                    <p>
+                        3. 转账完成后请点击下方“已完成转账”按钮，渤海银行验证可能有15分钟左右延迟，请耐心等待。
+                    </p>
+                    <p>
+                        4. 如充值过程中遇到任何问题，请联系在线客服或拨打客服热线 400-025-1002。
+                    </p>
+                </div>
+                <div style="height:20px;"></div>
+                <ul>
+                    <li>
+                        对公账户户名
+                    </li>
+                    <li>
+                        中房创投
+                    </li>
+                    <li>
+                        对公账户
+                    </li>
+                    <li>
+                        6262262262626262662
+                    </li>
+                    <li>
+                        清算行号
+                    </li>
+                    <li>
+                        123456
+                    </li>
+                </ul>
+                <div style="height:100px;"></div>
+                <div class="position-relative">
+                    <div class="rechange_money font_size_16">
+                        转账充值 <em class="red1">1.67</em>元
+                    </div>
+                    <div class="rechange_money_img">
+                        <img src="~/images/bohai/daosanjiao.png" />
+                    </div>
+                    <ul>
+                        <li>
+                            线下充值户名
+                        </li>
+                        <li>
+                            中房创投
+                        </li>
+                        <li>
+                            线下充值账户
+                        </li>
+                        <li>
+                            6262262262626262662
+                        </li>
+                        <li>
+                            开户银行
+                        </li>
+                        <li>
+                            渤海银行
+                        </li>
+                        <li>
+                            开户地
+                        </li>
+                        <li>
+                            江苏南京
+                        </li>
+                        <li>
+                            开户网点
+                        </li>
+                        <li>
+                            江苏南京XXXXX
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div style="height:40px"></div>
+             <p class="red1 font_size_18 bold margin_bottom_30">
+                  转账信息审核失败 <img src="~/images/bohai/kaihu_tips.png"  class="img_tips"/>
+              </p>
+            <div class="text_align_center">
+                <button class="repayment_confirm" id="transfer_finish">
+                    已完成转账
+                </button>
+            </div>
+            <div style="height:30px;"></div>
+        </div>*@
+    <div class="my_collect_page">
+        <div class="depository_infor">
+            <div style="height:40px;"></div>
+            <div class="enterprise_form enterprise_form1">
+                <form>
+                    <div class="zfct_form_group">
+                        <label>
+                            对公账户户名
+                        </label>
+                        <em>
+                            中房创投
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_15">
+                        <label>
+                            对公账号
+                        </label>
+                        <em>
+                            6262262262626262662
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_15">
+                        <label>
+                            清算行号
+                        </label>
+                        <em>
+                            1234567891
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_15">
+                        <label>
+                            手机号
+                        </label>
+                        <em>
+                            139****1234
+                        </em>
+                        <em class="blue font_size_12  changenumber" id="changeNumber">
+                            修改<i class="fa fa-caret-down " aria-hidden="true"></i>
+                        </em>
+                        <div class="changenubmer_box" style="display: none; border-bottom:none">
+                            <div style="height: 15px;"></div>
+                            <p class="font_size_12 gray1">温馨提示：</p>
+                            <p class="font_size_12 gray1">
+                                1.修改手机号码将在渤海银行存管平台解绑现有绑定的银行卡，并需要重新绑定新银行卡
+                            </p>
+                            <p class="font_size_12 gray1">
+                                2.修改成功后，您需要以新号码登录中房创投平台
+                            </p>
+                            <div style="height: 15px;"></div>
+                            <div class="bank_form_group">
+                                <label>
+                                    原手机号码
+                                </label>
+                                <input type="text" placeholder="请输入原手机号码" class="bank_input" id="oldPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="oldPhoneMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    新手机号码
+                                </label>
+                                <input type="text" placeholder="请输入新手机号码" class="bank_input" id="newPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="newPhonemsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    验证码
+                                </label>
+                                <input type="text" placeholder="请输入验证码" class="bank_input1" id="verifyPhoneCode" />
+                                <button type="button" class="bank_yanzhengma" id="PhoneVerify">发送验证码</button>
+                                <label class="active">
+                                    <span class="form_tips_content" id="PhoneVerifyMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div style="height: 10px;"></div>
+                            <div class="bank_form_group">
+                                <button class="kaihu_again" onclick="ChangeBhPhone();">
+                                    前往渤海银行修改手机号码
+                                </button>
+                            </div>
+                            <div style="height: 20px;"></div>
+                        </div>
+                    </div>
+                    <div class="zfct_form_group margin_top_15">
+                        <label>
+                            支付密码
+                        </label>
+                        <em>
+                            ******
+                        </em>
+                        <em>
+                            <a href="" class="blue changenumber">
+                                修改/找回
+                            </a>
+                        </em>
+                    </div>
+                </form>
+            </div>
+            <div style="height:40px;"></div>
+        </div>
+    </div>
+    <!------------不是渤海银行 转账操作 end-------------->
+</div>
+<!-----------银行卡绑定 蒙层  start------------>
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<div class="bank_tips_page" style="display:none">
+    <div class="bank_tips_head">
+        温馨提示
+        <em id="closeX">
+            ×
+        </em>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+    <div style="height:40px;"></div>
+    <p class="text_align_center font_size_20 ">
+        渤海银行授权中,请稍后...
+    </p>
+</div>
+<!-----------银行卡绑定 蒙层  end------------>
+<!-----------------渤海转账 通知弹框 start----------->
+<div class="bohai_transfer1" style="display:none">
+    <div style="height:75px;"></div>
+    <p class="text_align_center font_size_18">
+        您还没有转账或渤海银行审核中，请耐心等待
+    </p>
+    <div style="height:45px;"></div>
+    <div class="text_align_center">
+        <button class="repayment_confirm" id="repayment_confirm">
+            确定
+        </button>
+    </div>
+</div>
+<!-----------------渤海转账 通知弹框 end----------->
+
+
+<script src="/js/Tools/zf.tools.js"></script>
+<script>
+
+    $("button#transfer_finish").click(function () {
+        $(".red_envelopes_mask").show();
+        $(".bohai_transfer1").show();
+    });
+    $("button#repayment_confirm").click(function () {
+        $(".red_envelopes_mask").hide();
+        $(".bohai_transfer1").hide();
+    });
+    $("#changeNumber").click(function () {
+        $(this).toggleClass("open");
+        $(".changenubmer_box").slideToggle();
+
+    });
+    $("img.img_tips").mouseover(function () {
+        layer.tips('失败原因悬停失败原因袁咏仪', this, {
+            tips: [2, '#ec4a62']
+
+        });
+    })
+    $('.gotoshouquan').click(function () {
+        var accountNo = $('#accountNo').val();
+        var accountBank = $('#accountBank').val();
+        if (accountNo == "" || accountNo == undefined) {
+            layer.alert("请输入对公账号");
+            return false;
+        }
+        if (accountBank == "" || accountBank == undefined) {
+            layer.alert("请输入清算行号");
+            return false;
+        }
+        $.ajax({
+            url: "BhOpenAccount",
+            data: { "accountNo": accountNo, "accountBank": accountBank },
+            type: 'POST',
+            beforeSend: function () {
+                $("#red_envelopes_mask").show();
+                $(".bank_tips_page").show();
+            },
+            success: function (data) {
+                if (data.success) {
+                    newWin(data.msg);
+                } else {
+                    $("#red_envelopes_mask").hide();
+                    $(".bank_tips_page").hide();
+                    layer.confirm(data.msg, {
+                        icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                            layer.close(index);
+                            location.reload();
+                        }
+                    }, function (index) {
+                        layer.close(index);
+                        location.reload();
+                    });
+                }
+
+            }
+        });
+    });
+
+    $('#closeX').click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page").hide();
+        location.reload();
+    })
+</script>

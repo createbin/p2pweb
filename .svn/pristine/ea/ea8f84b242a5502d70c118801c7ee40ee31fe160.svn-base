@@ -1,0 +1,71 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserThirdPartInfo
+<link href="~/css/common/build.css" rel="stylesheet" />
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<style>
+    .checkbox-info input[type="checkbox"]:checked + label::before, .checkbox-info input[type="radio"]:checked + label::before {
+        background-color: #1a9bfc;
+        border-color: #1a9bfc;
+    }
+    .checkbox-info input[type="checkbox"]:checked + label::after, .checkbox-info input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
+    .checkbox input[type="checkbox"]:checked + label::after, .checkbox input[type="radio"]:checked + label::after {
+        font-family: "FontAwesome";
+        content: "\f00c";
+    }
+</style>
+<div class="openaccount_bohai">
+    <dl>
+        <dd>
+            <label>姓名</label>
+            <input id="userName" placeholder="请输入姓名" />
+        </dd>
+        <dd>
+            <label>身份证号</label>
+            <input id="userCard" placeholder="请输入身份证号" />
+        </dd>
+        <dd>
+            <label>手机号</label>
+            <em>
+                @(Model.PhoneNo)
+            </em>
+        </dd>
+        
+        <dd style="overflow:hidden">
+            <label class="float_left">
+                身份类型
+            </label>
+            <div class="">
+                <div class="checkbox checkbox-circle checkbox-info" style="margin-right:20px; display:inline-block">
+                    <input type="radio" name="identity" id="radio1" value="我是投资人" checked="checked" style="width:auto;height:auto">
+                    <label for="radio1" style="width:auto;">
+                        我是投资人
+                    </label>
+                </div>
+                <div class="checkbox checkbox-circle checkbox-info" style="display:inline-block">
+                    <input type="radio" name="identity" id="radio2" value="我是融资人" style="width:auto;height:auto">
+                    <label for="radio2" style="width:auto;">
+                        我是融资人
+                    </label>
+                </div>
+            </div>
+          
+        </dd>
+        <dd style="color:#ec4961">
+            <p class="font_size_12">温馨提示：</p>
+            <p class="font_size_12">1. 同一户用只允许认证一种身份</p>
+            <p class="font_size_12">
+               2. 请谨慎选择，实名认证成功后无法修改
+            </p>
+        </dd>
+       
+        <dd>
+            <button id="openJsAccount" class="">
+                认证
+            </button>
+        </dd>
+    </dl>
+   
+</div>
+
+

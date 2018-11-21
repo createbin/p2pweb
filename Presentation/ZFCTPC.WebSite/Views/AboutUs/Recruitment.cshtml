@@ -1,0 +1,104 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "人才招聘";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var Recruitment = ViewBag.Recruitment as List<NewsDetail>;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+@*<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.png" class="img-responsive" />
+</div>*@
+<div style="border-top:1px solid #f0f0f0"></div>
+
+<div style="height:20px"></div>
+<div class="aboutus_content">
+    <div style="height:18px"></div>
+    <span class="span_mail">
+        如有意向，请发送简历到邮箱：zfctkf@chinazfct.com
+    </span>
+    <div style="height:20px;"></div>
+    @if (Recruitment != null&&Recruitment.Count>0)
+    {
+        for (int i = 0; i < Recruitment.Count; i++)
+        {
+            <div class="vtitle">
+                <em>@Recruitment.ElementAt(i).Title</em>
+                <em>@Recruitment.ElementAt(i).CreateTime.ToString("yyyy-MM-dd")</em>
+                <em class="v v02"></em>
+            </div>
+            if (i == 0)
+            {
+                <div class="vcon">
+                    @Html.Raw(Recruitment.ElementAt(i).Details)
+                </div>
+            }
+            else
+            {
+                <div class="vcon" style="display:none">@Html.Raw(Recruitment.ElementAt(i).Details)</div>
+            }
+        }
+    }
+
+    @*<div class="vtitle">
+            <em>资深反欺诈专员</em>
+            <em>2017-06-07</em>
+            <em class="v"></em>
+        </div>
+        <div class="vcon" style="display:none">
+            <p><em class="font-weight">招聘类别:</em><em>社会招聘</em></p>
+            <p><em class="font-weight">工作性质:</em><em>全职</em></p>
+            <p><em class="font-weight">薪资范围:</em><em>10001～15000</em></p>
+            <p><em class="font-weight">招聘人数:</em><em>2</em></p>
+            <p><em class="font-weight">发布时间:</em><em>2017-05-19</em></p>
+            <p><em class="font-weight">截止时间:</em><em>2017-08-31</em></p>
+            <p><em class="font-weight">工作地点:</em><em>江苏省-南京市</em></p>
+            <div style="height:30px"></div>
+            <p class="font-weight">工作职责:</p>
+            <p>1. 调查审核申请人身份以及资料的真实性，针对可疑申请，通过数据分析、内外联及第三方数据等手段甄别欺诈风险；</p>
+            <p>2. 协助回顾信贷政策和业务流程，分析个案案例，对于进入欺诈队列的疑似欺诈申请进行事中反欺诈处理并及时把调查结果向上反馈；</p>
+            <p>3. 研究各类型欺诈风险案件风险点及欺诈手段，根据各个地区，各个时期的欺诈特征和趋势优化反欺诈规则，定期出具欺诈报告，前期需参与反欺诈系统模块设计，协助建立健全反欺诈调查工作体系，改良和优化欺诈风险防范体系；</p>
+            <p>4. 更新黑名单数据库，对于调查确认欺诈的申请及时添加黑/灰名单，按照反欺诈规则对贷中信审业务及贷后短期失联、存在欺诈嫌疑的案件进行事后反欺诈认定。</p>
+            <div style="height:30px"></div>
+            <p class="font-weight">任职资格:</p>
+            <p>1. 大学本科以上学历，金融、经济、统计、法律、刑侦等相关专业毕业，了解互联网金融行业者优先；</p>
+            <p>2. 具有3年及以上银行、担保等信贷行业信审/贷后风险管理反欺诈经验或大型互联网公司风险控制、审核类工作经验；</p>
+            <p>3. 熟悉个人消费信贷或信用卡欺诈案件侦测全流程，具有参与系统设计工作经验者优先考虑；</p>
+            <p>4. 具有较强的风控反欺诈意识与信息保密意识，有优秀的逻辑分析、沟通交往及案件调查能力；</p>
+            <p>5. 熟练使用Office办公软件，包括EXCEL分析功能，具有SQL、SAS等从数据库取数及基本数据关联性分析能力者优先考虑；</p>
+            <p>6. 具备良好的职业道德操守及较强的责任感和事业心，诚实守信、具有高度的团队合作精神及工作热情。</p>
+        </div>*@
+
+    <div style="height:20px;"></div>
+</div>
+<div style="height:20px"></div>
+<script>
+    $(function () {
+        //菜单隐藏展开
+        var tabs_i = 0
+        $('.vtitle').click(function () {
+            var _self = $(this);
+            var j = $('.vtitle').index(_self);
+            if (tabs_i == j) return false; tabs_i = j;
+            $('.vtitle em.v').each(function (e) {
+                if (e == tabs_i) {
+                    $('em', _self).removeClass('v01').addClass('v02');
+                } else {
+                    $(this).removeClass('v02').addClass('v01');
+                }
+            });
+            $('.vcon').slideUp().eq(tabs_i).slideDown();
+        });
+    })
+
+</script>

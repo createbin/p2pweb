@@ -1,0 +1,254 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+
+@{
+    ViewData["Title"] = "银行存管-授权管理";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var authInfos = ViewBag.AuthInfos as RUserAuthInfo;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(5);
+    })
+</script>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li>
+                    <a href="EnterprisepBankDepository">
+                        存管信息
+                    </a>
+
+                </li>
+                <li class="active">
+                    <a href="#">
+                        授权管理
+                    </a>
+
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+    </div>
+    <div class="my_collect_page">
+        <div style="height:30px;"></div>
+        <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+
+        @if (authInfos == null)
+        {
+            <p class="text_align_center margin_top_25 margin_bottom_10 font_size_18 bold">请先完成开户绑卡操作</p>
+        }
+        else if (!ViewBag.IsRealName)
+        {
+            <p class="text_align_center margin_top_25 margin_bottom_10 font_size_18 bold">请先完成实名认证操作</p>
+        }
+        else
+        {
+            if (authInfos.IsAuth == "0")
+            {
+                <!---------需要完成授权，才能进行还款等操作----------->
+                <div>
+                    <p class="margin_top_25 text_align_center bold font_size_18">
+                        您还需要完成存管，才能进行授权等操作噢
+                    </p>
+                    <div style="height: 40px;"></div>
+                    <a href="EnterpriseOpenAccount" class="gotoshouquan" style="background: #1b9bfc">
+                        前往存管
+                    </a>
+                    <div style="height: 30px;"></div>
+                </div>
+                <!-------------展示  -------->
+            }
+            else
+            {
+                <div class="shouquan_yes" style="margin: 25px 50px">
+                    <p>
+                        <span>
+                            授权信息
+                        </span>
+                        @*<span class="float_right">
+                            <a href="javascript:void(0);" id="cancelAuth" class="blue">
+                                解除授权
+                            </a>
+                        </span>*@
+                    </p>
+                    <div style="height: 15px;"></div>
+                    <div class="shouquan_table">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    授权类型
+                                </td>
+                                <td>
+                                    授权状态
+                                </td>
+                                <td>
+                                    授权金额(元)
+                                </td>
+                                <td>
+                                    授权有效期
+                                </td>
+                                <td>
+                                    操作
+                                </td>
+                            </tr>
+                            @foreach (var auth in authInfos.AuthInfos)
+                            {
+                                <tr>
+                                    <td>
+                                        @(auth.AuthType)
+                                    </td>
+                                    <td>
+                                        @if (auth.AuthState == "0")
+                                        {
+                                            <i class="fa fa-times-circle red1 padding_right_10 font_size_16" aria-hidden="true" style="font-size: 16px"></i>
+                                            @Html.Raw("未授权")
+                                        }
+                                        else if (auth.AuthState == "1")
+                                        {
+                                            <i class="fa fa-check-circle padding_right_10 " aria-hidden="true" style="color: #15c600; font-size: 16px"></i>
+                                            @Html.Raw("已认证")
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-warning padding_right_10" aria-hidden="true" style="color: #ff9a32; font-size: 15px"></i>
+                                            @Html.Raw("已过期")
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @auth.AuthMoney
+                                    </td>
+                                    <td>
+                                       @if (auth.AuthState == "0")
+                                       {
+                                        <em>2018-06-22~2018-06-30</em>
+                                       }
+                                       else
+                                       {
+                                        <em>@(auth.AuthStart)~@(auth.AuthEnd)</em>
+                                       }
+                                    </td>
+                                    <td class="text-center">
+                                        @if (auth.AuthState == "0")
+                                        {
+
+                                                <!---------未授权的情况--------->
+                                            <a href="" class="toauth toAuth">
+                                                授权
+                                            </a>
+                                                <!---------未授权的情况--------->
+                                        }
+                                        else if (auth.AuthState == "1")
+                                        {
+                                                <!--------已授权的情况--------->
+                                            <a href="javascript:void(0);" class="toauthagain toAuth">
+                                                重新授权
+                                            </a>
+                                                <a href="javascript:void(0);" class="releaseauth cancelAuth">
+                                                    解除授权
+                                                </a>
+                                                <!--------已授权的情况--------->
+                                        }
+                                        else
+                                        {
+                                                <!---------已过期的情况--------->
+                                            <a href="javascript:void(0);" class="toauthagain toAuth">
+                                                重新授权
+                                            </a>
+                                                <!---------已过期的情况--------->
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            }
+        }
+
+        <div style="height:30px;"></div>
+    </div>
+</div>
+<!-----------银行卡绑定 蒙层  start------------>
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<div class="bank_tips_page" style="display:none">
+    <div class="bank_tips_head">
+        温馨提示
+        <em>
+            ×
+        </em>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+    <div style="height:40px;"></div>
+    <p class="text_align_center font_size_20 ">
+        授权中,请稍后...
+    </p>
+</div>
+<input type="hidden" id="pageMsg" value="@(ViewBag.Msg)"/>
+<script src="/js/Tools/zf.tools.js"></script>
+<script>
+    var msg = $('#pageMsg').val();
+    if (msg != "") {
+        layer.alert(msg);
+    }
+    $(".bank_tips_page .bank_tips_head em").click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page").hide();
+        location.reload();
+    });
+    $(function () {
+        $('.toAuth').click(function () {
+            ToAuth(1);
+        });
+        $('#cancelAuth').click(function () {
+            ToAuth(2);
+        });
+    });
+
+    function ToAuth(type) {
+        $.ajax({
+            url: "/MyAccount/AutoAuth",
+            data: { "type": type },
+            type: 'POST',
+            beforeSend: function () {
+                $("#red_envelopes_mask").show();
+                $(".bank_tips_page").show();
+            },
+            success: function (data) {
+                if (data.success) {
+                    newWin(data.msg);
+                } else {
+                    $("#red_envelopes_mask").hide();
+                    $(".bank_tips_page").hide();
+                    layer.confirm(data.msg,
+                        {
+                            icon: 3,
+                            title: '提示',
+                            btn: '确定',
+                            cancel: function (index) {
+                                layer.close(index);
+                                location.reload();
+                            }
+                        },
+                        function (index) {
+                            layer.close(index);
+                            location.reload();
+                        });
+                }
+            }
+        })
+    }
+</script>

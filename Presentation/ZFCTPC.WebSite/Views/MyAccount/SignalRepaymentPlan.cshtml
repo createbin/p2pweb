@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    ViewData["Title"] = "单个项目还款计划";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(2);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+
+    <div class="invest_table">  
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">@(ViewData["name"])还款计划</span>
+        </div>
+        <div class="my_assets_tab">
+            <div class="my_assets_tab_box my_assets_tab_box_signal">
+                <div class="my_assets_tab_box1">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th>应还日期</th>
+                                <th>期数</th>
+                                <th>应还本金</th>
+                                <th>应还利息</th>
+                                <th>应还本息</th>
+                                <th>应还服务费</th>
+                                <th>还款状态</th>
+                                <th>是否还清</th>
+                                <th>还款时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repaylist">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                
+            </div>
+            <div style="text-align: center;margin-top:10px">
+                <div class="pager_box">
+                    <div id="pager" class="pager_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#repaylist").load("/MyAccount/SignalRepaymentPlanData", { Page: 1, PageSize: 5, id:@ViewData["id"]  }, function () {
+            $('#pager').pagination({
+                callback: pageCallback,
+                totalData: $("#TotalData2").val(),
+                showData: 5,
+                coping: true,
+                prevContent: '<',
+                nextContent: '>'
+            });
+        });
+        function pageCallback(index, jq) {
+            initTable(index);
+        }
+        function initTable(index) {
+            $("#repaylist").load("/MyAccount/SignalRepaymentPlanData", { Page: index.getCurrent(), PageSize: 5,id:@ViewData["id"] });
+        }
+    });
+
+</script>
+

@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "投资户转账充值";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+       
+        AccordionActive(0);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">投资户转账充值</span>
+        </div>
+        <div class="my_assets_tab1">
+            <div class="transfer_tips">
+                <p>
+                    温馨提示：
+                </p>
+                <p>
+                    1. 限额说明仅供参考，具体以银行实际情况为准。
+                </p>
+                <p>
+                    2. 还款需要先往投资户下充值，再将投资户下的金额转账至融资户下，才能进行还款操作。
+                </p>
+                <p>
+                    3. 如充值过程中遇到任何问题，请联系<a onclick="doyoo.util.openChat('g=10060121');return false;" href="javascript:void(0);" class="blue">在线客服</a>或拨打<em class="bold">客服热线 400-025-1002</em>。
+                </p>
+            </div>
+            <div style="height:35px"></div>
+            <div class="transfer_operating">
+                <div class="float_left">
+                    <span>
+                        投资户余额
+                    </span>
+                    <div class="text_align_center">
+                      
+                        <p class="font_size_20  " style="padding-top:20px;">
+                            ¥ <em class="font_size_36 red1" id="InvesterMoney">0.00</em> 元
+                        </p>
+                       
+                        <a href="EnterpriseRecharge" class="transfer_recharge " >
+                            充值
+                        </a>
+                    </div>
+                </div>
+                <img src="~/images/bohai/zhuanzhang.png" class="float_left" />
+                <div class="float_left">
+                    <span>
+                        融资户余额
+                    </span>
+                    <div class="text_align_center">
+
+                        <p class="font_size_20  " style="padding-top:35px;">
+                            ¥ <em class="font_size_36 red1" id="LoanererMoney">0.00</em> 元
+                        </p>
+
+                       
+                    </div>
+                </div>
+
+            </div>
+            <div style="height:40px"></div>
+            <ul>
+                <li>
+                    <label>
+                        转账金额（元）
+                    </label>
+                    <input type="text" id="Money" placeholder="请输入充值金额" />
+                </li>
+                <li>
+                    <label>
+                        转账手续费（元）
+                    </label>
+                    <em>
+                        免费
+                    </em>
+                </li>
+                <li>
+                    <button class="transfer_confirm" onclick="PostTransferRecharge()">
+                        确认
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var investmoney = 0;
+    $(function () {
+        $.post("/MyAccount/RemainMoney", { userAttribute: 1 }, function (result) {
+            investmoney = result.remainmoney;
+            $("#InvesterMoney").html(result.msg);
+
+        });
+
+        $.post("/MyAccount/RemainMoney", { userAttribute: 2 }, function (result) {
+            $("#LoanererMoney").html(result.msg);
+        });
+
+        $("#Money").keyup(function () {
+            var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+            var txt = '';
+            if (reg != null) {
+                txt = reg[0];
+            }
+            $(this).val(txt);
+        }).change(function () {
+            $(this).keypress();
+            var v = $(this).val();
+            if (/\.$/.test(v)) {
+                $(this).val(v.substr(0, v.length - 1));
+            }
+        });
+    });
+
+    function PostTransferRecharge() {
+        var money = $.trim($("#Money").val());
+        if (isNaN(money) || money == "") {
+            layer.alert("请输入正确金额");
+            return;
+        }
+        if (parseFloat(money) > 100000000) {
+            layer.alert("金额必须小于一亿元");
+            return;
+        }
+        if (parseFloat(money) <= 0) {
+            layer.alert("金额必须大于零元");
+            return;
+        }
+        if (parseFloat(money) > parseFloat(investmoney)) {
+            layer.alert("投资户余额不足");
+            return;
+        }
+        if (money) {
+            $.post("/MyAccount/TransferRecharge", { money: money }, function (result) {
+                if (result.success) {
+                    $.post("/MyAccount/RemainMoney", { userAttribute: 1 }, function (result) {
+                        investmoney = result.remainmoney;
+                        $("#InvesterMoney").html(result.msg);
+                    });
+                    $.post("/MyAccount/RemainMoney", { userAttribute: 2 }, function (result) {
+                        $("#LoanererMoney").html(result.msg);
+                    });
+                    layer.alert(result.msg);
+                } else {
+                    layer.alert(result.msg);
+                }
+            });
+        } else {
+            layer.alert("请输入转账金额");
+        }
+    }
+</script>
+
+

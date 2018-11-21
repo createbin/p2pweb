@@ -1,0 +1,27 @@
+﻿@{ Layout = null; }
+@model List<ZFCTPC.Data.ApiModelReturn.RToTradingModel>
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+    @if (!string.IsNullOrEmpty(TempData["ErrorMsg"] as string))
+    {
+        <script type="text/javascript">
+            layer.alert("@(TempData["ErrorMsg"] as string)");
+        </script>
+    }
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TradingOrderNo</td>
+            <td>@item.TradingMoney</td>
+            <td class="green">@item.TradingStatus</td>
+            <td>@item.TradingDate</td>
+        </tr>
+    }
+}
+<input id="TotalData" type="hidden" value="@ViewData["TotalData"].ToString()" />

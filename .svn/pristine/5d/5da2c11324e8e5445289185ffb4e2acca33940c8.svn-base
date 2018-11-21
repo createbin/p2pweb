@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewData["Title"] = "担保管理-替他人还款";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var repayed = ViewBag.Repayed as ZFCTPC.Data.ApiModelReturn.ReturnPageData<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RGurClearedPlan>;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        AccordionActive(1);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    替他人还款
+                </li>
+                <li>
+                    历史代偿查询
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="my_collect_page">
+        <div class="repay_for_others">
+            <div class="daihuankuan_title">
+                待还款项目
+            </div>
+            <div style="height:40px;"></div>
+            <div class="zfct_form_group">
+                <dl>
+                    <dd>
+                        <label class="margin_right_10">
+                            项目编号
+                        </label>
+                        <input id="loan_no" type="text" placeholder="请输入代还款的项目编号" class="enterprise_input" style="width:210px" />
+                    </dd>
+                    <dd class="margin_left_50">
+                        <label class="margin_right_10">
+                            借款人/企业名称
+                        </label>
+                        <input id="name" type="text" placeholder="请核实借款人/借款企业姓名" class="enterprise_input" style="width:210px" />
+                    </dd>
+                    <dd class="">
+                        <button class="repayment_confirm" style="width:160px; margin-left:40px">
+                            查询
+                        </button>
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+            <div id="govRepay"></div>
+        </div>
+
+        <div class="repay_for_others" style="display:none">
+            <div class="daihuankuan_box ">
+                <input type="hidden" id="hasRepayed" value="@(repayed == null || repayed.Total <= 0?"0":"1")" />
+                <div class="daihuankuan_title">
+                    历史代偿查询
+                </div>
+                @if (repayed == null || repayed.Total <= 0)
+                {
+                    <!---------------暂无数据 start---------->
+                    <div style="display: none">
+                        <div style="height: 40px;"></div>
+                        <img src="~/images/enterprise/nojilu.png" class="img-margin" />
+                        <p class="text_align_center margin_top_5">
+                            暂无数据
+                        </p>
+                        <div style="height: 40px;"></div>
+                    </div>
+                    <!---------------暂无数据 end------------>
+                }
+                else
+                {
+                    <!-----------------有历史查询数据 start-------------->
+                    <div class="others_table">
+                        <table>
+                            <tr>
+                                <th>
+                                    项目编号
+                                </th>
+                                <th>
+                                    项目名称
+                                </th>
+                                <th>
+                                    还款期数
+                                </th>
+                                <th>
+                                    还款本金<br />
+                                    (元)
+                                </th>
+                                <th>
+                                    利息<br />
+                                    (元)
+                                </th>
+                                <th>
+                                    服务费<br />
+                                    (元)
+                                </th>
+
+                                <th>
+                                    逾期罚金<br />
+                                    (元)
+                                </th>
+                                <th>
+                                    还款总额<br />
+                                    (元)
+                                </th>
+                                <th>
+                                    代偿日期
+                                </th>
+                            </tr>
+                            <tbody id="repayedData">
+                                @foreach (var repayedLoan in Model.PagingData.ToList())
+                                {
+                                    <tr>
+                                        <td>
+                                            @(repayedLoan.LoanNo)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.LoanName)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PlanPeriod)期
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayMoney)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayRate)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayServiceFee)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayOverdue)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayPrincipal)
+                                        </td>
+                                        <td>
+                                            @(repayedLoan.PayDate)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                        <!---------分页-------------->
+                        <div class="recommend_page">
+
+                            <div style="height: 50px"></div>
+
+                            <div style="text-align: center">
+                                <div class="pager_box">
+                                    <div id="pager" class="pager_div"></div>
+                                </div>
+                            </div>
+                            <div style="height: 50px"></div>
+                        </div>
+                        <!---------分页--------------->
+                    </div>
+                    <!-----------------有历史查询数据 end-------------->
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".my_assets_title ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var index = $(this).index();
+        $(".my_collect_page > div").eq(index).show().siblings().hide();
+    });
+
+
+    $('.repayment_confirm').click(function () {
+        $('#govRepay').empty();
+        var loanNo = $('#loan_no').val();
+        var name = $('#name').val();
+        $('#govRepay').load("_PatialGurRepayLoan?loanNo=" + loanNo + "&name=" + name);
+    });
+
+    $(function() {
+        var hasRepayed = $('#hasRepayed').val();
+        if (hasRepayed == "1") {
+            $('#pager').pagination({
+                callback: pageCallback,
+                totalData: @(repayed.Total),
+                showData: 5,
+                coping: true,
+                prevContent: '<',
+                nextContent: '>'
+            });
+
+            function pageCallback(index, jq) {
+                initTable(index);
+            }
+
+            //请求数据
+            function initTable(index) {
+                $.ajax({
+                    url: '/companyaccount/gurrepayedloan',
+                    data: { page: index.getCurrent(), "pageSize": 5 },
+                    success: function (info) {
+                        if (info.success) {
+                            var html = "";
+                            var repayeds = JSON.parse(info.result);
+                            $.each(repayeds,
+                                function(index, value) {
+                                    html += "<tr><td>" + value.LoanNo + "</td>";
+                                    html += "<td>" + value.LoanName + "</td>";
+                                    html += "<td>" + value.PlanPeriod + "期</td>";
+                                    html += "<td>" + value.PayMoney + "</td>";
+                                    html += "<td>" + value.PayRate + "</td>";
+                                    html += "<td>" + value.PayServiceFee + "</td>";
+                                    html += "<td>" + value.PayOverdue + "</td>";
+                                    html += "<td>" + value.PayPrincipal + "</td>";
+                                    html += "<td>" + value.PayDate + "</td></tr>";
+                                });
+                            $('#repayedData').empty().append(html);
+                        } else {
+                            
+                        }
+                    }
+                })
+            }
+        }
+    });
+
+</script>
+

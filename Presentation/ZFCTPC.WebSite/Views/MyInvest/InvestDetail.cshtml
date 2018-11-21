@@ -1,0 +1,663 @@
+﻿@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ZFCTPC.Core.Enums
+@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.InvestModelReturns
+@using ZFCTPC.Data.ApiModelReturn.LoanReturnModels
+@using ZFCTPC.Data.Enums
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "中房创投-投资列表-投资详情";
+    ViewData["Description"] = "中房创投认真审核项目真实性和借款人资产、负债、还款能力情况，挑选优质理财产品发布";
+    ViewData["Keywords"] = "中房创投,企业贷款,企业借款,公司贷款,公司借款,中小企业贷款,小型企业贷款,抵押贷款";
+    var loanDetail = ViewBag.LoanDetail as LoanDetail;
+    var isLogin = ViewBag.IsLogin;
+    var lonerInfo = ViewBag.LonerInfo as LoanerInfo;
+    var repaymentPlan = ViewBag.RepaymentPlan as RepaymentPlan;
+    var invester = ViewBag.Invester as ReturnPageData<RLoanInvester>;
+    var userState = ViewBag.UserState as ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.UserState;
+    var remainMoney = ViewBag.RemainMoney;
+    var recomand = ViewBag.RecommandLoan as ReturnPageData<RLoanAbstract>;
+    var existLogin = ViewBag.ExistLogin;
+    var loanType = loanDetail.LoanType;
+    var leastMoney = loanDetail.MinInvestMoney > remainMoney ? remainMoney : loanDetail.MinInvestMoney;
+    var surplusCount = loanDetail.SurplusMoney / loanDetail.MinInvestMoney;
+    var mostMoney = remainMoney > loanDetail.MaxInvestMoney ? loanDetail.MaxInvestMoney : remainMoney;
+
+    if (!isLogin)
+    {
+        leastMoney = loanDetail.MinInvestMoney;
+        mostMoney = loanDetail.MaxInvestMoney > loanDetail.SurplusMoney ? loanDetail.SurplusMoney : loanDetail.MaxInvestMoney;
+    }
+
+    var canInvest = ViewBag.CanInvest;
+    var redCount = ViewBag.RedCount;
+    //12-7
+    ViewBag.ShowInfo = "";//提示用户是否可有投新手标
+    ViewBag.LeastMoney = leastMoney;
+    ViewBag.MostMoney = mostMoney;
+    ViewBag.SurplusMoney = loanDetail.SurplusMoney;
+    ViewBag.Recomand = (recomand == null || recomand.PagingData == null) ? null : recomand.PagingData;
+    var loanFollow = ViewBag.LoanFollow as LoanFollow;
+}
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+
+<link href="~/css/common/build.css" rel="stylesheet" />
+<link href="~/css/common/jquery.hiSlider.min.css" rel="stylesheet" />
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .hiSlider-title {
+        display: none;
+    }
+
+    .hiSlider-wrap {
+        height: 305px !important;
+    }
+
+    .hiSlider-pages a {
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        border: 1px solid #1a9bfc;
+        background: #fff;
+    }
+
+        .hiSlider-pages a.active {
+            background: #1a9bfc;
+        }
+
+    .hiSlider-pages {
+        bottom: 5px;
+        right: 135px;
+    }
+
+    .checbox_style .checkbox label:before {
+        top: -13px !important;
+        left: 1px !important;
+    }
+
+    .invest_detail_top_right .checkbox label::after {
+        top: -1px;
+    }
+
+    .checkbox label::after {
+        top: -4px;
+    }
+
+    .checkbox .label_circle::before {
+        border-radius: 17px !important;
+        border: 1px solid #9b9b9b;
+    }
+
+    .checkbox .label_circle_border::before {
+        border-radius: 17px !important;
+        border: 1px solid #9b9b9b;
+    }
+
+    .checkbox-danger input[type="checkbox"]:indeterminate + label::after, .checkbox-danger input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+        display: none;
+    }
+
+    .checkbox-danger input[type="checkbox"]:indeterminate + label::before, .checkbox-danger input[type="radio"]:indeterminate + label::before {
+        background-color: #fff;
+        border-color: #9b9b9b;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+
+    .hiSlider-btn-prev {
+        display: none;
+    }
+
+    .hiSlider-btn-next {
+        display: none;
+    }
+
+    .invest_progress_bar .pro-bar {
+        height: 4px;
+    }
+
+    .progress_bar .pro-bar {
+        background: #ccc;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(2);
+    })
+</script>
+<input type="hidden" id="pro_loan_id" value="@loanDetail.LoanId" />
+<input type="hidden" id="pro_surplus_money" value="@loanDetail.SurplusMoney" />
+<input type="hidden" id="pro_min_invest_money" value="@loanDetail.MinInvestMoney" />
+<input type="hidden" id="pro_max_invest_money" value="@loanDetail.MaxInvestMoney" />
+<input type="hidden" id="loanRiskType" value="@loanDetail.LoanRiskType" />
+<input type="hidden" id="otherMoney" value="" />
+<input type="hidden" id="useRedId" value="" />
+<input type="hidden" id="jiesuan_auth" value="@userState.JieSuan" />
+<input type="hidden" id="bohai_auth" value="@userState.BoHai" />
+<input type="hidden" id="invest_auth" value="@userState.Auth" />
+<input type="hidden" id="risk_auth" value="@userState.Risk" />
+@*<div class="invest_detail_banner">
+        <img src="~/images/banner/invest_detail_banner.jpg" class="img-responsive" />
+    </div>*@
+<div style="height:25px;"></div>
+
+<div class="invest_detail_page">
+    <span class="gray font_size_12">
+        @*我要投资&nbsp;>&nbsp;<em style="cursor:pointer" id="loanTypeHerf" onclick="ToInvestList(@(loanType))">@(ViewBag.LoanTypeName)</em>&nbsp;>&nbsp;<em class="gray2">@(loanDetail.loanName)</em>*@
+        <em style="cursor:pointer" id="loanTypeHerf" onclick="ToInvestList(@(loanType))">我要投资&nbsp;>&nbsp;</em><em class="gray2">@(loanDetail.LoanName)</em>
+    </span>
+    <div style="height:20px;"></div>
+    <div class="invest_detai_top">
+        <div class="invest_detail_top_left float_left @(loanDetail.LoanStateId ==(int)ProjectStateEnum.Tender?"":"invest_detail_end")">
+            <div class="invest_detail_top_title">
+                <span class="float_left" style="margin-top:3px">
+                    @(loanDetail.LoanName)
+                </span>
+                <div class="zfct_page2_content float_left margin_left_20">
+                    <dl>
+                        @if (!string.IsNullOrEmpty(loanDetail.LableIcons))
+                        {
+                            foreach (var lable in loanDetail.LableIcons.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <dd><img src="@(lable)" /></dd>
+                            }
+                        }
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                @*<span class="float_right" style="margin-top:3px">
+                        风险评测<em>@ViewBag.loanrisktype</em>
+                    </span>
+                    <span class="float_right" style="margin-top:3px">
+                        投资要求：
+                    </span>*@
+                <div class="clear"></div>
+            </div>
+            <div class="invest_detail_top_content position-relative">
+                <div style="height: 12px;"></div>
+                <div style="height: 45px"></div>
+                <ul class="font_size_20">
+                    <li class="red">
+                        @if (loanDetail.OriginalRate == null)
+                        {
+                            <em class='font_size_50'>@(loanDetail.YearRate)<font class="font_size_30">%</font></em>
+                        }
+                        else
+                        {
+                            <em class="font_size_50">@(loanDetail.OriginalRate)<font class="font_size_30">%</font></em>
+                            if (loanDetail.HikeRate != null)
+                            {
+                                <em class="jiaxi_noborder font_size_30 ">+<font>@(loanDetail.HikeRate)%</font></em>
+                            }
+                        }
+                        <p class="font_size_14 margin_top_20 gray">预期年化收益率</p>
+                    </li>
+                    <li>
+                        <em class="font_size_50">@(loanDetail.Period)</em>&nbsp;<text class="font_size_14 gray">个月</text>
+                        <p class="font_size_14 margin_top_20 gray">投资期限</p>
+                    </li>
+                    <!---------项目投资进度条 start----------------->
+                    <li>
+                        <p class="blue font_size_14">
+                            投资进度:<em>@(loanDetail.LoanSpeed)%</em>
+                        </p>
+                        <div style="height: 11px;"></div>
+                        <div class="zfct_progress" style="padding: 0px">
+                            <div class="progress_bar invest_progress_bar">
+                                <div class="pro-bar" style="width: 65%">
+                                    <div class="progress-bar-inner " style="background-color: #1a9bfc; width:@(loanDetail.LoanSpeed)%;" data-value="89" data-percentage-value="89">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 17px;"></div>
+                        <p class=" font_size_14">
+                            剩余可投:<em>@(loanDetail.SurplusMoney)元</em>
+                        </p>
+                    </li>
+                    <!---------项目投资进度条 end----------------->
+                    <div class="clear"></div>
+                </ul>
+                <div style="height: 35px;"></div>
+                <div style="border-bottom: 1px solid #f0f0f0"></div>
+                <div style="height: 35px;"></div>
+                <!-------------项目基本信息概述 start-------------->
+                <dl>
+                    <dd>
+                        <em class="gray1 margin_right_20">项目总额</em><em class="gray2">@(loanDetail.LoanMoney)元</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">项目类型</em><em class="gray2">@(loanDetail.ProductType)</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">还款方式</em><em class="gray2">@(loanDetail.RepaymentType)</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">投资单位</em><em class="gray2">@(loanDetail.MinInvestMoney)元/份</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">剩余份额</em><em class="gray2">@(surplusCount)份</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">起息日期</em><em class="gray2">满标日计息</em>
+                    </dd>
+                    <dd>
+                        <em class="gray1 margin_right_20">募集截止</em><em class="gray2">@(loanDetail.PublishDate.Substring(0, 10))</em>
+                    </dd>
+                    <dd>
+                        @if (loanDetail.LoanRiskType == "未限制" || string.IsNullOrEmpty(loanDetail.LoanRiskType))
+                        {
+                            <em class="gray1 margin_right_20">投资建议</em>
+                            <em class="gray2">无限制</em>
+                        }
+                        else
+                        {
+                            <em class="gray1 margin_right_20">投资建议</em>
+                            if (loanDetail.LoanRiskType == "激进型")
+                            {
+                                <em class="gray2">风险评测“@(loanDetail.LoanRiskType)”</em>
+                            }
+                            else
+                            {
+                                <em class="gray2">风险评测“@(loanDetail.LoanRiskType)”及以上</em>
+                            }
+
+                        }
+
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+                <!-------------项目基本信息概述 end-------------->
+                @if (loanDetail.LoanStateId != (int)ProjectStateEnum.Tender)
+                {
+                    <!------------标结束 标志 start------------------>
+                    <div class="position_end">
+                        <img src="~/images/ended_icon.png" />
+                    </div>
+                    <!------------标结束 标志 end------------------>
+                }
+                <div style="height: 25px;"></div>
+            </div>
+        </div>
+        <!----------------可投项目 strat------------------------->
+
+        @if (loanDetail.LoanType == (int)LoanType.NewHand && isLogin)//新手标&&已登录
+        {
+            if (canInvest)//可投新手标
+            {
+                if (loanDetail.LoanStateId == (int)ProjectStateEnum.Tender)//招标中
+                {
+                    //显示投资表单
+                    @Html.Partial("_PartialInvestForm")
+                }
+                else//满标
+                {
+                    //显示推荐标
+                    @Html.Partial("_PartialInvestRecomand")
+                }
+
+            }
+            else//不可投新手标
+            {
+                ViewBag.ShowInfo = "您已经不是新手啦!~";
+                //显示推荐标
+                @Html.Partial("_PartialInvestRecomand")
+            }
+        }
+        else//(新手标&&未登录)||其他标
+        {
+            //原来的代码
+            if (loanDetail.LoanStateId == (int)ProjectStateEnum.Tender)
+            {
+                @Html.Partial("_PartialInvestForm")
+                <!-----------------可投项目 end-------------------->
+            }
+            else
+            {
+                @Html.Partial("_PartialInvestRecomand")
+            }
+        }
+
+        <div class="clear"></div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="invest_detail_down">
+        <div class="invest_detail_tab">
+            <ul>
+                <li class="active">项目详情</li>
+                <li>还款计划</li>
+                <li>投资记录</li>
+                <li>贷后跟踪</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="invest_detail_tab_box">
+                <div class="project_details">
+                    <div id="financingInfo"></div>
+                </div>
+                <div class="repayment_plan_loan display-none">
+                    @if (loanDetail.LoanStateId == (int)ProjectStateEnum.Tender || loanDetail.LoanStateId == (int)ProjectStateEnum.StayTransfer || loanDetail.LoanStateId == (int)ProjectStateEnum.FullScalePending)
+                    {
+
+                        <img src="~/images/manbiao_icon.png" class="img-margin" />
+                        <div style="height:10px;"></div>
+                        <p class="text_align_center gray1 font_size_16">满标后自动生成，请稍等~</p>
+                    }
+                    else
+                    {
+                        var loanId = loanDetail.LoanId;
+                        Html.RenderPartial("_PartialRepaymentPlan", repaymentPlan);
+                    }
+                </div>
+                <div class="investment_record display-none">
+                    @Html.Partial("_PartialLoanInvester", invester)
+                </div>
+                <div class="repayment_trackingnew display_none">
+                    <div id="trackingInfo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:40px;"></div>
+
+<!--------------------红包蒙版  start----------------------->
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<div class="red_envelopes_box" style="display:none">
+    <div class="red_envelopes_header position-relative">
+        <p class="white text_align_center font_size_18" style="padding-top:8px">我的红包</p>
+        <span class="half_circle">
+            <img src="~/images/envelopes_icon.png" class="img-margin" />
+        </span>
+        <button class="close_windown"></button>
+    </div>
+    <div class="red_envelopes_content">
+        <div class="my_assets_tab_box my_assets_tab_box_signal">
+            <table border="0" cellspacing="0" cellpadding="0" id="dynamictablered">
+                <thead>
+                    <tr class="">
+                        <th class="width58px"></th>
+                        <th class="width110px">红包金额</th>
+                        <th class="width200px">红包名称</th>
+                        <th class="width150px">有效期</th>
+                        <th class="width280px">使用条件</th>
+                    </tr>
+                </thead>
+                <tbody id="redList"></tbody>
+            </table>
+        </div>
+        <div style="height:20px;"></div>
+        <div style="text-align:center;">
+            <button class="invest_list_button_gray" id="cancelRedPackage">
+                不使用红包
+            </button>
+            <button href="javascript:void(0);" id="confirmRedPackage" class="invest_list_button_red" style="background:#ec4961">
+                确认使用
+            </button>
+        </div>
+    </div>
+</div>
+<!--------------------红包蒙版  end-------------------------->
+<!---------------------尚未开户  strat----------------->
+<div class="openaccount display-none" id="openAccount">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="openAccountClose"></button>
+        <div style="height:60px;"></div>
+        <img src="~/images/noopenaccount_icon.png" class="img-margin" />
+        <div style="height:40px;"></div>
+        <p class="font_size_16 text_align_center">尚未开户，请前往账户开户！</p>
+        <div style="height:40px;"></div>
+        <div class="zfct_form_group">
+            <button class="open_account margin_left_20 margin_right_15" id="toOpenAccount" style="cursor: pointer">
+                去开户
+            </button>
+            <button class="cancel_account margin_right_20" id="openAccountCancel" style="cursor: pointer">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<!---------------------尚未开户  end-------------->
+<!----------------余额不足  start--------------------->
+<div class="nomomey display-none" id="lessMoeny">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="lessMoneyClose"></button>
+        <div style="height:50px;"></div>
+        <img src="~/images/insufficient_balance.png" class="img-margin" />
+        <div style="height:25px;"></div>
+        <p class="font_size_16 text_align_center">账户余额不足，请充值后进行投资！</p>
+        <div style="height:25px;"></div>
+        <div class="zfct_form_group">
+            <button class="open_account margin_left_20 margin_right_15" style="background: #ec4961; cursor: pointer;" id="toRecharge">
+                马上充值
+            </button>
+            <button class="cancel_account margin_right_20" id="rechargeCancel" style="cursor: pointer">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<!----------------余额不足  start--------------------->
+<!----------------风险友情提醒 start--------------------->
+<div class="risking_tips" id="risking_tips" style="display:none;">
+    <div class="risking_tips_title">
+        风险友情提醒
+    </div>
+    <div style="height:28px"></div>
+    <ul>
+        <li>该项目风险评估等级</li>
+        <li id="loanrisktypedesc">激进型,风险较高</li>
+        <li>您当前的风险评估等级</li>
+        <li id="investrisktypedesc">保守型,风险承受能力较低</li>
+        <div class="clear"></div>
+    </ul>
+    <p>
+        不建议您投资该项目！
+    </p>
+    <div style="height:15px;"></div>
+    <div class="risk_button">
+        <button type="button" onclick="$('#risking_tips').hide();">
+            让我想想
+        </button>
+        <button type="button" onclick="$('#risking_tips').data('ensure', true).hide(); $('#invest').trigger('click');">
+            继续投资
+        </button>
+    </div>
+</div>
+<!----------------风险友情提醒 end----------------------->
+<!-----------------loading   start----------------->
+<div class="spinner display-none" id="investLoading">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+<!-----------------loading   end----------------->
+<!----------------风险测评 start-------------------->
+<div class="riskingtest" id="riskingTest" style="display:none;">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" id="openRiskingtestClose"></button>
+        <div style="height:50px;"></div>
+        <img src="~/images/risking_icon.png" class="img-margin" />
+        <div style="height:30px;"></div>
+        <p class="font_size_16 text_align_center">为了更好的为您提供投资理财服务，您还需要完成风险评测</p>
+        <div style="height:30px;"></div>
+        <div class="zfct_form_group">
+            <a href="/SpecialTopic/RiskingTest?redirctType=3&itemid=@loanDetail.LoanId" class="riskingtest_button" id="toRiskingTest">
+                去测评
+            </a>
+        </div>
+    </div>
+</div>
+<!----------------风险测评 end-------------------->
+<!-----------------投资提示  start----------------->
+<div id="invest_tips" class="invest_tips" style="display:none">
+    <div class="position-relative ">
+        <div class="invest_tips_header">
+            <p class="text_align_center white line_height_60 font_size_18 bold">投资提示</p>
+            <button class="close_windown1" id="closeInvestTips" style="top:27px"></button>
+        </div>
+        <div style="height:15px"></div>
+        <img src="~/images/bohai/invest_xiangqing_icon.png" class="img-margin" />
+        <div style="height:20px"></div>
+        <p class="text_align_center" style="width:370px; margin:0 auto">
+            为了您的资金安全及更好的服务体验，您需要完成以下步骤才能继续投资噢！
+        </p>
+        <dl class="invest_dl">
+            <dd>
+                <span class="float_left">
+                    1.实名认证
+                </span>
+                <span class="float_right">
+                    @if (userState.JieSuan == "1")
+                    {
+                        <i class="fa fa-check-circle padding_right_10 " aria-hidden="true" style="color: #15c600; font-size: 16px"></i>@("已认证")
+                    }
+                    else
+                    {
+                        <a href="/myaccount/openAccountInfo" class="blue">
+                            前往绑定
+                        </a>
+                    }
+
+                </span>
+            </dd>
+            <dd>
+                <span class="float_left">
+                    2.绑定银行卡
+                </span>
+                <span class="float_right">
+                    @if (userState.BoHai == "1")
+                    {
+                        <i class="fa fa-check-circle padding_right_10 " aria-hidden="true" style="color: #15c600; font-size: 16px"></i>
+                        @("已认证")
+                    }
+                    else
+                    {
+                        <a href="/myaccount/bankcardmanage" class="blue">
+                            前往绑定
+                        </a>
+                    }
+
+                </span>
+            </dd>
+            <dd>
+                <span class="float_left">
+                    3.授权金额
+                </span>
+                <span class="float_right">
+                    @if (userState.Auth == "1")
+                    {
+                        <i class="fa fa-check-circle padding_right_10 " aria-hidden="true" style="color: #15c600; font-size: 16px"></i> @("已认证")
+                        <!----------授权额度不足的请款 start---------->
+                        <a href="/MyAccount/BankCardManageThird" class="red1" id="authMoney" hidden="hidden">授权额度不足，请提高授权额度 ></a>
+                        <!----------授权额度不足的请款 end---------->
+                        <input type="hidden" id="hidMoney" value="@(userState.AuthMoney)"/>
+                    } 
+                    else
+                    {
+                        <a href="/MyAccount/BankCardManageThird" class="blue">
+                            前往绑定
+                        </a>
+                    }
+
+                </span>
+            </dd>
+            <dd>
+                <span class="float_left">
+                    4.风险测评
+                </span>
+                <span class="float_right">
+                    @if (userState.Risk == "1")
+                    {
+                        <i class="fa fa-check-circle padding_right_10 " aria-hidden="true" style="color: #15c600; font-size: 16px"></i> @("已认证")
+                    }
+                    else
+                    {
+                        @*@(userState.JieSuan=="1"?"/SpecialTopic/RiskingTest?redirctType=3&itemid"+loanDetail.LoanId:"/myaccount/openAccountInfo")*@
+                        <a href='/SpecialTopic/RiskingTest?redirctType=3&itemid=@loanDetail.LoanId' class="blue" id="bindRisk">
+                            前往测评
+                        </a>
+                    }
+                </span>
+            </dd>
+        </dl>
+    </div>
+</div>
+<!-----------------投资提示   end----------------->
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script src="~/js/jquery.hiSlider.min.js"></script>
+<script>
+
+    function OpenWindow(query, w, h, scroll) {
+        var l = (screen.width - w) / 2;
+        var t = (screen.height - h) / 2;
+
+        winprops = 'resizable=1, height=' + h + ',width=' + w + ',top=' + t + ',left=' + l + 'w';
+        if (scroll) winprops += ',scrollbars=1';
+        var f = window.open(query, "_blank", winprops);
+    }
+</script>
+<script>
+    $("#closeInvestTips").click(function () {
+        $("#red_envelopes_mask").hide();
+        $("#invest_tips").hide();
+    })
+</script>
+
+<script>
+    var img_index = 0;
+    var img_src = "";
+    //自适应预览
+    function photoView(obj) {
+        if ($(obj).width() >= $(obj).height()) {
+            $(".photo-panel .photo-div .photo-img .photo-view-h").attr("class", "photo-view-w");
+            $(".photo-panel .photo-div .photo-img .photo-view-w img").attr("src", img_src);
+        } else {
+            $(".photo-panel .photo-div .photo-img .photo-view-w").attr("class", "photo-view-h");
+            $(".photo-panel .photo-div .photo-img .photo-view-h img").attr("src", img_src);
+        }
+        //此处写调试日志
+        console.log(img_index);
+
+    }
+    $(".risk_button button").eq(0).click(function () {
+        $("#red_envelopes_mask").hide();
+        $("#risking_tips").hide();
+    })
+</script>
+
+<script>
+    var loanId =@loanDetail.LoanId;
+    var loanRate = @loanDetail.YearRate;
+    var type = "@loanDetail.RepeymentTypeCode";
+    var deadLine = @loanDetail.Period;
+    var isLogin = "@isLogin";
+    var existLogin = "@existLogin";
+    var remainMoney = "@ViewBag.RemainMoney";
+    var redCount = "@redCount";
+    var minInvestMoney = "@loanDetail.MinInvestMoney";
+    var surplusLoan = "@loanDetail.SurplusMoney";
+
+</script>
+
+<script src="~/js/invests/investDetail.js?version=0.0.2.7"></script>
+<script src="~/js/Tools/zf.tools.js"></script>
+<script>
+    $(function () {
+        $('#trackingInfo').load("/MyInvest/_PartialLoanFlow", { loanId: loanId });
+        $("#financingInfo").load("/MyInvest/_PartialFinancingInformation", { loanId: loanId });
+
+        $('#bindRisk').click(function () {
+
+        });
+
+    })
+</script>

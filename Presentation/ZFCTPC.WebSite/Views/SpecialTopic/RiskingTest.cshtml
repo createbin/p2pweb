@@ -1,0 +1,130 @@
+﻿@model List<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RiskQuestionnaireModel>
+@{
+    ViewData["Title"] = "风险测评";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+
+    input#answer20 + label {
+        padding-right: 400px;
+    }
+
+    input#answer12 + label {
+        padding-right: 450px;
+    }
+
+    input#answer29 + label {
+        padding-right: 400px;
+    }
+</style>
+<script>
+    $(function () {
+
+    })
+</script>
+
+<div style="height:20px;"></div>
+<div class="risking_box">
+    <p class="text_align_center font_size_24">风险承受能力评测</p>
+    <div style="height:35px"></div>
+    <p>尊敬的中房君：</p>
+    <div style="height:25px"></div>
+    <p class="line_height_24">
+        耽误您几分钟时间，做一个风险评估，旨在了解您的可承受风险程度，以协助您选择更合适的理财产品，也方便您了解自己的风险承受能力，做出更合适的投资计划。中房创投承诺对您的个人信息做严格保密，请放心认真填写。
+    </p>
+    <div style="height:35px"></div>
+    <ul class="risking_box_ul">
+        @foreach (var item in Model)
+        {
+            <li>
+
+                <p>
+                    @item.Description
+                </p>
+                <div style="height:10px;"></div>
+                @foreach (var answer in item.Answer)
+                {
+                    <span>
+                        <input type="radio" id="answer@(answer.Aid)" name="test@(item.Qid)" value="@int.Parse(answer.Integral.ToString())" />
+                        <label for="answer@(answer.Aid)">@answer.Description</label>
+                    </span>
+                }
+            </li>
+
+        }
+    </ul>
+    <div style="height:30px;"></div>
+    <div class="text_align_center">
+        <button class="evaluation">
+            提交测评
+        </button>
+    </div>
+</div>
+
+<script>
+    //$(".evaluation").click(function () {
+
+    //    var totalvalue = 0;
+    //    for (var i = 1; i <= 10; ++i) {
+    //        var elem = $("input[name=test" + i + "]:checked");
+    //        var val = $("input[name=test" + i + "]:checked").val();
+    //        if (val == null) {
+    //            $("input[name=test" + i + "]").parent().siblings("p").css("background", "#ffebeb");
+    //            $("input[name=test" + i + "]").parent().siblings("p").append("<em>请选择</em>");
+    //            return false;
+
+    //        }
+    //        if (elem.length > 0) {
+    //            totalvalue += parseInt(elem.val());
+    //        }
+    //    }
+    //    alert(totalvalue);
+    //});
+    $(".evaluation").click(function () {
+        var totalvalue = 0;
+        var questionanswers = [];
+        var flag = true;
+        $('ul.risking_box_ul').find('li').each(function (i) {
+            var elem = $(this).find("input:radio:checked");
+            if (elem.length > 0) {
+                $(this).find("p").css("background", "none");
+                $(this).find("p").find("em").remove();
+                var aid = elem.attr('id').replace('answer', '');
+                var score = elem.val();
+                totalvalue += parseInt(score);
+                questionanswers.push({ 'Aid': aid, 'Score': score });
+            } else {
+                //alert('第' + ($(this).index() + 1) + '题没有选中');
+                $(this).find("p").css("background", "#ffebeb");
+                $(this).find("p").append("<em>请选择</em>");
+                //console.log($(this).find('p').html());
+                flag = false;
+                return false;
+            }
+        });
+        if (flag) {
+            $(".evaluation").attr('disabled', "true");
+            $.post("/MyAccount/PostQuestionScore", { score: totalvalue, answers: questionanswers}, function (data) {
+                $(".evaluation").removeAttr('disabled');
+                if (data.success) {
+                    location.href ="/SpecialTopic/RiskingTestResult?redirctType=@ViewBag.redirctType&itemid=@ViewBag.ItemId";
+                } else {
+                    layer.alert("提交失败,请稍后再试！");
+                }
+
+            });
+        }
+        else {
+            return false;
+        }
+
+    });
+</script>

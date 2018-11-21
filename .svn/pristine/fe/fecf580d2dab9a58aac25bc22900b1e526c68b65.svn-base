@@ -1,0 +1,327 @@
+/*合规进度  start*/
+.compliance_banner {
+    width: 100%;
+    height: 617px;
+    background: url(../images/compliance/comp_banner.jpg) center center no-repeat;
+}
+
+.compliance_box1 {
+    padding: 0px 25px;
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.compliance_left {
+    width: 535px;
+}
+
+    .compliance_left p {
+        line-height: 32px;
+        font-size: 16px;
+    }
+
+.compliance_right {
+    width: 500px;
+}
+
+.compliance_right_text {
+    width: 410px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.compliance_page {
+    width: 100%;
+    background: #F3FAFF;
+    padding: 70px 0px 100px 0px;
+}
+
+.compliance_progress1, .compliance_progress2, .compliance_progress3, .compliance_progress4 {
+    margin-bottom: 100px;
+}
+
+    .compliance_progress1 em:before {
+        content: "";
+        display: inline-block;
+        width: 35px;
+        height: 34px;
+        background: url(../images/compliance/progress_icon1.png) no-repeat;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .compliance_progress1 em {
+        margin-right: 100px;
+    }
+
+    .compliance_progress2 em:before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 36px;
+        background: url(../images/compliance/progress_icon2.png) no-repeat;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .compliance_progress3 em {
+        margin-right: 93px;
+    }
+
+        .compliance_progress3 em:before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 34px;
+            background: url(../images/compliance/progress_icon3.png) no-repeat;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+    .compliance_progress4 em {
+        margin-right: 45px;
+        width: 124px;
+        position: relative;
+        padding-left: 45px;
+    }
+
+        .compliance_progress4 em:before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 36px;
+            height: 32px;
+            background: url(../images/compliance/progress_icon4.png) no-repeat;
+            vertical-align: middle;
+            left: 0px;
+        }
+
+    .compliance_progress2 em {
+        margin-right: 88px;
+    }
+
+    .compliance_progress1 ul {
+        width: 711px;
+        height: 30px;
+        background: url(../images/compliance/progress_circle1.png) no-repeat;
+        float: left;
+        position: relative;
+    }
+
+    .compliance_progress2 ul {
+        width: 900px;
+        height: 30px;
+        background: url(../images/compliance/progress_circle2.png) no-repeat;
+        float: left;
+        position: relative;
+    }
+
+    .compliance_progress3 ul, .compliance_progress4 ul {
+        width: 544px;
+        height: 30px;
+        background: url(../images/compliance/progress_circle3.png) no-repeat;
+        float: left;
+        position: relative;
+    }
+
+.compliance_progress5 ul {
+    width: 900px;
+    height: 30px;
+    background: url(../images/compliance/progress_circle5.png) no-repeat;
+    float: left;
+    position: relative;
+}
+
+    .compliance_progress1 ul li:nth-of-type(1), .compliance_progress2 ul li:nth-of-type(1), .compliance_progress3 ul li:nth-of-type(1), .compliance_progress4 ul li:nth-of-type(1), .compliance_progress5 ul li:nth-of-type(1) {
+        position: absolute;
+        top: 35px;
+        left: -13px;
+    }
+
+    .compliance_progress1 ul li:nth-of-type(2), .compliance_progress3 ul li:nth-of-type(2), .compliance_progress5 ul li:nth-of-type(2) {
+        position: absolute;
+        top: 35px;
+        left: 156px;
+    }
+
+.compliance_progress4 ul li:nth-of-type(2) {
+    position: absolute;
+    top: 35px;
+    left: 128px;
+}
+
+.compliance_progress1 ul li:nth-of-type(3), .compliance_progress2 ul li:nth-of-type(3), .compliance_progress3 ul li:nth-of-type(3), .compliance_progress4 ul li:nth-of-type(3) {
+    position: absolute;
+    top: 35px;
+    left: 311px;
+}
+.compliance_progress5 ul li:nth-of-type(3) {
+    position: absolute;
+    top: 35px;
+    left: 326px;
+}
+.compliance_progress5 ul li:nth-of-type(4) {
+    position: absolute;
+    top: 35px;
+    left: 475px;
+}
+.compliance_progress4 ul li:nth-of-type(4) {
+    position: absolute;
+    top: 35px;
+    right: -72px;
+    width: 174px;
+    text-align: center;
+}
+
+.compliance_progress1 ul li:nth-of-type(4) {
+    position: absolute;
+    top: 35px;
+    left: 506px;
+}
+
+.compliance_progress3 ul li:nth-of-type(4) {
+    position: absolute;
+    top: 35px;
+    right: -17px;
+}
+
+.compliance_progress1 ul li:nth-of-type(5), .compliance_progress2 ul li:nth-of-type(6) {
+    position: absolute;
+    top: 35px;
+    right: -17px;
+}
+
+.compliance_progress2 ul li:nth-of-type(2) {
+    position: absolute;
+    top: 35px;
+    left: 105px;
+    width: 155px;
+}
+
+.compliance_progress2 ul li:nth-of-type(4) {
+    position: absolute;
+    top: 35px;
+    left: 495px;
+}
+
+.compliance_progress2 ul li:nth-of-type(5) {
+    position: absolute;
+    top: 35px;
+    right: 176px;
+}
+
+.compliance_progress5 ul li:nth-of-type(5) {
+    position: absolute;
+    top: 35px;
+    left: 680px;
+}
+
+.compliance_progress5 ul li:nth-of-type(6) {
+    position: absolute;
+    top: 35px;
+    right: -16px;
+}
+
+.compliance_progress5 em {
+    margin-right: 100px;
+}
+
+    .compliance_progress5 em:before {
+        content: "";
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        background: url(../images/compliance/progress_icon5.png) no-repeat;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+.compliance_result {
+    width: 1150px;
+    margin: 0 auto;
+}
+
+.compliance_result1_left {
+    width: 768px;
+}
+
+.compliance_result1_right {
+    width: 382px;
+    background: #A3C8C7;
+    height: 500px;
+}
+
+.compliance_result1_top {
+    background: #2E98FF;
+    height: 250px;
+}
+
+.compliance_result1_bottom_left {
+    width: 383px;
+    height: 250px;
+    background: #B688BC;
+}
+
+.compliance_result1_bottom_right {
+    width: 385px;
+    height: 250px;
+    background: #4F58A6;
+}
+
+.compliance_result1_content {
+    padding: 58px 40px;
+}
+
+    .compliance_result1_content p, .compliance_result2_content p {
+        line-height: 28px;
+    }
+
+.compliance_result2_content {
+    padding: 175px 35px;
+}
+
+.processing_icon {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 86px;
+    height: 85px;
+    background: url(../images/compliance/processing_icon.png) no-repeat !important;
+}
+
+.processing_icon {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 86px;
+    height: 85px;
+    background: url(../images/compliance/processing_icon.png) no-repeat !important;
+}
+
+.complete_icon {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 86px;
+    height: 85px;
+    background: url(../images/compliance/complete_icon.png) no-repeat;
+}
+
+.compliance_result2 .compliance_result2_left {
+    width: 33.333%;
+    height: 250px;
+}
+
+.compliance_result2 > div:nth-of-type(1) {
+    background: #71C3CD;
+}
+
+.compliance_result2 > div:nth-of-type(2) {
+    background: #98D2E4;
+}
+
+.compliance_result2 > div:nth-of-type(3) {
+    background: #E55453;
+}
+
+/*合规进度  end*/

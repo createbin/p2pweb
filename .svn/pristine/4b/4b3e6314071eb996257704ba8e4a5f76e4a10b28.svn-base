@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewData["Title"] = "常见问题_帮助中心_中房创投";
+    ViewData["Description"] = "中房创投为广大投资者提供客户关心的常见问题，关于平台问题，投资指南，借款指南等金融常用名词解释";
+    ViewData["Keywords"] = "中房创投，常见问题，帮助中心，投资指南";
+
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<div style="height:20px"></div>
+<div class="zfct_helppage">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">新手指南</span>
+        </div>
+        <div class="helpcenter_dl">
+            <dl>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+                <dd></dd>
+            </dl>
+            <div class="helpcenter_ico1">
+                <a href="HelpCenterList?tab=register">
+                    <img src="~/images/helpcenter/icon_new1.png" />
+                    <p>注册</p>
+                </a>
+               
+            </div>
+            <div class="helpcenter_ico2">
+                <a href="HelpCenterList?tab=account">
+                    <img src="~/images/helpcenter/icon_new2.png" />
+                    <p>开户</p>
+                </a>
+                
+            </div>
+            <div class="helpcenter_ico3">
+                <a href="HelpCenterList?tab=recharge">
+                    <img src="~/images/helpcenter/icon_new3.png" />
+                    <p>充值</p>
+                </a>
+               
+            </div>
+            <div class="helpcenter_ico4">
+                <a href="HelpCenterList?tab=invest">
+                    <img src="~/images/helpcenter/icon_new4.png" />
+                    <p>投资</p>
+                </a>
+               
+            </div>
+            <div class="helpcenter_ico5">
+                <a href="HelpCenterList?tab=payment">
+                    <img src="~/images/helpcenter/icon_new5.png" />
+                    <p>回款</p>
+                </a>
+               
+            </div>
+        </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">自助服务</span>
+        </div>
+        <div class="helpcenter_ul">
+            <ul>
+                <li>
+                    <a href="HelpCenterList?tab=pwdAndSafe">
+                        <img src="~/images/helpcenter/icon_service1.png" />
+                        <p class="text_align_center margin_top_20 font_size_16">找回登录密码</p>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="HelpCenterList?tab=pwdAndSafe">
+                        <img src="~/images/helpcenter/icon_service2.png" />
+                        <p class="text_align_center margin_top_20 font_size_16">更换银行卡</p>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="HelpCenterList?tab=pwdAndSafe">
+                        <img src="~/images/helpcenter/icon_service3.png" />
+                        <p class="text_align_center margin_top_20 font_size_16">修改手机号</p>
+                    </a>
+                   
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">常见问题</span>
+        </div>
+        <div class="helpcenter_question">
+            <ul>
+                <li>
+                    <p class="help_graybg">新手指南</p>
+                    <p class="margin_top_15 margin_left_20"><a href="HelpCenterList?tab=pwdAndSafe">安全保障</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="HelpCenterList?tab=fee">收费标准</a></p>
+                </li>
+                <li class="margin-right-none">
+                    <p class="help_graybg">新手指南</p>
+                    <p class="margin_top_15 margin_left_20"><a href="HelpCenterList?tab=register">注册</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="HelpCenterList?tab=login">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="HelpCenterList?tab=pwdAndSafe">密码设置</a></p>
+                </li>
+                <li>
+                    <p class="help_graybg">资金管理</p>
+                    <p class="margin_top_15 margin_left_20"><a href="HelpCenterList?tab=recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="HelpCenterList?tab=cash">提现</a></p>
+                </li>
+                <li class="margin-right-none">
+                    <p class="help_graybg">红包使用</p>
+                    <p class="margin_top_15 margin_left_20"><a href="HelpCenterList?tab=red">红包获取</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="HelpCenterList?tab=red">红包使用</a></p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">联系客服</span>
+        </div>
+        <div class="help_kefu">
+            <ul>
+                <li>
+                    <img src="~/images/erweima.jpg" />
+                    <p style="display:inline-block; vertical-align:30px; line-height:35px;">
+                        <em>微信客服</em><br />
+                        <em>扫码关注"中房创投"</em>
+                    </p>
+                </li>
+                <li>
+                    <div style="height:25px;"></div>
+                    <p><img src="~/images/helpcenter/help_iphone.png" /><em class="margin_left_15" style="vertical-align:5px;">400-025-1002</em></p>
+                    <p class="margin_left_40 margin_top_15">周一至周五(9:00-17:30)</p>
+                </li>
+                <li>
+                    <div style="height:25px;"></div>
+                    <p><img src="~/images/helpcenter/help_kefu.png" /><a href="javascript:void(0);" onclick="javascript:OpenWindow('http://chat.looyuoms.com/chat/chat/p.do?c=10038991&f=10057720&g=10060121&refer=', 800, 600, true) "><em class="margin_left_15 border_blue" style="vertical-align:5px">在线客服</em></a></p>
+                    <p class="margin_left_40 margin_top_15">点击在线客服按钮与客服进行即时<br />在线沟通</p>
+                </li>
+                <li class="margin-right-none">
+                    <div style="height:25px;"></div>
+                    <p><img src="~/images/helpcenter/help_mail.png" /><em class="margin_left_15 " style="vertical-align:5px">客服邮箱</em></p>
+                    <p class="margin_left_40 margin_top_15">zfctkf@chinazfct.com</p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div style="height:20px;"></div>
+<script>
+    function OpenWindow(query, w, h, scroll) {
+        var l = (screen.width - w) / 2;
+        var t = (screen.height - h) / 2;
+        winprops = 'resizable=1, height=' + h + ',width=' + w + ',top=' + t + ',left=' + l + 'w';
+        if (scroll) winprops += ',scrollbars=1';
+        var f = window.open(query, "_blank", winprops);
+    }
+</script>

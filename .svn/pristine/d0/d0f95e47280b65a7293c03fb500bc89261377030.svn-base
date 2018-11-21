@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewData["Title"] = "渤海存管安全模式在升级";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="bohai_content">
+    <div class="bohai_banner">
+
+    </div>
+    <div style="height:60px;"></div>
+    <div class="bohai_box1">
+        <img src="~/images/activity/bohai/bohai_title1.png"  class="img-margin"/>
+        <div style="height:75px;"></div>
+        <dl>
+            <dd>
+                <div style="height:50px;"></div>
+                <p class="text_align_center font_size_20 bold">
+                    1. 存管属地化
+                </p>
+                <div style="height:45px;"></div>
+                <p class="font_size_14 gray padding_left_25 padding_right_25">
+                    为了最大程度保障客户的资金安全，同时响应政府号召，中房创投选择在南京设有分行的渤海银行作为存管银行。属地化的银行存管，可以提供更好的数据审核，信息披露，政府监管，为客户提供更安全的投资服务。
+                </p>
+            </dd>
+            <dd class="margin_right_none">
+                <div style="height:50px;"></div>
+                <p class="text_align_center font_size_20 bold">
+                    2. 系统直连对接
+                </p>
+                <div style="height:45px;"></div>
+                <p class="font_size_14 gray padding_left_25 padding_right_25">
+                    中房创投在与渤海银行进行存管对接的方案中，选择了系统直连的对接方式，这样可以避免通过第三方周转带来各种交易风险，同时也为用户提供了更好的投资体验。
+                </p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+       
+    </div>
+    <div style="height:100px;"></div>
+    <div class="bohai_box2">
+        <img src="~/images/activity/bohai/bohai_title2.png" class="img-margin" />
+        <div style="height:75px;"></div>
+        <dl>
+            <dd>
+                <div style="height:80px;"></div>
+                <img src="~/images/activity/bohai/icon_user.png" class="img-margin" />
+                <div style="height:60px;"></div>
+                <p class="text_align_center font_size_20 bold">
+                    账户独立，资金隔离
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_14 gray padding_left_25 padding_right_25">
+                    不同的借款人、投资人资金账户全独立，并且与企业账户分离，实现资金的真正隔离。
+                </p>
+            </dd>
+            <dd>
+                <div style="height:80px;"></div>
+                <img src="~/images/activity/bohai/icon_safe.png" class="img-margin" />
+                <div style="height:60px;"></div>
+                <p class="text_align_center font_size_20 bold">
+                    交易安全，全面监管
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_14 gray padding_left_25 padding_right_25">
+                    资金的操作环节都在银行端处理，平台不碰触用户的任何资金；同时银行也会对资金账户进行全方位的监督和管理。
+                </p>
+            </dd>
+            <dd class="margin_right_none">
+                <div style="height:80px;"></div>
+                <img src="~/images/activity/bohai/icon_hegui.png" class="img-margin" />
+                <div style="height:60px;"></div>
+                <p class="text_align_center font_size_20 bold">
+                    拥抱合规，又进一步
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_14 gray padding_left_25 padding_right_25">
+                    响应政府号召，积极拥抱合规政策，杜绝资金池、资金挪用、卷钱跑路等风险，享受高收益的投资回报，也拥有一份舒心的理财经历。
+                </p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div style="height:100px;"></div>
+    <div class="bohai_box3">
+        <img src="~/images/activity/bohai/bohai_title3.png" class="img-margin" />
+        <div style="height:75px;"></div>
+        <img src="~/images/activity/bohai/moneyzs.png" class="img-margin" />
+    </div>
+    <div class="bohai_box4">
+        <div class="bohai_img"></div>
+        <div style="height:30px;"></div>
+        <img src="~/images/activity/bohai/bohai_title4.png" class="img-margin" />
+        <div style="height:80px;"></div>
+        <div class="bohai_box4_content">
+            <div style="height:60px;"></div>
+            <ul>
+                <li>
+                    <img src="~/images/activity/bohai/logo_zfctb.png" class="img-margin" />
+                </li>
+                <li>
+                    <div style="height:10px;"></div>
+                    <img src="~/images/activity/bohai/logo_bhb.png" class="img-margin" />
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <div style="height:20px;"></div>
+            <div class="bohai_kuang">
+                <ul>
+                    <li class="float_left bohai_kuangli1">
+                        <div style="height:70px;"></div>
+                        <p>
+                            国资委旗下/大型央企/国企控股
+                        </p>
+                        <p>
+                            合规/透明/公平/公正/安全
+                        </p>
+                        <p>
+                            可持续发展/稳健运营/全面风控
+                        </p>
+                        <p>
+                            平台完善/资产优良/口碑好
+                        </p>
+                        <p>
+                            收益高/逾期率低/复投率高
+                        </p>
+                    </li>
+                    <li class="float_right bohai_kuangli2">
+                        <div style="height:40px;"></div>
+                        <p>
+                            唯一一家全国性股份制商业银行
+                        </p>
+                        <p>
+                            全球排名第200位/亚洲排名第50位
+                        </p>
+                        <p>
+                            中国排名第28位/行业公信力高
+                        </p>
+                        <p>
+                            AAA信用评级/最高级别信用评级
+                        </p>
+                        <p>
+                            符合政策规定/权威/安全/合规
+                        </p>
+                        <p>
+                            资金雄厚/透明/专业/稳健发展/业绩突出
+                        </p>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+               
+            </div>          
+            <div style="height:50px;"></div>
+        </div>
+        <div style="height:80px;"></div>
+        <p class="text_align_center font_size_16 white" style="opacity:0.6">
+            如有疑问请联系在线客服或者拨打客服热线 400-025-1002
+        </p>
+       
+        <div style="height:80px"></div>
+    </div>
+   
+    
+</div>
+

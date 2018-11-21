@@ -1,0 +1,86 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@{
+    ViewData["Title"] = "第三方账户开户";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    var baseInfo = ViewBag.UserBase as RUserThirdPartInfo;
+}
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(6);
+
+    })
+</script>
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">实名认证</span>
+        </div>
+        <div class="my_assets_tab">
+            <div style="height:10px"></div>
+            <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+            <div style="height:10px"></div>
+            <div id="openAccountInfo" style="display: @(baseInfo.OnceJieSuan=="0"?"block":"none")">
+                @Html.Partial("_PartialOpenAccount",baseInfo)
+            </div>
+            <div id="openAccountInfoed" style="display: @(baseInfo.OnceJieSuan=="1"?"block":"none")">
+                @Html.Partial("_PartialOpenAccounted",baseInfo)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    $("#kaihu_tips").mouseover(function () {
+        var tip = $('#errorTip').val();
+        layer.tips(tip, this, { tips: [2, '#ec4961'] });
+    })
+</script>
+
+<script>
+
+    $(function() {
+        $('#openJsAccount').click(function () {
+             var name = $('#userName').val();
+            var idCard = $('#userCard').val();
+            if (name == "" || name == undefined || idCard == "" || idCard == undefined) {
+                alert("请填写姓名或身份证信息");
+                return false;
+            }else {
+                $.ajax({
+                    url: "/MyAccount/OpenAccount",
+                    data: { "name": name, "idCard": idCard },
+                    type: 'POST',
+                    success: function(data) {
+                        layer.confirm(data.msg, {
+                            icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                                layer.close(index);
+                                location.reload();
+                            }
+                        }, function (index) {
+                            layer.close(index);
+                            location.reload();
+                        });
+                    }
+                });
+            }
+
+         });
+        
+        $('#retry').click(function() {
+            $('#openAccountInfoed').hide();
+            $('#openAccountInfo').show();
+        });
+
+    });
+</script>

@@ -1,0 +1,151 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RRepayDetail
+@{ 
+    ViewData["Title"] = "立即还款";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(2);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">立即还款</span>
+        </div>
+        <div class="my_assets_tab" style="margin-left:50px;">           
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14 font_size_15 width100">还款项目：</label>
+                <label class="margin_left_15 gray1">@Model.LoanName</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">期数：</label>
+                <label class="margin_left_15 gray1">@(Model.Period)期</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">还款日期：</label>
+                <label class="margin_left_15 gray1">@Model.RepayDate.ToString("yyyy-MM-dd")</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">应还本金：</label>
+                <label class="margin_left_15 gray1">@string.Format("{0:C}",Model.Principal)</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">应还利息：</label>
+                <label class="margin_left_15 gray1">@string.Format("{0:C}", Model.Interest)</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">应还罚金：</label>
+                <label class="margin_left_15 gray1">@string.Format("{0:C}", Model.LateFee)</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">应还服务费：</label>
+                <label class="margin_left_15 gray1">@string.Format("{0:C}", Model.ServiceFee)</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14 font_size_15 width100">还款总额：</label>
+                <label class="margin_left_15 gray1">@string.Format("{0:C}", Model.CurrenyWaitPayMoney)</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">是否还清：</label>
+                <label class="margin_left_15  red">@Model.IsClear</label>
+            </div>
+            <div class="zfct_form_group" style="margin-bottom:20px">
+                <label class="font_size_14  width100">验证码：</label>
+                <input id="vercode" placeholder="请输入验证码" type="text"  class="zfct_input_text2"/>
+                <a href="#" class="sendsms" onclick="Sendsms(this)">获取验证码</a>
+            </div>
+            <div class="zfct_form_group">
+                <a href="javascript:;" onclick="RePay(@Model.id)" class="repayment_button">确认还款</a>
+                <a href="/MyAccount/MyRepaymentPlan" class="repayment_button">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var wait = 120;
+    var ishandle = false;
+    function time(o) {
+        if (wait == 0) {
+            wait = 120;
+            $(o).removeAttr("disabled");
+            $(o).html("获取验证码");
+        } else {
+            wait--;
+            $(o).attr("disabled", true);
+            $(o).html("重新发送(" + wait + ")");
+            timeout=setTimeout(function () {time(o)},1000)
+        }
+    }
+
+    function Sendsms(o) {
+        if (wait == 120) { 
+            time(o);
+            $.post("/MyAccount/SendMsg", function (result) {
+                if (!result.success) {
+                    wait = 0;
+                } else { 
+                    $(o).data("success",true);
+                }
+            });
+        }
+    }
+
+    function RePay(id) {
+        var vercode = $("#vercode").val();
+        if (!$(".sendsms").data("success")) {
+            layer.alert("请发送验证码!");
+        } else if (vercode == "") {
+            layer.alert("请输入验证码!");
+        } else {
+            if (ishandle) {
+                layer.alert("还款处理中......");
+            } else {
+                ishandle = true;
+                var index = layer.load(0, { shade: true, shade: 0.3 });
+                $.post("/MyAccount/RepayNow", { id: id, VerCode: vercode }, function (result) {
+                    ishandle = false;
+                    layer.close(index);
+                    if (result.success) {
+                        layer.confirm(result.msg, {
+                            icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                                location.href = "/MyAccount/MyRepaymentPlan";
+                            }
+                        }, function (index) {
+                            location.href = "/MyAccount/MyRepaymentPlan";
+                        });
+                    } else {
+                        if (result.code == 248) {
+                            layer.confirm("此项目为汇付平台借款，是否前往汇付平台还款？", {
+                                icon: 3, title: '提示', btn: ['确定','取消'], cancel: function (index) {
+                                    location.href = "/MyAccount/MyRepaymentPlan";
+                                }
+                            }, function (index) {
+                                location.href = "/MyAccount/MyRepaymentPlan";
+                                }, function (index) {
+                                    location.href = "/MyAccount/MyRepaymentPlan";
+                                });
+                        } else { 
+                            layer.alert(result.msg);
+                        }
+ 
+                    }
+                });
+            }
+
+        }
+    }
+</script>
+
+  
+

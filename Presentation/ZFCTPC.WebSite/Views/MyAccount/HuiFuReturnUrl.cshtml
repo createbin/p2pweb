@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "";
+    ViewData["Title"] = "个人账户";
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/layer/layer.js"></script>
+<script>
+    layer.confirm('@(ViewBag.msg)', {
+        icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+            window.close();
+        }
+    }, function (index) {
+       window.close();
+    });
+</script>

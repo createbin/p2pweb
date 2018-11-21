@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "中房创投三重好礼";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+
+<div class="triplegift_box">
+    <div style="height:40px;"></div>
+    <img src="~/images/activity/triplegift/triplegift_banner.png" class="img-margin" />
+    <div style="height:30px;"></div>
+    <div class="triplegift_jiaxi">
+        <ul>
+            <li>
+                一月标加息2%
+            </li>
+            <li>
+                即：5.6%+2%=7.6%
+            </li>
+            <li>
+                三月标加息2.2%
+            </li>
+            <li>
+                即：6.8%+2.2%=9%
+            </li>
+            <li>
+                六月标加息1.6%
+            </li>
+            <li>
+                即：8.2%+1.6%=9.8%
+            </li>
+            <li>
+                十二月标加息1.4%
+            </li>
+            <li>
+                即：9%+1.4%=10.4%
+            </li>
+        </ul>
+    </div>
+    <div style="height:50px;"></div>
+    <a href="/myinvest/recommendedlist" class="triple_link">
+          立即投资
+    </a>
+    <div style="height:70px;"></div>
+    <div class="triplegift_jiaxi">
+        <div style="height:20px;"></div>
+        <p class="text_align_center font_size_30 font-weight" style="color:#cc0000;">
+            活动规则
+        </p>
+        <div style="height:45px;"></div>
+        
+        <p class="rule_p">
+            1. 本次活动时间：2018年2月8日00:00:00--2018年2月28日23:59:59；
+        </p>
+        <p class="rule_p">
+            2. 平台债权转让标不参与此次活动；
+        </p>
+        <p class="rule_p">
+            3. 本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:100px;"></div>
+</div>
+

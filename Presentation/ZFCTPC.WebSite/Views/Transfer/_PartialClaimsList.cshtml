@@ -1,0 +1,66 @@
+﻿@using ZFCTPC.Core.Enums
+@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.Transfers
+@model ZFCTPC.Data.ApiModelReturn.ReturnPageData<ZFCTPC.Data.ApiModelReturn.Transfers.RTansferAbstract>
+
+@if (Model != null && Model.PagingData.Count() > 0)
+{
+    <input type="hidden" id="total" value="@ViewBag.Total"/>
+    foreach (var transfer in Model.PagingData)
+    {
+        var canInvet = transfer.TransferStateId == (int) ProjectStateEnum.HasThrough ? "1" : "0";
+        <div class="@(canInvet == "1" ? "claims_list_box" : "claims_list_box1")" onclick="toDetail(@transfer.TransferId)" style="cursor: pointer">
+            @if (canInvet == "0")
+            {
+                <div class="recommend_list_box_recharge">
+
+                </div>
+            }
+            <div class="claims_list_box_head">
+                <p class="font_size_16 blue ">
+                    @transfer.LoanName
+                </p>
+            </div>
+            <div style="height: 34px"></div>
+            <ul>
+                <li style="width: 280px">
+                    <p class="roboto red"><em class="font_size_30">@(transfer.YearRate)%</em>
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_10">预期年化收益率</p>
+                </li>
+                <li style="width: 265px">
+                    <p class="roboto font_size_24"><em>@transfer.RemainDay</em>天
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_15">剩余天数</p>
+                </li>
+                <li style="width: 285px">
+                    <p class="roboto font_size_14"><em>@transfer.SurplusMoney</em>元
+                    </p>
+                    <p class="gray1 font_size_12 margin_top_15">转让金额</p>
+                </li>
+                <li style="width: 180px">
+                    <p class="roboto font_size_14">@transfer.NextPayDay</p>
+                    <p class="gray1 font_size_12 margin_top_15">下一个回款日</p>
+                </li>
+                <li class="border-right-none">
+                    <button class="invest_now @(canInvet == "1" ? "recommend_button_invest" : "recommend_button_recharge")" data-hello="@(transfer.TransferStateId)" style="cursor: pointer">
+                        @transfer.TransferState
+                    </button>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    }
+}
+else
+{   <div style="height: 50px"></div>
+    <img src="~/images/nozhaiquan.png" class="img-margin" />
+   
+}
+
+
+<script>
+    var toDetail = function (transferId) {
+        location.href = "/transfer/transferDetail?transferId=" + transferId;
+    }
+</script>

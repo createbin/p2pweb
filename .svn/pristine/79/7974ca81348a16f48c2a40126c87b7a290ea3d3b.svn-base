@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFootE.cshtml";
+    ViewData["Title"] = "重置成功";
+}
+
+
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .right_suspension {
+        top: 60px !important;
+    }
+</style>
+
+<div class="zfct_register_box">
+    <div style="height:40px;"></div>
+    <div class="forgetpassword_box">
+        <p class="padding_left_65 font_size_18">重置密码</p>
+        <div style="height:50px;"></div>
+        <div class="forgetpassword_step">
+            <ul>
+                <li class="">
+                    <em class="forgetpassword_circle1">1</em><em class="gray1">验证身份</em>
+                </li>
+                <li>
+                    <em class="forgetpassword_circle1">2</em><em class="gray1">重置密码</em>
+                </li>
+                <li class="margin-right-none forget_border_bottom">
+                    <em class="forgetpassword_circle">3</em><em class="gray">重置成功</em>
+                </li>
+                <div class="clear"></div>
+            </ul>
+
+
+        </div>
+        <div style="height:50px;"></div>
+        <div class="">
+            <p class="text_align_center font_size_18">
+                <i class="icon iconfont green font_size_22">&#xe602;</i>
+                您的登录密码已设置成功！
+            </p>
+            <div style="height:50px;"></div>
+
+            <div class="zfct_form_group" style="text-align:center">
+                <button id="investBtn" class="zfct_login_button">
+                    立即投资
+                </button>
+            </div>
+        </div>
+    </div>
+    <div style="height:40px;"></div>
+</div>
+
+<script src="~/js/jquery.hiSlider.min.js">
+    
+</script>
+<script type="text/javascript">
+    $("#investBtn").click(function () {
+        console.log(1);
+        window.location.href = "/myInvest/recommendedlist";
+    });
+</script>
+
+
+

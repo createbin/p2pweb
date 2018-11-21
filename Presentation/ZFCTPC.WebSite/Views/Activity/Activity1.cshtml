@@ -1,0 +1,89 @@
+﻿@*@using Auto.Core
+@using Auto.Core.Infrastructure
+
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    //title
+    Html.AddTitleParts("新手专享488元现金红包_中房创投");
+    var userInfo = EngineContext.Current.Resolve<IWorkContext>();
+    var isLogin = userInfo.CstUserInfo == null;
+}*@
+
+
+
+@{
+    ViewBag.Title = "新手专享488元现金红包_中房创投";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="activitypx-banner">
+    <img src="~/images/activity/sendcash/send_cash_banner_01.jpg" class="img-responsive" />
+    <img src="~/images/activity/sendcash/send_cash_banner_02.jpg" class="img-responsive" />
+    <img src="~/images/activity/sendcash/send_cash_banner_03.jpg" class="img-responsive" />
+    <img src="~/images/activity/sendcash/send_cash_banner_04.jpg" class="img-responsive" />
+</div>
+<div style="height:45px;"></div>
+<div class="activitypx-content font_22 text_center">
+    <p class="">活动期间注册的用户</p>
+    <p>在&nbsp;&nbsp;<em class="red font_32">30天内</em>&nbsp;&nbsp;投资，可以获得最高&nbsp;<em class="red font_32">488元现金返利</em></p>
+    <div class="cash_box white">
+        <dl>
+            <dd class="text_center">
+                <div style="height:100px;"></div>
+                <p class="font_32"><em class="font_90 bold">28</em>元现金</p>
+                <div style="height:30px;"></div>
+                <p class="font_18 tongxinyuan">首次投资满5,000元</p>
+            </dd>
+            <dd class="text_center">
+                <div style="height:100px;"></div>
+                <p class="font_32 margin_bottom_0"><em class="font_90 bold">160</em>元现金</p>
+                <div style="height:20px;"></div>
+                <p class="font_18 tongxinyuan ">累计投资满30,000元</p>
+
+                <p class="font_16 text_center red1">(投满5000后，再追投2.5万元或一次性投资3万)</p>
+            </dd>
+            <dd class="text_center">
+                <div style="height:100px;"></div>
+                <p class="font_32 margin_bottom_0"><em class="font_90 bold">300</em>元现金</p>
+                <div style="height:20px;"></div>
+                <p class="font_18 tongxinyuan ">累计投资满50,000元</p>
+
+                <p class="font_16 text_center red1">(追投至5万元或一次性投资5万)</p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div style="height:40px"></div>
+    <div class="activity_rule  white">
+        <div style="height:65px"></div>
+        <p class="font_24">活动规则</p>
+        <div style="height:10px;"></div>
+        <p class="font_18 text_left padding_left190"><em class="cash_border_circle">1</em>三个红包可同时获得，总计可得488元</p>
+        <div style="height:10px"></div>
+        <p class="font_18 text_left padding_left190"><em class="cash_border_circle">2</em>此活动中所述金额不包含债权转让投资金额</p>
+        <div style="height:10px"></div>
+        <p class="font_18 text_left padding_left190"><em class="cash_border_circle">3</em>已通过其他渠道获得返利优惠的不可参与</p>
+        <div style="height:10px"></div>
+        <p class="font_18 text_left padding_left190"><em class="cash_border_circle">4</em>活动返现于满标后一个工作日内发放到账户余额，可投资或提现</p>
+    </div>
+    <div class="cash_footer position-relative">
+        <img src="~/images/activity/sendcash/bg_rules.png" class="img-responsive" />
+
+        <a class="cash_button" id="invest">
+        </a>
+    </div>
+</div>
+<script>
+    $(function() {
+        $('#invest').click(function() {
+            var isLogin = $('#isLogin').val();
+            if (isLogin === "0") {
+                location.href = "/myInvest/recommendedlist";
+            } else {
+                location.href = "/Customer/Register";
+            }
+        });
+    })
+</script>
+

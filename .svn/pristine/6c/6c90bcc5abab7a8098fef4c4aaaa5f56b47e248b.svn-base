@@ -1,0 +1,219 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Customer
+
+@{
+    ViewData["Title"] = "企业充值-投资户";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var companyInfo = ViewBag.CompanyInfo as RCompanyRealInfo;
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(6);
+    })
+</script>
+
+<div style="height:20px;"></div>
+@if (companyInfo == null)
+{
+    <p class="text_align_center font_size_16 bold white_bg">@("请重新登陆企业帐号")</p>
+}
+else
+{
+<div class="zfct_investmentlist float_right">
+    @if (companyInfo.JieSuan == "0" || companyInfo.BoHai == "0")
+    {
+        <!---------没有开通渤海银行存管 状态 start------------->
+        <div>
+                <div class="my_assets">
+                    <div class="my_assets_title">
+                        <span class="font_size_16 font-weight">充值</span>
+                    </div>
+                </div>
+                <div class="my_collect_page">
+                    <div style="height:30px;"></div>
+                    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+                    <div>
+                        <p class="margin_top_25 text_align_center bold font_size_18">
+                            您需要开通渤海存管账户，才能进行充值噢
+                        </p>
+                        <div style="height:40px;"></div>
+                        <a href="javascript:void(0);" class="gotoshouquan" id="openAccount" style="background:#1b9bfc">
+                            前往开通渤海银行存管账户
+                        </a>
+                        <div style="height:30px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        <!---------没有开通渤海银行存管 状态 end------------->
+    }
+    else
+    {
+        <!---------已开通渤海银行存管状态 start-------------->
+        <div>
+            <div class="my_assets">
+                <div class="my_assets_title">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                我的投资户
+                            </a>
+                        </li>
+                        <li>
+                            <a href="EnterpriseFinancing">
+                                我的融资户
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="EnterpriseOperationRecord">
+                                充值提现记录
+                            </a>
+
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+            </div>
+            <div class="my_collect_page">
+                <div class="my_assets_tab1">
+                    <div style="height: 30px;"></div>
+                    <div class="recharge_box">
+                        <p>
+                            温馨提示：
+                        </p>
+                        <p>
+                            1.投资户为中房创投平台用户在渤海银行开设的用于投资的账户，同样用于向融资户转账进行后续的还款操作。
+                        </p>
+                        <p>
+                            2.如充值过程中遇到任何问题，请联系在线客服或拨打客服热线400-025-1002。
+                        </p>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <div class="recharge_box1">
+                        <p>
+                            <em>投资户余额(元)</em>
+                            <em class="red1 font_size_40 margin_left_25" id="investorBalance">0.00</em>
+                            <a class="blue font_size_13 margin_left_25" onclick="FinancingBalance(0);" style="cursor:pointer;">刷新</a>
+                        </p>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <div class="daihuankuan_box">
+                        <div class="daihuankuan_title">
+                            银行充值
+                        </div>
+                        <div class="enterprise_form" style="margin-left: 20px">
+                            <div style="height: 20px;"></div>
+                            <p>
+                                客户可直接通过银行账户向渤海银行资金存管电子账户转账。
+                            </p>
+                            <p class="margin_top_5">
+                                转账方式包括：银行柜台转账、网银转账、手机银行转账(不支持ATM转账)
+                            </p>
+                            <p class="margin_top_5">
+                                转账所需填写的信息如下：
+                            </p>
+                            <div style="height: 30px;"></div>
+                            <form>
+                                <div class="zfct_form_group">
+                                    <label>
+                                        收款人姓名
+                                    </label>
+                                    <em>
+                                        @(companyInfo.ChargeAccountName)
+                                    </em>
+                                </div>
+                                <div class="zfct_form_group margin_top_15">
+                                    <label>
+                                        收款账号
+                                    </label>
+                                    <em>
+                                        @(companyInfo.ChargeAccountNo)
+                                    </em>
+                                    <a class="blue margin_left_20 margin_top_15 font_12" id="cardClip" data-clipboard-text="@(companyInfo.ChargeAccountNo)" style="cursor:pointer;">
+                                        复制卡号
+                                    </a>
+                                </div>
+                                <div class="zfct_form_group margin_top_15">
+                                    <label>
+                                        开户行
+                                    </label>
+                                    <em>
+                                        渤海银行
+                                    </em>
+                                </div>
+                                <div class="zfct_form_group margin_top_15">
+                                    <label>
+                                        开户地
+                                    </label>
+                                    <em>
+                                        江苏省南京市
+                                    </em>
+                                </div>
+                                <div class="zfct_form_group margin_top_15">
+                                    <label>
+                                        开户网点
+                                    </label>
+                                    <em>
+                                        江苏省南京市
+                                    </em>
+                                </div>
+                            </form>
+                            <div style="height: 30px;"></div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <!---------已开通渤海银行存管状态 end-------------->
+    }
+
+</div>
+}
+
+<script type="text/javascript" src="~/js/clipboard.min.js"></script>
+<script>
+    var jiesuan = '@companyInfo.JieSuan';
+    var bohai = '@companyInfo.BoHai';
+    $('#openAccount').click(function() {
+        if (jiesuan== "0") {
+            location.href = "EnterpriseOpenAccount";
+            return;
+        }
+        if (bohai == "0") {
+            location.href = "EnterprisepBankDepository";
+            return;
+        }
+    })
+
+    $(function () {
+        var clipboard = new ClipboardJS('#cardClip');
+        clipboard.on('success', function (e) {
+            layer.alert("复制成功！")
+        });
+        clipboard.on('error', function (e) {
+            layer.alert("复制失败！请手动复制")
+        });  
+
+        $.post("/MyAccount/MyAccountBH", { userAttribute: 1 }, function (result) {
+            if (result.success) {
+                $("#investorBalance").html(result.accountMoney);
+            }
+        });
+    })
+
+    function FinancingBalance(userType) {
+        $.post("CompanyRechargeSyn", {"userType":userType}, function (result) {
+            if (result.success) {
+                $("#investorBalance").html(result.balance);
+            }
+        });
+    }
+</script>

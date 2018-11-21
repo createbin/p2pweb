@@ -1,0 +1,83 @@
+﻿
+@*@using Auto.Core.Domain.Business.ACT
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+    //title
+    Html.AddTitleParts("人脉变钱脉，轻松玩出钱");
+    var userId = ViewBag.UserId;
+}*@
+
+
+@{
+    ViewBag.Title = "人脉变钱脉，轻松玩出钱";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="~/css/activities/newyear.css?v=3.0" rel="stylesheet" />
+<div class="cash_back_body">
+    <div class="cash_back_banner">
+        <div class="cash_back_banner1"></div>
+        <div class="cash_back_banner2"></div>
+        <div class="cash_back_banner3"></div>
+        <div class="cash_back_banner4"></div>
+    </div>
+
+    <div class="cash_back_box1 position-relative">
+        <div class="activity_detail_title">
+            <img src="~/images/activity/cashback/activity_detail_title.png" />
+        </div>
+        <div style="height:60px"></div>
+        <div class="activity_detail_content">
+            <p class="font_22">
+                活动期内，注册用户推荐好友注册并投资，邀请人可获得被邀请人自12月起<em style="color:#ffe400">每笔</em>投资资金的<em style="color:#ffe400">0.6%现金返现和0.5%投资红包（投资红包仅限3月及以上标的使用，可抵扣0.5%，满标后退至账户余额），</em>邀请人数、投资金额不限，返利金额上不封顶！
+            </p>
+        </div>
+        <div style="height:50px;"></div>
+        <div class="activity_detail_example position-relative">
+            <span class="example_circle">
+                举例
+            </span>
+            <p class="font_22">
+                A君在活动期间内邀请：3位好友，好友们30天内累计投资金额20万，则奖励为<br /><em class="orange font_24">200000X0.6%=1200元现金<br />200000X0.5%=1000元投资红包</em>
+            </p>
+
+            <p class="font_22">
+                依此类推，多投多送，返现不封顶。
+            </p>
+        </div>
+    </div>
+    <div style="height:90px"></div>
+    <div class="cash_back_box2 position-relative">
+        <div class="invitation_mode_title">
+            <img src="~/images/activity/cashback/invitation_mode_title.png" />
+        </div>
+        <div style="height:60px"></div>
+        <div class="invitation_mode_content">
+            <p>
+                <img src="~/images/activity/cashback/step1.png" />
+            </p>
+            <p class="font_22">
+                登录中房创投官方平台(www.chinazfct.com)，进入<em class="orange">“我的账户”- “奖励管理”- “邀请奖励”</em>
+            </p>
+            <p>
+                <img src="~/images/activity/cashback/step2.png" />
+            </p>
+            <p class="font_22">
+                复制邀请链接（邀请码），通过QQ、微信等分享给您的好友；或好友注册时直接输入您的邀请码
+            </p>
+        </div>
+    </div>
+    <div style="height:80px"></div>
+    <div class="cash_back_box3">
+        <img src="~/images/activity/cashback/activity_rules_title.png" class="img-margin" />
+        <div style="height:40px"></div>
+        <p class="font_18"><em class="orange1 margin-right-15 font_26">1.</em>投资的标，满标后，三个工作日内发放到账户，奖励金额保留小数点后两位数，第三位四舍五入；</p>
+        <p class="font_18"><em class="orange1 margin-right-15 font_26">2.</em>此活动中所述金额不包含债权转让投资金额；仅限3月及以上标参与</p>
+        <p class="font_18"><em class="orange1 margin-right-15 font_26">3.</em>已通过其他渠道获得返利优惠的不可参与；</p>
+        <p class="font_18"><em class="orange1 margin-right-15 font_26">4.</em>所有推荐奖励以现金发放到账户余额，可投资或提现。</p>
+    </div>
+    <div style="height:80px"></div>
+    <a href="/MyAccount/InvitationToReward" class="getcode" id="getCode">
+    </a>
+    <div style="height:50px;"></div>
+</div>
+

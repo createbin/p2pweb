@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "备案信息";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(2);
+    })
+</script>
+
+<div style="height:20px;"></div>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_20 bold">备案信息</p>
+        <div style="height:40px;"></div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="table_border_right">电信业务经营许可证号</td>
+                <td class="table_border_right">申请中</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">资金存管银行</td>
+                <td class="table_border_right">
+                    已与渤海银行签定正式存管协议并内测上线
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">诚信网站认证</td>
+                <td class="table_border_right">
+                    <a id='___szfw_logo___' href='https://credit.szfw.org/CX20160322018215850113.html' target='_blank' class=""><img src='~/images/zizhi.png' border='0' alt="诚信网站认证" /></a>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">企业信誉认证</td>
+                <td class="table_border_right">
+                    <a class="" key="58c65897efbfb0254cf32a8e" logo_size="124x47" logo_type="business" href="http://www.anquan.org">
+
+                        <script src="https://static.anquan.org/static/outer/js/aq_auth.js"></script>
+                    </a>  
+                </td>
+            </tr>
+            @*<tr>
+                <td class="table_border_right">数据加密认证</td>
+                <td class="table_border_right">
+                    <a href="javascript:void(0)" class="">
+                        <script language="JavaScript" type="text/javascript" src="https://seal.wosign.com/tws.js"></script>
+                    </a>
+                </td>
+            </tr>*@
+          
+        </table>
+    </div>
+    <div style="height:50px;"></div>
+    <div class="business_box">
+        <p class="text_align_center font_size_20 bold">信息安全测评认证</p>
+        
+        <img src="~/images/public/informationsecurity.png" class="img-margin" />
+    </div>
+</div>
+

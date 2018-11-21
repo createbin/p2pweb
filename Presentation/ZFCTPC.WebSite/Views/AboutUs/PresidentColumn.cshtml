@@ -1,0 +1,107 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "总裁专栏_关于我们_中房创投";
+    ViewData["Description"] = "中房创投为用户提供平台新闻、总裁专栏、政策要闻等等最新消息介绍；中房创投,中房集团旗下,践行合规的互联网金融平台";
+    ViewData["Keywords"] = "总裁专栏,中房创投总裁专栏,中房创投新闻报道";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var leader = ViewBag.SystemNotice != null ? ViewBag.SystemNotice as List<NewsDetail> : null;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>
+@*<div style="border-top:1px solid #f0f0f0"></div>*@
+
+<div class="aboutus_nav">
+    <ul>
+        @*<li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li class=""><a href="/AboutUs/ContactUs">联系我们</a></li>*@
+        <li class=" border-left"><a href="/AboutUs/PlatformAnnouncement ">平台公告</a></li>
+        <li ><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px;"></div>
+<div class="aboutus_content">
+    <ul>
+        @if (leader != null)
+        {
+            for (int i = 0; i < leader.Count; i++)
+            {
+                <li class="">
+                    <a href="/AboutUs/PresidentColumnDetail?id=@leader.ElementAt(i).Id">
+                        <img src="@leader.ElementAt(i).ImageUrl" width="334" height="204"/>
+                        <div class="float_right aboutus_content_right position-relative">
+                            <h3 class="font_size_18 font-weight">@leader.ElementAt(i).Title</h3>
+                            <span class="short_botton_line"></span>
+                            <div style="height:25px;"></div>
+                            <p class="gray">
+                                @leader.ElementAt(i).Short
+                            </p>
+                            <div style="height:60px;"></div>
+                            <div class="gray1 font_size_12 ">
+                                <em>@leader.ElementAt(i).SkipUrl</em>
+                                <em class="float_right">@leader.ElementAt(i).CreateTime.ToString("yyyy-MM-dd")</em>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+   
+</div>
+
+<div style="height:50px;"></div>
+
+<div style="text-align:center">
+    <div class="pager_box">
+        <div id="pager" class="pager_div"></div><span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+    </div>
+</div>
+<div style="height:40px;"></div>
+<script>
+    $(".aboutus_content ul li").mouseover(function () {
+
+        $(this).siblings().removeClass("box-shadow");
+        $(this).addClass("box-shadow");
+
+    })
+    $(function () {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: @ViewBag.Count,
+            showData: @ViewBag.PageSize,
+            current:@ViewBag.CurrentPage,
+            coping: true,
+            prevContent:'<',
+            nextContent:'>'
+        });
+        function pageCallback(index,jq) {
+            location.href ="/AboutUs/PresidentColumn?p="+index.getCurrent()+"&ps="+@ViewBag.PageSize;
+        }
+    });
+</script>
+

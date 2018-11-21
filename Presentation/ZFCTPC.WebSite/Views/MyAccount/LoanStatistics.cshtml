@@ -1,0 +1,94 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RLoanAccountStatistics
+@{
+    ViewData["Title"] = "借款统计";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(3);
+    })
+</script>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">借款统计</span>
+        </div>
+
+        <div class="my_assets_tab">
+            <div class="loanStatistics">
+                <dl>
+                    <dd>
+                        <p class="font_size_16">已还本金</p>
+                        <p class=" margin_top_20 font_size_14">¥&nbsp;<em class="red font_size_24">@Model.RepayPrincipal</em>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_16">已还利息</p>
+                        <p class=" margin_top_20 font_size_14">¥&nbsp;<em class="red font_size_24">@Model.RepayRate</em>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_16">已还平台服务费</p>
+                        <p class=" margin_top_20 font_size_14">¥&nbsp;<em class="red font_size_24">@Model.RepayServiceFee</em>&nbsp;元</p>
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+            <div style="height:40px;"></div>
+            <div class="my_assets_tab_box my_assets_tab_box_signal">
+                <div class="my_assets_tab_box1">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:200px;">借款标题</th>
+                                <th>借款金额</th>
+                                <th>借款期限</th>
+                                <th>已还本息</th>
+                                <th>待还本息</th>
+                                <th>未还期数</th>
+                            </tr>
+                        </thead>
+                        <tbody id="LoanStatisticslist">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div style="text-align: center;margin-top:10px">
+                <div class="pager_box">
+                    <div id="pager" class="pager_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#LoanStatisticslist").load("/MyAccount/LoanStatisticsData", { Page: 1, PageSize: 5 }, function () {
+            $('#pager').pagination({
+                callback: pageCallback,
+                totalData: $("#TotalData").val(),
+                showData: 5,
+                coping: true,
+                prevContent: '<',
+                nextContent: '>'
+            });
+        });
+        function pageCallback(index, jq) {
+            initTable(index);
+        }
+        function initTable(index) {
+            $("#LoanStatisticslist").load("/MyAccount/LoanStatisticsData", { Page: index.getCurrent(), PageSize: 5 });
+        }
+    });
+
+</script>

@@ -1,0 +1,84 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.InvestModelReturns.TrackingDetails
+
+@if (Model != null&&Model.Trackings.Count>0)
+{
+    var trackings = Model.Trackings;
+
+    <dl id="accordion">
+        @foreach (var tracking in trackings)
+        {
+            <dd>
+                <div class="link">
+                    <em class="blue margin_right_10 font_size_18">■</em><em>@(tracking.TrackingDate)</em>
+                    <em class="dash_line"></em>
+                    <em class="">
+                        <i class="fa fa-chevron-circle-down jaintou" aria-hidden="true"></i>
+                    </em>
+                </div>
+                <div class="subtable">
+                    <table cellpadding="0" cellspacing="0">
+                        @foreach (var info in tracking.TrackInfos)
+                        {
+                            <tr>
+                                <td>
+                                    @(info.Order)
+                                </td>
+                                <td>
+                                    @(info.TrackTitle)
+                                </td>
+                                <td>
+                                    @(info.TrackDesc)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </dd>
+        }
+    </dl>
+
+}
+else
+{
+    //无还款追踪时
+    <img src="~/images/public/genzong_no.png" class="img-margin">
+    <div style="height:10px;"></div>
+    <p class="text_align_center gray1 font_size_16">无贷后跟踪</p>
+}
+
+<script>
+    $(function () {
+        var Accordion = function (el, multiple) {
+            this.el = el || {};
+            this.multiple = multiple || false;
+
+            // Variables privadas
+            var links = this.el.find('.link');
+            // Evento
+            links.on('click', { el: this.el, multiple: this.multiple }, this.dropdown)
+        }
+
+        Accordion.prototype.dropdown = function (e) {
+            var $el = e.data.el;
+            $this = $(this),
+                $next = $this.next();
+
+            $next.slideToggle();
+            $this.parent().toggleClass('open');
+
+            if (!e.data.multiple) {
+                $el.find('.subtable').not($next).slideUp().parent().removeClass('open');
+            };
+        }
+
+        var accordion = new Accordion($('#accordion'), false);
+    });
+</script>
+
+
+
+
+
+
+
+

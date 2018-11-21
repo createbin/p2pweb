@@ -1,0 +1,597 @@
+﻿@using System.Security.Claims
+@{
+    var user = "";
+    if(User.FindFirst(ClaimTypes.Name) != null)
+    {
+        user = User.FindFirst(ClaimTypes.Name).Value;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="webkit" name="renderer" />
+    <meta charset="utf-8" />
+    <meta name="Description" content="@ViewData["Description"]" />
+    <meta name="Keywords" content="@ViewData["Keywords"]" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="baidu-site-verification" content="eO0LginDl6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@ViewData["Title"]</title>
+
+     <link href="~/css/common/style.css" rel="stylesheet" />
+     <link href="~/css/index.css" rel="stylesheet" />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/common/common.js"></script>
+    <link href="~/js/Pager/pagination.css" rel="stylesheet" />
+    <script src="~/js/Pager/jquery.pagination.js"></script>
+    <script src="~/js/layer/layer.js"></script>
+</head>
+<body class="zfct_bg">
+<input type="hidden" id="returnUrl" value=""/>
+<!--------顶部 start----------------------->
+<div class="zfct_top_box">
+    <div class="zfct_top_page font_size_12 gray1">
+        <span class="position-relative">
+            <em>全国客服热线:&nbsp;&nbsp;<text>400-025-1002</text></em>
+            <em class="position-absolute em_border_right">
+
+            </em>
+            <em class="padding_left_20">工作日&nbsp;&nbsp;<text>9:00~17:30</text></em>
+        </span>
+        <span class="float_right">
+            <dl class="top_box_dl">
+                @if (!string.IsNullOrEmpty(user))
+                {
+                    <dd>您好<span>&#8194<a href="/MyAccount/Index" style="color:#fc673d">@user</a></span>，欢迎来到中房创投！</dd>
+                    <dd><a href="/Customer/LoginOut" class="red">退出登录</a></dd>
+                }
+                else
+                {
+                    <dd>您好，欢迎来到中房创投！<a href="/Customer/Login" class="blue">请登录</a></dd>
+                    @*<dd><a href="/Customer/Register" class="red">立即注册</a></dd>*@
+                }
+                @*<dd>企业客户</dd>*@
+                <a href="/SpecialTopic/Index" class="gray1">
+                    <dd class="iphone position-relative">
+                        手机客户端
+
+
+
+                        @*<div class="zfct_app display-none">
+                    <a href="">
+                        <i class="icon iconfont account_up1">&#xe60c;</i>
+                        <img src="~/images/app_erweima.jpg" width="100" height="100" />
+                    </a>
+
+                </div>*@
+                    </dd>
+                </a>
+                <dd class=""><a href="/HelpCenter/Index" class="gray1">帮助中心</a></dd>
+                <dd class="border-right-none"><a href="/Customer/EnterpriseLogin" class="gray1">企业通</a></dd>
+                <div class="clear"></div>
+            </dl>
+        </span>
+    </div>
+</div>
+<!--------顶部 end-------------------------->
+<!-----------------导航 start------------------------------->
+<div class="zfct_logo_box">
+    <div class="zfct_logo_nav">
+        <div class="zfct_logo float_left">
+            <div style="height: 18px"></div>
+            <a href="/home/">
+                <img src="~/images/zfct_logo.png"/>
+            </a>
+        </div>
+        <div class="zfct_nav float_right">
+            <dl>
+                <dd><a href="/home/">首页</a></dd>               
+                <dd><a href="/myinvest/recommendedlist">我要投资</a></dd>
+                <dd class="position-relative ">
+                    <a href="javascript:void(0)">信息披露</a>
+                    <i class="icon iconfont account_down">&#xe601;</i>                   
+                        <ul id="infopublic_down" class="my_account_down display-none">
+                            @*<i class="icon iconfont account_up">&#xe60c;</i>*@
+                            @*<li><a href="/Security/Index">安全保障</a></li>*@
+                            <li ><a href="/InfoPublic/CompanyInfo">关于我们</a></li>
+                            <li><a href="/InfoPublic/">运营统计</a></li>
+                            <li><a href="/InfoPublic/Security">安全保障</a></li>
+                            <li><a href="/InfoPublic/LegalCompliance">投资者教育</a></li>
+                            <li><a href="/InfoPublic/LetterCommitment">信披承诺书</a></li>
+                            <li class=""><a href="/AboutUs/PlatformAnnouncement">中房动态</a></li>
+                           
+                        </ul>                   
+                </dd>
+                <dd class="position-relative">
+                    @*<a href="" class="green">公益基金</a>
+                    <em class="fund_icon">
+                        </em>*@
+                 </dd>
+                  @*<dd><a href="/Security/Index">安全保障</a></dd>
+                  <dd><a href="/AboutUs/Index">关于我们</a></dd>*@
+                  <dd class="position-relative " >
+                      <a href="/MyAccount/Index">我的账户</a>
+                      <i class="icon iconfont account_down">&#xe601;</i>
+                      <ul id="my_account_down" class="my_account_down display-none">
+                          @*<i class="icon iconfont account_up">&#xe60c;</i>*@
+                          <li><a href="/MyAccount/MyInvestList">我的投资&nbsp;<em>(0)</em></a></li>
+                          <li style="display:none;"><a href="/MyAccount/MyLoan">我的借款&nbsp;<em>(0)</em></a></li>
+                          <li><a href="/MyAccount/ClaimsTransfer">我的债权&nbsp;<em>(0)</em></a></li>
+                          <li class=""><a href="/MyAccount/MyRedEnvelope">我的红包&nbsp;<em>(0)</em></a></li>
+                      </ul>
+                  </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!-----------------导航 end------------------------------->
+
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+
+<!----------------------登录 弹框  start------------------------------>
+<div class="login_box" style="display: none" id="loginBox">
+    <div class="position-relative text_align_center">
+        <p class="login_box_title blue text_align_center font_size_18" style="padding-top:15px">登录</p>
+        <button class="close_windown1" id="closeLoginBox"></button>
+        <div style="height:35px;"></div>
+        <div class="zfct_form_group">
+            <input type="text" id="usernameWindow" class="zfct_input_text"  name="username" placeholder="用户名/手机号" value="" style="height:40px; line-height:40px;" />
+        </div>
+        <div class="zfct_form_group">
+            <input type="password" id="passwordWindow" class="zfct_input_text" name="password" placeholder="密码" value="" style="height:40px; line-height:40px;" />
+        </div>
+        <div class="zfct_form_group display-none" hidden="" id="verifycodeboxwindow">
+            <input type="text" id="verifyCodewindow" class="zfct_input_text1" name="verifyCodewindow" placeholder="请输入验证码" value="" style=" width:270px; height:40px; line-height:40px;">
+            <img id="validCodeImageWindow" src="">
+        </div>
+        <div class="zfct_form_group text_align_left" style="margin-bottom:12px">
+            <em class="gray1 font_size_12 " style="margin-left:40px">还没有账号? <a href="/Customer/Register" class="red font_size_12">免费注册</a></em>
+            <em class="font_size_12 blue float_right " style="margin-right:40px;"><a href="/Customer/ForgetPassword">忘记密码?</a></em>
+        </div>
+        <div class="error_tips text_align_left font_size_12 display-none" id="errorMsgBox">
+            <em class="red " style="margin-left:40px " id="errorMsg">您的账号有误</em>
+            <div style="height:7px;"></div>
+        </div>
+        <div class="zfct_form_group">
+            <button id="loginBtnWindow" class="zfct_login_button" >
+                <span  class="label_login " id="logInfoText">
+                    登录
+                </span>
+                <span class="label_logining display-none" id="loginInfoText">
+                    登录中...
+                </span>
+            </button>
+        </div>
+        <div class="zfct_form_group text_align_left">
+            <em class="encryption_icon gray1 font_size_12 " style="margin-left:40px ">您的信息已使用SSL加密技术，数据传输安全</em>
+        </div>
+    </div>
+</div>
+
+<!-----------------------登录 弹框 end---------------------->
+@RenderBody()
+
+
+<!-------------顶部导航选中---------------------->
+<script>
+    function navActive(position) {
+        if (position == 1) {
+            //首页选中
+            $('.zfct_nav dl dd').eq(0).children("a").css("color", "#1a9bfc");
+        } else if (position == 2) {
+            //我要投资选中
+            $('.zfct_nav dl dd').eq(1).children("a").css("color", "#1a9bfc");
+        } else if (position == 3) {
+            //信息披露
+            $('.zfct_nav dl dd').eq(2).css("color", "#1a9bfc");
+            $('.zfct_nav dl dd').eq(2).children("a").css("color", "#1a9bfc");
+        } else if (position == 5) {
+            //我的账户
+            $('.zfct_nav dl dd').eq(4).css("color", "#1a9bfc");
+            $('.zfct_nav dl dd').eq(4).children("a").css("color", "#1a9bfc");
+           
+        }
+    }
+
+    $(function() {
+        $('#loginBtnWindow').click(function() {
+            var userName = $("#usernameWindow").val();
+            var password = $("#passwordWindow").val();
+            var returnUrl = $('#returnUrl').val();
+            var verfyCode = $('#verifyCodewindow').val();
+            //校验
+            if (userName === "" || userName == undefined || password === "" || password == undefined) {
+                return false;
+            }
+
+            $.ajax({
+                url: '/customer/userlogin',
+                data: { UserName: userName, Password: password, ReturnUrl: returnUrl, VerifyCode: verfyCode },
+                type: 'POST',
+                beforeSend:function() {
+                    $(this).removeClass("zfct_login_button").addClass("zfct_login_button1");
+                    $('#logInfoText').hide();
+                    $('#loginInfoText').show();
+                },
+                success: function (data) {
+                    if (data.success) {
+                        location.href = data.returnUrl;
+                    } else {
+                        $(this).removeClass("zfct_login_button1").addClass("zfct_login_button");
+                        $('#loginInfoText').hide();
+                        $('#logInfoText').show();
+                        $('#verifycodeboxwindow').show();
+                        $(".login_box ").css("height","420px");
+                        //刷新验证码
+                        getNewVerifyCode($('#validCodeImageWindow'));
+                        //错误操作提示
+                        $('#errorMsg').text(data.msg);
+                        $('#errorMsgBox').show();
+                    }
+                }
+            });
+        });
+        $('#validCodeImageWindow').click(function() {
+            //刷新验证码
+            getNewVerifyCode($('#validCodeImageWindow'));
+        });
+        $('#closeLoginBox').click(function() {
+            $('#loginBox').hide();
+            $('#red_envelopes_mask').hide();
+        });
+    });
+</script>
+<!----------------底部 start------------------>
+<div class="zfct_footer">
+        <div class="zfct_footer_content">
+            <div style="height:30px;"></div>
+            <div class="zfct_footer_top">
+                <div class="zfct_footer_dl float_left">
+                    <dl>
+                        <dt>
+                           关于我们
+                        </dt>
+                        <dd>
+                            <a href="/InfoPublic/CompanyInfo">公司简介</a>
+                        </dd>                        
+                        <dd>
+                            <a href="/AboutUs/GroupDynamics">集团动态</a>
+                        </dd>
+                        <dd>
+                            <a href="/AboutUs/PlatformAnnouncement">平台公告</a>
+                        </dd>
+                        <dd>
+                            <a href="/AboutUs/Recruitment">招聘人才</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            投资安全
+                        </dt>
+                        <dd>
+                            <a href="/InfoPublic/Security" >安全保障</a>
+                        </dd>
+                        <dd>
+                            <a href="/InfoPublic/Security#wind_system" >风控措施</a>
+                            
+                        </dd>
+                        @*<dd>
+                            <a href="/InfoPublic/Security#information_data" >信息数据安全</a>
+                            
+                        </dd>*@                       
+
+                    </dl>
+                    <dl>
+                        <dt>
+                            帮助中心
+                        </dt>
+                        <dd>
+                            <a href="/HelpCenter/HelpCenterList?tab=register">
+                                注册及认证
+                            </a>
+                            
+                        </dd>
+                        <dd>
+                            <a href="/HelpCenter/HelpCenterList?tab=invest">
+                                投资操作
+                            </a>
+                            
+                        </dd>
+                        <dd>
+                            <a href="/HelpCenter/HelpCenterList?tab=recharge">
+                                充值提现
+                            </a>
+                            
+                        </dd>
+                       
+                    </dl>
+                    <div class="clear"></div>
+                </div>
+                <div class="zfct_erweima float_left">
+                    <ul>
+                        <li style="margin-right:50px;">
+                            <p>手机APP</p>
+                            <div style="height:25px;"></div>
+                            <img src="~/images/app_erweima.jpg" />
+                        </li>
+                        <li style="text-align:right">
+
+                          <a href="javascript:void(0)">
+                              
+                                  <p>市场有风险</p>
+                                  <p>投资需谨慎</p>
+                              
+                          </a>
+
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="zfct_footer_right float_right margin_right_20 ">
+                    <p class="font_size_14  text_align_right">客服热线</p>
+                    <p class="font_size_30  text_align_right margin_top_15" >400&nbsp;&nbsp;025&nbsp;&nbsp;1002</p>
+                    <p class="font_size_14  margin_top_35  margin_left_15">工作时间:<em class=" margin_left_15 font_size_14">工作日&nbsp;9&nbsp;:&nbsp;00~17&nbsp;:&nbsp;30</em></p>                   
+                    <div style="height:15px"></div>
+                    <p class="font_size_14 margin_left_15">意见反馈:<em class=" margin_left_15 font_size_14">zfctkf@chinazfct.com</em></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="zfct_link">
+                <ul>
+                    <li>友情链接</li>
+                    <li><a href="http://www.cred.com/" target="_blank">中房集团</a></li>
+                    <li><a href="http://www.chinapnr.com/" target="_blank">汇付天下</a></li>
+                    <li><a href="http://www.wdzj.com/" target="_blank">网贷之家</a></li>
+                    <li><a href="http://www.p2peye.com/" target="_blank">网贷天眼</a></li>
+                    <li><a href="http://www.hfbank.com.cn/" target="_blank">恒丰银行</a></li>
+                    <li><a href="http://www.auto-serve.cn" target="_blank">奥拓思维</a></li>
+                    <li><a href="http://www.lvse.com/site/chinazfct-com-9488.html" target="_blank">绿色网站大全</a></li>
+                   
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="zfct_zhengming">
+                <div class="rzBox1">
+                    <a id='___szfw_logo___' href='https://credit.szfw.org/CX20160322018215850113.html' target='_blank' class="pull-left ml10 mt10"><img src='~/images/zizhi.png' border='0' alt="诚信网站认证" /></a>
+                    <a href="http://www.aliyun.com/?utm_medium=text&utm_source=bdbrand&utm_campaign=bdbrand&utm_content=se_32492" target='_blank' class="pull-left ml10 mt10"><img src='~/images/aliyun.png' border='0' /></a>
+                    <a href="javascript:void(0)" class="pull-left ml10 mt10">
+                        <script language="JavaScript" type="text/javascript" src="https://seal.wosign.com/tws.js"></script>
+                    </a>
+                    <a class="pull-left ml10 mt10" key="58c65897efbfb0254cf32a8e" logo_size="124x47" logo_type="business" href="http://www.anquan.org">
+
+                        <script src="https://static.anquan.org/static/outer/js/aq_auth.js"></script>
+                    </a>
+                    <script id="jsgovicon" src="/js/odr/jsdsgsxt.js" type="text/javascript" charset="utf-8">
+                    </script>                  
+                    @*<script id="jsgovicon" src="http://odr.jsdsgsxt.gov.cn:8081/mbm/app/main/electronic/js/govicon.js?siteId=6c8c12f9e6014352b29a295dcaab5d02&width=32&height=45&type=1" type="text/javascript" charset="utf-8"></script>*@
+                    <div class="clear"></div>
+                    <script type='text/javascript'>(function () { document.getElementById('___szfw_logo___').oncontextmenu = function () { return false; } })();</script>
+                    <script>
+                        var _hmt = _hmt || [];
+                        (function () {
+                            var hm = document.createElement("script");
+                            hm.src = "//hm.baidu.com/hm.js?d51d5ebe41d8d12676c6a6444cbe5aaa";
+                            var s = document.getElementsByTagName("script")[0];
+                            s.parentNode.insertBefore(hm, s);
+                        })();
+                    </script>
+                    <!--  CNZZ 统计 -->
+                    @*<script type="text/javascript">
+                        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan style= 'display:none;' id= 'cnzz_stat_icon_1269642082' %3E%3C/span% 3E % 3Cscript src= '" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1269642082%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+                    </script>*@
+
+                </div>
+            </div>
+            <div style="height:10px;"></div>
+            <p class="font_size_12 gray3 text_align_center"> 
+                <a href="javascript:void(0)">
+                    @*<script id="jsgovicon" src="//odr.jsdsgsxt.gov.cn:8081/mbm/app/main/electronic/js/govicon.js?siteId=6c8c12f9e6014352b29a295dcaab5d02&width=32&height=45&type=1" type="text/javascript" charset="utf-8">*@
+                   
+                </a>
+                <em>Copyright© 2016-2017 南京中乾惠诚投资管理有限公司 （www.chinazfct.com）/苏ICP备16005392号/  市场有风险，投资需谨慎</em>
+            </p>
+            <div style="height:10px;"></div>
+        </div>
+    </div>
+<!------------------底部 end--------------------------->
+
+<!------------------右侧悬浮  start---------------->
+<div class="right_suspension" id="sidebar" style="z-index:10000">
+    <a href="/InfoPublic/RiskWarning">
+        <div class="new_hand_guide zfct_toolbar_tab">
+            <i class="tab_new_hand">
+
+            </i>
+            <div class="tabs_tip tabs_tip_risking">
+
+                <span class="">市场有风险投资需谨慎</span>
+
+
+            </div>
+        </div>
+    </a>
+    <a onclick="doyoo.util.openChat('g=10060121');return false;" href="javascript:void(0);">
+        <div class="customer_service zfct_toolbar_tab">
+
+            <i class="tab_service"></i>
+
+            <div class="tabs_tip">
+               
+                    <span class="text">在线客服</span>
+               
+            </div>
+
+        </div>
+    </a>
+    
+    <a href="tencent://message/?uin=3417749440&amp;Site=www.xxx.com&amp;Menu=yes">
+        <div class="qq zfct_toolbar_tab">
+            <i class="tab_qq "></i>
+            <div class="tabs_tip">
+                
+                    <span>QQ客服</span>
+               
+            </div>
+        </div>
+    </a>
+    
+
+    <div class="wechat zfct_toolbar_tab">
+        <i class="tab_wechat"></i>
+        <div class="tabs_tip1 tabs_tip position-relative" >           
+             <span>
+                  <img src="~/images/tab_erweima1.png" style="margin-right:5px"/>
+                  <img src="~/images/tab_erweima2.png" style="margin-right:5px;"/>
+                  <img src="~/images/tab_erweima3.png" />
+             </span>
+             <div class="tabs_tip1_gray">
+
+             </div> 
+        </div>
+    </div>
+         
+    @*<a href="/SpecialTopic/Index">
+        <div class="mobile_client zfct_toolbar_tab">
+            <i class="tab_mobile_client">
+
+            </i>
+            <div class="tabs_tip1 tabs_tip">
+
+                <span>
+                    <img src="~/images/app_erweima.jpg" width="80" height="80" />
+                </span>
+   
+
+            </div>
+        </div>
+    </a>*@
+        
+        <div class="stick_top zfct_toolbar_tab">
+            <i class="tab_stick_top"></i>
+        </div>
+</div>
+<!-------------------右侧悬浮  end------------------>
+    <script src="~/js/portamento.js"></script>
+    <script>
+        $('#sidebar').portamento({ disableWorkaround: true }); 
+    </script>
+  
+
+<!-------------顶部导航选中---------------------->
+<script>
+
+    $(function () {
+        $('.zfct_nav dl dd').eq(4).data("postflag", true);
+        $('.zfct_nav dl dd').eq(4).on("mouseover", function (event) {
+            event.stopPropagation();//阻止事件冒泡
+            $(this).find("ul.my_account_down").show();
+            $(this).addClass("zfct_nav_dd_click");
+            var tag = $("ul.my_account_down");
+            $(this).css("width", "112px");
+            var flag = true;
+            if ($(this).data("postflag")) {
+                $(this).data("postflag", false);
+                $.post("/MyAccount/MyBusiness", function (data) {
+                    var elem = $("#my_account_down").children("li");
+                    if (data.loanCount == 0) {
+                        elem.eq(1).hide();
+                    } else {
+                        elem.eq(1).show();
+                        elem.eq(1).find("em").html('(' + data.loanCount + ')');
+                    }
+                    elem.eq(0).find("em").html('(' + data.investCount + ')');
+                    elem.eq(2).find("em").html('(' + data.tranferCount + ')');
+                    elem.eq(3).find("em").html('(' + data.redCount + ')');
+                    $(this).data("postflag", true);
+                });
+            }
+          
+            $(document).bind("click", function (e) {
+                var target = $(e.target);
+                if (target.closest(tag).length == 0 && flag == true) {
+                    $(tag).hide();
+                    flag = false;
+                }
+            });
+        });
+        $('.zfct_nav dl dd').eq(4).on("mouseout", function () {
+            $(this).find("ul.my_account_down").hide();
+            $(this).removeClass("zfct_nav_dd_click");
+            $(this).css("width", "114px");
+           
+        });
+        $(".zfct_nav dl dd").eq(2).on("mouseover", function () {
+            $(this).find("ul#infopublic_down").show();
+            $(this).css("width","112px");
+            $(this).addClass("zfct_nav_dd_click");
+        });
+        $('.zfct_nav dl dd').eq(2).on("mouseout", function () {
+            $(this).find("ul#infopublic_down").hide();
+            $(this).removeClass("zfct_nav_dd_click");
+            $(this).css("width", "114px");
+        });
+        $(".iphone").on("click", function (event) {
+            event.stopPropagation();//阻止事件冒泡
+            $(".zfct_app").toggle();
+            var tag = $(".zfct_app");
+            var flag = true;
+            $(document).bind("click", function (e) {
+                var target = $(e.target);
+                if (target.closest(tag).length == 0 && flag == true) {
+                    $(tag).hide();
+                    flag = false;
+                }
+            });
+        });
+        $(".stick_top").click(function () {
+            var sc = $(window).scrollTop();
+            $('body,html').animate({ scrollTop: 0 }, 1000);
+        });
+        $(".zfct_toolbar_tab").mouseover(function () {
+            $(this).children(".tabs_tip").show();
+        });
+        $(".zfct_toolbar_tab").mouseout(function () {
+            $(this).children(".tabs_tip").hide();
+        });
+    });
+</script>
+
+<script>
+        function OpenWindow(query, w, h, scroll) {
+            var l = (screen.width - w) / 2;
+            var t = (screen.height - h) / 2;
+
+            winprops = 'resizable=1, height=' + h + ',width=' + w + ',top=' + t + ',left=' + l + 'w';
+            if (scroll) winprops += ',scrollbars=1';
+            var f = window.open(query, "_blank", winprops);
+        }
+    </script>
+   
+
+    <!----------客服服务------------>
+    @*<script type="text/javascript" src="https://gate.soperson.com/10038991/10057720.js"></script>*@
+    @*<script type="text/javascript" src="https://lead.soperson.com/10038991/10057720.js"></script>*@
+    <script type="text/javascript" charset="utf-8" src="http://lead.soperson.com/10038991/10089881.js"></script>
+
+    @*<script type="text/javascript">
+                        var _py = _py || [];
+                        _py.push(['a', 'Tvs..8xCG375qh1XBOqzpA-F2I_']);
+                        _py.push(['domain', 'stats.ipinyou.com']);
+                        _py.push(['e', '']);
+                        -function (d) {
+                            var s = d.createElement('script'),
+                                e = d.body.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e),
+                                    f = 'https:' == location.protocol;
+                            s.src = (f ? 'https' : 'http') + '://' + (f ? 'fm.ipinyou.com' : 'fm.p0y.cn') + '/j/adv.js';
+                        }(document);
+    </script>
+    <noscript><img src="//stats.ipinyou.com/adv.gif?a=Tvs..8xCG375qh1XBOqzpA-F2I_&e=" style="display:none;" /></noscript>*@
+    
+    
+</body>
+</html>

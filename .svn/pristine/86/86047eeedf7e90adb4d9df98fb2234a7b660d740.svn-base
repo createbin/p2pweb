@@ -1,0 +1,59 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserThirdPartInfo
+<!----------开户状态  start------------------>
+<div class="openaccount_bohai">
+    <dl>
+        <dd>
+            <label>姓名</label>
+            <em class="bold">
+                @(Model.RealName)
+            </em>
+        </dd>
+        <dd>
+            <label>身份证号</label>
+            <em class="bold">
+                @(Model.IdCard)
+            </em>
+        </dd>
+        <dd>
+            <label>手机号</label>
+            <em class="bold">
+                @(Model.PhoneNo)
+            </em>
+        </dd>
+        <dd>
+            <label>身份类型</label>
+            <em class="bold">
+                
+            </em>
+        </dd>
+        <dd>
+            <label>认证状态</label>
+            <em class="bold">
+                @if (Model.JieSuan == "0" && string.IsNullOrEmpty(Model.JieSuanCode))
+                {
+                    <font class="blue">实名认证中</font>
+                }
+                else if (Model.JieSuan == "1")
+                {
+                    <font>实名认证成功</font>
+                }
+                else
+                {
+                    <input type="hidden" id="errorTip" value="@(Model.JieSuanMsg)" />
+                    <font class="red1">实名认证失败 <img src="~/images/bohai/kaihu_tips.png" id="kaihu_tips" /></font>
+                }
+            </em>
+        </dd>
+        <dd>
+            @if (Model.JieSuan == "0" && Model.JieSuanCode != "00000000")
+            {
+                <button class="kaihu_again" id="retry">
+                    重新认证
+                </button>
+            }
+        </dd>
+        <!-----只有开户失败才显示这个button---->
+
+    </dl>
+</div>
+<!----------开户状态  end------------------>

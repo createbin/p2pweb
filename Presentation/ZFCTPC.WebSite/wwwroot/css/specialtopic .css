@@ -1,0 +1,36 @@
+﻿.app_topic_banner1{
+    width:100%;
+    height:260px;
+    background:url(../images/topic/app_revision_banner1.jpg) center center no-repeat;
+
+}
+.app_topic_banner2 {
+    width: 100%;
+    height: 188px;
+    background: url(../images/topic/app_revision_banner2.jpg) center center no-repeat;
+}
+.app_topic_banner3 {
+    width: 100%;
+    height: 290px;
+    background: url(../images/topic/app_revision_banner3.jpg) center center no-repeat;
+}
+.app_content{
+    width:1140px;
+    margin:0 auto;
+    padding:0 30px;
+}
+.app_topic_foot1{
+    width:100%;
+    height:372px;
+    background:url(../images/topic/app_revision_foot1.jpg) center center no-repeat;
+}
+.app_topic_foot2 {
+    width: 100%;
+    height: 309px;
+    background: url(../images/topic/app_revision_foot2.jpg) center center no-repeat;
+}
+.app_topic_foot3 {
+    width: 100%;
+    height: 447px;
+    background: url(../images/topic/app_revision_foot3.jpg) center center no-repeat;
+}

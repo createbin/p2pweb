@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHeadFootE.cshtml";
+    ViewData["Title"] = "企业登录";
+
+}
+
+<div class="enterprise_login_box">
+    <div style="height:40px;"></div>
+    <div class="enterprise_login_page">
+        <img src="~/images/enterprise/login_bg.jpg" class="float_left" />
+        <div class="enterprise_login_form float_left " style="margin-left:45px;">
+            <div style="height:15px"></div>
+            <p>
+                <span class="font_size_18">
+                    登录企业账户
+                </span>
+            </p>
+            <div style="height:20px;"></div>
+            <div class="zfct_login_form">
+                <div class="zfct_form_group">
+                    <input type="text" id="username" class="zfct_input_text" name="username" placeholder="手机号" value="@ViewBag.LoginUserName" />
+                    <label class="form-tips error active">
+                        <div class="form_tips_content" id="userNameNotice">
+                        </div>
+                    </label>
+                </div>
+
+                <div class="zfct_form_group">
+                    <input type="password" id="password" class="zfct_input_text" name="password" placeholder="密码" value="" />
+                    <label class="form-tips error active">
+                        <div class="form_tips_content" id="passWordNotice">
+
+                        </div>
+                    </label>
+                </div>
+                @if (ViewBag.IsFaild == true)
+                {
+                    <div id="verifyCodeBox">
+                        <div class="zfct_form_group">
+                            <input type="text" id="verifyCode" class="zfct_input_text1" name="password" placeholder="请输入验证码" value="" />
+                            <img id="validCodeImage" src="/Customer/ValidCode" />
+                            <label class="form-tips error active">
+                                <div class="form_tips_content" id="verifyCodeErrorBox">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div id="verifyCodeBox" style="display:none">
+                        <div class="zfct_form_group">
+                            <input type="text" id="verifyCode" class="zfct_input_text1" name="password" placeholder="请输入验证码" value="" />
+                            <img id="validCodeImage" src="/Customer/ValidCode" />
+                            <label class="form-tips error active">
+                                <div class="form_tips_content" id="verifyCodeErrorBox">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                }
+
+                <div class="zfct_form_group">
+                    <button style="cursor:pointer;" id="loginBtn" class="zfct_login_button">
+                        企业登录
+                    </button>
+                </div>
+                <div class="zfct_form_group" style="width:360px;">
+                    <div style="cursor:pointer;" class="float_left blue" id="toRegister">
+                        注册企业账户
+                    </div>
+                    <div class="forget_password float_right">
+                        <a href="/Customer/EnterpriseForgetPassword" class="blue font_size_12">忘记密码？</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div style="height:13px;"></div>
+    <div class="enterprise_ad">
+        <img src="~/images/enterprise/fangdai.jpg" />
+        <img src="~/images/enterprise/chedai.jpg" />
+        <img src="~/images/enterprise/xinyongdai.jpg" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#loginBtn").click(DoLogin);
+
+    $("#validCodeImage").click(getNewVerifyCode);
+
+    $(document).keydown(function (e) {
+        if (e.keyCode == 13) {
+            DoLogin();
+        }
+    });
+
+    function getNewVerifyCode() {
+        var imgSrc = "/Customer/ValidCode";
+        var random = Date.parse(new Date()) + Math.round(Math.random() * 1000);
+        var src = imgSrc + "?random=" + random;
+        $("#validCodeImage").attr("src", src);
+    }
+
+    function DoLogin() {
+        var userName = $("#username").val();
+        if (!userName) {
+            layer.alert("请输入手机号");
+            return;
+        }
+        var passWord = $("#password").val();
+        if (!passWord) {
+            layer.alert("请输入密码");
+            return;
+        }
+        var verCode = $("#verifyCode").val();
+        $.ajax({
+            url: "/Customer/UserLogin",
+            type: "post",
+            data: {
+                UserName: userName,
+                PassWord: passWord,
+                VerifyCode: verCode,
+                IsCompanyLogin: true
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.success) {
+                    window.location.href = "/Enterprise/CompanyAccount/Index"
+                } else {
+                    layer.alert(data.msg);
+                    $("#verifyCodeBox").show();
+
+                }
+            }
+        });
+    }
+    $('#toRegister').click(function () {
+        location.href = "enterpriseregister";
+    })
+</script>

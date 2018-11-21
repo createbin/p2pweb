@@ -1,0 +1,159 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="baidu-site-verification" content="eO0LginDl6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>@ViewData["Title"] - 中房创投</title>
+
+     <link href="~/css/common/style.css" rel="stylesheet" />
+     <link href="~/css/index.css" rel="stylesheet" />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="~/js/Pager/pagination.css" rel="stylesheet" />
+    <script src="~/js/Pager/jquery.pagination.js"></script>
+    <script src="~/js/layer/layer.js"></script>
+</head>
+<body class="zfct_bg">
+    <!--------顶部  start----------------------->
+    <div class="zfct_top_box">
+        <div class="zfct_top_page font_size_12 gray">
+            <span class="position-relative">
+                <em>全国客服热线:&nbsp;&nbsp;<text>400-025-1002</text></em>
+                <em class="position-absolute em_border_right">
+
+                </em>
+                <em class="padding_left_20">工作时间:&nbsp;&nbsp;<text>9:00~20:00</text></em>
+            </span>
+            <span class="float_right">
+                <dl class="top_box_dl">
+                    @if (!string.IsNullOrEmpty(ViewBag.UserName))
+                    {
+                        <dd>您好<span>&#8194<a href="/MyAccount/Index"> @ViewBag.UserName</a></span>，欢迎来到中房创投！</dd>
+                        <dd><a href="/Customer/LoginOut" class="red">退出登录</a></dd>
+                    }
+                    else
+                    {
+                        <dd>您好，欢迎来到中房创投！<a href="/Customer/Login" class="blue">请登录</a></dd>
+                        <dd><a href="/Customer/Register" class="red">立即注册</a></dd>
+                    }
+                    @*<dd>企业客户</dd>*@
+                    <dd class="iphone">手机客服端</dd>
+                    <dd class="border-right-none">帮助中心</dd>
+                    <div class="clear"></div>
+                </dl>
+            </span>
+        </div>
+    </div>
+    <!--------顶部  end-------------------------->
+    <!-----------------导航 start------------------------------->
+    <div class="zfct_logo_box">
+        <div class="zfct_logo_nav">
+            <div class="zfct_logo float_left">
+                <div style="height:18px"></div>
+                <a href="">
+                    <img src="~/images/zfct_logo.png" />
+                </a>
+            </div>
+            <div class="zfct_nav float_right">
+                <dl>
+                    <dd><a href="/home/">首页</a></dd>
+                    <dd><a href="/myInvest/recommendedlist">我要投资</a></dd>                  
+                    <dd class="position-relative">
+                        <a href="" class="green">公益基金</a>
+                        <em class="fund_icon">
+
+                        </em>
+                    </dd>
+                    <dd><a href="/Security/Index">安全保障</a></dd>
+                    <dd><a href="/AboutUs/Index">关于我们</a></dd>
+                    <dd><a href="/MyAccount/Index">我的账户</a></dd>
+
+                    <div class="clear"></div>
+                </dl>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+
+
+
+    <!-----------------导航 end------------------------------->
+
+    <div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+
+    <!----------------------登录 弹框  start------------------------------>
+    <div class="login_box" >
+        <div class="position-relative text_align_center">
+            <p class="login_box_title blue text_align_center font_size_18" style="padding-top:15px">登录</p>
+            <button class="close_windown1"></button>
+            <div style="height:35px;"></div>
+            <div class="zfct_form_group">
+                <input type="text" id="usernameWindow" class="zfct_input_text"  name="username" placeholder="用户名/手机号" value="" style="height:40px; line-height:40px;" />
+            </div>
+            <div class="zfct_form_group">
+                <input type="password" id="passwordWindow" class="zfct_input_text" name="password" placeholder="密码" value="" style="height:40px; line-height:40px;" />
+            </div>
+            <div class="zfct_form_group display-none" id="verifycodebox">
+                <input type="text" id="verifyCode" class="zfct_input_text1" name="password" placeholder="请输入验证码" value="" style="height:40px; line-height:40px;">
+                <img id="validCodeImage" src="/Customer/ValidCode?random=1503558336490">
+            </div>
+            <div class="zfct_form_group text_align_left" style="margin-bottom:12px">
+                <em class="gray1 font_size_12 " style="margin-left:40px">还没有账号? <a href="/Customer/Register" class="red font_size_12">免费注册</a></em>
+                <em class="font_size_12 blue float_right " style="margin-right:40px;">忘记密码?</em>
+            </div>
+            <div class="error_tips text_align_left font_size_12 display-none">
+                <em class="red " style="margin-left:40px ">您的账号有误</em>
+                <div style="height:7px;"></div>
+            </div>
+            <div class="zfct_form_group">
+                <button id="loginBtnWindow" class="zfct_login_button">
+                    登录
+                </button>
+            </div>
+            <div class="zfct_form_group text_align_left">
+                <em class="encryption_icon gray1 font_size_12 " style="margin-left:40px ">您的信息已使用SSL加密技术，数据传输安全</em>
+            </div>
+        </div>
+    </div>
+
+    <!-----------------------登录  弹框  end---------------------->
+    @RenderBody()
+
+    <!------------------底部  start--------------------------->
+    <!------------------底部  end--------------------------->
+
+    <!-------------顶部导航选中---------------------->
+    <script>
+        function navActive(position) {
+            if (position == 1) {
+                //首页选中
+                $('.zfct_nav dl dd').eq(0).children("a").css("color", "#1a9bfc");
+            } else if (position == 2) {
+                //我要投资选中
+                $('.zfct_nav dl dd').eq(1).children("a").css("color", "#1a9bfc");
+            } else if (position == 4){
+                //安全保障
+                $('.zfct_nav dl dd').eq(3).children("a").css("color", "#1a9bfc");
+            } else if (position == 5){
+                //关于我们
+                $('.zfct_nav dl dd').eq(4).children("a").css("color", "#1a9bfc");
+            } else if (position == 6){
+                //我的账户
+                $('.zfct_nav dl dd').eq(5).children("a").css("color", "#1a9bfc");
+            }
+
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

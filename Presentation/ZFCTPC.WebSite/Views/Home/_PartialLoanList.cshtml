@@ -1,0 +1,86 @@
+﻿@using ZFCTPC.Core.Enums
+@model List<ZFCTPC.Data.ApiModelReturn.LoanReturnModels.RLoanAbstractLable>
+@{
+    var count = 0;
+}
+
+@if (Model == null || Model.Count <= 0)
+{
+}
+else
+{
+    foreach (var info in Model)
+    {
+        count++;
+        var leftStyle = count==1||count==2? "float_left" :count==3?" float_right margin-right-none": "float_left";
+        var soldOut = info.LoanStateId != (int) ProjectStateEnum.Tender ? "sold_out" : "";
+        <div class="zfct_page2_left @(leftStyle) @(soldOut)" onclick="toDetail(@(info.LoanId))">
+            <dl>
+                @if (!string.IsNullOrEmpty(info.LableIcons))
+                {
+                    foreach (var lable in info.LableIcons.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <dd class="">
+                            <img src="@lable" width="78" height="28" />
+                        </dd>
+                    }
+                }
+                <div class="clear"></div>
+            </dl>
+            <div style="height: 45px;"></div>
+            <ul>
+                <li class="float_left">
+                    <p class="roboto red">
+                        @{
+                            if (info.HikeRate==null)
+                            {
+                                <em class="font_size_60">@(info.OriginalRate)</em><em class="font_size_40">%</em>
+                            }
+                            else
+                            {
+                                <em class="font_size_60">@(info.OriginalRate)</em><em class="font_size_30">+</em><em class="font_size_40">@(info.HikeRate)</em><em class="font_size_40">%</em>
+                            }
+                        }
+                    </p>
+                    <p class="font_size_12 gray1 margin_top_20">预期年化收益率</p>
+                </li>
+                <li class="float_right text_align_right">
+                    <p class="roboto black">
+                        <em class=" font_size_30">@(info.Period)</em><em class="font_size_16 margin_left_5">个月</em>
+                    </p>
+                    <p class="font_size_12 gray1 margin_top_20">投资期限</p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <div style="height: 45px;"></div>
+            <!---------进度条 start---------->
+            <div class="zfct_progress" style="padding: 0px">
+                <div class="progress_bar" style="width: 305px">
+                    <span class="font_size_12 position-relative gray1">
+                        剩余可投: <em class="roboto" style="font-size: 12px;">@String.Format("{0:N}",info.SurplusMoney)</em>元
+                    </span>
+                    <div class="pro-bar">
+                        <div class="progress-bar-inner " style="background-color: #1a9bfc; width:@(info.LoanSpeed)%;" data-value="89" data-percentage-value="89">
+                        </div>
+                        <em class="progress-bar-percentage float_right">@(info.LoanSpeed)%</em>
+                    </div>
+
+                </div>
+            </div>
+            <!-----------进度条 end--------------------->
+        </div>
+    }
+}
+<script>
+    var toDetail = function (loanId) {
+        location.href = "/myinvest/investdetail?loanid=" + loanId;
+    }
+</script>
+
+
+
+
+
+
+
+

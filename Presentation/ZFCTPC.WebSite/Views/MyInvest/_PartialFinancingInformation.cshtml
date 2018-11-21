@@ -1,0 +1,651 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.InvestModelReturns.LoanProjectDetails
+
+@if (Model != null)
+{
+    var info = Model.Info;
+    var person = Model.Personal;
+    var coInfo = Model.Coer;
+    var history = Model.History;
+    var checks = Model.Check;
+    var annexes = Model.Annexes;
+    var isCo = Model.IsCo;
+
+    <!----融资信息 start---------------->
+    <p class="gray">
+        <em class="blue margin_right_10 font_size_18">■</em>融资信息
+    </p>
+    <div style="height:20px;"></div>
+    <table cellpadding="0" cellspacing="0" class="detail_table">
+        <tr>
+            <td colspan="2">
+                <em class="gray width150">
+                    项目名称
+                </em>
+                <em>
+                    @(info.LoanName)
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="gray width150 float_left">
+                    项目简介
+                </div>
+                <div class="float_left" style="width:865px">
+                    @(info.LoanIntro)
+                </div>
+                <div class="clear"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <em class="gray width150">
+                    借款人主体性质
+                </em>
+                <em>
+                    @(info.LoanerCharacter)
+                </em>
+            </td>
+            <td>
+                <em class="gray width150">
+                    @(isCo=="true"? "企业名称" : "借款人姓名")
+                </em>
+                <em>
+                    @(info.LoanerName)
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <em class="gray width150">
+                    借款金额
+                </em>
+                <em>
+                    @(info.LoanMoney) 元
+                </em>
+            </td>
+            <td>
+                <em class="gray width150">
+                    借款期限
+                </em>
+                <em>
+                    @(info.LoanPeriod)个月
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <em class="gray width150">
+                    借款用途
+                </em>
+                <em>
+                    @(info.LoanUse)
+                </em>
+            </td>
+            <td>
+                <em class="gray width150">
+                    项目类型
+                </em>
+                <em>
+                    @(info.LoanType)
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <em class="gray width150">
+                    还款方式
+                </em>
+                <em>
+                    @(info.LoanRepayment)
+                </em>
+            </td>
+            <td>
+                <em class="gray width150">
+                    还款来源
+                </em>
+                <em>
+                    @(info.LoanSource)
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <em class="gray width150">
+                    保障措施
+                </em>
+                <em>
+                    @(info.SafetyPrecautions)
+                </em>
+            </td>
+            <td>
+                <em class="gray width150">
+                    合同模板
+                </em>
+               
+                   <em>
+                       <a href="http://admin.chinazfct.com/ManagementSystem/jkht.pdf" download="合同模板" target="_blank">
+                           借款协议（范文）
+                       </a>
+                   
+                </em>
+               
+            </td>
+        </tr>
+    </table>
+    <!----融资信息 end---------------->
+
+    if (!string.IsNullOrEmpty(Model.Guar.Guarantee))
+    {
+        <div style="height:30px;"></div>
+        <!------------还款保障  start------------->
+        <p class="gray">
+            <em class="blue margin_right_10 font_size_18">■</em>还款保障
+        </p>
+        <div style="height:10px;"></div>
+        <div style="padding:0px 70px">
+            <p>
+                @(Model.Guar.Guarantee)
+            </p>
+        </div>
+
+        <!------------还款保障  end------------->
+    }
+
+    <!------------借款人信息  start------------->
+    <div style="height:30px;"></div>
+
+    if (Model.IsCo == "false")
+    {
+        <!------------还款保障  start------------->
+        <p class="gray">
+            <em class="blue margin_right_10 font_size_18">■</em>借款人信息
+        </p>
+        <div style="height:20px;"></div>
+        <table cellpadding="0" cellspacing="0" class="detail_table">
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        姓名
+                    </em>
+                    <em>
+                        @(person.Name)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        证件号码
+                    </em>
+                    <em>
+                        @(person.IdCard)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        年龄
+                    </em>
+                    <em>
+                        @(person.Age)岁
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        性别
+                    </em>
+                    <em>
+                        @(person.Sex)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        学历
+                    </em>
+                    <em>
+                        @(person.Education)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        所属行业
+                    </em>
+                    <em>
+                        @(person.Industry)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        工作年限
+                    </em>
+                    <em>
+                        @(person.WorkYear)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        收入情况
+                    </em>
+                    <em>
+                        @(person.Income)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        负债情况
+                    </em>
+                    <em>
+                        @(history.Liabilities)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        历史贷款笔数
+                    </em>
+                    <em>
+                        @(history.HistoryLoan)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        历史逾期笔数
+                    </em>
+                    <em>
+                        @(history.HistoryOverDue)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        未结清贷款笔数
+                    </em>
+                    <em>
+                        @(history.UnclearLoan)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        未结清贷款金额
+                    </em>
+                    <em>
+                        @(history.UnclearMoney)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        其他平台贷款情况
+                    </em>
+                    <em>
+                        @(history.OtherPlatform)
+                    </em>
+                </td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <!------------还款保障  start------------->
+        <p class="gray">
+            <em class="blue margin_right_10 font_size_18">■</em>借款企业信息
+        </p>
+        <div style="height:20px;"></div>
+        <table cellpadding="0" cellspacing="0" class="detail_table">
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        企业名称
+                    </em>
+                    <em>
+                        @(coInfo.Name)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        企业法人
+                    </em>
+                    <em>
+                        @(coInfo.Corporate)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        注册资本
+                    </em>
+                    <em>
+                        @(coInfo.RegisteredCapital) 元
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        实缴资本
+                    </em>
+                    <em>
+                        @(coInfo.PaidCapital) 元
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        所属行业
+                    </em>
+                    <em>
+                        @(coInfo.Industry)
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        企业经营年限
+                    </em>
+                    <em>
+                        @(coInfo.BusinessLife)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        企业年收入
+                    </em>
+                    <em>
+                        @(coInfo.AnnualIncome)元
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        负债情况
+                    </em>
+                    <em>
+                        @(history.Liabilities)
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        历史贷款笔数
+                    </em>
+                    <em>
+                        @(history.HistoryLoan)笔
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        历史逾期笔数
+                    </em>
+                    <em>
+                        @(history.HistoryOverDue)笔
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        未结清贷款笔数
+                    </em>
+                    <em>
+                        @(history.UnclearLoan)笔
+                    </em>
+                </td>
+                <td>
+                    <em class="gray width150">
+                        未结清贷款金额
+                    </em>
+                    <em>
+                        @(history.UnclearMoney) 元
+                    </em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <em class="gray width150">
+                        其他平台贷款情况
+                    </em>
+                    <em>
+                        @(history.OtherPlatform)
+                    </em>
+                </td>
+
+            </tr>
+        </table>
+        <!------------借款人企业信息 end------------->
+    }
+
+     if (checks != null && checks.Reviewed.Count > 0)
+     {
+         <div style="height:30px;"></div>
+         <p class="gray">
+             <em class="blue margin_right_10 font_size_18">■</em>审查项目
+         </p>
+         <div style="height:20px;"></div>
+         <!-------------审查项目  start------------->
+         <table cellpadding="0" cellspacing="0" class="review_project_table">
+             @{
+                 int i = 0;
+                 foreach (var checkInfo in checks.Reviewed)
+                 {
+                     if (i % 3 == 0)
+                     {
+                         @:<tr>
+                     }
+                     <td>
+                         <em class="gray width150">
+                             @(checkInfo)
+                         </em>
+                         <em class="renzheng_icon">
+                             已认证
+                         </em>
+                     </td>
+                     if (i % 3 == 2)
+                     {
+                         @:</tr>
+                     }
+                     i++;
+                 }
+             }
+
+         </table>
+         <!-------------审查项目  end------------->
+                 }
+    if (!string.IsNullOrEmpty(Model.RiskInfo.RiskResult))
+    {
+        <!--------------风险评估 start------------>
+        <div style="height:30px;"></div>
+        <p class="gray">
+            <em class="blue margin_right_10 font_size_18">■</em>风险评估及可能产生的风险结果
+        </p>
+        <div style="height:20px;"></div>
+        <div style="padding:0px 70px">
+            <p>
+                @(Model.RiskInfo.RiskResult)
+            </p>
+        </div>
+        <!--------------风险评估 end------------>
+    }
+
+    <div style="height:30px;"></div>
+    <p class="gray">
+        <em class="blue margin_right_10 font_size_18">■</em>投资管理提示
+    </p>
+    <!--------------投资管理提示 start------------------->
+    <div style="height:20px;"></div>
+    <div style="padding:0px 70px">
+        <p>
+            市场有风险，出借需谨慎。请您在投资前，仔细阅读<a href="/InfoPublic/RiskWarning" class="blue">《风险提示》</a>
+        </p>
+    </div>
+    <!--------------投资管理提示 end------------------->
+    <!--------------项目资料start------------------->
+    <div style="height:30px;"></div>
+    <p class="gray">
+        <em class="blue margin_right_10 font_size_18">■</em>项目资料
+    </p>
+    <div style="height:20px;"></div>
+    if (annexes.Any())
+    {
+        <div class="project_detail_box">
+            <div class="pic_con">
+                <div class="btn_change left_btn">上一页</div>
+                <div class="btn_change right_btn">下一页</div>
+                <div class="pic_content">
+                    <div class="pic_lists">
+                        <ul>
+                            @foreach (var annexe in annexes)
+                            {
+                                <li><img src="@(annexe.AnnexURl)" width="180" height="125" /></li>
+                            }
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div><!--content end-->
+                <div class="highlight_tip">
+
+                </div>
+            </div>
+
+
+        </div>
+        <!--------------项目资料end------------------->
+
+        <!-------图片放大 start------------->
+        <div class="photo-mask"></div>
+        <div class="photo-panel">
+            <div class="photo-div">
+                <div class="photo-left">
+                    <div class="arrow-prv"></div>
+                </div>
+                <div class="photo-img">
+                    <div class="photo-bar">
+                        <div class="photo-close"></div>
+                    </div>
+
+                    <div class="photo-view-h">
+                        <img src="" />
+                    </div>
+                </div>
+                <div class="photo-right">
+                    <div class="arrow-next"></div>
+                </div>
+            </div>
+        </div>
+        <!-------图片放大 end------------->
+    }
+
+}
+
+<script>
+    $(function () {
+        var page = 1;
+        var i = 5;
+        var $p_Div = $(".pic_content");
+        var $picDiv = $(".pic_lists");
+        var picNum = $picDiv.children("ul").children("li").length;
+        var page_count = Math.ceil(picNum / 5);
+        var $pDiv_w = $p_Div.width() + 25;
+        for (var i = 1; i <= page_count; i++) {
+            if (i == 1) {
+                $("<span class='current'></span>").appendTo(".highlight_tip");
+            }
+            else {
+                $("<span></span>").appendTo(".highlight_tip");
+            }
+
+        }
+        $(".right_btn").click(function () {
+            if (page_count > page) {
+                $picDiv.animate({ left: '-' + page * $pDiv_w + "px" }, "normal");
+                page++;
+                $(".left_btn").css({ 'background': 'url(../images/leftstart.png) no-repeat' });
+                if (page >= page_count) {
+                    $(this).css({ 'background': 'url(../images/rightstop.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(../images/rightstart.png) no-repeat' });
+                }
+            }
+            $(this).siblings(".highlight_tip").find("span").eq((page - 1)).addClass("current").siblings().removeClass("current");
+        });
+
+        $(".left_btn").click(function () {
+            if (page > 1) {
+                $picDiv.animate({ left: "+=" + $pDiv_w + 'px' }, "normal");
+                page--;
+                $(".right_btn").css({ 'background': 'url(../images/rightstart.png) no-repeat' });
+                if (page <= 1) {
+                    $(this).css({ 'background': 'url(../images/leftstop.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(../images/leftstart.png) no-repeat' });
+                }
+            }
+            $(this).siblings(".highlight_tip").find("span").eq((page - 1)).addClass("current").siblings().removeClass("current");
+        });
+
+        /*图片放大 功能  */
+
+        var img_index = 0;
+        var img_src = "";
+        //计算居中位置
+        var mg_top = ((parseInt($(window).height()) - parseInt($(".photo-div").height())) / 2);
+
+        $(".photo-div").css({
+            "margin-top": "" + mg_top + "px"
+        });
+        //关闭
+        $(".photo-close").click(function () {
+            $(".photo-mask").hide();
+            $(".photo-panel").hide();
+        });
+        //下一张
+        $(".photo-panel .photo-div .arrow-next").click(function () {
+            img_index++;
+            if (img_index >= $(".pic_lists ul li img").length) {
+                img_index = 0;
+            }
+            img_src = $(".pic_lists ul li img").eq(img_index).attr("src");
+            photoView($(".pic_lists ul li img"));
+        });
+        //上一张
+        $(".photo-panel .photo-div .arrow-prv").click(function () {
+            img_index--;
+            if (img_index < 0) {
+                img_index = $(".pic_lists ul li img").length - 1;
+            }
+            img_src = $(".pic_lists ul li img").eq(img_index).attr("src");
+            photoView($(".pic_lists ul li img"));
+        });
+        //如何调用？
+        $(".pic_lists ul li img").click(function () {
+            if (IsLoginAccount()) {
+                $(".photo-mask").show();
+                $(".photo-panel").show();
+                img_src = $(this).attr("src");
+                img_index = $(this).parent().index();
+                photoView($(this));
+            }
+        });
+        //自适应预览
+        function photoView(obj) {
+            if ($(obj).width() >= $(obj).height()) {
+                $(".photo-panel .photo-div .photo-img .photo-view-h").attr("class", "photo-view-w");
+                $(".photo-panel .photo-div .photo-img .photo-view-w img").attr("src", img_src);
+            } else {
+                $(".photo-panel .photo-div .photo-img .photo-view-w").attr("class", "photo-view-h");
+                $(".photo-panel .photo-div .photo-img .photo-view-h img").attr("src", img_src);
+            }
+            //此处写调试日志
+            console.log(img_index);
+
+        }
+    })
+</script>
+

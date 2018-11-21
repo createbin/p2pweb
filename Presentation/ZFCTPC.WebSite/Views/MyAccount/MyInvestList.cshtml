@@ -1,0 +1,369 @@
+﻿@model ZFCTPC.WebSite.ViewModels.MyAccountModels.MyInvestListModel
+@{
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    ViewData["Title"] = "我的投资-投资记录";
+}
+@*<script src="~/js/echarts.simple.min.js"></script>*@
+@*<script src="~/js/echarts/echarts.js"></script>*@
+<script src="~/js/echarts/echarts.simple.min.js"></script>
+<script src="~/js/Pager/jquery.pagination.js" type="text/javascript"></script>
+<link href="~/js/Pager/pagination.css" rel="stylesheet" />
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(4);
+    })
+</script>
+@if (!string.IsNullOrEmpty(ViewBag.msg))
+{
+    <script>
+        layer.alert("@ViewBag.msg");
+    </script>
+}
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    @*<div class="zfct_open_account">
+        <span class="font_size_12 font-weight" style="height:20px;">
+            <em class="margin_right_5"></em>
+        </span>
+    </div>*@
+    @if (!ViewBag.OtherAccount)
+    {
+        <div class="zfct_open_account">
+            <span class="font_size_12 font-weight">
+                <em class="margin_right_5">●</em>您还没有做好投资前的准备哦！开通银行资金存管，提高账户安全性，才可以投资！
+            </span>
+            <span class="float_right">
+                <a href="/MyAccount/OpenAccountInfo" class="thirdaccount_btn">
+                    开通第三方资金存管
+                </a>
+            </span>
+            <div class="clear"></div>
+        </div>
+        <div style="height:10px;"></div>
+    }
+
+   
+    <div class="my_investment_detail">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">我的资产</span>
+            @if (ViewBag.OtherAccount)
+            {
+                <span class="float_right gray">您已开通银行资金存管，可安心投资</span>
+            }
+
+        </div>
+        <div class="my_assets_box">
+            <div class="my_assets_count float_left" style="width:200px; height:180px;" id="my_assets_count">
+
+            </div>
+            <div class="my_assets_ul float_right">
+                <dl>
+                    <dd>
+                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />冻结金额</p>
+                        <em class="explanation_text display-none">因投资或其他原因而不可使用的资金</em>
+                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class="red font_size_28" id="freezing_amount">@Model.invest_money</text>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待收本金</p>
+                        <em class="explanation_text display-none">待收回出借本金</em>
+                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class="red font_size_28">@Model.principal_amount</text>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待收收益</p>
+                        <em class="explanation_text display-none">待收回出借利息</em>
+                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class="red font_size_28">@Model.collect_interest</text>&nbsp;元</p>
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+                <ul>
+                    <li class="font_size_14">
+                        <em class="gray">累计投资:</em><em class="black font-weight">&nbsp;¥@(Model.invest_money)元</em>
+                    </li>
+                    <li class="font_size_14">
+                        <em class="gray">已收本金:</em><em class="black font-weight">&nbsp;¥@(Model.recovered_principal)元</em>
+                    </li>
+                    <li class="font_size_14">
+                        <em class="gray">已收收益:</em><em class="black font-weight">&nbsp;¥@(Model.earned_interest)元</em>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">投资记录</span>
+        </div>
+        <div class="my_assets_tab">
+            <ul>
+                <li class="selected">投标中</li>
+                <li>还款中</li>
+                <li>已结清</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="my_assets_tab_box">
+                <div class="my_assets_tab_box1">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:150px">项目名称</th>
+                                <th class="">预计年化收益率</th>
+                                <th class="">投资金额</th>
+                                <th class="">投资日期</th>
+                                <th class="">项目状态</th>
+                                <th class="">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invest_tender">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="my_assets_tab_box1 display-none">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:150px">项目名称</th>
+                                <th class="">借款金额</th>
+                                <th class="">借款利率</th>
+                                <th class="">投资金额</th>
+                                <th class="">下期还款日</th>
+                                <th class="">下期还款金额</th>
+                                <th class="">项目状态</th>
+                                <th class="">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invest_repay">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="my_assets_tab_box1 display-none">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:150px">项目名称</th>
+                                <th class="">借款金额</th>
+                                <th class="">借款利率</th>
+                                <th class="">投资金额</th>
+                                <th class="">回款日期</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invest_settled">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center;margin-top:10px">
+                <div class="pager_box">
+                    <div id="pager" class="pager_div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script>
+    var type = 2;
+    $(function () {
+        //$("#invest_tender").load("/MyAccount/MyInvestData", { Type: type }, function () {
+        //    var totalpage = $("#TotalData2").val();
+        //    setPager(totalpage);
+        //});
+       $.post("/MyAccount/MyAccountHuiFu",function (result) {
+            if (result.success) {
+                $("#freezing_amount").html(result.freezing_amount);
+            }
+        });
+
+        $(".explanation").mouseover(function () {
+            var explanation = $(this).parent().siblings(".explanation_text").html();
+            layer.tips("<span style='color:#333'>" + explanation + "</span>", this, {
+                tips: [3, '#fff2cf']
+            });
+        });
+        var $div_li = $("div.my_assets_tab ul li");
+        $div_li.click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            var index = $div_li.index(this);
+            if (index == 0) {
+                type = 2;
+                $("#invest_tender").load("/MyAccount/MyInvestData", { type: type }, function () {
+                    var totalpage = $("#TotalData2").val();
+                    setPager(totalpage);
+                });
+            }
+            if (index == 1) {
+                type = 4;
+                $("#invest_repay").load("/MyAccount/MyInvestData", { type: type }, function () {
+                    var totalpage = $("#TotalData1").val();
+                    setPager(totalpage);
+                });
+            }
+            if (index == 2) {
+                type = 3;
+                $("#invest_settled").load("/MyAccount/MyInvestData", { Type: type }, function () {
+                    var totalpage = $("#TotalData3").val();
+                    setPager(totalpage);
+                });
+            }
+            $("div.my_assets_tab_box > div").eq(index).show().siblings().hide();
+        }).hover(function () {
+            $(this).addClass("hover");
+        }, function () {
+            $(this).removeClass("hover");
+            })
+
+        $div_li.eq(@ViewBag.TabId).trigger("click");
+    });
+
+        function pageCallback(index, jq) {
+            initTable(index);
+        }
+
+        function initTable(index) {
+            if (type == 4) {
+                $("#invest_repay").load("/MyAccount/MyInvestData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+            }
+            if (type == 2) {
+                $("#invest_tender").load("/MyAccount/MyInvestData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+            }
+            if (type == 3) {
+                $("#invest_settled").load("/MyAccount/MyInvestData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+            }
+
+        }
+
+        function setPager(totalpage) {
+            $('#pager').pagination({
+                callback: pageCallback,
+                totalData: totalpage,
+                showData: 5,
+                coping: true,
+                prevContent: '<',
+                nextContent: '>'
+            });
+        }
+
+        function DownInvestFile(id) {
+            $.post("/MyAccount/InvesterFile", { id: id }, function (result) {
+                if (result.success) {
+                    newWin(result.msg);
+                } else {
+                    layer.alert(result.msg);
+                }
+            });
+        }
+
+        function newWin(url) {
+            var a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('style', 'display:none');
+            a.setAttribute('target', '_blank');
+            document.body.appendChild(a);
+            a.click();
+            a.parentNode.removeChild(a);
+        }
+</script>
+
+<script>
+    //我的投资
+    var my_assets_count = echarts.init(document.getElementById('my_assets_count'));
+    //配置数据
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['投标中', '还款中', '已还清']
+        },
+        series: [
+            {
+                name: '',
+                type: 'pie',
+                radius: ['50%', '85%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '14',
+                            fontWeight: 'normal',
+
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {
+                        value: @Model.invest_tendercount, name: '投标中', itemStyle: {
+                            normal: {
+                                color: '#ec4961'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.invest_repaycount, name: '还款中', itemStyle: {
+                            normal: {
+                                color: '#ff9494'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.invest_settledcount, name: '已还清', itemStyle: {
+                            normal: {
+                                color: '#ffb5b5'
+                            }
+                        }
+                    },
+
+                ]
+            }
+        ]
+
+    };
+    my_assets_count.setOption(option);
+    $(function() {
+        $('#invest_tender').on("click",".waitPay",function() {
+            var investId = $(this).data("invest");
+            $.ajax({
+                url: '/myinvest/waitinvest',
+                data: { "investId": investId },
+                type: "POST",
+                success:function(data) {
+                    if (data.code===220) {
+                        location.href = data.redirect;
+                    } else {
+                        layer.alert(data.message);
+                    }
+                }
+            });
+        });
+    })
+</script>

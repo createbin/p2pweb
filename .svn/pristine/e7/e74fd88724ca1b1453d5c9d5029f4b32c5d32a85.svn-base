@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewData["Title"] = "监管部门";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(3);
+        PublicActive(19);
+    })
+</script>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24 bold">监管部门</p>
+        <div style="height:40px;"></div>
+        <ul class="regular_ul">
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory1.png" />
+                </div>
+                
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        南京市金融发展办公室
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        南京市金融发展办公室，为市政府工作部门，为协调推进地方金融业发展、引导金融和资本市场、支持地方经济健康且快速发展、金融诚信体系建设等起到了非常重要的作用。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory2.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        国家互联网信息办公室
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        国家互联网信息办公室成立于2011年5月，主要职责包括落实互联网信息传播方针政策和推动互联网信息传播法制建设，指导、协调、督促有关部门加强互联网信息内容管理，依法查处违法违规网站等。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory3.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        中华人民共和国国家工商行政管理总局
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中华人民共和国国家工商行政管理总局（State Administration for Industry and Commerce of the People's Republic of China，SAIC），简称国家工商总局，是依照法律、法规进行市场监督管理和有关行政执法工作的国务院直属机构。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory4.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        中华人民共和国工业和信息化部
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中华人民共和国工业和信息化部主要拟订实施行业规划、产业政策和标准；监测工业行业日常运行；推动重大技术装备发展和自主创新；管理通信业；指导推进信息化建设；协调维护国家信息安全等。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory5.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold ">
+                        中国互联网金融协会
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中国互联网金融协会（NATIONAL INTERNET FINANCE ASSOCIATION OF CHINA，英文缩写NIFA）是按照2015年7月18日经党中央、国务院同意，由人民银行、银监会、证监会、保监会、工信部、公安部、工商总局等10部委联合发布的《关于促进互联网金融健康发展的指导意见》（银发〔2015〕221号）要求，由中国人民银行会同银监会、证监会、保监会等国家有关部委组织建立的国家级互联网金融行业自律组织。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory6.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        江苏省互联网金融协会
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        江苏省互联网金融协会，英文名称为：Jiangsu Internet Finance Association，缩写为JIFA。江苏省互联网金融协会是经江苏省社会团体登记管理机关核准登记的行业性非营利性社会组织。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory7.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_10">
+                        中国人民银行
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中国人民银行（The People's Bank Of China，英文简称PBOC），简称央行，是中华人民共和国的中央银行，中华人民共和国国务院组成部门。在国务院领导下，制定和执行货币政策，防范和化解金融风险，维护金融稳定。负责共享网络借贷信息中介机构有关统计数据，接收地方金融监管部门报送其辖区网络借贷信息中介机构重大风险及处置情况信息。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory8.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_10">
+                        中国银行业监督管理委员会
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中国银行业监督管理委员会（简称：中国银监会或银监会；英文：China Banking Regulatory Commission ，英文缩写：CBRC）成立于2003年4月25日，是国务院直属正部级事业单位。根据国务院授权，统一监督管理银行、金融资产管理公司、信托投资公司及其他存款类金融机构，维护银行业的合法、稳健运行。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory9.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        中国证券监督管理委员会
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中国证监会是国务院直属正部级事业单位，其依照法律、法规和国务院授权，统一监督管理全国证券期货市场，维护证券期货市场秩序，保障其合法运行。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory10.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_10">
+                        中国保险监督管理委员会
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中华人民共和国保险监督管理委员会（China Insurance Regulatory Commission,CIRC)，简称中国保监会，成立于1998年11月18日，是国务院直属正部级事业单位，根据国务院授权履行行政管理职能，依照法律、法规统一监督管理全国保险市场，维护保险业的合法、稳健运行。确立了央行宏观监管和保监会微观监管的新型保险业监管体系。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="regular_img float_left">
+                    <img src="~/images/public/regulatory11.png" />
+                </div>
+
+                <div class="regular_p float_right">
+                    <p class="font_size_18 bold margin_top_30">
+                        中华人民共和国公安部
+                    </p>
+                    <div style="height:20px;"></div>
+                    <p class="gray">
+                        中华人民共和国公安部是国务院主管全国公安工作的职能部门，牵头负责对网络亟待信息中介机构业务活动进行互联网安全监管，打击网络借贷涉及的金融犯罪工作。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+

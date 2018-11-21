@@ -1,0 +1,399 @@
+﻿
+@{
+    ViewData["Title"] = "10月份运营报告";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="report201810_banner">
+
+</div>
+<div class="report2018010_pic1">
+
+</div>
+<div class="report201807_pic2">
+    <div style="height:160px;"></div>
+    <p class="text_align_center white font_size_40 font-weight">
+        10月业绩
+    </p>
+    <div class="report201802_ul" style="margin-top:200px">
+        <ul>
+            <li class="text_align_center">
+                <div style="height:85px;"></div>
+                <p class="font_size_20">
+                    <em class="font_size_40">46,6100.00</em>元
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_26 gray1">
+                    投资额
+                </p>
+            </li>
+            <li class="text_align_center">
+                <div style="height:85px;"></div>
+                <p class="font_size_20">
+                    <em class="font_size_40">18</em>人
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_26 gray1">
+                    注册人数
+                </p>
+            </li>
+            <li class="text_align_center">
+                <div style="height:85px;"></div>
+                <p class="font_size_20">
+                    <em class="font_size_40">176</em>人
+                </p>
+                <div style="height:40px;"></div>
+                <p class="font_size_26 gray1">
+                    当前投资人数
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="report201802_pic3">
+    <div style="height:100px;"></div>
+    <p class="text_align_center  font_size_40 font-weight">
+        风控数据
+    </p>
+    <dl class="white">
+        <dd class="text_align_center">
+            <div style="height:100px;"></div>
+            <p class="font_size_20">
+                <em class="font_size_40">4.8</em>%
+            </p>
+            <div style="height:50px;"></div>
+            <p class="font_size_26 ">
+                逾期率
+            </p>
+        </dd>
+        <dd class="text_align_center">
+            <div style="height:100px;"></div>
+            <p class="font_size_20">
+                <em class="font_size_40">100</em>%
+            </p>
+            <div style="height:50px;"></div>
+            <p class="font_size_26 ">
+                兑付率
+            </p>
+        </dd>
+        <dd class="text_align_center">
+            <div style="height:100px;"></div>
+            <p class="font_size_20">
+                <em class="font_size_40">0</em>%
+            </p>
+            <div style="height:50px;"></div>
+            <p class="font_size_26 ">
+                坏账率
+            </p>
+        </dd>
+    </dl>
+</div>
+<div class="report201802_pic4">
+    <div style="height:110px;"></div>
+    <p class="text_align_center white font_size_40 font-weight">
+        用户分析
+    </p>
+    <img src="~/images/activity/report201810/report201810_pic5.png" class="img-margin" />
+</div>
+<div class="report201808_pic5">
+    <div style="height:120px;"></div>
+    <div class="report201808_title">
+        <img src="~/images/activity/report201808/district_title.png" />
+    </div>
+    <div style="height:40px;"></div>
+    <div class="report201808_pic5_content">
+
+        <div class="report201808_pic5_left float_left">
+            <div style="height:40px;"></div>
+            <ul>
+                <li>69.92%</li>
+                <li>8,795人</li>
+                <li>
+                    江苏省
+                </li>
+            </ul>
+            <ul>
+                <li>13.07%</li>
+                <li>1,644人</li>
+                <li>
+                    安徽省
+                </li>
+            </ul>
+            <ul>
+                <li>9.69%</li>
+                <li>1,219人</li>
+                <li>
+                    北京
+                </li>
+            </ul>
+        </div>
+        <div class="report201808_pic5_center float_left">
+            <div style="height:20px;"></div>
+            <span>
+                Top1
+            </span>
+            <span>
+                Top2
+            </span>
+            <span>
+                Top3
+            </span>
+        </div>
+        <div class="report201808_pic5_right float_left">
+            <ul>
+                <li>
+                    Top4
+                </li>
+                <li>
+                    上海
+                </li>
+                <li>228人</li>
+                <li>1.81%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top5
+                </li>
+                <li>
+                    浙江省
+                </li>
+                <li>154人</li>
+                <li>1.22%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top6
+                </li>
+                <li>
+                    广东省
+                </li>
+                <li>142人</li>
+                <li>1.13%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top7
+                </li>
+                <li>
+                    福建省
+                </li>
+                <li>137人</li>
+                <li>1.09%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top8
+                </li>
+                <li>
+                    湖北省
+                </li>
+                <li>107人</li>
+                <li>0.85%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top9
+                </li>
+                <li>
+                    河北省
+                </li>
+                <li>97人</li>
+                <li>0.77%</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top10
+                </li>
+                <li>
+                    河南省
+                </li>
+                <li>56人</li>
+                <li>0.45%</li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="report201808_pic6">
+    <div style="height:120px;"></div>
+    <div class="report201808_title">
+        <img src="~/images/activity/report201808/invest_title.png" />
+    </div>
+    <div style="height:40px;"></div>
+    <div class="report201808_pic6_content">
+
+        <div class="report201808_pic6_left float_left">
+            <div style="height:40px;"></div>
+            <ul>
+                <li>101300</li>
+                <li>赵*</li>
+            </ul>
+            <ul>
+                <li>60000</li>
+                <li>张*</li>
+            </ul>
+            <ul>
+                <li>50000</li>
+                <li>赵*</li>
+            </ul>
+        </div>
+        <div class="report201808_pic5_center float_left">
+            <div style="height:20px;"></div>
+            <span>
+                Top1
+            </span>
+            <span>
+                Top2
+            </span>
+            <span>
+                Top3
+            </span>
+        </div>
+        <div class="report201808_pic5_right float_left">
+            <ul>
+                <li>
+                    Top4
+                </li>
+                <li>
+                    陈*
+                </li>
+                <li>50000元</li>
+            </ul>
+            <ul>
+                <li>
+                    Top5
+                </li>
+                <li>
+                    钱*
+                </li>
+                <li>50000元</li>
+            </ul>
+            <ul>
+                <li>
+                    Top6
+                </li>
+                <li>
+                    高*
+                </li>
+                <li>33000元</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top7
+                </li>
+                <li>
+                    於*
+                </li>
+                <li>25900元</li>
+
+            </ul>
+            <ul>
+                <li>
+                    Top8
+                </li>
+                <li>
+                    卢*
+                </li>
+                <li>17000元</li>
+            </ul>
+            <ul>
+                <li>
+                    Top9
+                </li>
+                <li>
+                    汪*
+                </li>
+                <li>10000元</li>
+
+
+            </ul>
+            <ul>
+                <li>
+                    Top10
+                </li>
+                <li>
+                    徐*
+                </li>
+                <li>10000元</li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="report201802_pic7">
+    <div style="height:140px"></div>
+    <p class="text_align_center white font_size_40 font-weight">
+        为您服务
+    </p>
+    <div style="height:180px;"></div>
+    <dl>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon1.png" />
+            <p>
+                处理疑难问题
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                53
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon2.png" />
+            <p>
+                微信咨询
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                386
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon3.png" />
+            <p>
+                电话咨询
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                107
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon4.png" />
+            <p>
+                回复客服邮件
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                0
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon5.png" />
+            <p>
+                回复并处理后台问题
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                0
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201806/report201806_icon6.png" />
+            <p>
+                受理在线咨询
+            </p>
+            <img src="~/images/activity/report201806/report201806_icon7.png" />
+            <p>
+                16
+            </p>
+        </dd>
+    </dl>
+</div>

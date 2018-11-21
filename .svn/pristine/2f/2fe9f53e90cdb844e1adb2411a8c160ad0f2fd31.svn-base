@@ -1,0 +1,228 @@
+﻿@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@{
+    ViewData["Title"] = "融资管理-企业融资";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var raiseInfo = ViewBag.RaiseInfo as ReturnPageData<RBiddingLoan>;
+    var raisedInfo = ViewBag.RaisedInfo as ReturnPageData<RFullLoan>;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(1);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    募集中
+                </li>
+                <li>
+                    满标中
+                </li>
+                <div class="clear"></div>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="my_collect_page">
+        <div class="mujizhong">
+            @if (raiseInfo == null || raiseInfo.Total <= 0)
+            {
+                <!--------------没有募集中的记录 start------------->
+                <div class="noshuju">
+                    <div style="height: 150px;"></div>
+                    <img src="~/images/enterprise/nojilu.png" class="img-margin" />
+                    <div style="height: 10px;"></div>
+                    <p class="text_align_center">
+                        暂无数据
+                    </p>
+                    <div style="height: 150px;"></div>
+                </div>
+                <!--------------没有募集中的记录 end------------->
+            }
+            else
+            {
+                <!-------------有募集记录 start-------------------->
+                <div style="height: 20px;"></div>
+                <div class="havemuji">
+
+                    @foreach (var raise in raiseInfo.PagingData.ToList())
+                    {
+                        <div class="position-relative">
+                            <p>
+                                <em>
+                                    融资项目名称
+                                </em>
+                                <em>@(raise.LoanName)</em>
+                            </p>
+                            <p>
+                                <em>
+                                    融资金额
+                                </em>
+                                <em>@(raise.LoanMoney)</em>元
+                            </p>
+                            <p>
+                                <em>
+                                    融资利率
+                                </em>
+                                <em>@(raise.LoanRate)%</em>
+                            </p>
+                            <p>
+                                <em>
+                                    融资期限
+                                </em>
+                                @(raise.LoanPeriodDesc)
+                            </p>
+                            <p>
+                                <em>
+                                    募集起始日
+                                </em>
+                                <em>@(raise.ApplyDate.ToString("yyyy-MM-dd"))</em>
+                            </p>
+                            <div>
+                                <em class="float_left" style="width: 215px;">
+                                    募集进度
+                                </em>
+                                <div class="progress_bar" style="width: 110px; float: left; margin-top: 8px;">
+                                    <div class="pro-bar">
+                                        <div class="progress-bar-inner " style="background-color: #1a9bfc; width:@(raise.LoanSpeed)%;" data-value="89" data-percentage-value="89">
+                                        </div>
+                                        <em class="progress-bar-percentage float_right">@(raise.LoanSpeed)%</em>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <img src="~/images/enterprise/pic_01.png" class="muji_img" />
+                        </div>
+                    }
+                </div>
+                <div style="height: 20px"></div>
+                <!-------------有募集记录 end-------------------->
+            }
+
+
+        </div>
+        <div class="manbiaozhong" style="display: none">
+            @if (raisedInfo == null || raisedInfo.Total <= 0)
+            {
+                <!--------------没有满标中的记录 start------------->
+                <div class="noshuju">
+                    <div style="height: 150px;"></div>
+                    <img src="~/images/enterprise/nojilu.png" class="img-margin" />
+                    <div style="height: 10px;"></div>
+                    <p class="text_align_center">
+                        暂无数据
+                    </p>
+                    <div style="height: 150px;"></div>
+                </div>
+                <!--------------没有满标中的记录 end------------->
+            }
+            else
+            {
+                <!-------------有满标记录 start-------------------->
+                <div style="height: 20px;"></div>
+                <div class="havemuji">
+                    @foreach (var rasied in raisedInfo.PagingData.ToList())
+                    {
+                        <div class="position-relative">
+                            <p>
+                                <em>
+                                    融资项目名称
+                                </em>
+                                <em>@(rasied.LoanName)</em>
+                            </p>
+                            <p>
+                                <em>
+                                    融资金额
+                                </em>
+                                <em>@(rasied.LoanMoney)</em>元
+                            </p>
+                            <p>
+                                <em>
+                                    融资利率
+                                </em>
+                                <em>@(rasied.LoanRate)%</em>
+                            </p>
+                            <p>
+                                <em>
+                                    融资期限
+                                </em>
+                                @(rasied.LoanPeriodDesc)
+                            </p>
+                            <p>
+                                <em>
+                                    募集起始日
+                                </em>
+                                <em>@(rasied.ApplyDate)</em>
+                            </p>
+                            <p>
+                                <em>
+                                    募集满标日
+                                </em>
+                                <em>
+                                    @(rasied.FullDate)
+                                </em>
+                            </p>
+                            <p>
+                                <em>
+                                    项目状态
+                                </em>
+                                <em>
+                                    @(rasied.LoanStateDesc)
+                                </em>
+                            </p>
+                            <div>
+                                <em class="float_left" style="width: 215px;">
+                                    募集进度
+                                </em>
+                                <div class="progress_bar" style="width: 110px; float: left; margin-top: 8px;">
+                                    <div class="pro-bar">
+                                        <div class="progress-bar-inner " style="background-color: #1a9bfc; width: 100%;" data-value="100" data-percentage-value="89">
+                                        </div>
+                                        <em class="progress-bar-percentage float_right">100%</em>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            @if (rasied.LoanStateDesc != "待划转")
+                            {
+                                <img src="~/images/enterprise/pic_02.png" class="muji_img" />
+                            }
+                            else
+                            {
+                                <img src="~/images/enterprise/pic_03.png" class="muji_img" />
+                            }
+
+                        </div>
+                    }
+                </div>
+                <div style="height: 20px"></div>
+                <!-------------有满标记录 end-------------------->
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".my_assets_title ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var index = $(this).index();
+        $(".my_collect_page > div").eq(index).show().siblings().hide();
+    })
+</script>
+

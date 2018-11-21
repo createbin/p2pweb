@@ -1,0 +1,58 @@
+﻿@model IEnumerable<dynamic>
+
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+}
+else
+{
+    
+    var i = 0;
+    foreach (var item in Model)
+    {
+        i++;
+        var discountId = "discount" + i;
+        var transferId = "DoTransfer" + i;
+        //var transMoneyId = "transMoney" + i;
+        decimal discountVal = 98M;
+        if (item.Discount != 0)
+        {
+            discountVal = (decimal)item.Discount;
+        }
+        var IsApply = item.IsApply;
+        var investId = item.InvestId;
+        <tr>
+            <td  >
+                <span class="my_loan_name" title="@item.LoanName">
+                    @item.LoanName
+                </span>
+               
+            </td>
+            <td>@(item.Period)期</td>
+            <td>@item.NextPayData.ToString("yyyy-MM-dd")</td>
+            <td>@string.Format("{0:P}",item.LoanRate/100)</td>
+            <td>@string.Format("{0:C}", item.WaitPrincipal)</td>
+            <td>@string.Format("{0:C}", item.CanTransferMoney)</td>
+            @*<td class="none" style="display:none">
+                <input id="@transMoneyId" style='width: 70px' value="@item.DiscountMoney" disabled="disabled" />
+            </td>*@
+            <td class="font_size_12">
+                <button class="reduce_num">-</button>&nbsp;<input onkeyup="value=value.replace(/[^0-9-]+/,'')" id="@discountId" style="width: 30px" value="@discountVal" class="discount">%<button class="add_num">+</button>
+               
+            </td>
+            @if (IsApply)
+            {
+            <td><a href="#" class="yellow font_size_12"  onclick="MyAction.Recall(@item.TransferId,@i)">撤回</a></td>
+            }
+            else
+            {
+                <td><a href="#" class="yellow font_size_12" onclick="MyAction.DoTransfer(@i,@investId,@item.CanTransferMoney)">转让</a></td>
+               
+            }
+        </tr>
+    }
+    <input id="TotalData3" type="hidden" value="@ViewData["TotalData"].ToString()" />
+}
+

@@ -1,0 +1,198 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Activity;
+@{
+    ViewData["Title"] = "理财盛宴,欢度双旦";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var InvestedMoney = ViewBag.InvestedMoney as InvestedReward;
+    var rankList = ViewBag.RankList as List<InvestPerson>;
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="double_banner position-relative">
+    <div class="double_banner_title">
+        <img src="~/images/activity/doubleonce/banner_title.png" />
+    </div>
+</div>
+<div class="double_content">
+    <div style="height:100px"></div>
+    <div class="double_box1">
+        <div style="height:200px;">
+            
+        </div>
+        <p class="text_align_center bold white font_size_24">
+            活动期间，无论新老用户，<em class="font_size_30 double_yellow ">首笔投资3月及以上标期</em>的产品，          
+        </p>
+        <p class="text_align_center margin_top_30 font_size_24 bold white">
+            即可获得<em class="font_size_30 double_yellow ">现金返现和投资红包。</em>
+        </p>
+        <div style="height:50px"></div>
+        <div class="double_div">
+            <div class="float_left margin_right_40">
+                <p class="font_size_24 white bold title1">活动奖励</p>
+                <div style="height:40px"></div>
+                <p style="color:#350b09" class="font_size_20 bold"><em  style="font-style:italic">1.</em> 现金返现=投资金额*0.6%</p>
+                <div style="height:25px;"></div>
+                <p style="color:#350b09" class="font_size_20 bold"><em style="font-style:italic">2.</em> 投资红包=投资金额*0.5%</p>
+            </div>
+            <div class="float_left">
+                <p class="double_yellow font_size_24 bold text_align_center play">
+                    列子
+                </p>
+                <div style="height:30px"></div>
+                <p class="font_size_20  text_align_center example1">
+                    中房君在活动期间内投资<em class="double_yellow">6月标20万，</em>
+                    那么可获得<em class="double_yellow">200000*0.6%=1200元现金，</em>
+                    <em class="double_yellow">200000*0.5%=1000元投资红包。</em>                    
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height:100px;"></div>
+    <div class="double_box2">
+        <div style="height:200px;">
+
+        </div>
+        <p class="text_align_center bold white font_size_24">
+            活动期间，<em class="font_size_30 double_yellow ">投资3月及以上标期</em>的产品，累计投资金额<em class="font_size_30 double_yellow ">排名前五</em>的用户，
+        </p>
+        <p class="text_align_center margin_top_30 font_size_24 bold white">
+            可额外获得<em class="font_size_30 double_yellow ">丰厚大奖！</em>
+        </p>
+        <div style="height:40px;"></div>
+        <img src="~/images/activity/doubleonce/double_box2_product1.png" class="img-margin" />
+        <div style="height:60px;"></div>
+        <ul>
+            <li style="margin-right:10px;">
+                <img src="~/images/activity/doubleonce/double_box2_product2.png" class="img-margin" />
+            </li>
+            <li>
+                <img src="~/images/activity/doubleonce/double_box2_product3.png" class="img-margin" />
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <div style="height:60px;"></div>
+        <ul>
+            <li style="margin-right:10px;">
+                <img src="~/images/activity/doubleonce/double_box2_product4.png" class="img-margin" />
+            </li>
+            <li>
+                <img src="~/images/activity/doubleonce/double_box2_product5.png" class="img-margin" />
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div style="height:100px;"></div>
+    <div class="double_box3">
+
+        @if (rankList != null && rankList.Count > 0)
+        {
+            <p class="text_align_center double_yellow bold font_size_30">
+                投资排行榜
+            </p>
+            <div style="height:25px;"></div>
+            <div class="double_box3_table">
+                <table class="" cellpadding="0" cellspacing="0">
+                    <tr class="thead">
+                        <th style="width:300px;">
+                            排名
+                        </th>
+                        <th style="width:366px;">
+                            上榜金主
+                        </th>
+                        <th style="width:400px;">
+                            累计投资金额（元）
+                        </th>
+                    </tr>
+                    @foreach (var item in rankList)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.No == 1 || item.No == 2 || item.No == 3)
+                                {
+                                    @if (item.No == 1)
+                                    {
+                                        <img src="~/images/activity/doubleonce/jin.png" />
+                                    }
+                                    else if (item.No == 2)
+                                    {
+                                        <img src="~/images/activity/doubleonce/yin.png" />
+                                    }
+                                    else if (item.No == 3)
+                                    {
+                                        <img src="~/images/activity/doubleonce/tong.png" />
+                                    }
+                                    <em class="font_size_20 bold double_yellow margin_left_30">NO.@(item.No)</em>
+                                }
+                                else
+                                {
+                                    <em class="font_size_20">NO.@(item.No)</em>
+                                }
+                            </td>
+                            <td class="white font_size_20 bold">
+                                @item.Name
+                            </td>
+                            <td class="white font_size_20 bold">
+                                @item.Money
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        
+        
+        <div style="height:45px;"></div>
+        <p class="font_size_30 white text_align_center bold" style="letter-spacing:2px">
+            我的累计投资金额
+            @if (InvestedMoney != null)
+            {
+                <em class="double_yellow font_size_45">@(InvestedMoney.RedReward)</em>
+            }
+            else
+            {
+                <em class="double_yellow font_size_45">*****</em>
+            }
+            元
+        </p>
+        <div style="height:60px;"></div>
+        @*//登录和投资状态显示不同的按钮*@
+        @if (string.IsNullOrEmpty(ViewBag.userName))
+        {
+            <a href="/Customer/Login?returnUrl=/Activity/Activity9" class="double_login">
+                登录查看
+            </a>
+        }
+        else
+        {
+            <a href="/myinvest/recommendedlist" class="double_invest ">
+                立即投资
+            </a>
+        }        
+    </div>
+    <div style="height:90px;"></div>
+    <div class="double_box4">
+        <div style="height:95px"></div>
+        <h2 class="font_size_30 double_yellow text_align_center">
+            活动规则
+        </h2>
+        <div style="height:55px;"></div>
+        <p class="position-relative">
+            <em>1</em>本次活动时间：2017年12月22日00:00:00--2018年1月7日23:59:59；
+        </p>
+        <p class="position-relative">
+            <em>2</em>本次活动与平台其它活动同时参与，包括2周年庆典、寒冬不惧、邀请返现与喜上加息；
+        </p>
+        <p class="position-relative">
+            <em>3</em>实物奖品按国家税法规定税费需用户自理,奖品将于活动结束后的14个工作日发放，届时
+平台客服人员会与您联系，请保持手机号码畅通；
+        </p>
+        <p class="position-relative">
+            <em>4</em>债权转让标、新手标、1月标不参加本次活动；
+        </p>
+        <p class="position-relative">
+            <em>5</em>本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+        </p>
+    </div>
+    <div style="height:50px;"></div>
+</div>
+

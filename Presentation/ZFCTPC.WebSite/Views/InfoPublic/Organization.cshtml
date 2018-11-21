@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "组织架构";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(5);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="organization_box">
+        <p class="text_align_center font_size_20 bold">组织架构</p>
+        <div style="height:40px;"></div>
+        <img src="~/images/helpcenter/zuzhijg.png" class="img-margin" />
+        <div style="height:40px;"></div>
+        <p class="text_align_center font_size_20 bold">员工统计</p>
+        <div style="height:40px;"></div>
+        <p class="margin_left_40">截止2018年06月08日，公司总人数31人，其中高管人员8人</p>
+        <div style="height:20px;"></div>
+        <img src="~/images/helpcenter/yuangong.png" class="img-margin" />
+        <div style="height:50px;"></div>
+        <p class="text_align_center font_size_20 bold">分支机构</p>
+        <div style="height:40px;"></div>
+        <div class="branches">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>编号</th>
+                    <th>分支机构名称</th>
+                    <th>地址</th>
+                    <th>负责人</th>
+                    <th>联系电话</th>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        无
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

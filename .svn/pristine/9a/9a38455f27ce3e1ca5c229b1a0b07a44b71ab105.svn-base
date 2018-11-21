@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "联系我们_关于我们_中房创投";
+    ViewData["Description"] = "尊敬的用户您好，如在使用中房创投平台过程中有任何疑问，请您与中房创投工作人员联系：服务热线：400-025-1002 中房创投,践行合规的互联网金融平台";
+    ViewData["Keywords"] = "联系我们,中房创投地址,中房创投客服电话,中房创投官方微信,中房创投客服邮箱";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+    .right_suspension {
+        top: 195px !important;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+@*<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>*@
+<div style="border-top:1px solid #f0f0f0"></div>
+
+<div class="aboutus_nav">
+    <ul>
+        <li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/ContactUs">联系我们</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px"></div>
+
+<div class="contactus_box">
+    <div class="contantus_content">
+        <p class="font_size_14"><i class="icon iconfont margin_right_15" style="color:#757575">&#xe611;</i>办公地址：江苏省南京市秦淮区晨光1865创意创业园D4栋</p>
+        <p class="font_size_14"><i class="icon iconfont margin_right_15"style="color:#757575">&#xe662;</i>联系电话：400-025-1002</p>
+        <p class="font_size_14"><i class="icon iconfont margin_right_15 " style="font-size:16px;color:#757575">&#xe66b;</i>邮政编码：210019</p>
+        <div style="height:40px;"></div>
+        <div class="contantus_map position-relative">
+            <img src="~/images/map_pic.jpg" />
+            <div class="customerservice">
+                <span>
+                    客户服务
+                </span>
+                <div class="font_size_12 white text_align_center">
+                    <div style="height:18px;"></div>
+                    <p class="blue4">客服热线</p>
+                    <p class="font_size_16">400-025-1002</p>
+                    <p class="blue4" style="font-size:20px;font-weight:lighter">|</p>
+                    <p class="blue4">周一至周五</p>
+                    <p>9:00-17:30</p>
+                    <p class="blue4" style="font-size:20px; font-weight:lighter">|</p>
+                    <p class="blue4">在线客服</p>
+                    <p class="contact_us_border">
+                        <i class="icon iconfont margin_right_10" style="font-size:14px">&#xe62b;</i>在线客服
+                    </p>
+                    <p class="blue4" style="font-size:20px; font-weight:lighter">|</p>
+                    <p class="blue4">客服邮箱</p>
+                    <p class="contact_us_border">
+                        <i class="icon iconfont margin_right_10" style="font-size:14px">&#xe604;</i>zfctkf@chinazfct.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

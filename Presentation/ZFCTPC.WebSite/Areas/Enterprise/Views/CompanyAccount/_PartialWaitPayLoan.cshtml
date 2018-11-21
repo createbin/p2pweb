@@ -1,0 +1,187 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RMyRepayLoans
+
+
+@if (Model == null || Model.Count <= 0)
+{
+<p class="text_align_center margin_top_15 margin_bottom_15">没有数据</p>
+}
+else
+{
+    foreach (var repayLoan in Model.RepayLoans)
+    {
+<div class="daihuankuan_product daihuankuan_productq1">
+    <div style="height:10px"></div>
+    <p>
+        <em class="blue">▌</em>@(repayLoan.LoanName)
+        <em class="font_size_12 margin_left_15">项目编号：</em><em class="font_size_12">@(repayLoan.LoanId)</em>
+        <a href="javascript:;" class="blue margin_left_15 font_size_12" onclick="DownLoanFile(@repayLoan.LoanId)">合同下载</a>
+    </p>
+    <div style="height:10px;"></div>
+    <p>
+        <span>
+            <em>剩余待还总额</em>
+            <em class="red1  ">@(repayLoan.WaitRepayMoney)</em> <em class="gray">元</em>
+        </span>
+        <span class="">
+            <em>剩余待还期数</em>
+            <em class="red1 ">@(repayLoan.WaitRepayPeriod)</em> <em class="gray"> 期</em>
+        </span>
+    </p>
+
+    <p class="blue text_align_center seeMore">
+        点击查看融资项目及还款情况
+        <em class="padding_left_5"><i class="fa fa-caret-down " aria-hidden="true"></i></em>
+    </p>
+    <div class="moreinfor" style="display:none">
+        <p>
+            <span>
+                <em>融资金额</em>
+                <em class="  ">@(repayLoan.LoanMoney)</em> <em class="gray">元</em>
+            </span>
+            <span class="">
+                <em>融资期限</em>
+                <em class="red1 ">@(repayLoan.LoanPeriod)</em> <em class="gray"> 期</em>
+            </span>
+            <span>
+                <em>融资利率</em>
+                <em class="  ">@(repayLoan.LoanRate)%</em>
+            </span>
+        </p>
+        <p>
+            <span>
+                <em>放款时间</em>
+                <em class="  ">@(repayLoan.FullDate)</em>
+            </span>
+            <span class="">
+                <em>还款方式</em>
+                <em class=" ">@(repayLoan.RepayTypeName)</em>
+            </span>
+
+        </p>
+        <div style="height:20px"></div>
+        <div class="moreinfor_table">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        还款期数
+                    </td>
+                    <td>
+                        应还日期
+                    </td>
+                    <td>
+                        应还本金(元)
+                    </td>
+                    <td>
+                        应还利息(元)
+                    </td>
+                    <td>
+                        应还服务费(元)
+                    </td>
+                    <td>
+                        逾期罚金(元)
+                    </td>
+                    <td>
+                        还款总额(元)
+                    </td>
+                    <td>
+                        还款状态
+                    </td>
+                    <td>
+                        操作
+                    </td>
+                </tr>
+                @foreach (var loanPlan in repayLoan.RepayLoanPlans)
+                {
+                    <tr>
+                        <td>
+                            @(loanPlan.Period)期
+                        </td>
+                        <td>
+                            @(loanPlan.PayDate?.ToString("yyyy-MM-dd"))
+                        </td>
+                        <td>
+                            @(loanPlan.PayMoney)
+                        </td>
+                        <td>
+                            @(loanPlan.PayRate)
+                        </td>
+                        <td>
+                            @(loanPlan.PayServiceFee)
+                        </td>
+                        <td>
+                            @(loanPlan.OverRateMoney)
+                        </td>
+                        <td>
+                            @(loanPlan.PayPrincipal+ loanPlan.PayServiceFee)
+                        </td>
+                        @if (loanPlan.CollectType == "已逾期")
+                        {
+                            <td class="red1">
+                                @(loanPlan.CollectType)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @(loanPlan.CollectType)
+                            </td>
+                        }
+                        <td>
+                            @if (!loanPlan.IsUsing)
+                            {
+                                <a href="javascript:void(0);" data-planid="@(loanPlan.Id)" class="blue waitPay">
+                                    还款
+                                </a>
+                            }
+                            else
+                            {
+                                <button class="repayPlan1" disabled>还款</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div style="height:20px"></div>
+    </div>
+</div>
+    }
+}
+
+
+<script>
+    $(".seeMore").click(function () {
+        $(this).parent().find(".moreinfor").slideDown();
+        $(this).hide();
+    })
+    $('.waitPay').click(function () {
+        var loanId = $(this).data("planid");
+        $.ajax({
+            url: "VerifyRepaymentAuth?id=" + loanId,
+            success: function (data) {
+                console.log(data);
+                if (data.success) {
+                    location.href = "EnterpriseRepayment?loanId=" + loanId;
+                } else {
+                    //var index = layer.alert(data.msg);
+                    setTimeout(function () {
+                        //layer.close(index);
+                        $("#red_envelopes_mask").css("display", "block");
+                        $("#red_envelopes_content").css("display", "block")
+                    }, 3000);
+                }
+            }
+        });
+    })
+    function DownLoanFile(id) {
+        $.post("/MyAccount/LoanerFile", { id: id }, function (result) {
+            if (result.success) {
+                newWin(result.msg);
+            } else {
+                layer.alert(result.msg);
+            }
+        });
+    }
+
+</script>
+

@@ -1,0 +1,364 @@
+﻿
+@{
+    ViewData["Title"] = "合规进程";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="~/css/compliance.css" rel="stylesheet" />
+<div class="compliance_banner">
+
+</div>
+<div style="height:70px;"></div>
+<div class="compliance_box1">
+    <div class="text_align_center">
+        <img src="~/images/compliance/com_title1.png" />
+    </div>
+    <div style="height:70px;"></div>
+    <div class="compliance_left float_left">
+        <h3 class="bold font-size-16">亲爱的中房创投投资人：</h3>
+        <div style="height:10px;"></div>
+        <p>
+            您好，感谢您对中房创投一直以来的信任与支持！中房创投自上线以来，始终致力于为大众提供更安全、更便捷、更贴心的一站式投资管理服务，承诺以央企信誉来守护客户的财富与幸福。 自《网络借贷信息中介机构业务活动管理暂行办法》发布以来，互金行业开始进入规范发展的阶段，中房创投始终拥抱监管，追求更加合规。
+        </p>
+        <p>
+            中房创投一直走在合规的前列，未来必将积极拥抱监管，加速推进合规化进程，不负众望，为投资者打造一个更加规范、专业、高效的互联网金融信息服务平台。
+        </p>
+    </div>
+    <div class="compliance_right float_right">
+        <div class="compliance_right_img float_left">
+            <img src="~/images/compliance/com_title1_text.png" />
+        </div>
+        <div class="compliance_right_text float_left">
+            <h3 class="bold font-size-16">
+                资金存管
+            </h3>
+            <div style="height:5px;"></div>
+            <p class="gray1">
+                中房创投已与银行合作，正在对接银行资金存管系统，上线后可真正实现用户资金与平台自有资金的有效隔离，保障用户资金安全
+            </p>
+            <div style="height:50px;"></div>
+            <h3 class="bold font-size-16">
+                信息披露
+            </h3>
+            <div style="height:5px;"></div>
+            <p class="gray1">
+                中房创投根据国家各项法律规定，多渠道、多角度，定期披露平台运营数据，始终致力于将平台置于阳光化、透明化的市场环境中。
+            </p>
+            <div style="height:50px;"></div>
+            <h3 class="bold font-size-16">
+                信息安全
+            </h3>
+            <div style="height:5px;"></div>
+            <p class="gray1">
+                中房创投全站升级为HTTPS，建立了严格的隐私信息加密制度、完善的容灾及备份机制，更与阿里云进行合作，建立多重安全机制。
+            </p>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div style="height:80px;"></div>
+<div class="compliance_page">
+    <div class="compliance_box1">
+        <div class="text_align_center">
+            <img src="~/images/compliance/com_title2.png" />
+        </div>
+        <div style="height:70px;"></div>
+        <div class="compliance_progress1">
+            <em class="blue bold font_size_16 float_left">
+                银行存管
+            </em>
+            <ul class="float_left">
+                <li>
+                    银行尽调
+                </li>
+                <li>
+                    签订协议
+                </li>
+                <li>
+                    银行存管对接
+                </li>
+                <li>
+                    测试
+                </li>
+                <li>
+                    正式上线
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div> 
+        <div class="compliance_progress2">
+            <em class="blue bold font_size_16 float_left">
+                金融办备案
+            </em>
+            <ul class="float_left">
+                <li>
+                    自查修正
+                </li>
+                <li>
+                    南京市建邺区互联网金融风险办公室提供审查支持
+                </li>
+                <li>
+                    接受合规意见
+                </li>
+                <li>
+                    合规修正
+                </li>
+                <li>
+                    审核通过
+                </li>
+                <li>
+                    完成备案
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="compliance_progress3">
+            <em class="blue bold font_size_16 float_left">
+                ICP许可证
+            </em>
+            <ul class="float_left">
+                <li>
+                    提供材料
+                </li>
+                <li>
+                    备案审核
+                </li>
+                <li>
+                    审核通过
+                </li>
+                <li>
+                    下发证书
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="compliance_progress4">
+            <em class="blue bold font_size_16 float_left">
+                信息系统定级备案和等级测试
+            </em>
+            <ul class="float_left">
+                <li>
+                    提供备案材料
+                </li>
+                <li>
+                    权威测评机构测评
+                </li>
+                <li>
+                    测评结果报告
+                </li>
+                <li>
+                    获得公安部信息安全等级保护三级评定结果
+                </li>
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="compliance_progress5">
+            <em class="blue bold font_size_16 float_left">
+                电子签章
+            </em>
+            <ul class="float_left">
+                <li>
+                    市场调研
+                </li>
+                <li>
+                    选择一签通
+                </li>
+                <li>
+                    签订协议
+                </li>
+               
+                <li>
+                    电子签章系统对接
+                </li>
+                <li>
+                    测试
+                </li>
+                <li>
+                    正式上线
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div style="height:80px;"></div>
+<div class="compliance_box1">
+    <div class="text_align_center">
+        <img src="~/images/compliance/com_title3.png" />
+    </div>
+    <div style="height:70px;"></div>
+    <div class="compliance_result white">
+        <div class="compliance_result1">
+            <div class="compliance_result1_left float_left">
+                <div class="compliance_result1_top position-relative">
+                    <div class="compliance_result1_content">
+                        <h3 class=" font_size_20 bold">
+                            银行存管
+                        </h3>
+                        <div style="height:30px;"></div>
+                        <p class="font_size_18 ">
+                            银行存管可以实现不同的借款人及投资人的账户完全独立，从而使得资金隔离，避免了资金池等问题。同时提现、充值、投资等资金操作都受到银行的管理，保证了用户的资金安全。
+                        </p>
+                    </div>
+                    <div class="processing_icon">                        
+                    </div>
+                </div>
+                <div class="compliance_result1_bottom">
+                    <div class="compliance_result1_bottom_left float_left position-relative">
+                        <div class="compliance_result1_content">
+                            <h3 class=" font_size_20 bold">
+                                风险提示
+                            </h3>
+                            <div style="height:30px;"></div>
+                            <p class="font_size_18 ">
+                                在醒目位置对用户进行了风险提示，并告知了风险点。
+                            </p>
+                        </div>
+                        <div class="complete_icon">
+
+                        </div>
+                    </div>
+                    <div class="compliance_result1_bottom_right float_right position-relative">
+                        <div class="compliance_result1_content">
+                            <h3 class=" font_size_20 bold">
+                                风险评估
+                            </h3>
+                            <div style="height:30px;"></div>
+                            <p class="font_size_18 ">
+                                对投资人进行风险尽职评估，未进行风险评估的无法投资。并根据风险评估进行分级管理。
+                            </p>
+                        </div>
+                        <div class="complete_icon">
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="compliance_result1_right float_right position-relative">
+                <div class="compliance_result2_content">
+                    <h3 class=" font_size_20 bold">
+                        信息披露
+                    </h3>
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18 ">
+                        充分披露借款人信息，并且建设了信息披露专栏，定期更新维护平台基本信息及数据统计。
+                    </p>
+                </div>
+                <div class="complete_icon">
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="compliance_result1">
+            <div class="compliance_result1_left float_right">
+                <div class="compliance_result1_top position-relative" style="background:#EB8677">
+                    <div class="compliance_result1_content">
+                        <h3 class=" font_size_20 bold">
+                            电子签章
+                        </h3>
+                        <div style="height:30px;"></div>
+                        <p class="font_size_18 ">
+                            对接第三方平台“一签通”对合同进行电子签章，确保了合同数据的有效及真实性。
+                        </p>
+                    </div>
+                    <div class="complete_icon">
+                    </div>
+                </div>
+                <div class="compliance_result1_bottom">
+                    <div class="compliance_result1_bottom_left float_left position-relative" style="background:#D1B3D4">
+                        <div class="compliance_result1_content">
+                            <h3 class=" font_size_20 bold">
+                                募集期
+                            </h3>
+                            <div style="height:30px;"></div>
+                            <p class="font_size_18 ">
+                                项目募集期限不超过20天。
+                            </p>
+                        </div>
+                        <div class="complete_icon">
+
+                        </div>
+                    </div>
+                    <div class="compliance_result1_bottom_right float_right position-relative" style="background:#FEC67E">
+                        <div class="compliance_result1_content">
+                            <h3 class=" font_size_20 bold">
+                                年度审计
+                            </h3>
+                            <div style="height:30px;"></div>
+                            <p class="font_size_18 ">
+                                与江苏海天会计师事务所合作，进行了年度财务审计，并披露在平台上。
+                            </p>
+                        </div>
+                        <div class="complete_icon">
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="compliance_result1_right float_left position-relative" style="background:#3C77AA">
+                <div class="compliance_result2_content">
+                    <h3 class=" font_size_20 bold">
+                        项目限额
+                    </h3>
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18 ">
+                        单一融资人在中房创投平台的融资上限不超过人民币20万；单一企业在中房创投的融资上限不超过100万。
+                    </p>
+                </div>
+                <div class="complete_icon">
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="compliance_result2">
+            <div class="compliance_result2_left float_left position-relative">
+                <div class="compliance_result1_content">
+                    <h3 class=" font_size_20 bold">
+                        金融办备案
+                    </h3>
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18 ">
+                        已提供材料向当地金融监管部门提交备案登记申请。
+                    </p>
+                </div>
+                <div class="processing_icon">
+                </div>
+            </div>
+            <div class="compliance_result2_left float_left position-relative">
+                <div class="compliance_result1_content">
+                    <h3 class=" font_size_20 bold">
+                        ICP许可证
+                    </h3>
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18 ">
+                        需等待备案申请通过后才可以申请。
+                    </p>
+                </div>
+                <div class="processing_icon">
+                </div>
+            </div>
+            <div class="compliance_result2_left float_left position-relative">
+                <div class="compliance_result1_content">
+                    <h3 class=" font_size_20 bold">
+                        信息系统定级备案和等级测试
+                    </h3>
+                    <div style="height:30px;"></div>
+                    <p class="font_size_18 ">
+                        按照国家网络安全相关规定和国家信息安全等级保护制度的要求，开展信息系统定级备案和等级测试。
+                    </p>
+                </div>
+                <div class="processing_icon">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+</div>
+<div style="height:80px;"></div>
+

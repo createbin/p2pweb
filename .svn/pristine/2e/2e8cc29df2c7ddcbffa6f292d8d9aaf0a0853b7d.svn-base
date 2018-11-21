@@ -1,0 +1,515 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@{
+    ViewData["Title"] = "银行卡管理";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    var thirdInfo = ViewBag.ThirdPart as RUserThirdPartInfo;
+}
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(7);
+    });
+</script>
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <dl class="float_left">
+                <dd class="active" style="width:75px;">
+                    我的投资户
+                </dd>
+                <dd>
+                    我的融资户
+                </dd>
+                <div class="clear"></div>
+            </dl>
+            <img src="~/images/bohai/bohai_logo.png" class="float_right" style="padding-top:12px" width="250" height="34" />
+            <div class="clear"></div>
+        </div>
+        <div class="my_assets_tab">
+            <!----------我的投资户 start-------------->
+            <div>
+                <div style="height:15px;"></div>
+                <div class="bank_info_dl">
+                    <dl>
+                        <dd class="active">
+                            <a href="#">
+                                存管信息
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageNext">
+                                银行卡管理
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageThird">
+                                授权管理
+                            </a>
+
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <div style="height:15px;"></div>
+                <div class="openaccount_bohai">
+                    <div id="openBank" style="display: @((thirdInfo.JieSuan == "1" && thirdInfo.OnceBohai == "0"&&thirdInfo.BoHai=="0") ? "block" : "none")">
+                        @Html.Partial("_PartialOpenBank", thirdInfo)
+                    </div>
+                    @if (thirdInfo.BoHai == "1")
+                    {
+                    <!----------已经绑好过了银行卡start-------------->
+                        <div style="height: 20px;"></div>
+                        <p class=" font_size_16 padding_left_15 bold">
+                            存管账户信息
+                        </p>
+                        <div style="height: 25px;"></div>
+                        <ul>
+                            <li>
+                                账户所有人
+                            </li>
+                            <li>
+                                @thirdInfo.RealName
+                            </li>
+                            <li>
+                                @thirdInfo.BankNo
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                手机号码
+                            </li>
+                            <li>
+                                @thirdInfo.PhoneNo
+                            </li>
+                            <li class="blue font_size_12 " id="changeNumber">
+                                修改<i class="fa fa-caret-down " aria-hidden="true"></i>
+                            </li>
+                        </ul>
+                        <div class="changenubmer_box" style="display: none">
+                            <div style="height: 15px;"></div>
+                            <p class="font_size_12 gray1">温馨提示：</p>
+                            <p class="font_size_12 gray1">
+                                1.修改手机号码将在渤海银行存管平台解绑现有绑定的银行卡，并需要重新绑定银行卡
+                            </p>
+                            <div style="height: 15px;"></div>
+                            <div class="bank_form_group">
+                                <label>
+                                    原手机号码
+                                </label>
+                                <input type="text" placeholder="请输入原手机号码" class="bank_input" id="oldPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="oldPhoneMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    验证码
+                                </label>
+                                <input type="text" placeholder="请输入验证码" class="bank_input1" id="verifyPhoneCode" />
+                                <button type="button" class="bank_yanzhengma" id="PhoneVerify">发送验证码</button>
+                                <label class="active">
+                                    <span class="form_tips_content" id="PhoneVerifyMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    新手机号码
+                                </label>
+                                <input type="text" placeholder="请输入新手机号码" class="bank_input" id="newPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="newPhonemsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div style="height: 10px;"></div>
+                            <div class="bank_form_group">
+                                <button class="kaihu_again" onclick="ChangeBhPhone();">
+                                    前往渤海银行修改手机号码
+                                </button>
+                            </div>
+                            <div style="height: 20px;"></div>
+                        </div>
+                        <ul>
+                            <li>
+                                托管平台密码
+                            </li>
+                            <li>
+                                ******
+                            </li>
+                            <li class=" font_size_12">
+                                <a href="" class="blue" onclick="ChangeBhPassWord();">
+                                    修改/找回
+                                </a>
+                            </li>
+                        </ul>
+                    <!----------已经绑好过了银行卡end-------------->
+
+                    }
+                    else if (thirdInfo.JieSuan == "0")
+                    {
+                        <div class="norenzheng">
+                            <div style="height: 50px;"></div>
+                            <p class="text_align_center font_size_16 bold">
+                                您需要先完成实名认证操作，才能进行银行存管开户噢
+                            </p>
+                            <div style="height: 40px;"></div>
+                            <a href="/myaccount/OpenAccountInfo" class="gotoshouquan">
+                                前往开户
+                            </a>
+                            <div style="height: 50px;"></div>
+                        </div>
+                    <!------------没有实名认证 end------------>
+                    }
+                    else if (thirdInfo.JieSuan == "1" && thirdInfo.BoHai == "0" && thirdInfo.OnceBohai == "1")
+                    {
+                        @Html.Partial("_PartialOpenBanked", thirdInfo)
+                    }
+
+                </div>
+                <div style="height:50px;"></div>
+            </div>
+            <!------------我的投资户 start---------->
+            <!----------我的融资户 start-------------->
+            <div style="display:none">
+                <div style="height:15px;"></div>
+                <div class="bank_info_dl">
+                    <dl>
+                        <dd class="active">
+                            <a href="#">
+                                存管信息
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageNext">
+                                银行卡管理
+                            </a>
+
+                        </dd>
+                        <dd>
+                            <a href="BankCardManageThird">
+                                授权管理
+                            </a>
+
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+
+                <div style="height:15px;"></div>
+                <div class="openaccount_bohai">
+                    <div id="openBank" style="display: @((thirdInfo.JieSuan == "1" && thirdInfo.OnceBohai == "0"&&thirdInfo.BoHai=="0") ? "block" : "none")">
+                        @Html.Partial("_PartialOpenBank", thirdInfo)
+                    </div>
+                    @if (thirdInfo.BoHai == "1")
+                    {
+                    <!----------已经绑好过了银行卡start-------------->
+                        <div style="height: 20px;"></div>
+                        <p class=" font_size_16 padding_left_15 bold">
+                            存管账户信息
+                        </p>
+                        <div style="height: 25px;"></div>
+                        <ul>
+                            <li>
+                                账户所有人
+                            </li>
+                            <li>
+                                @thirdInfo.RealName
+                            </li>
+                            <li>
+                                @thirdInfo.BankNo
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                手机号码
+                            </li>
+                            <li>
+                                @thirdInfo.PhoneNo
+                            </li>
+                            <li class="blue font_size_12 " id="changeNumber">
+                                修改<i class="fa fa-caret-down " aria-hidden="true"></i>
+                            </li>
+                        </ul>
+                        <div class="changenubmer_box" style="display: none">
+                            <div style="height: 15px;"></div>
+                            <p class="font_size_12 gray1">温馨提示：</p>
+                            <p class="font_size_12 gray1">
+                                1.修改手机号码将在渤海银行存管平台解绑现有绑定的银行卡，并需要重新绑定银行卡
+                            </p>
+                            <div style="height: 15px;"></div>
+                            <div class="bank_form_group">
+                                <label>
+                                    原手机号码
+                                </label>
+                                <input type="text" placeholder="请输入原手机号码" class="bank_input" id="oldPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="oldPhoneMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    验证码
+                                </label>
+                                <input type="text" placeholder="请输入验证码" class="bank_input1" id="verifyPhoneCode" />
+                                <button type="button" class="bank_yanzhengma" id="PhoneVerify">发送验证码</button>
+                                <label class="active">
+                                    <span class="form_tips_content" id="PhoneVerifyMsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="bank_form_group">
+                                <label>
+                                    新手机号码
+                                </label>
+                                <input type="text" placeholder="请输入新手机号码" class="bank_input" id="newPhone" />
+                                <label class="active">
+                                    <span class="form_tips_content" id="newPhonemsg">
+                                    </span>
+                                </label>
+                            </div>
+                            <div style="height: 10px;"></div>
+                            <div class="bank_form_group">
+                                <button class="kaihu_again" onclick="ChangeBhPhone();">
+                                    前往渤海银行修改手机号码
+                                </button>
+                            </div>
+                            <div style="height: 20px;"></div>
+                        </div>
+                        <ul>
+                            <li>
+                                托管平台密码
+                            </li>
+                            <li>
+                                ******
+                            </li>
+                            <li class=" font_size_12">
+                                <a href="" class="blue" onclick="ChangeBhPassWord();">
+                                    修改/找回
+                                </a>
+                            </li>
+                        </ul>
+                    <!----------已经绑好过了银行卡end-------------->
+
+                    }
+                    else if (thirdInfo.JieSuan == "0")
+                    {
+                        <div class="norenzheng">
+                            <div style="height: 50px;"></div>
+                            <p class="text_align_center font_size_16 bold">
+                                您需要先完成实名认证操作，才能进行银行存管开户噢
+                            </p>
+                            <div style="height: 40px;"></div>
+                            <a href="/myaccount/OpenAccountInfo" class="gotoshouquan">
+                                前往开户
+                            </a>
+                            <div style="height: 50px;"></div>
+                        </div>
+                    <!------------没有实名认证 end------------>
+                    }
+                    else if (thirdInfo.JieSuan == "1" && thirdInfo.BoHai == "0" && thirdInfo.OnceBohai == "1")
+                    {
+                        @Html.Partial("_PartialOpenBanked", thirdInfo)
+                    }
+
+                </div>
+                <div style="height:50px;"></div>
+            </div>
+            <!------------我的融资户 start---------->
+        </div>
+    </div>
+</div>
+
+<!-----------银行卡绑定 蒙层  start------------>
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<div class="bank_tips_page" style="display:none">
+    <div class="bank_tips_head">
+        温馨提示
+        <em>
+            ×
+        </em>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/bohai/bohai_logo.png" class="img-margin" />
+    <div style="height:40px;"></div>
+    <p class="text_align_center font_size_20 ">
+        银行卡正在绑定中,请稍后...
+    </p>
+</div>
+<!-----------银行卡绑定 蒙层  end------------>
+
+<input type="hidden" id="pageMsg" value="@(ViewBag.Msg)"/>
+
+
+<script>
+    var msg = $('#pageMsg').val();
+    if (msg != "") {
+        layer.alert(msg);
+    }
+
+
+
+
+    $(".bank_tips_page .bank_tips_head em").click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page").hide();
+    });
+    $(".bank_tips_page1 .bank_tips_head em").click(function () {
+        $("#red_envelopes_mask").hide();
+        $(".bank_tips_page1").hide();
+    });
+    $("#changeNumber").click(function () {
+        $(this).toggleClass("open");
+        $(".changenubmer_box").slideToggle();
+
+    });
+    $(".bank_show_box").children(":not(':last')").mouseover(function () {
+        $(this).find(".bank_mask").show();
+        $(this).find("a.change_bank").show();
+    })
+    $(".bank_show_box").children(":not(':last')").mouseleave(function () {
+        $(this).find(".bank_mask").hide();
+        $(this).find("a.change_bank").hide();
+    });
+    $(".my_assets_title dl dd").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var _index = $(this).index();
+        $(".my_assets_tab > div").eq(_index).show().siblings().hide();
+    });
+</script>
+
+<script src="/js/Tools/zf.tools.js"></script>
+<script>
+    $(function () {
+
+        var wait = 120;
+        function time(o) {
+            if (wait == 0) {
+                wait = 120;
+                $(o).removeAttr("disabled");
+                $(o).html("获取验证码");
+            }
+            else {
+                wait--;
+                $(o).attr("disabled", true);
+                $(o).html("重新发送(" + wait + ")");
+                timeout = setTimeout(function () { time(o) }, 1000)
+            }
+        }
+
+        $('#toBH').click(function () {
+            var bankCode = $('#bankCode').val();
+            var bankNumber = $('#bankNumber').val();
+            if (bankCode == "" || bankCode == undefined || bankNumber == "" || bankNumber == undefined) {
+                alert("请输入银行卡信息");
+                return false;
+            } else {
+                $.ajax({
+                    url: "/MyAccount/BHOpenAccount",
+                    data: { "bankCode": bankCode, "bankNumber": bankNumber },
+                    type: 'POST',
+                    beforeSend: function () {
+                        $("#red_envelopes_mask").show();
+                        $(".bank_tips_page").show();
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            newWin(data.msg);
+                        } else {
+                            $("#red_envelopes_mask").hide();
+                            $(".bank_tips_page").hide();
+                            layer.confirm(data.msg, {
+                                icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                                    layer.close(index);
+                                    location.reload();
+                                }
+                            }, function (index) {
+                                layer.close(index);
+                                location.reload();
+                            });
+                        }
+
+                    }
+                });
+            }
+
+        });
+
+        $('#retryOpen').click(function () {
+            $('#openBanked').hide();
+            $('#openBank').show();
+        });
+
+        $("#PhoneVerify").click(function () {
+            $("#oldPhoneMsg").html("");
+            $("#PhoneVerifyMsg").html("");
+            var oldPhone = $("#oldPhone").val();
+            var verifyCode = $("#verifyPhoneCode").val();
+            var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+            if (!phoneRegu.test(oldPhone)) {
+                $("#oldPhoneMsg").html("原手机号格式不正确");
+                return false;
+            }
+            $.post("SendMobileVCodeToBhUser", { phone: oldPhone }, function (data) {
+                if (data.success) {
+                    time($("#PhoneVerify"));
+                } else if (data.msg1) {
+                    $("#oldPhoneMsg").html(data.msg1);
+
+                } else {
+                    $("#PhoneVerifyMsg").html(data.msg);
+                }
+            })
+        });
+    });
+
+    function ChangeBhPassWord() { 
+        $.post("ChangeBhPassword", function (data) { 
+            if (data.success) {
+                newWin(data.msg);
+            } else {
+                layer.alert(data.msg);
+            }
+        });
+    }
+
+    function ChangeBhPhone() {
+        $("#newPhonemsg").html("");
+        var newphone = $("#newPhone").val();
+        var verifyCode = $("#verifyPhoneCode").val();
+        var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+        if (!phoneRegu.test(newphone)) {
+            $("#newPhonemsg").html("新手机号格式不正确");
+            return false;
+        }
+        if (verifyCode.length == 0) {
+            $("#PhoneVerifyMsg").html("请输入手机验证码");
+            return false;
+        }
+        $.post("ChangeBhPhone", { newPhone: newphone, vCode: verifyCode }, function (data) {
+            if (data.success) {
+                newWin(data.msg);
+            } else {
+                layer.alert(data.msg);
+            }
+        });
+    }
+</script>
+
+
+

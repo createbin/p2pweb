@@ -1,0 +1,33 @@
+﻿@model List<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RLoanItemDetail>
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+}
+else
+{
+
+    foreach (var item in Model)
+        {
+        <tr class="">
+            <td>
+                <span class="redenvelope_name">@item.LoanName</span>
+                <span class="redenvelope_name_real" style="display:none">@item.LoanName</span>
+           </td>
+            <td>@string.Format("{0:N}", item.LoanMoney)</td>
+            <td>@(item.LoanPeriod)个月</td>
+            <td>@string.Format("{0:N}", item.RepayMoney)</td>
+            <td>@string.Format("{0:N}", item.WaitRepayMoney)</td>
+            <td>@(item.WaitRepayPeriod)期</td>
+        </tr>
+        }
+    }
+<input id="TotalData" type="hidden" value="@ViewData["TotalData"].ToString()" />
+<script>
+    $(".redenvelope_name").mouseover(function () {
+        layer.tips($(this).next().html(), this, {
+            tips: [2, '#35a7fc']
+        });
+    });
+</script>

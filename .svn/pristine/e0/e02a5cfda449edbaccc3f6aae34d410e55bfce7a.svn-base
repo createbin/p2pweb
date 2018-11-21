@@ -1,0 +1,37 @@
+﻿@using System.Linq
+@model ZFCTPC.Data.ApiModelReturn.LoanReturnModels.RepaymentPlan
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<p class="font_size_12 text_align_center">该项目已还完&nbsp;<em>@(Model.Repaymented)期</em>&nbsp;，待还&nbsp;<em>@(Model.Repaymenting)期</em>&nbsp;。已还本息&nbsp;<em>¥@(Model.RepaymentedMoney)</em>元，待还本息总额&nbsp;<em>¥@(Model.RepaymentingMoney)</em>&nbsp;。</p>
+<div style="height:30px;"></div>
+<div class="repayment_plan_table">
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>期数</th>
+            <th>合约还款时间</th>
+            <th>还款本金</th>
+            <th>还款利息</th>
+            <th>还款总额</th>
+            <th>还款状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.RepaymentPlanInfos.Any())
+        {
+            foreach (var modelRepaymentPlanInfo in Model.RepaymentPlanInfos)
+            {
+                <tr>
+                    <td>第@(modelRepaymentPlanInfo.Time)期</td>
+                    <td>@(modelRepaymentPlanInfo.RepaymentTime)</td>
+                    <td>@(modelRepaymentPlanInfo.Principal)</td>
+                    <td>@(modelRepaymentPlanInfo.Interest)</td>
+                    <td>@(modelRepaymentPlanInfo.AllMoney)</td>
+                    <td>@(modelRepaymentPlanInfo.RepaymenyState)</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>

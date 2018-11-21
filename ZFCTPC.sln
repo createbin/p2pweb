@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{074D0A89-11C4-4C0D-A811-61CF2C65D79A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFCTPC.WebSite", "Presentation\ZFCTPC.WebSite\ZFCTPC.WebSite.csproj", "{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{DE800684-8B87-4D47-9A48-4988C9D4F0DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFCTPC.Core", "Libraries\ZFCTPC.Core\ZFCTPC.Core.csproj", "{06B77A37-AA7D-49A4-841C-F4784F923257}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFCTPC.Data", "Libraries\ZFCTPC.Data\ZFCTPC.Data.csproj", "{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFCTPC.Services", "Libraries\ZFCTPC.Service\ZFCTPC.Services.csproj", "{2A1770B5-2A68-4061-9305-6A310E418729}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B77A37-AA7D-49A4-841C-F4784F923257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B77A37-AA7D-49A4-841C-F4784F923257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B77A37-AA7D-49A4-841C-F4784F923257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B77A37-AA7D-49A4-841C-F4784F923257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A1770B5-2A68-4061-9305-6A310E418729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A1770B5-2A68-4061-9305-6A310E418729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A1770B5-2A68-4061-9305-6A310E418729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A1770B5-2A68-4061-9305-6A310E418729}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{699C1A89-6C4D-4DDA-84EE-1B6BF4BAE271} = {074D0A89-11C4-4C0D-A811-61CF2C65D79A}
+		{06B77A37-AA7D-49A4-841C-F4784F923257} = {DE800684-8B87-4D47-9A48-4988C9D4F0DE}
+		{A24D8EAE-9A55-4A8D-B354-0A33AAFF0B5D} = {DE800684-8B87-4D47-9A48-4988C9D4F0DE}
+		{2A1770B5-2A68-4061-9305-6A310E418729} = {DE800684-8B87-4D47-9A48-4988C9D4F0DE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DAFC9EA-DEAF-4744-8844-8AC3F14C45D8}
+	EndGlobalSection
+EndGlobal

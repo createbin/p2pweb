@@ -1,0 +1,806 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@model RPCAccountStatistics
+@{
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    ViewData["Title"] = "个人账户";
+    RFinancingAccount rFinancingAccount = ViewBag.RFinancingAccount ?? new RFinancingAccount();
+}
+
+<script src="~/js/echarts/echarts.simple.min.js"></script>
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(0);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_account_box float_right">
+    <!------------旧版本账户统计  start----------->
+    @if (Model.IsOldAccount)
+    {
+        <div class="old_version_box">
+            <div class="old_version_content">
+                <div class="old_version_left ">
+                    <p>
+                        中房创投已联手渤海银行上线了银行资金存管系统，完美实现了账号隔离，资金分离，为您的投资安全保驾护航。
+                    </p>
+                    <p>
+                        同时旧版本系统不再提供充值、投资等操作，回款、还款、提现操作不受影响，给您造成的不便，尽请谅解。<a href="" class="red1">返回旧版本</a>
+                    </p>
+
+
+                    <p>
+                        如有疑问请联系在线客服或拨打客服热线400-025-1002。
+                    </p>
+                </div>
+                @*<div class="old_version_right float_right">
+                        <div style="height:40px;"></div>
+                        <p class="gray font_size_16">
+                            旧版本账户统计
+                        </p>
+                        <div style="height:25px;"></div>
+                        <span style="display:block">
+                            <em class="font_size_20">账户余额：</em><em class="font_size_20 red1">20.20元</em>
+                            <a href="#" class="blue float_right">返回旧版本</a>
+                        </span>
+                        <div style="height:20px"></div>
+                        <div class="old_version_tab">
+                            <ul>
+                                <li class="active">回款统计</li>
+                                <li>还款统计</li>
+                                <div class="clear"></div>
+                            </ul>
+                            <div class="old_version_tab_div">
+                                <div>
+                                    <p>
+                                        待回款项目总数：<em>2</em>个
+                                    </p>
+                                    <p>
+                                        待回款项总期数：<em>20</em>期
+                                    </p>
+                                    <p>
+                                        待收总金额：<em>200000.00</em>元
+                                    </p>
+                                </div>
+                                <div style="display:none">
+                                    <p>
+                                        待还款项目总数:<em>2</em>个
+                                    </p>
+                                    <p>
+                                        待还款项总期数:<em>20</em>期
+                                    </p>
+                                    <p>
+                                        待还款总金额:<em>200000.00</em>元
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="clear"></div>
+            </div>
+            <div style="height:10px"></div>
+        </div>
+    }
+
+    <!------------旧版本账户统计  end----------->
+    @if (!Model.IsOpenAccount)
+    {
+        <div class="zfct_open_account">
+            <span class="font_size_12 font-weight">
+                <em class="margin_right_5">●</em>您还没有做好投资前的准备哦！开通银行资金存管，提高账户安全性，才可以投资！
+            </span>
+            <span class="float_right">
+                <a href="/MyAccount/OpenAccountInfo" class="thirdaccount_btn">
+                    开通第三方资金存管
+                </a>
+            </span>
+            <div class="clear"></div>
+        </div>
+        <div style="height:10px;"></div>
+    }
+
+    <!-----------我的资产  start------------------>
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    我的投资户
+                </li>
+                @if (Model.HasLoan)
+                {
+                    <li>
+                        我的融资户
+                    </li>
+                }
+                <div class="clear"></div>
+            </ul>
+            @*<span class="font_size_16 font-weight">我的资产</span>*@
+
+        </div>
+    </div>
+    <div class="my_assets_page">
+        <div>
+            <div class="my_assets_box1">
+                <div class="my_assets_num">
+                    <div style="height:15px"></div>
+                    <span class="margin_left_20 ">
+                        <em class="bold font_size_16">总资产</em><em class="font_size_20 margin_left_40">¥&nbsp;<text class="font_size_50 red1" id="accountMoney">0.00</text>&nbsp;元</em>
+                    </span>
+                    <span class="float_right">
+                        @if (Model.IsOpenAccount)
+                        {
+                            <a href="/MyAccount/RechargeAndWithdraw" class="zfct_recharge">充值</a>
+                            <a href="/MyAccount/InvestmentWithdraw" class="zfct_withdraw">提现</a>
+                        }
+                        else
+                        {
+                            <a href="javascript:;" onclick="$('#openAccount,#red_envelopes_mask').show()" class="zfct_recharge">充值</a>
+                            <a href="javascript:;" onclick="$('#openAccount,#red_envelopes_mask').show()" class="zfct_withdraw">提现</a>
+                        }
+                    </span>
+                    <div style="height:15px;"></div>
+                </div>
+                <div class="my_assets_details">
+                    <dl>
+                        <dd>
+                            <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />今日待收</p>
+                            <em class="explanation_text display-none">今日待收回本金及收益</em>
+                            <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20">@Model.TodayWaitReceive</text>&nbsp;元</p>
+                        </dd>
+                        <dd>
+                            <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />冻结金额</p>
+                            <em class="explanation_text display-none">因投资或其他原因而不可使用的资金</em>
+                            <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20" id="freezing_amount">0.00</text>&nbsp;元</p>
+                        </dd>
+                        <dd>
+                            <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待收本金</p>
+                            <em class="explanation_text display-none">待收回出借本金</em>
+                            <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20">@Model.WaitReceivePrincipal</text>&nbsp;元</p>
+                        </dd>
+                        <dd>
+                            <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />可用余额</p>
+                            <em class="explanation_text display-none">账户可用资金</em>
+                            <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20" id="enable_amount">0.00</text>&nbsp;元</p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+
+                </div>
+                <div class="font_size_12 my_assets_totle gray">
+                    累计投资<em>@Model.InvestCount</em>笔，共计：¥&nbsp;<em class="gray2 font-weight">@Model.InvestMoney</em>&nbsp;元，累计收益：¥&nbsp;<em class="gray2 font-weight">@Model.CumulativeIncome</em>&nbsp;元
+                </div>
+            </div>
+            <div style="height:10px;"></div>
+            <!------------我的借款  start-------------------->
+            @*<div class="my_loan" style="display:none;">
+                    <div class="my_assets_title">
+                        <span class="font_size_16 font-weight"><em class="green margin_right_5">●</em>我的借款</span>
+                    </div>
+                    <div class="my_loan_content">
+                        <div class="my_loan_map float_left" id="my_loan_map" style="width:180px; height:285px">
+
+                        </div>
+                        <div class="my_loan_details float_left">
+                            <div class="my_loan_details_top">
+                                <dl>
+                                    <dd>
+                                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />今日待还</p>
+                                        <em class="explanation_text display-none">今日待还款本金及收益</em>
+                                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class=" font_size_16">@Model.total_samount</text>&nbsp;元</p>
+                                    </dd>
+                                    <dd>
+                                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待还本金</p>
+                                        <em class="explanation_text display-none">剩余未还清本金</em>
+                                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class="font_size_16">@Model.also_principal</text>&nbsp;元</p>
+                                    </dd>
+                                    <dd>
+                                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待还利息</p>
+                                        <em class="explanation_text display-none">剩余未还清利息</em>
+                                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class=" font_size_16">@Model.still_interest</text>&nbsp;元</p>
+                                    </dd>
+                                    <dd>
+                                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待还罚息</p>
+                                        <em class="explanation_text display-none">因逾期还款而产生的未还清罚息</em>
+                                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class=" font_size_16 ">@Model.punitive_interest</text>&nbsp;元</p>
+                                    </dd>
+                                    <dd>
+                                        <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />待还服务费</p>
+                                        <em class="explanation_text display-none">剩余未还清服务费</em>
+                                        <p class="font_size_14 margin_top_25">¥&nbsp;<text class=" font_size_16">@Model.service_charge</text>&nbsp;元</p>
+                                    </dd>
+                                    <div class="clear"></div>
+                                </dl>
+                            </div>
+                            <div class="my_loan_details_down">
+                                <div class="my_loan_details_sort float_left">
+                                    <ul>
+                                        <li><em class="green margin_right_10">●</em>招标中</li>
+                                        <li class=""><em>@Model.loan_tendercount</em>笔</li>
+                                        <li>
+                                            <a href="/MyAccount/MyLoan?tabid=0">
+                                                查看详情
+                                            </a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <ul>
+                                        <li><em class="green1 margin_right_10">●</em>满标中</li>
+                                        <li><em>@Model.loan_stayrepaycount</em>笔</li>
+                                        <li>
+                                            <a href="/MyAccount/MyLoan?tabid=1">
+                                                查看详情
+                                            </a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <ul>
+                                        <li><em class="green2 margin_right_10">●</em>还款中</li>
+                                        <li><em>@Model.loan_repaycount</em>笔</li>
+                                        <li>
+                                            <a href="/MyAccount/MyLoan?tabid=2">
+                                                查看详情
+                                            </a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <ul>
+                                        <li><em class="green3 margin_right_10">●</em>已结清</li>
+                                        <li><em>@Model.loan_settledcount</em>笔</li>
+                                        <li>
+                                            <a href="/MyAccount/MyLoan?tabid=3">
+                                                查看详情
+                                            </a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="my_loan_repayment float_right">
+                                    <div style="height:30px;"></div>
+                                    <a href="/MyAccount/MyRePaymentPlan" class="repayment_btn">
+                                        立即还款
+                                    </a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="my_loan_details_bottom font_size_12 gray">
+                                累计借款<em>@Model.loan_count</em>笔，共计：¥<em class="black font-weight">@Model.loan_money</em>元
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>*@
+            <!------------我的借款   end-------------------------->
+            <div style="height:10px"></div>
+            <!--------------我的红包  start------------------------>
+            <div class="my_red_envelopes">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">我的红包</span>
+                </div>
+                <div class="my_red_envelopes_content">
+                    <ul class="float_left">
+                        <li>
+                            <img src="~/images/my_envelopes_icon.png" />
+                        </li>
+                        <li>
+                            <div style="height:30px;"></div>
+                            <p class="font_size_14">可用红包</p>
+                            <p class="margin_top_15">¥<em class="red font_size_28">@Model.RedMoney</em>&nbsp;元</p>
+                        </li>
+                        <li>
+                            <div style="height:50px;"></div>
+                            <a href="/myInvest/recommendedlist" class="repayment_btn invest_btn">
+                                立即投资
+                            </a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <div class="float_right">
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--------------我的红包  end------------------------------>
+            <div style="height:10px"></div>
+            <!-------------我的投资和转让 start---------------------->
+            <div class="my_invest_transfer">
+                <div class="my_invest float_left">
+                    <div class="my_assets_title">
+                        <span class="font_size_16 font-weight"><em class="red margin_right_5">●</em>我的投资</span>
+                    </div>
+                    <div class="my_assets_content">
+                        <div class="my_assets_map float_left" id="my_assets_map" style="width:170px; height:140px;">
+
+                        </div>
+                        <div class="my_assetes_detail float_right">
+                            <div style="height:30px;"></div>
+                            <dl>
+                                <dd>
+                                    <em class="red1 margin_right_10">●</em>投标中
+                                </dd>
+                                <dd>
+                                    <em>@Model.InvestBiddingCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/MyInvestList?tabid=0" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <em class="red2 margin_right_10">●</em>还款中
+                                </dd>
+                                <dd>
+                                    <em>@Model.InvesRepayCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/MyInvestList?tabid=1" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <em class="red3 margin_right_10">●</em>已结清
+                                </dd>
+                                <dd>
+                                    <em>@Model.InvesSettledtCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/MyInvestList?tabid=2" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <div style="height:5px;"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="my_transfer float_right">
+                    <div class="my_assets_title">
+                        <span class="font_size_16 font-weight"><em class="blue margin_right_5">●</em>债权转让</span>
+                    </div>
+                    <div class="my_assets_content">
+                        <div class="my_assets_map float_left" id="my_transfer_map" style="width:170px; height:140px;">
+
+                        </div>
+                        <div class="my_assetes_detail float_right">
+                            <dl>
+                                <dd>
+                                    <em class="blue margin_right_10">●</em>可转让
+                                </dd>
+                                <dd>
+                                    <em>@Model.TransferCanCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/ClaimsTransfer?tabid=0" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <em class="blue1 margin_right_10">●</em>转出中
+                                </dd>
+                                <dd>
+                                    <em>@Model.TransferWaitCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/ClaimsTransfer?tabid=1" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <em class="blue2 margin_right_10">●</em>已转让
+                                </dd>
+                                <dd>
+                                    <em>@Model.TransferOutCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/ClaimsTransfer?tabid=2" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <em class="blue3 margin_right_10">●</em>已转入
+                                </dd>
+                                <dd>
+                                    <em>@Model.TransferInCount</em>笔
+                                </dd>
+                                <dd>
+                                    <a href="/MyAccount/ClaimsTransfer?tabid=3" class="gray font_size_12 a_border_bottom">
+                                        查看详情
+                                    </a>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <!------------我的投资和转让  end----------------------------------->
+            <div style="height:10px"></div>
+        </div>
+        @if (Model.HasLoan)
+        {
+            <div style="display:none">
+                <div class="my_assets_box1">
+                    <div class="my_assets_num">
+                        <div style="height:20px;"></div>
+                        <span class="margin_left_20 ">
+                            <em class="bold font_size_16">账户余额</em><em class="font_size_20 margin_left_40">¥&nbsp;<text class="font_size_50 red1" id="general_assets">0.00</text>&nbsp;元</em>
+                        </span>
+                        <span class="float_right">
+                            <a href="PersonalFinancing" class="zfct_recharge">投资户转账充值</a>
+                            <a href="FinancingWithdraw" class="zfct_withdraw">提现</a>
+                        </span>
+                        <div style="height:15px;"></div>
+                    </div>
+                    <div class="my_assets_details">
+                        <dl>                            
+                            <dd>
+                                <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />冻结金额</p>
+                                <em class="explanation_text display-none">因投资或其他原因而不可使用的资金</em>
+                                <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20" id="ffreezing_amount">0.00</text>&nbsp;元</p>
+                            </dd>                           
+                            <dd>
+                                <p class="font_size_14 my_assets_details_icon"><img src="~/images/explanation_icon.png" class="explanation" />可用余额</p>
+                                <em class="explanation_text display-none">账户可用资金</em>
+                                <p class="font_size_14 margin_top_35">¥&nbsp;<text class="red font_size_20" id="fenable_amount">0.00</text>&nbsp;元</p>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+
+                    </div>
+
+                </div>
+                <div style="height:10px;"></div>
+                <!--------------我的借款  start------------------------>
+                <div class="my_red_envelopes">
+                    <div class="my_assets_title">
+                        <span class="font_size_16 font-weight">我的借款</span>
+                        <span class="font_size_13 float_right">
+                            剩余待还总金额：<em class="red1">@rFinancingAccount.WaitPayAllMoney</em> 元
+                        </span>
+                    </div>
+                    <div class="my_loan_box">
+                        <div class="float_left">
+                            <p class="next_money_day">
+                                <em>下一期还款日期</em>
+                                <span class="next_money_position ">
+                                    剩余<em>@rFinancingAccount.SurplusDays</em>天
+                                </span>
+                                <!-------剩余天数少于等于3 用下面这个样式------->
+                                @*<span class=" next_money_position1">
+                                        剩余<em>3</em>天
+                                    </span>*@
+                            </p>
+
+                            <p class="red1 font_size_20 margin_top_25">
+                                @rFinancingAccount.NextPayDate
+                            </p>
+                        </div>
+                        <div class="float_left">
+                            <p>
+                                下一期还款总金额（元）
+                            </p>
+                            <p class="red1 font_size_20 margin_top_25">
+                                @rFinancingAccount.NextPayMoney
+                            </p>
+                        </div>
+                        <div class="float_left">
+                            <a href="/MyAccount/MyRePaymentPlan" class="repayment_btn">
+                                立即还款
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my_loan_box1">
+                        <dl>
+                            <dd>
+                                <p>
+                                    募集中
+                                </p>
+                                <p class="margin_top_25">
+                                    <em class="red1 font_size_20">@rFinancingAccount.BiddingCount</em> <em class="gray1 font_size_14">笔</em>
+                                </p>
+                            </dd>
+                            <dd>
+                                <p>
+                                    满标中
+                                </p>
+                                <p class="margin_top_25">
+                                    <em class="red1 font_size_20">@rFinancingAccount.FullCount</em> <em class="gray1 font_size_14">笔</em>
+                                </p>
+                            </dd>
+                            <dd>
+                                <p>
+                                    还款中
+                                </p>
+                                <p class="margin_top_25">
+                                    <em class="red1 font_size_20">@rFinancingAccount.RepaymentCount</em> <em class="gray1 font_size_14">笔</em>
+                                </p>
+                            </dd>
+                            <dd>
+                                <p>
+                                    已结清
+                                </p>
+                                <p class="margin_top_25">
+                                    <em class="red1 font_size_20">@rFinancingAccount.ClearedCount</em> <em class="gray1 font_size_14">笔</em>
+                                </p>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                    </div>
+                    <div class="font_size_12 my_assets_totle gray">
+                        累计借款<em>@rFinancingAccount.LoanCount</em>笔，共计：¥&nbsp;<em class="gray2 font-weight">@rFinancingAccount.LoanMoney</em>&nbsp;元
+                        <a href="/MyAccount/MyLoan" class="blue float_right">查看详情</a>
+                    </div>
+                </div>
+                <!--------------我的借款  end------------------------------>
+            </div>
+
+        }
+
+    </div>
+    <!----------我的资产  end------------------->
+    <!-------------为您推荐 start---------------------->
+    @*<div class="my_recommend">
+            <div class="my_assets_title">
+                <span class="font_size_16 font-weight">为您推荐</span>
+            </div>
+            <div class="my_recommend_contnet">
+
+            </div>
+        </div>*@
+    <!-------------为您推荐  end------------------>
+    <div style="height:50px"></div>
+</div>
+<div class="clear"></div>
+
+<!---------------弹框蒙版 start------------------->
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<!-----------------弹框蒙版 end------------->
+
+<!---------------------尚未开户  strat----------------->
+
+<div class="openaccount display-none" id="openAccount">
+    <div class="position-relative text_align_center">
+        <button class="close_windown1" onclick="$('#openAccount,#red_envelopes_mask').hide();"></button>
+        <div style="height:60px;"></div>
+        <img src="~/images/noopenaccount_icon.png" class="img-margin" />
+        <div style="height:40px;"></div>
+        <p class="font_size_16 text_align_center">尚未开户，请前往账户开户！</p>
+        <div style="height:40px;"></div>
+        <div class="zfct_form_group">
+            <button class="open_account margin_left_20 margin_right_15" onclick="location.href = '/MyAccount/OpenAccountInfo';" style="cursor:pointer">
+                去开户
+            </button>
+            <button class="cancel_account margin_right_20" onclick="$('#openAccount,#red_envelopes_mask').hide();" style="cursor:pointer">
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<!---------------------尚未开户  end-------------->
+
+<!---------渤海银行  start------------->
+<script>
+    $(function () {
+        $(".old_version_tab ul li").click(function () {
+            var index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".old_version_tab_div > div").eq(index).show().siblings().hide();
+        });
+        $(".my_assets_title ul li").click(function () {
+            var index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".my_assets_page > div").eq(index).show().siblings().hide();
+        });
+    })
+</script>
+<!---------渤海银行  end------------->
+
+<script>
+ 
+    $(".explanation").mouseover(function () {
+        var explanation = $(this).parent().siblings(".explanation_text").html();
+
+        layer.tips("<span style='color:#333'>" + explanation + "</span>", this, {
+            tips: [3, '#fff2cf']
+        });
+    });
+</script>
+<script>
+    //我的投资
+    var my_assets_map = echarts.init(document.getElementById('my_assets_map'));
+    //配置数据
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['投标中', '还款中',  '已还清']
+        },
+        series: [
+            {
+                name: '',
+                type: 'pie',
+                radius: ['50%', '85%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '14',
+                            fontWeight: 'normal',
+                           
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {
+                        value: @Model.InvestBiddingCount, name: '投标中', itemStyle: {
+                            normal: {
+                                color: '#ec4961'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.InvesRepayCount, name: '还款中', itemStyle: {
+                            normal: {
+                                color: '#ff9494'
+                            }
+                        }
+                    },
+                    {
+                        value:  @Model.InvesSettledtCount, name: '已还清', itemStyle: {
+                            normal: {
+                                color: '#ffb5b5'
+                            }
+                        }
+                    },
+                    
+                ]
+            }
+        ]
+
+    };
+    my_assets_map.setOption(option);
+</script>
+<script>
+    //我的转让
+    var my_transfer_map = echarts.init(document.getElementById('my_transfer_map'));
+    //配置数据
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['可转让', '转出中', '已转让','已转入']
+        },
+        series: [
+            {
+                name: '',
+                type: 'pie',
+                radius: ['50%', '85%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '14',
+                            fontWeight: 'normal',
+
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {
+                        value: @Model.TransferCanCount, name: '可转让', itemStyle: {
+                            normal: {
+                                color: '#1a9bfc'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.TransferWaitCount, name: '转出中', itemStyle: {
+                            normal: {
+                                color: '#60b9fc'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.TransferOutCount, name: '已转让', itemStyle: {
+                            normal: {
+                                color: '#9cd3fc'
+                            }
+                        }
+                    },
+                    {
+                        value: @Model.TransferInCount, name: '已转入', itemStyle: {
+                            normal: {
+                                color: '#caddfb'
+                            }
+                        }
+                    }
+
+                ]
+            }
+        ]
+
+    };
+    my_transfer_map.setOption(option);
+</script>
+<script>
+    $(function () {
+        $.post("/MyAccount/MyAccountBH", { accountMoney:'@(Model.AccountMoney)'},function (result) {
+            if (result.success) {
+                $("#accountMoney").html(result.accountMoney);
+                $("#freezing_amount").html(result.freezing_amount);
+                $("#enable_amount").html(result.enable_amount);
+            }
+        });
+        @if (Model.HasLoan) { 
+            <Text>
+        $.post("/MyAccount/MyAccountBH", { userAttribute: 2 }, function (result) {
+            if (result.success) {
+                $("#general_assets").html(result.accountMoney);
+                $("#ffreezing_amount").html(result.freezing_amount);
+                $("#fenable_amount").html(result.enable_amount);
+            }
+        });
+        </Text>
+        }
+    })
+</script>
+

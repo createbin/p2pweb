@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewData["Title"] = "Activity28";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<h2>Activity28</h2>
+

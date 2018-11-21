@@ -1,0 +1,734 @@
+﻿{
+  "CoInfo": {
+    "Name": "中房创投",
+    "Desc": "PC端配置文件",
+    "Code": "ZfctApi",
+    "Url": "http://192.168.1.245:8080/",
+    "ApiAddress": "http://192.168.1.245:8080/P2PApi/",
+    //"StatisticApiAddress": "http://localhost:56673/api/",
+    "StatisticApiAddress": "http://192.168.1.245:8080/P2PApi/",
+    "BhApiAddress": "http://192.168.1.238:8075/api/",
+    //"BhApiAddress": "http://localhost:56672/api/",
+    "IsTest": "False",
+    "Interfaces": [
+      //----------------------------------------- 接口 2.0 Begin---------------------------------------
+      {
+        "Name": "OfflineRechargeRecord",
+        "ActionUrl": "MyAccount/OfflineRechargeRecord",
+        "IsHtml": "False",
+        "Desc": "线下充值记录"
+      },
+      {
+        "Name": "PCAccountStatistics",
+        "ActionUrl": "MyAccount/PCAccountStatistics",
+        "IsHtml": "False",
+        "Desc": "投资户账户统计"
+      },
+      {
+        "Name": "FinancingAccount",
+        "ActionUrl": "MyAccount/FinancingAccount",
+        "IsHtml": "False",
+        "Desc": "融资户账户统计"
+      },
+      {
+        "Name": "FinanceTransfer",
+        "ActionUrl": "MyAccount/FinanceTransfer",
+        "IsHtml": "False",
+        "Desc": "融资转账"
+      },
+      {
+        "Name": "BHAccountRecharge",
+        "ActionUrl": "MyAccount/BHAccountRecharge",
+        "IsHtml": "False",
+        "Desc": "充值"
+      },
+      {
+        "Name": "BHAccountWithdraw",
+        "ActionUrl": "MyAccount/BHAccountWithdraw",
+        "IsHtml": "False",
+        "Desc": "提现"
+      },
+      {
+        "Name": "RBHAccountInfo",
+        "ActionUrl": "MyAccount/RBHAccountInfo",
+        "IsHtml": "False",
+        "Desc": "渤海账户信息"
+      },
+      {
+        "Name": "UserRedPage",
+        "ActionUrl": "MyRedEnvelopes/UserRedPage",
+        "IsHtml": "False",
+        "Desc": "用户红包"
+      },
+      {
+        "Name": "MyBiddingLoan",
+        "ActionUrl": "MyLoan/MyBiddingLoan",
+        "IsHtml": "False",
+        "Desc": "我的借款-投标中"
+      },
+      {
+        "Name": "MyFullLoan",
+        "ActionUrl": "MyLoan/MyFullLoan",
+        "IsHtml": "False",
+        "Desc": "我的借款-满标中"
+      },
+      {
+        "Name": "MyRepaymentLoan",
+        "ActionUrl": "MyLoan/MyRepaymentLoan",
+        "IsHtml": "False",
+        "Desc": "我的借款-还款中"
+      },
+      {
+        "Name": "MyClearedLoan",
+        "ActionUrl": "MyLoan/MyClearedLoan",
+        "IsHtml": "False",
+        "Desc": "我的借款-已结清"
+      },
+      {
+        "Name": "MyLoanDetail",
+        "ActionUrl": "MyLoan/MyLoanDetail",
+        "IsHtml": "False",
+        "Desc": "我的借款-借款明细"
+      },
+      {
+        "Name": "UserLoanPlanClear",
+        "ActionUrl": "MyLoanPlan/UserLoanPlanClear",
+        "IsHtml": "False",
+        "Desc": "还款计划-已结清"
+      },
+      {
+        "Name": "UserLoanPlanWaitClear",
+        "ActionUrl": "MyLoanPlan/UserLoanPlanWaitClear",
+        "IsHtml": "False",
+        "Desc": "还款计划-未结清"
+      },
+      {
+        "Name": "LoanPayPlan",
+        "ActionUrl": "MyLoanPlan/LoanPayPlan",
+        "IsHtml": "False",
+        "Desc": "还款计划-项目"
+      },
+      {
+        "Name": "RepayDetail",
+        "ActionUrl": "MyLoanPlan/RepayDetail",
+        "IsHtml": "False",
+        "Desc": "还款计划-还款明细"
+      },
+      {
+        "Name": "LoanAccountStatistics",
+        "ActionUrl": "MyAccount/LoanAccountStatistics",
+        "IsHtml": "False",
+        "Desc": "我的借款-账户统计"
+      },
+      {
+        "Name": "MyBiddingInvest",
+        "ActionUrl": "MyInvest/MyBiddingInvest",
+        "IsHtml": "False",
+        "Desc": "我的投资-投标中"
+      },
+      {
+        "Name": "MyRepaymentInvest",
+        "ActionUrl": "MyInvest/MyRepaymentInvest",
+        "IsHtml": "False",
+        "Desc": "我的投资-还款中"
+      },
+      {
+        "Name": "MyClearedInvest",
+        "ActionUrl": "MyInvest/MyClearedInvest",
+        "IsHtml": "False",
+        "Desc": "我的投资-已结清"
+      },
+      {
+        "Name": "InvestAccountStatistics",
+        "ActionUrl": "MyAccount/InvestAccountStatistics",
+        "IsHtml": "False",
+        "Desc": "我的投资-账户统计"
+      },
+      {
+        "Name": "CanTransfer",
+        "ActionUrl": "MyTransfer/CanTransfer",
+        "IsHtml": "False",
+        "Desc": "债权转让-可转让"
+      },
+      {
+        "Name": "Transfering",
+        "ActionUrl": "MyTransfer/Transfering",
+        "IsHtml": "False",
+        "Desc": "债权转让-转出中"
+      },
+      {
+        "Name": "TransferOut",
+        "ActionUrl": "MyTransfer/TransferOut",
+        "IsHtml": "False",
+        "Desc": "债权转让-已转出"
+      },
+      {
+        "Name": "TransferIn",
+        "ActionUrl": "MyTransfer/TransferIn",
+        "IsHtml": "False",
+        "Desc": "债权转让-已转入"
+      },
+      {
+        "Name": "DoTransferData",
+        "ActionUrl": "MyTransfer/DoTransferData",
+        "IsHtml": "False",
+        "Desc": "债权转让-申请"
+      },
+      {
+        "Name": "RecallTransfer",
+        "ActionUrl": "MyTransfer/RecallTransfer",
+        "IsHtml": "False",
+        "Desc": "债权转让-撤回"
+      },
+      {
+        "Name": "TradingInfo",
+        "ActionUrl": "MyAccount/TradingInfo",
+        "IsHtml": "False",
+        "Desc": "用户交易记录"
+      },
+      {
+        "Name": "UserState",
+        "ActionUrl": "MyAccount/UserState",
+        "IsHtml": "False",
+        "Desc": "用户是否开户"
+      },
+      {
+        "Name": "InvestEarnings",
+        "ActionUrl": "MyAccount/InvestEarnings",
+        "IsHtml": "False",
+        "Desc": "用户投资收益"
+      },
+      {
+        "Name": "BusinessStatistics",
+        "ActionUrl": "MyAccount/BusinessStatistics",
+        "IsHtml": "False",
+        "Desc": "用户业务统计"
+      },
+      {
+        "Name": "HasLoan",
+        "ActionUrl": "MyLoan/HasLoan",
+        "IsHtml": "False",
+        "Desc": "用户是否借款"
+      },
+      {
+        "Name": "RiskQuestionnaire",
+        "ActionUrl": "RiskAssessment/RiskQuestionnaire",
+        "IsHtml": "False",
+        "Desc": "获得问卷"
+      },
+      {
+        "Name": "PostQuestionScore",
+        "ActionUrl": "RiskAssessment/PostQuestionScore",
+        "IsHtml": "False",
+        "Desc": "提交问卷"
+      },
+      {
+        "Name": "UserInvestType",
+        "ActionUrl": "RiskAssessment/UserInvestType",
+        "IsHtml": "False",
+        "Desc": "用户风险类型"
+      },
+      {
+        "Name": "UserBankInfo",
+        "ActionUrl": "MyAccount/UserBankInfo",
+        "IsHtml": "False",
+        "Desc": "银行卡列表"
+      },
+      {
+        "Name": "BoHaiBindCard",
+        "ActionUrl": "MyAccount/BoHaiBindCard",
+        "IsHtml": "False",
+        "Desc": "绑定渤海银行卡"
+      },
+      {
+        "Name": "ChangeLoginPassword",
+        "ActionUrl": "Customer/ChangeLoginPassword",
+        "IsHtml": "False",
+        "Desc": "更改登陆密码"
+      },
+      {
+        "Name": "ChangePhone",
+        "ActionUrl": "Customer/ChangePhone",
+        "IsHtml": "False",
+        "Desc": "修改手机号"
+      },
+      {
+        "Name": "SendVCodeToEmail",
+        "ActionUrl": "Tools/SendVCodeToEmail",
+        "IsHtml": "False",
+        "Desc": "发送邮箱验证码"
+      },
+      {
+        "Name": "BoHaiBindPass",
+        "ActionUrl": "MyAccount/BoHaiBindPass",
+        "IsHtml": "False",
+        "Desc": "修改渤海密码"
+      },
+      {
+        "Name": "BoHaiBindMobile",
+        "ActionUrl": "MyAccount/BoHaiBindMobile",
+        "IsHtml": "False",
+        "Desc": "修改渤海手机号"
+      },
+      {
+        "Name": "UseBaseInfo",
+        "ActionUrl": "Customer/UseBaseInfo",
+        "IsHtml": "False",
+        "Desc": "用户基本信息"
+      },
+      {
+        "Name": "SendMobileVCodeToBhUser",
+        "ActionUrl": "Tools/SendMobileVCodeToBhUser",
+        "IsHtml": "False",
+        "Desc": "发送渤海手机号验证码"
+      },
+      {
+        "Name": "DownInvestContract",
+        "ActionUrl": "MyAccount/DownInvestContract",
+        "IsHtml": "False",
+        "Desc": "投资合同"
+      },
+      {
+        "Name": "DownLoanContract",
+        "ActionUrl": "MyAccount/DownLoanContract",
+        "IsHtml": "False",
+        "Desc": "借款合同"
+      },
+      {
+        "Name": "UpdateBankInfo",
+        "ActionUrl": "MyAccount/UpdateBankInfo",
+        "IsHtml": "False",
+        "Desc": "更新用户银行卡信息"
+      },
+      {
+        "Name": "CalcWithdrawFee",
+        "ActionUrl": "MyAccount/CalcWithdrawFee",
+        "IsHtml": "False",
+        "Desc": "计算手续费"
+      },
+      //----------------------------------------- 接口 2.0 End-----------------------------------------
+      {
+        "Name": "Login",
+        "ActionUrl": "Customer/Login",
+        "IsHtml": "False",
+        "Desc": "登录"
+      },
+      {
+        "Name": "Register",
+        "ActionUrl": "Customer/Register",
+        "IsHtml": "False",
+        "Desc": "注册"
+      },
+      {
+        "Name": "Login",
+        "ActionUrl": "Customer/Login",
+        "IsHtml": "False",
+        "Desc": "登录"
+      },
+      {
+        "Name": "Register",
+        "ActionUrl": "Customer/Register",
+        "IsHtml": "False",
+        "Desc": "注册"
+      },
+      {
+        "Name": "InvestTransfer",
+        "ActionUrl": "Transfer/InvestTransfer",
+        "IsHtml": "Ture",
+        "Desc": "债权转让跳转至汇付页面"
+      },
+      {
+        "Name": "LoaneRepaymentPlan",
+        "ActionUrl": "Loan/LoaneRepaymentPlan",
+        "IsHtml": "False",
+        "Desc": "还款计划"
+      },
+      {
+        "Name": "InvestIncome",
+        "ActionUrl": "Invest/InvestIncome",
+        "IsHtml": "False",
+        "Desc": "投资收益"
+      },
+      {
+        "Name": "ForgetPwd",
+        "ActionUrl": "Customer/ForgetPwd",
+        "IsHtml": "False",
+        "Desc": "修改密码"
+      },
+      {
+        "Name": "ForgetPwd",
+        "ActionUrl": "Customer/ForgetPwd",
+        "IsHtml": "False",
+        "Desc": "修改密码"
+      },
+      {
+        "Name": "InvestWaitPay",
+        "ActionUrl": "Invest/InvestWaitPay",
+        "IsHtml": "False",
+        "Desc": "去支付"
+      },
+      {
+        "Name": "SendActivityLog",
+        "ActionUrl": "Activity/SendActivityLog",
+        "IsHtml": "False",
+        "Desc": "发送活动日志"
+      },
+
+      //新api接口
+      {
+        "Name": "JieSuanRegister",
+        "ActionUrl": "MyAccount/JieSuanRegister",
+        "IsHtml": "False",
+        "Desc": "结算中心注册"
+      },
+      {
+        "Name": "BoHaiRealName",
+        "ActionUrl": "MyAccount/BoHaiRealName",
+        "IsHtml": "False",
+        "Desc": "渤海开户绑卡"
+      },
+      {
+        "Name": "UserBaseInfo",
+        "ActionUrl": "Customer/UseBaseInfo",
+        "IsHtml": "False",
+        "Desc": "用户开户状态"
+      },
+      {
+        "Name": "BankInfos",
+        "ActionUrl": "Tools/BankInfos",
+        "IsHtml": "False",
+        "Desc": "银行卡列表"
+      },
+      {
+        "Name": "Login",
+        "ActionUrl": "Customer/Login",
+        "IsHtml": "False",
+        "Desc": "登录"
+      },
+      {
+        "Name": "Register",
+        "ActionUrl": "Customer/Register",
+        "IsHtml": "False",
+        "Desc": "注册"
+      },
+      {
+        "Name": "NewHandList",
+        "ActionUrl": "Loan/NewHandList",
+        "IsHtml": "False",
+        "Desc": "新手标"
+      },
+      {
+        "Name": "LoanList",
+        "ActionUrl": "Loan/LoanList",
+        "IsHtml": "False",
+        "Desc": "标的列表"
+      },
+      {
+        "Name": "HomeStatistics",
+        "ActionUrl": "Tools/HomeStatistics",
+        "IsHtml": "False",
+        "Desc": "首页统计"
+      },
+      {
+        "Name": "InviteStatistics",
+        "ActionUrl": "Invite/InviteStatistics",
+        "IsHtml": "False",
+        "Desc": "邀请统计"
+      },
+      {
+        "Name": "InviteMonthAbstract",
+        "ActionUrl": "Invite/InviteMonthAbstract",
+        "IsHtml": "False",
+        "Desc": "邀请根据月份统计"
+      },
+      {
+        "Name": "InviteMonthDetails",
+        "ActionUrl": "Invite/InviteMonthDetails",
+        "IsHtml": "False",
+        "Desc": "月份详情统计"
+      },
+      {
+        "Name": "ValidUserNameExit",
+        "ActionUrl": "Customer/ValidUserNameExit",
+        "IsHtml": "False",
+        "Desc": "验证用户名"
+      },
+      {
+        "Name": "ValidPhoneExit",
+        "ActionUrl": "Customer/ValidPhoneExit",
+        "IsHtml": "False",
+        "Desc": "验证手机号"
+      },
+      {
+        "Name": "ValidRecommandCodeExit",
+        "ActionUrl": "Customer/ValidRecommandCodeExit",
+        "IsHtml": "False",
+        "Desc": "验证邀请码是否存在"
+      },
+      {
+        "Name": "SendVCodeToMobile",
+        "ActionUrl": "Tools/SendVCodeToMobile",
+        "IsHtml": "False",
+        "Desc": "像指定手机号发送"
+      },
+      {
+        "Name": "LoanDetail",
+        "ActionUrl": "Loan/LoanDetail",
+        "IsHtml": "False",
+        "Desc": "标的详情"
+      },
+      {
+        "Name": "LoaneRepaymentPlan",
+        "ActionUrl": "Loan/LoaneRepaymentPlan",
+        "IsHtml": "False",
+        "Desc": "标的还款计划"
+      },
+      {
+        "Name": "RecommandLoan",
+        "ActionUrl": "Loan/RecommandLoan",
+        "IsHtml": "False",
+        "Desc": "推荐标的"
+      },
+      {
+        "Name": "LoanInvester",
+        "ActionUrl": "Loan/LoanInvester",
+        "IsHtml": "False",
+        "Desc": "标的投资人"
+      },
+      {
+        "Name": "IsNewHand",
+        "ActionUrl": "Invest/IsNewHand",
+        "IsHtml": "False",
+        "Desc": "是否已经存在投资"
+      },
+      {
+        "Name": "LoanProjectDetail",
+        "ActionUrl": "Loan/LoanProjectDetail",
+        "IsHtml": "False",
+        "Desc": "新版融资信息"
+      },
+      {
+        "Name": "LoanTracking",
+        "ActionUrl": "Loan/LoanTracking",
+        "IsHtml": "False",
+        "Desc": "新版还款跟踪"
+      },
+      {
+        "Name": "AdvertisementsCount",
+        "ActionUrl": "Promotion/AdvertisementsCount",
+        "IsHtml": "False",
+        "Desc": "广告条数"
+      },
+      {
+        "Name": "AdvertisementsPage",
+        "ActionUrl": "Promotion/AdvertisementsPage",
+        "IsHtml": "False",
+        "Desc": "广告分页"
+      },
+      {
+        "Name": "CompanyNewsCount",
+        "ActionUrl": "Promotion/NewsCount",
+        "IsHtml": "False",
+        "Desc": "新闻条数"
+      },
+      {
+        "Name": "CompanyNewPage",
+        "ActionUrl": "Promotion/NewsPage",
+        "IsHtml": "False",
+        "Desc": "新闻分页"
+      },
+      {
+        "Name": "CompanyManagizes",
+        "ActionUrl": "Promotion/Managizes",
+        "IsHtml": "False",
+        "Desc": "企业内刊/运营报告"
+      },
+      {
+        "Name": "CompanyNewsDetail",
+        "ActionUrl": "Promotion/NewsDetail",
+        "IsHtml": "False",
+        "Desc": "新闻详情"
+      },
+      {
+        "Name": "TransferCanInvestList",
+        "ActionUrl": "Transfer/TransferCanInvestList",
+        "IsHtml": "False",
+        "Desc": "债权转让列表页"
+      },
+      {
+        "Name": "TransferDetail",
+        "ActionUrl": "Transfer/TransferDetail",
+        "IsHtml": "False",
+        "Desc": "债权转让详细信息"
+      },
+      {
+        "Name": "TransferInvester",
+        "ActionUrl": "Transfer/TransferInvester",
+        "IsHtml": "false",
+        "Desc": "债权转让投资人"
+      },
+      {
+        "Name": "InvestLoan",
+        "ActionUrl": "Invest/InvestLoan",
+        "IsHtml": "false",
+        "Desc": "投资"
+      },
+      {
+        "Name": "AvaliableRedCount",
+        "ActionUrl": "Invest/AvaliableRedCount",
+        "IsHtml": "False",
+        "Desc": "获取可用红包数量"
+      },
+      {
+        "Name": "BestLoanRedPackage",
+        "ActionUrl": "Invest/BestLoanRedPackage",
+        "IsHtml": "False",
+        "Desc": "投资最匹配红包"
+      },
+      {
+        "Name": "LoanRedPackage",
+        "ActionUrl": "Invest/LoanRedPackage",
+        "IsHtml": "False",
+        "Desc": "投资使用红包"
+      },
+      {
+        "Name": "LoanAvaliableMoney",
+        "ActionUrl": "Loan/LoanAvaliableMoney",
+        "IsHtml": "False",
+        "Desc": "标的可投金额"
+      },
+      {
+        "Name": "UserState",
+        "ActionUrl": "MyAccount/UserState",
+        "IsHtml": "False",
+        "Desc": "用户投资状态"
+      },
+      {
+        "Name": "Repayment",
+        "ActionUrl": "Repayment/RepaymentPlanData",
+        "IsHtml": "False",
+        "Desc": "还款"
+      },
+      {
+        "Name": "ThirdPartInfo",
+        "ActionUrl": "MyAccount/ThirdPartInfo",
+        "IsHtml": "False",
+        "Desc": "第三方信息"
+      },
+      {
+        "Name": "AuthQuery",
+        "ActionUrl": "MyAccount/AuthQuery",
+        "IsHtml": "False",
+        "Desc": "用户授权信息"
+      },
+      {
+        "Name": "AutoInvestAuth",
+        "ActionUrl": "MyAccount/AutoInvestAuth",
+        "IsHtml": "False",
+        "Desc": "授权"
+      },
+      {
+        "Name": "VerifyPhoneCode",
+        "ActionUrl": "Customer/VerifyPhoneCode",
+        "IsHtml": "False",
+        "Desc": "验证手机验证码"
+      },
+      {
+        "Name": "CompanyRegister",
+        "ActionUrl": "Company/CompanyRegister",
+        "IsHtml": "False",
+        "Desc": "企业注册"
+      },
+      {
+        "Name": "LastDateWaitClear",
+        "ActionUrl": "MyLoanPlan/LastDateWaitClear",
+        "IsHtml": "False",
+        "Desc": "最近需要还款的还款计划"
+      },
+      {
+        "Name": "MyRepayLoan",
+        "ActionUrl": "MyLoanPlan/MyRepayLoan",
+        "IsHtml": "False",
+        "Desc": "我的未结清项目"
+      },
+      {
+        "Name": "MyRepayLoanPlans",
+        "ActionUrl": "MyLoanPlan/MyRepayLoanPlans",
+        "IsHtml": "False",
+        "Desc": "我的未结清还款计划"
+      },
+      {
+        "Name": "MyRepayedLoan",
+        "ActionUrl": "MyLoanPlan/MyRepayedLoan",
+        "IsHtml": "False",
+        "Desc": "我的结清还款"
+      },
+      {
+        "Name": "CompanyRealInfo",
+        "ActionUrl": "Company/CompanyRealInfo",
+        "IsHtml": "False",
+        "Desc": "企业注册信息"
+      },
+      {
+        "Name": "JieSuanCoRegister",
+        "ActionUrl": "Company/JieSuanCoRegister",
+        "IsHtml": "False",
+        "Desc": "结算企业开户"
+      },
+      {
+        "Name": "OpenChargeAccount",
+        "ActionUrl": "Company/OpenChargeAccount",
+        "IsHtml": "False",
+        "Desc": "渤海大额开户"
+      },
+      {
+        "Name": "RechargeSyn",
+        "ActionUrl": "Company/RechargeSyn",
+        "IsHtml": "False",
+        "Desc": "线下充值余额同步"
+      },
+      {
+        "Name": "LoanStatics",
+        "ActionUrl": "Company/LoanStatics",
+        "IsHtml": "False",
+        "Desc": "企业融资统计"
+      },
+      {
+        "Name": "QueryChargeAccountResult",
+        "ActionUrl": "Company/QueryChargeAccountResult",
+        "IsHtml": "False",
+        "Desc": "实名状态查询"
+      },
+      {
+        "Name": "GuaranteeRepayLoan",
+        "ActionUrl": "MyLoanPlan/GuaranteeRepayLoan",
+        "IsHtml": "False",
+        "Desc": "我的未结清项目"
+      },
+      {
+        "Name": "GurRepayedLoan",
+        "ActionUrl": "MyLoanPlan/GurRepayedLoan",
+        "IsHtml": "False",
+        "Desc": "我的代还标的"
+      },
+      {
+        "Name": "VerifyCompanyInfo",
+        "ActionUrl": "MyAccount/VerifyCompanyInfo",
+        "IsHtml": "False",
+        "Desc": "验证公司证件信息"
+      },
+      {
+        "Name": "CompanyForgetPwd",
+        "ActionUrl": "Company/CompanyForgetPwd",
+        "IsHtml": "False",
+        "Desc": "实名状态查询"
+      },
+      {
+        "Name": "SendInvestVCode",
+        "ActionUrl": "Tools/SendInvestVCode",
+        "IsHtml": "False",
+        "Desc": "像用户发送验证码"
+      }
+    ]
+  }
+}

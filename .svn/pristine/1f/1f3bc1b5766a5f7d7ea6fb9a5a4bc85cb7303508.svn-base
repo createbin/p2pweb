@@ -1,0 +1,57 @@
+﻿@model List<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RRedEnvelopesModel>
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="99">暂无数据</td>
+    </tr>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span class="redenvelope_name" >@item.RedName</span>
+                <span class="redenvelope_name_real" style="display:none">@item.RedName</span>    
+            </td>
+            <td>@item.RedType</td>
+            <td>@string.Format("{0:C}", item.RedMoney)</td>
+            <td>@item.RedValidity</td>
+            <td>@item.RedUseState</td>
+            <td class="font_size_12" >
+                <span class="red_introductions" style="color: #1a9bfc;text-decoration:underline; width:60px">
+                    说明
+                </span>
+                <span class="red_introductions_real" style="display:none;">
+                    @item.RedInstructions
+                </span>
+            </td>
+            @if (item.RedUseState.Equals("未使用"))
+            {
+                <td><a href="/myInvest/recommendedlist" class="yellow font_size_12">立即使用</a></td>
+            }
+            @if (item.RedUseState.Equals("已使用"))
+            {
+                <td><a href="/MyInvest/InvestDetail?loanId=@(item.RedLoanId)" class="yellow font_size_12">查看</a></td>
+            }
+            @if (item.RedUseState.Equals("已过期"))
+            {
+                <td><a href="#" class="yellow font_size_12">已过期</a></td>
+            }
+        </tr>
+    }
+}
+<input id="TotalData" type="hidden" value="@ViewData["TotalData"].ToString()" />
+<script>
+    $('.red_introductions').mouseover(function () {
+        layer.tips($(this).next().html(), this, {
+            tips: [2, '#35a7fc']
+        });
+    });
+
+    $(".redenvelope_name").mouseover(function () { 
+        layer.tips($(this).next().html(), this, {
+            tips: [2, '#35a7fc']
+        });
+    });
+</script>

@@ -1,0 +1,726 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using ZFCTPC.Data.ApiModelReturn.InvestModelReturns
+@using ZFCTPC.Data.ApiModelReturn.News
+@using System.Security.Claims
+@using ZFCTPC.Core.Helpers
+@using ZFCTPC.Data.ApiModelReturn.LoanReturnModels
+@using ZFCTPC.Data.ApiModelReturn.Promotion
+@using ZFCTPC.Data.ApiModel.Promotion
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "中房创投 - 中房老龄产业发展集团旗下P2P平台";
+    ViewData["Description"] = "中房创投是中房老龄产业发展集团旗下的网络借贷信息中介平台，承诺以工匠之心守护客户的财富与幸福，坚持合规发展稳健运营。目前新手活动火热进行中，注册即领188元红包。";
+    ViewData["Keywords"] = "中房创投,中房创投官网,互联网金融,P2P网贷,网络借贷平台,P2P投资理财平台,手机理财,个人理财";
+    var statistics = ViewBag.Statistics as HomeStatistics;
+    var newHand = ViewBag.NewHand as HomeLoanModel;
+    var wise = ViewBag.Wise as HomeLoanModel;
+    var dream = ViewBag.Dream as HomeLoanModel;
+    var newHandInvestor = ViewBag.NewHandInvestor as List<string>;
+    var wiseInvestor = ViewBag.WiseInvestor as List<string>;
+    var dreamInvestor = ViewBag.DreamInvestor as List<string>;
+
+    var banner = ViewBag.Banner != null ? ViewBag.Banner as AdvertCountReturnModel : null;//首页轮播
+    var pcColumn = ViewBag.PCIndexColumn != null ? ViewBag.PCIndexColumn as AdvertCountReturnModel : null;//首页通栏
+    var webNotice = ViewBag.WebNotice != null ? ViewBag.WebNotice as NewsCountReturnModel : null;//banner公告   平台公告
+    var companyActivity = ViewBag.CompanyActivity != null ? ViewBag.CompanyActivity as NewsCountReturnModel : null;//集团动态
+    var leaderTalk = ViewBag.LeaderTalk != null ? ViewBag.LeaderTalk as NewsCountReturnModel : null;//领导有话说
+    var managizeList = ViewBag.CompanyManagize != null ? ViewBag.CompanyManagize as List<tbInternalMagazine> : null;//公司内刊
+    var user = "";
+    if (User.FindFirst(ClaimTypes.Name) != null)
+    {
+        user = User.FindFirst(ClaimTypes.Name).Value;
+    }
+    var newHandLoan = ViewBag.NewHand as RLoanAbstract;
+}
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/common/build.css" rel="stylesheet" />
+
+<link href="~/css/common/jquery.hiSlider.min.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        navActive(1);
+    })
+</script>
+
+<style>
+    .cir_box{
+        bottom:10px !important;
+    }
+    .hiSlider-title {
+       
+        bottom: 5px;
+    }
+
+    .hiSlider-pages{
+        display:none;
+    }
+   
+</style>
+<!------------------banner   start--------------------->
+<div class="zfct_banner"  style="background:#f0f0f0">
+    @if (string.IsNullOrEmpty(user))
+    {
+    <!--------------------banner 浮动广告  start------->
+        <div class="floating_ads">
+            <div class="floating_ads_location">
+                <div class="ads_location_circle">                    
+                    @*<p style="color:#1a9bfc; font-size:12px; margin-top:4px; text-align:center">
+                        市场有风险，投资需谨慎
+                    </p>*@
+                    <div style="height:40px;"></div>
+                    <p style="font-size:24px;">银行存管 合规升级</p>
+                    <div style="height:55px;"></div>
+                    <p ><em class="annualized_rate">已安全运营&nbsp;&nbsp;|&nbsp;&nbsp;</em><em style="color:#fc673d" ><font class="font_size_26">@(statistics.SecureDay)</font><font class="font_size_18">天</font></em></p>
+                                      
+                </div>
+                @*<div style="height:10px"></div>*@
+
+                <a href="/Customer/Register" class="ads_register" style="background:#fc673d">
+                    注册领取红包
+                </a>
+                <div style="height:20px;"></div>
+                <div class="text_align_center">
+                    已有账号？<a href="/Customer/Login" class="blue">立即登录</a>
+                </div>
+                <div style="height:10px"></div>
+                @*else
+                    {
+                        <a href="/MyAccount/Index" class="ads_register">
+                            进入我的账户
+                        </a>
+
+                    }*@
+            </div>
+            @*<div class="invest_banner_tips">
+                理财有风险 投资需谨慎
+            </div>*@
+        </div>
+    <!--------------------banner 浮动广告   end--------------->
+    }
+    @if (!string.IsNullOrEmpty(user))
+    {
+        <div class="floating_ads">
+            <div class="floating_ads_location">
+                <div class="ads_location_circle">
+                    <div style="height:45px;"></div>
+                    <div class="font_size_18">尊敬的<em id="userrealname"></em>，您好</div>
+                    <div style="height:40px"></div>
+                    <div class="font_size_14"><em class="gray1">近30日收益(元)</em><em id="thirtyDays_income" class="red float_right roboto">0.00</em></div>                    
+                    <div style="height:25px"></div>
+                    <div class="font_size_14"><em class="gray1">累计收益（元）</em><em id="accumulated_income"  class="red float_right roboto">0.00</em></div>
+                </div>
+               
+                <div style="height:29px"></div>
+                 <a href="/MyAccount/Index" class="see_myaccount">
+                     查看我的账户
+                 </a>
+                <div style="height:20px"></div>
+            </div>
+            <div class="invest_banner_tips">
+                理财有风险 投资需谨慎
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $.post("/MyAccount/MyEarnings", function (data) {
+                    $("#userrealname").html(data.username);
+                    $("#thirtyDays_income").html(data.thirtyDays_income);
+                    $("#accumulated_income").html(data.accumulated_income);
+                });
+            });
+        </script>
+    }
+    <div class="lubo">
+        <ul class="hiSlider hiSlider2">
+            @if (banner != null && banner.AdvertisementList.Count > 0)
+            {
+                for (int i = 0; i < banner.AdvertisementList.Count; i++)
+                {
+                    <li class="hiSlider-item"><a href="@banner.AdvertisementList.ElementAt(i).SkipUrl"><img src="@banner.AdvertisementList.ElementAt(i).ImageUrl" style="width:100%;height:430px;"></a></li>
+                }
+            }
+        </ul>
+
+    </div>
+</div>
+<!------------------banner   end--------------------------->
+<!-----------------公告  start---------------------->
+<div class="zfct_announcement">
+    <div class="announcement_content">
+        <div class="float_left announcement_icon blue">公告</div>
+        <div class="float_left announcement_cycle margin_left_20">
+            <dl>
+                @if (webNotice != null)
+                {
+                    for (int i = 0; i < webNotice.NewsList.Count && i < 3; i++)
+                    {
+                        if (webNotice.NewsList.ElementAt(i).Title.Length > 20)
+                        {
+                            webNotice.NewsList.ElementAt(i).Title = webNotice.NewsList.ElementAt(i).Title.Substring(0, 20);
+                        }
+                        if (i == 2)
+                        {
+                            <dd class="border-right-none"><a href="/AboutUs/PlatformDetail?id=@webNotice.NewsList.ElementAt(i).Id">@webNotice.NewsList.ElementAt(i).Title</a></dd>
+                        }
+                        else
+                        {
+                            <dd><a href="/AboutUs/PlatformDetail?id=@webNotice.NewsList.ElementAt(i).Id">@webNotice.NewsList.ElementAt(i).Title</a></dd>
+                        }
+                    }
+                }
+                <div class="clear"></div>
+            </dl>
+        </div>
+        <div class="float_right announcement_more">
+            <a href="/AboutUs/PlatformAnnouncement" class="gray1 font_size_12">
+                更多<i class="icon iconfont">&#xe79b;</i>
+            </a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!------------------公告  end-------------------------->
+
+<div class="gray_bg">
+    <div style="height:15px;"></div>
+    <!-----------------交易额start----------------------->
+    <div class="zfct_page">
+        <div class="zfct_page_box1_left float_left">
+            <div class="zfct_page_box1">
+                <dl>
+                    <dd>累计交易金额<em class="margin_left_20 red">￥<text class="bold font_size_16 yy-bigNum">@*@String.Format("{0:N}", statistics.AllTranscationMoney)*@91551460.00</text>&nbsp;&nbsp;元</em></dd>
+                    <dd>累计投资人赚取利益<em class="margin_left_20 red">￥<text class="bold font_size_16 yy-bigNum">@String.Format("{0:N}", statistics.AllProfitMoney)</text>&nbsp;&nbsp;元</em></dd>                   
+                    <dd class="margin_right_none">安全运营天数<em class="margin_left_20 red"><text class="bold font_size_16 yy-bigNum">@(statistics.SecureDay)</text>&nbsp;&nbsp;天</em></dd>
+                    <div class="clear"></div>
+                </dl>
+                
+            </div>
+            <div class="zfct_page_box2">
+                <dl>
+                    <dd style="margin-right:55px">
+                        @*<img src="~/images/zfct_background.png"  />
+                        <span>
+                            <p class="font_size_16">央企背景</p>
+                            <div style="height:22px"></div>
+                            <p class="font_size_14 gray1">中房集团旗下互金平台品牌稳实力强</p>
+                        </span>*@
+                        <img src="~/images/helpcenter/dd_img1.png" />
+                    </dd>
+                    <dd style="margin-right:70px">
+                        @*<img src="~/images/bank.png"  />
+                        <span>
+                            <p class="font_size_16 ">资金存管</p>
+                            <div style="height:22px"></div>
+                            <p class="font_size_14 gray1">银行资金存管<text class="white"></text><br /> 账户安全可靠</p>
+
+                        </span>*@
+                        <img src="~/images/helpcenter/dd_img2.png" />
+                    </dd>
+                    <dd class="margin_right_none">
+                        @*<img src="~/images/help.png"  />
+                        <span>
+                            <p class="font_size_16">公益基金</p>
+                            <div style="height:22px"></div>
+                            <p class="font_size_14 gray1">每一分收益都更有意义社会责任我的责任</p>
+                        </span>*@
+                        <img src="~/images/helpcenter/dd_img3.png" />
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+        </div>
+        <div class="zfct_page_box2_right float_right">
+            <img src="~/images/logo2.png" />
+            <div style="height:13px"></div>
+            <p class="font_size_18 gray1">为你赚动每一分</p>
+            <div style="height:20px;"></div>
+            
+            <img src="~/images/app_erweima1.png" class="float_left"  />
+            <div class="float_right">
+                <div style="height:10px"></div>
+                <span>
+                    <img src="~/images/ios.png" /><em>iphone版下载</em>
+                </span>
+                <div style="height:16px;"></div>
+                <span>
+                    <img src="~/images/android.png" /><em>Android版下载</em>
+                </span>
+            </div>
+            <div class="clear"></div>
+            
+
+        </div>
+        <div class="clear"></div>
+        
+        
+
+    </div>
+    <!---------------- 交易额   end--------------------->
+    <div style="height:15px;"></div>
+    <!-------------------新人专区 start--------------------->
+    <div class="zfct_pag2_new">
+        @if (newHandLoan != null)
+        {
+            <div class="zfct_new_left float_left position-relative" onclick="toDetail(@(newHandLoan.LoanId))" style="cursor:pointer;">
+                <p><em class="font_size_18 bold margin_right_20">新手专区</em><em class="gray1">新人专享&nbsp;&nbsp;仅限首投&nbsp;&nbsp;限额限量</em></p>
+                <div style="height:60px;"></div>
+                @if (string.IsNullOrEmpty(user))
+                {
+                    <div class="getrende">
+                        <a href="/Customer/Register"><img src="~/images/gethb.png" /></a>
+                    </div>
+                }
+                
+                <dl class="position-relative">
+                    <dd>
+                        <p class="roboto red">
+                            <em class="font_size_70">@(newHandLoan.YearRate)</em>
+                            <em class="font_size_40">%</em>
+                        </p>
+                        <p class="font_size_12 gray1 margin_top_15">预期年化收益</p>
+                    </dd>
+                    <dd>
+                        <p class="roboto ">
+
+                            <em class="font_size_50">@newHandLoan.Period</em> <em class="font_size_18">个月</em>
+                        </p>
+                        <p class="font-size-12 gray1 text_align_center margin_top_20">投资期限</p>
+                    </dd>
+                    <dd>
+                        <p class="roboto ">
+                            <em class="font_size_50">@newHandLoan.MaxMoney</em> <em class="font_size_18">元</em>
+                        </p>
+                        <p class="font-size-12 gray1 text_align_center margin_top_20">投资上限</p>
+                    </dd>
+                    <dd class="margin-right-none">
+                        @if (newHandLoan.SurplusMoney > 0)
+                        {
+                            <a class="recommend_button_invest1" style="cursor: pointer">
+                                立即投资
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="recommend_button_invest1_none" style="cursor: pointer">
+                                抢光了
+                            </button>
+                        }
+                    </dd>
+                    <div class="clear"></div>
+                    @if (newHandLoan.SurplusMoney == 0)
+                    {
+                        <div class="dl_mask"></div>
+                    }
+                </dl>
+                <div style="height:15px;"></div>
+            </div>
+
+        }
+        
+        @*<div class="zfct_new_right float_right">
+            <div style="height:15px;"></div>
+            <img src="~/images/know_zfct.png" class="img-margin" />
+            <div style="height:45px;"></div>
+            <dl>
+                <dd>
+                    <a href="/InfoPublic/BusinessInfo">
+                        <p>
+                            <img src="~/images/info_show.png" class="img-margin" />
+                        </p>
+                        <p class="gray1 text_align_center margin_top_20">
+                            信息披露
+                        </p>
+                    </a>                    
+                </dd>
+                <dd class="margin-right-none">
+                    <a href="/NewHandGuide/Index">
+                        <p>
+                            <img src="~/images/newer_guide.png" class="img-margin" />
+                        </p>
+                        <p class="gray1 text_align_center margin_top_20">
+                            新手指引
+                        </p>
+                    </a>                   
+                </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>*@
+        <div class="clear"></div>
+    </div>
+
+    <!-------------------新人专区 end--------------------->
+    <div style="height:30px;"></div>
+    <!------------------推荐专区 start------------------>
+    <div class="zfct_page2">
+        <div class="zfct_page2_head">
+            <p class="float_left"><em class="font_size_20">推荐专区</em><em class="font_size_16 gray1 margin_left_10">限额限量&nbsp;&nbsp;抓紧抢购</em></p>
+            <a href="/myinvest/recommendedlist" class="gray1 font_size_16 float_right">
+                更多项目<i class="icon iconfont font_size_16 margin_left_10">&#xe79b;</i>
+            </a>
+            <div class="clear"></div>
+        </div>
+        <div style="height:20px;"></div>
+        <div class="zfct_page2_content">
+            <div id="loadData">
+                <script type="text/javascript">  
+                    $(function () {  
+                        $("#loadData").load("/Home/_PartialLoanList");
+                    })  
+                </script> 
+            </div>
+            <div class="zfct_page2_activity float_right">
+                @if(pcColumn!=null&& pcColumn.AdvertisementList.Count > 0)
+                {
+                    <a href="@pcColumn.AdvertisementList.ElementAt(0).SkipUrl"><img src="@pcColumn.AdvertisementList.ElementAt(0).ImageUrl"  style="width:795px; height:277px;"/></a>
+                }
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-------------------推荐专区  end--------------->
+    <div style="height:20px;"></div>  
+  
+</div>
+  <!----------------公司内刊 start----------------------->
+<div style="border-bottom:1px solid #f0f0f0">
+    <div class="zfct_page4">
+        <div class="zfct_page4_box3">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">集团动态</text>
+                </span>
+                <a href="/AboutUs/GroupDynamics" class="gray1">
+                    <span class="float_right font_size_12 announcement_more" style="padding-right:20px">
+                        更多<i class="icon iconfont">&#xe79b;</i>
+                    </span>
+                </a>
+            </div>
+            <div class="zfct_page2_box3_content">
+                <ul class="hiSlider hiSlider1" style="height:285px!important">
+                    @if (companyActivity != null && companyActivity.NewsList.Count > 0)
+                    {
+                        for (int i = 0; i < companyActivity.NewsList.Count; i++)
+                        {
+                            if (companyActivity.NewsList.ElementAt(i).Title != null && companyActivity.NewsList.ElementAt(i).Title.Length > 10)
+                            {
+                                companyActivity.NewsList.ElementAt(i).Title = companyActivity.NewsList.ElementAt(i).Title.Substring(0, 15) + "...";
+
+                            }
+                            <li data-title="@companyActivity.NewsList.ElementAt(i).Title" class="hiSlider-item"><a href="/AboutUs/ContactUsDetails?id=@companyActivity.NewsList.ElementAt(i).Id"><img src="@companyActivity.NewsList.ElementAt(i).ImageUrl" style="border-radius:5px; width:390px;height:280px;"></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="zfct_page4_box1 ">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">总裁专栏</text>
+                </span>
+                <a href="/AboutUs/PresidentColumn" class="gray1">
+                    <span class="float_right font_size_12 announcement_more" style="padding-right:20px">
+                        更多<i class="icon iconfont">&#xe79b;</i>
+                    </span>
+                </a>
+            </div>
+            @if (leaderTalk != null && leaderTalk.NewsList.Count > 0)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    <a href="/AboutUs/PresidentColumnDetail?id=@leaderTalk.NewsList.ElementAt(0).Id">
+                        <div class="zfct_page4_box1_content ">
+                            <div class="zfct_page4_box1_content_head">
+                                <div class="float_left">
+                                    <img src="~/images/tf_image.png" width="68" height="68" style="border-radius:68px" />
+                                </div>
+                                <div class="float_left margin_top_10 margin_left_20">
+                                    <h3 class="font_size_16 font-weight " style="margin-top:3px;">专访中房创投田峰：</h3>
+                                    <div style="height:2px;"></div>
+                                    <h3 class="font_size_16 font-weight">@leaderTalk.NewsList.ElementAt(0).Title</h3>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div style="height:20px;"></div>
+                            <div class="">
+                                <p class="font_size_14">
+                                    @if (leaderTalk.NewsList.ElementAt(0).Short != null && leaderTalk.NewsList.ElementAt(0).Short.Length > 150)
+                                    {
+                                        leaderTalk.NewsList.ElementAt(0).Short = leaderTalk.NewsList.ElementAt(0).Short.Substring(0, 120) + "...";
+                                    }
+                                    @leaderTalk.NewsList.ElementAt(0).Short
+                                </p>
+                            </div>
+                            <div style="height:20px;"></div>
+                            <em class="gray font_size_12 float_right" style="font-style:italic">@leaderTalk.NewsList.ElementAt(0).SkipUrl</em>
+                        </div>
+                    </a>
+
+                }
+            }
+        </div>
+        <div class="zfct_page4_box2">
+            <div class="zfct_page3_box2_head">
+                <span style="padding-left:20px">
+                    <text class="font_size_16">公司内刊</text>
+                </span>
+                <a href="/AboutUs/EnterpriseInsideMagazine" class="gray1">
+                    <span class="float_right font_size_12 announcement_more" style="padding-right:20px">
+                        更多<i class="icon iconfont">&#xe79b;</i>
+                    </span>
+                </a>
+            </div>
+            <div class="zfct_page4_box2_content">
+                @if (managizeList != null && managizeList.Count > 0)
+            {
+                    @for (int i = 0; i < managizeList.Count && i < 1; i++)
+                {
+                        <div style="height:20px;"></div>
+                        <a href="@managizeList.ElementAt(i).Skiplinks" target="_blank">
+                            <img src="@managizeList.ElementAt(i).ImageUrl" class="img-margin " width="200" height="235" style="border-radius:5px;" />
+                            <p class="font_size_16 text_align_center margin_top_10">@managizeList.ElementAt(i).Title</p>
+                        </a>
+
+
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!-----------------公司内刊  end--------------------->
+<div style="height:20px;"></div>
+<!-------------------合作机构  start---------------------->
+
+<div class="cooperative_organization">
+    <div class="cooperative_box1 ">
+        <div class="cooperative_head font_size_20">
+            集团链接
+        </div>
+        <div class="cooperative_dl">
+            <dl>
+                <a href="http://www.cred.com/" target="_blank">
+                    <dd>
+                        <img src="~/images/cooperation/zf1.png" />
+                    </dd>
+                </a>
+                <a href="http://www.cred100.cn/ " target="_blank">
+                    <dd>
+                        <img src="~/images/cooperation/zfll.png" />
+                    </dd>
+                </a>
+                <a href="http://www.zfzrjt.com" target="_blank">
+                    <dd>
+                        <img src="~/images/cooperation/zfzr_logo.png" />
+                    </dd>
+                </a>
+                <a href="http://www.zfsqfw.com/" target="_blank">
+                    <dd class="margin-right-none">
+                        <img src="~/images/cooperation/zfs.png" />
+                    </dd>
+                </a>
+                <div class="clear"></div>
+            </dl>
+        </div>
+    </div>
+    <div class="cooperative_box2 ">
+        <div class="cooperative_head font_size_20">
+            合作机构
+        </div>
+        <div class="cooperative_contnet1">
+            <div class="cooperative_contnet" >
+                <ul>
+                    <li>
+                        <div><img src="~/images/cooperation/aliyun.png" /></div>
+                        <div><img src="~/images/cooperation/huifu.png" /></div>
+                        <div><img src="~/images/cooperation/bh_logo.png" /></div>
+                        @*<div><img src="~/images/cooperation/zhidao.png" /></div>*@
+                        <div><img src="~/images/cooperation/deheng.png" /></div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+   
+</div>
+<!--------------------合作机构   end--------------------->
+<div style="height:40px;"></div>
+
+<!------------------风险提示 弹出层  start------------------>
+<div id="risk_mask" class="risk_mask" style="display:none;" ></div>
+<div class="risk_page" id="risk_page" style="display:none;">
+    <p class="risk_title">风险提示</p>
+    <p class="margin_top_15">
+        致尊敬的中房创投用户：
+    </p>
+    <p class="text_indent">
+        鉴于在进行资金出借过程中可能遇到的各种风险，中房创投在此温馨提示，请您在进行资金出借前仔细阅读以下内容，了解风险，并根据自身的投资风险意识、风险承受能力做出适合的投资理财计划。
+    </p>
+    <p class="text_indent">
+        1. 中房创投仅作为网络借贷信息中介机构进行信息发布，平台有严格的风控，为您筛选优质的投资项目，但是不对您及您的投资提供任何担保。中房创投没有义务对逾期的本息以及费用进行垫付或未经委托对融资人进行追索。
+    </p>
+    <p class="text_indent">
+        2. 政策风险：因网络借贷是基于当前的国家宏观政策及相关法律法规所设计。如国家宏观政策（如财政政策、货币政策、行业政策、地区发展政策）以及市场相关法律法规发生变化，可能会导致网络借贷面临损失。
+    </p>
+    <p class="text_indent">
+        3. 信用风险：若融资人因人身意外、疾病、死亡等行为造成丧失还款能力，可能对您的预期收益造成影响。
+    </p>
+    <p class="text_indent">
+        4. 资金流动性风险：针对您的出借资金，在借贷关系存续期间，不得提出终止。若有需要，中房创投会努力帮助您寻找债权受让方，以帮助您完成债权转让，但是不对债权转让的实现时间提供任何承诺和保证。
+    </p>
+    <p class="text_indent">
+        5. 不可抗力风险：由于战争、动乱、自然灾害等不可抗力因素的出现而可能导致您出借资金损失的风险。
+        您承诺并保证已认真阅读本风险揭示声明书，理解以上所揭示的所有风险，并愿意承担投资风险给您造成的损失。
+    </p>
+    <div style="height:30px"></div>
+    <div class="checkbox checkbox-info checkbox-circle float_left" style="margin-top:10px">
+        <input id="checkbox8" class="styled" type="checkbox" checked>
+        <label for="checkbox8" style="font-size:12px">
+            本月不再提示
+        </label>
+    </div>
+    <div class="ikonw">
+        <button>
+            我知道了
+        </button>
+    </div>
+</div>
+
+<!------------------风险提示 弹出层  end------------------>
+<!---------------------底部悬浮效果----------------------------->
+@*<div class="bottom_suspension">
+    <span class="clicksmall">
+        <img src="~/images/helpcenter/bottom_down.png" />
+    </span>
+  
+</div>*@
+
+<!-----------------------底部悬浮效果--------------------------->
+@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+<script src="~/js/marquee.js"></script>
+<script src="~/js/jquery.hiSlider.min.js"></script>
+<script src="~/js/jQuery-jcMarquee.js"></script>
+<script src="~/js/numLoop.min.js"></script>
+<script>
+var toDetail = function (loanId) {
+    location.href = "/myinvest/investdetail?loanid=" + loanId;
+}
+</script>
+<script>
+    $(function () {
+        $('.home-banner').click(function () {
+            var url = $('.home-banner').eq(jQuery('.cir_box').find(".cir_on").val()).data("url");
+            if (url) {
+                window.open(url);
+            }
+
+        })
+        if (!getCookie("risktipensure")) {
+            $(".risk_mask").show();
+            $(".risk_page").show();
+        }
+
+        //$(".announcement_cycle").marquee({
+        //    interval: 3000,                 //间隔时间（毫秒）
+        //    speed: 500,                     //移动速度（毫秒）
+        //    showNum: 1,                     //显示个数
+        //    stepLen: 1,                     //每次滚动步长
+        //    type: 'vertical'             //水平滚动 - horizontal / 垂直滚动 - vertical
+        //});
+        $(".newer_cycle").marquee({
+            interval: 2000,                 //间隔时间（毫秒）
+            speed: 500,                     //移动速度（毫秒）
+            showNum: 1,                     //显示个数
+            stepLen: 1,                     //每次滚动步长
+            type: 'vertical'             //水平滚动 - horizontal / 垂直滚动 - vertical
+        });
+        $('.hiSlider1').hiSlider();
+        $(".hiSlider2").hiSlider();
+        $(".yy-bigNum").numLoop().startNumLoop();//动态数字
+
+        //$("span.clicksmall").click(function () {
+        //    var height = $(this).parent().height();
+        //    if (height == 172) {
+        //        $(this).parent().animate({height:"68px"});
+        //        $(this).parent().addClass("bottom_suspension_small").removeClass("bottom_suspension");              
+        //        $(this).find("img").attr("src", "images/helpcenter/bottom_up.png");
+        //        $(".zfct_footer").css("margin-bottom","68px");
+        //    }
+        //    else {
+        //        $(this).parent().animate({ height: "172px" });
+        //        $(this).parent().addClass("bottom_suspension").removeClass("bottom_suspension_small");
+        //        $(this).find("img").attr("src", "images/helpcenter/bottom_down.png");
+        //        $(".zfct_footer").css("margin-bottom", "172px");
+        //    }
+
+        //})
+
+
+
+        //$('#Marquee_x').jcMarquee({ 'marquee': 'x', 'margin_right': '20px', 'speed': 30 });//合作机构
+        $(".ikonw button").click(function () {
+            if ($('#checkbox8').is(':checked')) {
+                setCookie("risktipensure", true, 30);
+            }
+            $(".risk_mask").hide();
+            $(".risk_page").hide();
+        })
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+
+    });  
+</script>
+
+<script type="text/javascript">
+
+    var sUserAgent = navigator.userAgent.toLowerCase();
+
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+
+        window.location.href = 'http://m.chinazfct.com';
+
+    } else {
+
+        window.location = '#';
+
+    }
+</script>

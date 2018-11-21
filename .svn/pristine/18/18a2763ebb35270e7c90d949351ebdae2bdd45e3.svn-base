@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "推荐标";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(2);
+    })
+</script>
+
+<div class="recommend_bg">
+    <img src="~/images/banner/recommend_bg.jpg" class="img-responsive" />
+</div>
+
+<div class="invest_class">
+    <ul class="recommend_class_box font_size_18">
+        <li id="newhand">
+            <img src="~/images/newhand_gray.png" />
+            <em class="margin_left_24 gray1">新手标</em>
+        </li>
+        <li>
+            <img src="~/images/recommend_select.png" />
+            <em class="margin_left_24 blue">推荐标</em>
+        </li>
+        <li class="border-right-none" id="transfer">
+            <img src="~/images/recommendno.png" />
+            <em class="margin_left_24 gray1">债转标</em>
+        </li>      
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px"></div>
+<div class="invest_list">
+    <div id="recommandList">
+        
+    </div>
+    <div class="recommend_page">
+        @*<p class="font_size_13 gray1">中房创投提醒您：理财有风险，投资需谨慎！</p>*@
+        <div style="height: 50px"></div>
+
+        <div style="text-align: center">
+            <div class="pager_box">
+                <div id="pager" class="pager_div"></div>
+            </div>
+        </div>
+        <div style="height: 50px"></div>
+    </div>
+</div>
+
+<div style="height:40px;"></div>
+
+
+<script>
+    $(function () {
+        $('#newhand').click(function () { 
+            location.href = "/myInvest/NewHandList";
+        })
+
+        $('#transfer').click(function() {
+            location.href = "/Transfer/ClaimsList";
+        });
+
+        var pageCallback = function (index, jq) {
+            $('#recommandList').load("/MyInvest/_PartialLoanList", { page: index.getCurrent() });
+            $('html,body').animate({scrollTop:0},'slow');
+        }
+        var setPage=function(total, count) {
+            $('#pager').pagination({
+                callback: pageCallback,
+                totalData: total,
+                showData: count,
+                coping: true,
+                prevContent: '<',
+                nextContent: '>'
+            });
+        }
+        $('#recommandList').load("/MyInvest/_PartialLoanList",
+            function () {
+                var total = $('#total').val();
+              
+                setPage(total, 10);
+            });
+
+
+    })
+</script>
+
+

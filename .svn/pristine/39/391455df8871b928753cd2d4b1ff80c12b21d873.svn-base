@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewData["Title"] = "企业充值-操作记录";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/js/daterangepicker/daterangepicker.css" />
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        AccordionActive(6);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <ul>
+                <li>
+                    <a href="EnterpriseRecharge">
+                        我的投资户
+                    </a>
+                </li>
+                <li >
+                    <a href="EnterpriseFinancing">
+                        我的融资户
+                    </a>
+
+                </li>
+                <li class="active">
+                    <a href="#">
+                        交易记录
+                    </a>
+
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="my_collect_page">
+            <div class="my_assets_tab1">
+                <div class="recharge_box">
+                    <p>
+                        温馨提示：
+                    </p>
+                    <p>
+                        1.充值标签展示线下充值记录，由于渤海银行设定，查询时间区间最大为7天，且充值记录可能有2天时间延迟。
+                    </p>
+                    <p>
+                        2.转账标签为投资户转账至融资户的转账记录。
+                    </p>
+                    <p>
+                        3.如充值过程中遇到任何问题，请联系在线客服或拨打客服热线 400-025-1002。
+                    </p>
+                </div>
+                <div style="height:20px;"></div>
+                <div class="operationrecord">
+                    <div class="daihuankuan_title1">
+                        <ul>
+                            <li class="active">
+                                充值
+                            </li>
+                            <li>
+                                转账
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="operationrecord_box">
+                        <div class="operationrecord1">
+                            <div style="height:30px;"></div>
+                            <div>
+                                <!----------日期组件  start-------->
+                                <div class="date_component">
+                                    <input type="text" id="date_component" class="form-control">
+
+                                    <button class="date_component_search" id="searchBtn">
+                                        查询
+                                    </button>
+                                </div>
+                                <!----------日期组件  end-------->
+                            </div>
+                            <div style="height:30px;"></div>
+                            <table class="operationrecord_table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            交易流水
+                                        </th>
+                                        <th>
+                                            充值金额(元)
+                                        </th>
+                                        <th>
+                                            交易状态
+                                        </th>
+                                        <th>
+                                            交易时间
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="offlinerechargelist">
+                                    <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="operationrecord2" style="display:none">
+                            <dl>
+                                <dd>
+                                    <a href="#" class="datetype click" onclick="setTime(1);">
+                                        所有
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#" class="datetype" onclick="setTime(7);">
+                                        前3天
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#" class="datetype" onclick="setTime(3);">
+                                        前7天
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#" class="datetype" onclick="setTime(4);">
+                                        前1个月
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#" class="datetype" onclick="setTime(6);">
+                                        前3个月
+                                    </a>
+                                </dd>
+                            </dl>
+                            <table class="operationrecord_table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            交易流水
+                                        </th>
+                                        <th>
+                                            转账金额(元)
+                                        </th>
+                                        <th>
+                                            投资户余额(元)
+                                        </th>
+                                        <th>
+                                            融资户余额(元)
+                                        </th>
+                                        <th>
+                                            交易状态
+                                        </th>
+                                        <th>
+                                            交易时间
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionrecordlist">
+                                    <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;margin-top:10px">
+                    <div class="pager_box">
+                        <div id="pager" class="pager_div"></div>
+                    </div>
+                </div>
+                <div style="height:30px;"></div>
+            </div>
+          
+         
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/js/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="~/js/daterangepicker/daterangepicker.js"></script>
+
+<script>
+    var datetype = 1;
+    var type = 0;
+    var elem = $("#offlinerechargelist");
+    $(function () {
+        $("#searchBtn").trigger("click");
+        
+    });
+
+    $(".daihuankuan_title1 ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var index = $(this).index();
+        setFrist(index);
+        $(".operationrecord_box > div").eq(index).show().siblings().hide();
+    });
+
+    $(".datetype").click(function () {
+        $(".datetype").removeClass("click");
+        $(this).addClass("click");
+    });
+
+    //日期范围
+    $('#date_component').daterangepicker({
+        "dateLimit": {
+            "days": 7
+        },
+        "startDate": "@ViewBag.SDate",
+        "endDate": "@ViewBag.EDate",
+        "locale": {
+            "format": "YYYY-MM-DD",
+            "separator":"~",
+            "applyLabel": "确定",
+            "cancelLabel": "取消",
+            "daysOfWeek": ["一", "二", "三", "四", "五", "六", "日"],
+            "monthNames": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+        }
+    }, function (start, end, label) { });
+
+
+    $("#searchBtn").click(function () {
+        elem.load("/MyAccount/OfflineRechargeData", { DateArea: $("#date_component").val() }, function () {
+            setPager();
+        });
+    });
+
+    function setFrist(index) {
+        if (index == 0) {
+            type = 0;
+            elem = $("#offlinerechargelist");
+            elem.load("/MyAccount/OfflineRechargeData", { DateArea: $("#date_component").val() }, function () {
+                setPager();
+            });
+        } else { 
+            $(".datetype").removeClass("click");
+            $(".datetype").eq(0).addClass("click");
+            datetype = 1;
+            type = 8;
+            elem = $("#transactionrecordlist");
+            elem.load("/MyAccount/TransactionRecordData", { Type: type, DateType: datetype }, function () {
+                setPager();
+            });
+        }
+    }
+
+    function setTime(data) {
+        if (data != datetype) {
+            datetype = data;
+            elem.load("/MyAccount/TransactionRecordData", { Type: type, DateType: datetype }, function () {
+                setPager();
+            });
+        }
+    }
+
+    function pageCallback(index, jq) {
+        initTable(index);
+    }
+
+    function initTable(index) {
+        if (type == 0) {
+            elem.load("/MyAccount/OfflineRechargeData", { Page: index.getCurrent(), DateArea: $("#date_component").val() });
+        } else {
+            elem.load("/MyAccount/TransactionRecordData", { Page: index.getCurrent(), PageSize: 5, Type: type, DateType: datetype });
+        }
+
+    }
+
+    function setPager() {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: elem.find("#TotalData").first().val(),
+            showData: 5,
+            coping: true,
+            prevContent: '<',
+            nextContent: '>'
+        });
+    }
+
+    function getDate() {
+
+        var myDate = new Date();
+
+        //获取当前年
+        var year = myDate.getFullYear();
+
+        //获取当前月
+        var month = myDate.getMonth() + 1;
+
+        //获取当前日
+        var date = myDate.getDate();
+
+        var now = year + '-' + month + "-" + date;
+
+    } 
+</script>
+

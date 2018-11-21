@@ -1,0 +1,253 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "登录";
+    var list = ViewBag.LoginAdvert as AdvertCountReturnModel;
+
+}
+
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/css/common/build.css" rel="stylesheet" />
+<link href="~/css/common/jquery.hiSlider.min.css" rel="stylesheet" />
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .hiSlider-wrap {
+        height: 440px !important;
+    }
+
+    .hiSlider-pages {
+        bottom:30px!important;
+    }
+
+        .hiSlider-pages a {
+            width: 8px;
+            height: 8px;
+            border-radius: 8px;
+            background: #e4e4e4;
+        }
+
+    .hiSlider-title {
+        bottom: 30px !important;
+        text-align: center;
+        padding: 6px 0;
+        color: #333;
+        z-index: 2;
+        font: 18px/2 "Microsoft YaHei",Arial,Tahoma;
+        background: none;
+        font-weight: 600;
+        line-height: 27px;
+    }
+
+        .hiSlider-title em {
+            font-size: 14px;
+            color: #999999;
+        }
+
+    .hiSlider-pages a.active {
+        background: #2b4879;
+    }
+
+    .hiSlider-pages {
+        bottom: 0px;
+        right: 205px;
+    }
+
+    .right_suspension {
+        top: 60px !important;
+    }
+
+    #loginBtn {
+        cursor: pointer;
+    }
+</style>
+<div class="zfct_login_box">
+    <div style="height:40px;"></div>
+    <div class="zfct_login">
+        <div class=" float_left">
+            <span style="width:360px; display:inline-block">
+                <em class="font_size_20">每天登录&nbsp;&nbsp;收益多多</em>
+                @*<em class="gray1 font_size_12 float_right">还没有账号? <a href="/Customer/Register" class="red font_size_12">免费注册</a></em>*@
+            </span>
+            <div style="height:35px;"></div>
+            <div class="zfct_login_form">
+                <div class="zfct_form_group">
+                    <input type="text" id="username" class="zfct_input_text" name="username" placeholder="用户名/手机号" value="@ViewBag.LoginUserName" />
+                    <label class="form-tips error active">
+                        <div class="form_tips_content" id="userNameNotice">
+                        </div>
+                    </label>
+                </div>
+
+                <div class="zfct_form_group">
+                    <input type="password" id="password" class="zfct_input_text" name="password" placeholder="密码" value="" />
+                    <label class="form-tips error active">
+                        <div class="form_tips_content" id="passWordNotice">
+                        </div>
+                    </label>
+                </div>
+
+                <div id="verifyCodeBox">
+                    @if (ViewBag.IsFaild != false)
+                    {
+                        <div class="zfct_form_group">
+                            <input type="text" id="verifyCode" class="zfct_input_text1" name="password" placeholder="请输入验证码" value="" />
+                            <img id="validCodeImage" src="/Customer/ValidCode" />
+                            <label class="form-tips error active">
+                                <div class="form_tips_content" id="verifyCodeErrorBox">
+                                </div>
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="zfct_form_group" style="width:360px;">
+                    <div class="checkbox checkbox-info checkbox-circle float_left">
+                        <input id="checkbox8" class="styled" type="checkbox" checked>
+                        <label for="checkbox8">
+                            记住账号
+                        </label>
+                    </div>
+                    <div class="forget_password float_right">
+                        <a href="/Customer/ForgetPassword" class="blue font_size_12">忘记密码？</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="zfct_form_group">
+                    <button id="loginBtn" class="zfct_login_button" onclick="DoLogin()">
+                        登录
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="zfct_login_lunbo float_right">
+
+            @if (list != null&& list.AdvertisementList != null)
+            {
+                if (list.AdvertisementList.Count>1)
+                {
+                    <ul class="hiSlider hiSlider1" style="height:400px">
+                        @for (int i = 0; i < list.AdvertisementList.Count; i++)
+                        {
+                            <li class="hiSlider-item">
+                                <a href="@list.AdvertisementList.ElementAt(i).SkipUrl">
+                                    <img src="@list.AdvertisementList.ElementAt(i).ImageUrl" alt="@list.AdvertisementList.ElementAt(i).Title" style="width:494px;height:360px;" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                }
+                else if (list.AdvertisementList.Count == 1)
+                {
+                    <a href="@list.AdvertisementList.ElementAt(0).SkipUrl">
+                        <img src="@list.AdvertisementList.ElementAt(0).ImageUrl" alt="@list.AdvertisementList.ElementAt(0).Title" style="width:494px;height:360px;" />
+                    </a>
+                }
+            }
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:40px"></div>
+</div>
+
+<script src="~/js/jquery.hiSlider.min.js"></script>
+
+<script type="text/javascript">
+    function getNewVerifyCode() {
+        var imgSrc = "/Customer/ValidCode";
+        var random = Date.parse(new Date()) + Math.round(Math.random() * 1000);
+        var src = imgSrc + "?random=" + random;
+        $("#validCodeImage").attr("src", src);
+    }
+    function DoLogin() {
+        var userName = $("#username").val();
+            var passWord = $("#password").val();
+            var verifyCode = $("#verifyCode").val();
+            var isRemember = false;
+            if (userName.length == 0) {
+                layer.alert("请输入用户名");
+                return;
+            }
+            if (passWord.length == 0) {
+                layer.alert("请输入密码");
+                return;
+            }
+            if (document.getElementById("checkbox8").checked) {
+                isRemember = true;
+            };
+            //前端验证
+            $.ajax({
+                url: "UserLogin?returnUrl=@ViewBag.returnUrl",
+                type: "post",
+                data: {
+                    UserName: userName,
+                    PassWord: passWord,
+                    VerifyCode: verifyCode,
+                    IsRemember: isRemember
+                },
+                success: function (data) {
+                    if (data.success) {
+                        window.location.href = data.returnUrl;
+                    } else {
+                        $("#verifyCodeBox").html('<div class="zfct_form_group"><input type= "text" id= "verifyCode" class="zfct_input_text1" name= "password" placeholder= "请输入验证码" value= "" /><img id="validCodeImage" src="/Customer/ValidCode" /><label class="form-tips error active"><div class="form_tips_content" id= "verifyCodeErrorBox" ></div ></label ></div >');
+                        getNewVerifyCode();
+                        $("#validCodeImage").attr("onclick", "getNewVerifyCode()");
+                        if (data.msg.indexOf("验证码") >= 0) {
+                            $("#verifyCodeErrorBox").html("<p>" + data.msg + "</p>");
+                            
+                        } else {
+                            $("#passWordNotice").html("<p>" + data.msg + "</p>");
+                        }
+                        setTimeout(function () {
+                            $("#verifyCodeErrorBox").html("");
+                            $("#passWordNotice").html("");
+                        }, 3000);
+                    }
+                }
+            });
+    }
+    $(function () {
+        $('.hiSlider1').hiSlider({
+            isShowControls: false
+        });//右侧轮播
+        //var userNameRegu = /^[A-Za-z0-9]{5,15}$/;//用户名正则
+        var passWordRegu = /^[A-Za-z0-9]{6,16}$/;//密码正则
+        //刷新验证码
+        //验证用户名是否有效
+        $("#username").blur(function () {
+            var userName = $("#username").val().trim();
+            if (userName.length == 0) {
+                $("#userNameNotice").html("");
+                return;
+            }
+            $.ajax({
+                url: "UserNameIsExit",
+                data: {
+                    userName: userName
+                },
+                success: function (data) {
+                    if (data == "True") {
+                        $("#userNameNotice").html("<p>账户不存在</p>");
+                    } else {
+                        $("#userNameNotice").html("<i class='icon iconfont green4'>&#xe602;</i>");
+                    }
+                }
+            });
+        });
+        //验证码被点击
+        $("#validCodeImage").click(function () {
+            getNewVerifyCode();
+        });
+        $(document).keydown(function (e) {
+            if (e.keyCode == 13) {
+                DoLogin();
+            }
+        });
+    });
+
+
+</script>

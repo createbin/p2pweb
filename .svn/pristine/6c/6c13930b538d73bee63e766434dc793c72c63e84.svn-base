@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewData["Title"] = "数九寒冬，感恩需走信";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="thanksgiving_box">
+    <div style="height:780px;"></div>
+    <div class="thanksgiving_content">
+        <img src="~/images/activity/thanksgiving/thanksgiving_title1.png" class="img-margin" />
+        <div style="height:30px;"></div>
+        <img src="~/images/activity/thanksgiving/thanksgiving_title11.png" class="img-margin" />
+        <div style="height:20px;"></div>
+        <div class="thanksgiving_xinf ">
+            <div style="height:105px"></div>
+            <h3 class="text_align_center black  bold font_32">
+                感&nbsp;&nbsp;谢&nbsp;&nbsp;信
+            </h3>
+            <div style="height:20px;"></div>
+            <h4 class=" font_16">尊敬的中房创投投资人：</h4>
+            <div style="height:20px;"></div>
+            <p class="font_16">
+                见信如晤。岁月如梭，不知不觉，又到了11月的第四个星期，在这弥漫感恩气息的日子里，我谨代表中房创投全体同仁向广大投资者道
+            </p>
+            <p class="font_16">
+                一声感谢。
+            </p>
+            <p class="font_16">感谢您在当前纷繁复杂和互联互通的网络环境下，给予我们信任选择了我们。您的信赖和支持是中房创投生存和成长的土壤。在您的</p>
+            <p class="font_16">呵护下，中房创投专注内功修炼，认真倾听每一位客户的心声，做好平台投资体验升级的每一次蜕变，不盲从，反对急功近利，追求稳健</p>
+            <p class="font_16">经营，合规发展。我们深知：扎实走好每一小步，是每一个致力成为行业一流平台的必经之路。</p>
+            <p class="font_16">一年多来，是您陪伴中房创投一路同行，您的理解、信任、支持，让我们心存感激，您的每一个建议，都让我们感动，催我们奋进！</p>
+            <p class="font_16">不管是过去、现在、还是未来，选择中房创投的投资者，我们都永远感恩您，有了您的鼎力相助，中房创投才有今天卓越的成绩。您</p>
+            <p>的信任，是我们不断前行的强大力量和支柱。我们希望通过不懈努力，为您提供更加高效、完善的金融服务，用心用力“为您赚动每一分”。</p>
+        
+            <p class="font_16">展望未来，希望您一如既往支持中房创投，与我们一起分享普惠金融的丰硕果实。我们的用心和专业，只为您的满意和认可。</p>
+            <p class="font_16">谨以此信献给一直支持我们的投资者及正在关注我们的朋友。再次对您的支持与关注表示衷心的感谢！祝您身体健康,阖家幸福！</p>
+           <div style="height:30px;"></div>
+            <span class="float_right font_16" style="margin-right:100px;">田峰敬上</span>
+            <br />
+            <br />
+            <span class="float_right font_16" style="margin-right:100px;">2017年11月21日</span>
+        </div>
+        <div style="height:70px;"></div>
+        <div class="thanksgiving_info">
+            <img src="~/images/activity/thanksgiving/thanksgiving_title2.png" class="img-margin" />
+            <div style="height:50px;"></div>
+            <div class="thanksgiving_info_box">
+                <div class="thanksgiving_info_title">
+                    <p class="text_center">
+                        <em class="font_18">投资金额≥1万元</em>
+                        <em>
+                            <img src="~/images/activity/thanksgiving/jia.png" />
+                        </em>
+                        <em class="font_18">
+                            投资期限=12个月
+                        </em>
+                    </p>
+
+                </div>
+                <div style="height:30px;"></div>
+                <img src="~/images/activity/thanksgiving/dengyu.png" class="img-margin" />
+                <div style="height:30px;"></div>
+                <div class="thanksgiving_info_title1">
+                    <p class="text_center font_16">
+                        获得投资额的 <em class="font_32">1%返现+3%抵扣红包</em>
+                    </p>
+                </div>
+                <div style="height:35px;"></div>
+                <div class="thanksgiving_info_title2 position-relative">
+                    <em class="position_absoult_1">
+                        示
+                    </em>
+                    <em class="position_absoult_2">
+                        例
+                    </em>
+                    <p class="font_size_20 bold text_align_center">客&nbsp;户&nbsp;A</p>
+                    <p class="font_16 cc95">
+                        Day 1：
+                    </p>
+                    <div style="height:20px;"></div>
+                    <div class="float_left margin_left_60 font_14 black">
+                        <p>投资12月标3万元，获得</p>
+                    </div>
+                    <div class="float_right margin_right_60 font_14">
+                        <p class="cc95">3万元*1%=<em class="bold">300元的返现奖励</em></p>
+                        <p class="cc95 margin_top_10">3万元*1%=<em class="bold">300元的投资红包</em></p>
+                        <p class="margin_top_10 black">(300元投资红包仅需投资1万元即可使用，抵扣投资额3%)</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div style="height:40px;"></div>
+                    <p class="font_16 cc95">
+                        Day 2：
+                    </p>
+                    <div style="height:20px;"></div>
+                    <div class="float_left margin_left_60 font_14 black">
+                        <p>再投资12月标1万元，可使用</p>
+                        <p class="margin_top_10">300元投资红包，再次获得</p>
+                    </div>
+                    <div class="float_right margin_right_60 font_14">
+                        <p class="cc95">1万元*1%=<em class="bold">100元的返现奖励</em></p>
+                        <p class="cc95 margin_top_10">1万元*1%=<em class="bold">100元的投资红包</em></p>
+                        <p class="margin_top_10 black">(100元投资红包投资3334元即可使用，抵扣投资额3%)</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div style="height:40px;"></div>
+                    <p class="font_18 text_align_center">以此类推，活动期间可多次获得返现及投资红包奖励。</p>
+                </div>
+                <div style="height:30px;"></div>
+                <a href="/myinvest/recommendedlist" class="thanksgiving_invest">
+                    立即投资
+                </a>
+            </div>
+        </div>
+        <div style="height:70px;"></div>
+        <div class="thanksgiving_rule">
+            <img src="~/images/activity/thanksgiving/thanksgiving_title3.png" class="img-margin" />
+            <div style="height:60px;"></div>
+            <div class="thanksgiving_rule_content">
+                <p>
+                    <em>1</em>本次活动时间：2017年11月23日00:00:00--2017年11月25日23:59:59；
+                </p>
+                <p>
+                    <em>2</em>本次活动与平台其他活动可同时参与，包括11月金秋理财季、新手投资488元返现奖励、邀请返现奖励与标的加息奖励；
+                </p>
+                <p>
+                    <em>3</em>返现及红包奖励没有上限，活动期间可重复获得，多投多得；
+                </p>
+                <p>
+                    <em>4</em>活动于每日24点结算一次，奖励于第二天上午发放，可用于第二天的项目投资；
+                </p>
+                <p>
+                    <em>5</em>平台债权转让标不参加本次活动；
+                </p>
+                <p>
+                    <em>6</em>本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+

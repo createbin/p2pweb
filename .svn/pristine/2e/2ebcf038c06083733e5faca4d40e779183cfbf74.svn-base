@@ -1,0 +1,259 @@
+﻿
+@{
+    ViewData["Title"] = "我的投资户-提现";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(9);
+    });
+</script>
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_collect_page">
+            <div class="my_assets_title">
+                <ul>
+                    <li class="active">
+                        <a href="javascript:void(0)">
+                            我的投资户
+                        </a>
+                        <i class="icon iconfont account_down">
+                            &#xe601;
+                        </i>
+                        <dl class="my_assets_title_dl" style="display:none">
+                            <dd>
+                                <a href="RechargeAndWithdraw">
+                                    充值
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="InvestmentWithdraw">
+                                    提现
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li id="my_assets_title_myloan" style="display:none">
+                        <a href="javascript:void(0)">
+                            我的融资户
+                        </a>
+                        <i class="icon iconfont account_down">
+                            &#xe601;
+                        </i>
+                        <dl class="my_assets_title_dl" style="display:none">
+                            <dd>
+                                <a href="PersonalFinancing">
+                                    充值
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="FinancingWithdraw">
+                                    提现
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <a href="RechargeWithdrawalRecord">
+                            充值提现记录
+                        </a>
+
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="my_assets_tab1">
+                <div class="recharge_box">
+                    <p>
+                        温馨提示：
+                    </p>
+                    <p class="margin_top_10">
+                        1. 用户每月有一次免费提现额度，投资户和融资户共享免费额度。
+                    </p>
+                    <p class="margin_top_5">
+                        2. 每月第二笔提现起根据渤海银行设定为：单笔提现≤5万元，1元/笔；单笔提现＞5万元，20元/笔。
+                    </p>
+                    <p class="margin_top_5">
+                        3. 提现需要跳转至渤海银行进行操作，保证了用户的资金安全。
+                    </p>
+                    <p class="margin_top_5">
+                        4. 如充值过程中遇到任何问题，请联系<a class="blue" onclick="doyoo.util.openChat('g=10060121');return false;" href="javascript:void(0);">在线客服</a>或拨打客服热线 400-025-1002。
+                    </p>
+                </div>
+                <div style="height:30px;"></div>
+                <div class="zfct_form_group margin_top_15">
+                    <label class="width150">
+                        账户余额
+                    </label>
+                    <em id="investorBalance">
+                        ¥0.00元
+                    </em>
+                </div>
+                <div class="zfct_form_group ">
+                    <label class="width150">
+                        提现金额(元)
+                    </label>
+                    <input type="text" placeholder="请输入提现金额" class="enterprise_input" style="width:200px" id="Money" />
+                    <button class="allmoney_button">
+                        全额
+                    </button>
+                    <span id="Validform_checktip" class="margin_left_10 red1"></span>
+                    <p class="red1 font_size_12" style="padding-left:158px; margin-top:3px;">
+                        提现金额≤50000元，1元/笔；提现金额＞50000元，20元/笔
+                    </p>
+                </div>
+
+                <div class="zfct_form_group margin_top_15">
+                    <label class="width150">
+                        提现手续费
+                    </label>
+                    <em id="fee">
+                        ¥0.00元
+                    </em>
+                    <p class="red1 font_size_12" style="padding-left:158px; margin-top:3px; display:none;" id="isfirst">
+                        已优惠<em id="yhfee">1.00</em>元，本月首次提现免费
+                    </p>
+                </div>
+                <div class="zfct_form_group margin_top_15">
+                    <label class="width150">
+                        实际到账金额
+                    </label>
+                    <em class="red1" id="arriveMoeny">
+                        ¥0.00元
+                    </em>
+                </div>
+                <div class="zfct_form_group margin_top_15">
+                    <label class="width150">
+                        到账模式
+                    </label>
+                    <em>
+                        T+1(下一工作日到账，节假日顺延)
+                    </em>
+                </div>
+                <div class="zfct_form_group margin_top_25">
+                    <input type="button" onclick="PostWithdrawal();"  class="zfct_recharge_button" style="width:300px; background:#ec4961" value="确认提现">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var investorBalance = 0;
+    $(function () {
+
+        $.post("/MyAccount/HasLoan", function (data) {
+            if (data.result) {
+                $("#my_assets_title_myloan").show();
+            } else {
+                $("#my_assets_title_myloan").hide();
+            }
+        });
+
+        $(".my_assets_title ul li").click(function (event) {
+            $(this).addClass("active").siblings().removeClass("active");
+            event.stopPropagation();//阻止事件冒泡
+            $(this).find("dl").show();
+            $(this).siblings().find("dl").hide();
+            var flag = true;
+            var tag = $(this).find("dl");
+            $(document).bind("click", function (e) {
+                var target = $(e.target);
+                if (target.closest(tag).length == 0 && flag == true) {
+                    $(tag).hide();
+                    flag = false;
+                }
+            });
+        });
+
+        $("dl.my_assets_title_dl").mouseleave(function () {
+            $(this).hide();
+        });
+
+        $.post("/MyAccount/RemainMoney", { userAttribute:1 },function (result) {
+            $("#investorBalance").html("¥" + result.msg + "元");
+            investorBalance = Number(result.msg.replace(/,/g, ''));
+        });
+
+        $("#Money").keyup(function () {
+            var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+            var txt = '';
+            if (reg != null) {
+                txt = reg[0];
+            }
+            var Money = Number(txt);
+            if (isNaN(Money) || Money == 0) {
+                Money = 0;
+                $("#arriveMoeny").html("¥0.00元");
+                $("#isfirst").hide();
+                $("#fee").html("¥0.00元");
+                $(this).val(txt);
+                return;
+            }
+            if (Money > investorBalance) {
+                Money = investorBalance;
+                $(this).val(investorBalance);
+            } else {
+                $(this).val(txt);
+            }
+            $.post("WithdrawFee", { money: Money }, function (data) {
+                if (data.success) {
+                    $("#arriveMoeny").html("¥" + data.arrivemoeny.toFixed(2) + "元");
+                    if (data.isfrist) {
+                        $("#isfirst").show();
+                        $("#yhfee").html(data.fee.toFixed(2));
+                        $("#fee").html("¥" + 0.00 + "元");
+                    } else {
+                        $("#isfirst").hide();
+                        $("#fee").html("¥" + data.fee.toFixed(2) + "元");
+                    }
+                }
+            });
+        }).change(function () {
+            $(this).keypress();
+            var v = $(this).val();
+            if (/\.$/.test(v)) {
+                $(this).val(v.substr(0, v.length - 1));
+            }
+        });
+    });
+    $("button.allmoney_button").click(function () {
+        $("#Money").val(investorBalance);
+    });
+
+    function PostWithdrawal() {
+        var money = Number($.trim($("#Money").val()));
+        if (isNaN(money)) {
+            layer.tips("请输入正确金额", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (money > 100000000) {
+            layer.tips("金额必须小于一亿元", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (money <= 0) {
+            layer.tips("金额必须大于零元", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (money > investorBalance) {
+            layer.tips("金额必须小于账户余额", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        $.post("Withdrawal", { money: money, userAttribute:1 }, function (result) {
+            if (result.success) {
+                location.href = result.msg;
+            } else {
+                layer.tips(result.msg, '#Validform_checktip', { tips: [2, "#ec4961"] });
+            }
+        });
+    }
+</script>

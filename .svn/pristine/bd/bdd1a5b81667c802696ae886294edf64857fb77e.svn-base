@@ -1,0 +1,11 @@
+﻿{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "Mime": {
+    ".apk": "application/vnd.android"
+  }
+}

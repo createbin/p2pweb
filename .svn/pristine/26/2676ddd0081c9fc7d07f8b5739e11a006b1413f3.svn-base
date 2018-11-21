@@ -1,0 +1,95 @@
+﻿@model IEnumerable<dynamic>
+
+@if (ViewData["type"].ToString().Equals("0"))
+{
+    //还款中
+    if (Model == null || Model.Count() == 0) { <tr> <td colspan="99">暂无数据</td> </tr> }
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span class="my_loan_name" title="@item.LoanName">@item.LoanName</span>                  
+                </td>
+                <td>@string.Format("{0:C}", item.LoanMoney)</td>
+                <td>@string.Format("{0:P}", item.LoanRate / 100)</td>
+                <td>@item.NoRepayDate.ToString("yyyy-MM-dd")</td>
+                <td>@(item.NoRepayPeriod)期</td>
+                <td>@string.Format("{0:C}", item.NoRepayMoney)</td>
+                <td>@item.LoanStateDesc</td>
+                <td>
+                    <a href="javascript:;" class="yellow font_size_12 margin_right_5" onclick="DownLoanFile(@item.LoanId)">合同下载</a>
+                    <a href="/MyAccount/SignalRepaymentPlan?id=@(item.LoanId)&name=@(System.Net.WebUtility.UrlDecode(item.LoanName))" class="yellow font_size_12">还款</a>
+                </td>
+            </tr>
+    }
+    <input id="TotalData0" type="hidden" value="@ViewData["TotalData"].ToString()" />
+}
+@if (ViewData["type"].ToString().Equals("1"))
+{
+    //投标中
+    if (Model == null || Model.Count() == 0) { <tr> <td colspan="99">暂无数据</td> </tr> }
+    foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    <span class="my_loan_name" title="@item.LoanName">@item.LoanName</span>
+                    
+                </td>
+                <td>@string.Format("{0:C}", item.LoanMoney)</td>
+                <td>@string.Format("{0:P}", item.LoanRate / 100)</td>
+                <td>@item.LoanPeriodDesc</td>
+                <td>@(item.ApplyDate.ToString("yyyy-MM-dd"))</td>
+                <td>@string.Format("{0:C}", item.InvestMoney)</td>
+                <td>@string.Format("{0:P}", item.LoanSpeed)</td>
+                <td>@item.LoanStateDesc</td>
+            </tr>
+    }
+    <input id="TotalData1" type="hidden" value="@ViewData["TotalData"].ToString()" />
+}
+
+@if (ViewData["type"].ToString().Equals("2"))
+{
+    //满标中
+    if (Model == null || Model.Count() == 0) { <tr> <td colspan="99">暂无数据</td> </tr> }
+    foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                <span class="my_loan_name" title="@item.LoanName">@item.LoanName</span>
+            </td>
+            <td>@string.Format("{0:C}", item.LoanMoney)</td>
+            <td>@string.Format("{0:P}", item.LoanRate / 100)</td>
+            <td>@item.LoanPeriodDesc</td>
+            <td>@item.ApplyDate.ToString("yyyy-MM-dd")</td>
+            <td>@string.Format("{0:C}", item.InvestMoney)</td>
+            <td>@item.LoanStateDesc</td>
+        </tr>
+    }
+    <input id="TotalData2" type="hidden" value="@ViewData["TotalData"].ToString()" />
+}
+
+@if (ViewData["type"].ToString().Equals("3"))
+{
+    //已结清
+    if (Model == null || Model.Count() == 0) { <tr> <td colspan="99">暂无数据</td> </tr> }
+    foreach (var item in Model)
+    {
+        <tr class="border-bottom">
+            <td>
+                <span class="my_loan_name" title="@item.LoanName">@item.LoanName</span>
+            </td>
+            <td>@string.Format("{0:C}", item.LoanMoney)</td>
+            <td>@string.Format("{0:P}", item.LoanRate / 100)</td>
+            <td>@string.Format("{0:C}", item.LoanMoney)</td>
+            <td>@string.Format("{0:C}", item.LoanInterest)</td>
+            <td>@string.Format("{0:C}", item.LoanOverRate)</td>
+            <td>@string.Format("{0:C}", item.LoanServiceFee)</td>
+            <td>@item.ClearDate.ToString("yyyy-MM-dd")</td>
+        </tr>
+    }
+    <input id="TotalData3" type="hidden" value="@ViewData["TotalData"].ToString()" />
+}
+
+
+

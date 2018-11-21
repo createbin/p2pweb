@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "运营渠道";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(7);
+    })
+</script>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24 bold">营运渠道</p>
+        <div style="height:40px;"></div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="table_border_right">平台网址</td>
+                <td class="">www.chinazfct.com</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">客服电话</td>
+                <td class="">400-025-1002 &nbsp;&nbsp; 周一-周五 9:00~17:30</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">客服邮箱</td>
+                <td class="">zfctkf@chinazfct.com</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">客服微信</td>
+                <td class="padding_top_10 padding_bottom_10">
+                    <img src="~/images/helpcenter/wxkf.png"  class="vertical_align_middle "/><em>&nbsp;&nbsp; 微信号:zfctkf</em>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">在线客服</td>
+                <td class="" >
+                    <a onclick="doyoo.util.openChat('g=10060121');return false;" href="javascript:void(0);">
+                        <img src="~/images/customer.png" />
+                    </a>
+                    <a href="tencent://message/?uin=3417749440&amp;Site=www.xxx.com&amp;Menu=yes" class="margin_left_50">
+                        <img src="~/images/qq.png" />
+                    </a>
+                    
+                </td>
+            </tr>
+            
+        </table>
+        <div style="height:50px;"></div>
+        <ul class="erweima">
+            <li>
+                <p class="font_size_18 text_align_center">APP</p>
+                <p class="font_size_14 gray margin_top_10 text_align_center">扫描下载APP，理财更便捷</p>
+                <div style="height:25px; "></div>
+                <img src="~/images/helpcenter/app_erweima.jpg" class="img-margin" />
+            </li>
+            <li>
+                <p class="font_size_18 text_align_center">微信订阅号</p>
+                <p class="font_size_14 gray margin_top_10 text_align_center">微信号：zfct888</p>
+                <div style="height:25px; "></div>
+                <img src="~/images/helpcenter/gw_erweima.jpg" class="img-margin" />
+            </li>
+            <li>
+                <p class="font_size_18 text_align_center">微信服务号</p>
+                <p class="font_size_14 gray margin_top_10 text_align_center">微信号：chinazfct</p>
+                <div style="height:25px; "></div>
+                <img src="~/images/helpcenter/wx_erweima.jpg" class="img-margin" />
+            </li>
+            <li>
+                <p class="font_size_18 text_align_center">新浪微博</p>
+                <p class="font_size_14 gray margin_top_10 text_align_center">微博名：中房创投</p>
+                <div style="height:25px; "></div>
+                <img src="~/images/helpcenter/xlwb_erweima.png" class="img-margin" />
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>
+

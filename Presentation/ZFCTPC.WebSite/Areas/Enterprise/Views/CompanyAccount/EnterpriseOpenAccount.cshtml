@@ -1,0 +1,406 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Customer
+@{
+    ViewData["Title"] = "企业资料-开户";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var companyInfo = ViewBag.CompanyInfo as RCompanyRealInfo;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(4);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">企业信息</span>
+        </div>
+        <div style="height:30px;"></div>
+        @if (companyInfo == null)
+        {   
+            <div style="height:30px;"></div>
+            <p class="text_align_center font_size_16 bold  ">@("请重新登陆企业帐号")</p>
+            <div style="height:30px;"></div>
+        }
+        else
+        {
+            <div id="openInfo" style="display:none">
+                <div class="daihuankuan_box">
+                <div class="daihuankuan_title">
+                    基本信息
+                </div>
+                @*判斷企业用户是否已经结算开户*@
+                @if (companyInfo.JieSuan == "0")
+                {
+                    <!-------填写企业基本信息  start----------------->
+                    <div class="enterprise_form">
+                        <div style="height:30px;"></div>
+                        <form>
+                            <div class="zfct_form_group">
+                                <label>
+                                    企业名称
+                                </label>
+                                <input id="companyName" type="text" placeholder="请输入企业名称" class="enterprise_input" />
+                            </div>
+                            <div class="zfct_form_group">
+                                <label>
+                                    法人名称
+                                </label>
+                                <input id="realName" type="text" placeholder="请输入姓名" class="enterprise_input" />
+                            </div>
+                            <div class="zfct_form_group">
+                                <label>
+                                    法人身份证号
+                                </label>
+                                <input id="realCard" type="text" placeholder="请输入身份证号" class="enterprise_input" />
+                            </div>
+
+                            @if (string.IsNullOrEmpty(companyInfo.TaxId))
+                            {
+                                <div class="zfct_form_group ">
+                                    <label>
+                                        统一社会信用代码
+                                    </label>
+                                    <input  id="idCard" type="text" value="@(companyInfo.IdCard)" class="enterprise_input" />
+                                    @*<em class="gray">
+
+                                        </em>*@
+                                </div>
+                            }
+                            else
+                            {
+                                <!--------无三证合一-------->
+                                <div>
+                                    <div class="zfct_form_group ">
+                                        <label>
+                                            营业执照号
+                                        </label>
+                                        <input  id="licenseCode" type="text" value="@(companyInfo.LicenseCode)" class="enterprise_input" />
+
+                                    </div>
+                                    <div class="zfct_form_group margin_top_20">
+                                        <label>
+                                            税务登记号
+                                        </label>
+                                        <input  id="taxId" type="text" value="@(companyInfo.TaxId)" class="enterprise_input" />
+                                    </div>
+                                    <div class="zfct_form_group margin_top_20">
+                                        <label>
+                                            组织机构代码
+                                        </label>
+                                        <input  id="idCard" type="text" value="@(companyInfo.IdCard)" class="enterprise_input" />
+                                    </div>
+                                </div>
+                            }
+                            <div class="zfct_form_group ">
+                                <label>
+                                    联系人姓名
+                                </label>
+
+                                <input  id="contactUser" type="text" value="@(companyInfo.ContactUser)" class="enterprise_input" />
+
+
+                            </div>
+                            <div class="zfct_form_group ">
+                                <label>
+                                    联系人手机号
+                                </label>
+                                <input  id="contactPhone" type="text" value="@(companyInfo.ContactPhone)" class="enterprise_input" />
+
+                            </div>
+
+                        </form>
+                        <div style="height:20px;"></div>
+                    </div>
+
+                        <!-------填写企业基本信息  end----------------->
+                }
+                else if (companyInfo.JieSuan == "1")
+                {
+                    <!----------已填写企业信息 展示企业信息 start-------------------->
+                    <div class="enterprise_form">
+                        <div style="height:30px;"></div>
+                        <form>
+                            <div class="zfct_form_group">
+                                <label>
+                                    企业名称
+                                </label>
+                                <em class="gray">
+                                    @(companyInfo.CompanyName)
+                                </em>
+                            </div>
+                            <div class="zfct_form_group margin_top_20">
+                                <label>
+                                    企业法人
+                                </label>
+                                <em class="gray margin_right_30">
+                                    @(companyInfo.CorperationName)
+                                </em>
+                                <em class="gray">
+                                    @(companyInfo.CorperationIdCard)
+                                </em>
+                            </div>
+                            @if (!string.IsNullOrEmpty(companyInfo.TaxId))
+                            {
+                                <div>
+                                    <div class="zfct_form_group margin_top_20">
+                                        <label>
+                                            营业执照号
+                                        </label>
+                                        <em class="gray">
+                                            @(companyInfo.LicenseCode)
+                                        </em>
+                                    </div>
+                                    <div class="zfct_form_group margin_top_20">
+                                        <label>
+                                            税务登记号
+                                        </label>
+                                        <em class="gray">
+                                            @(companyInfo.TaxId)
+                                        </em>
+                                    </div>
+                                    <div class="zfct_form_group position-relative margin_top_20">
+                                        <label>
+                                            组织机构代码
+                                        </label>
+                                        <em class="position-absolute-em2 gray">
+                                            @(companyInfo.IdCard)
+                                        </em>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <!-----------统一社会信用代码------->
+                                <div class="zfct_form_group margin_top_20">
+                                    <label>
+                                        统一社会信用代码
+                                    </label>
+                                    <em class="gray">
+                                        @(companyInfo.IdCard)
+                                    </em>
+                                </div>
+                            }
+
+                            <div class="zfct_form_group margin_top_20 margin_top_40">
+                                <label>
+                                    联系人姓名
+                                </label>
+                                <em class="gray margin_right_30">
+                                    @(companyInfo.ContactUser)
+                                </em>
+                                <em class="gray">
+                                    @(companyInfo.ContactPhone)
+                                </em>
+                            </div>
+                        </form>
+
+                    </div>
+                    <!----------已填写企业信息 展示企业信息 end---------------------->
+                }
+            </div>
+            <div style="height:10px;"></div>
+            <div class="daihuankuan_box">
+                <div class="daihuankuan_title">
+                    平台账户
+                </div>
+                <div class="enterprise_form">
+                    <div style="height:30px;"></div>
+                    <div class="zfct_form_group">
+                        <label>
+                            账户类型
+                        </label>
+                        @if (string.IsNullOrEmpty(companyInfo.CompanyType))
+                        {
+                            <span class="account_type">
+                                <em class="active" data-type="1">
+                                    普通对公账号
+                                </em>
+                                <em data-type="2">
+                                    担保护
+                                </em>
+                            </span>
+
+                        }
+                        else
+                        {
+                            <!-------展示账户类型-------->
+                            <em class="account_type_show">
+                                @(companyInfo.CompanyType == "1" ? "普通对公账号" : "担保户")
+                            </em>
+                        }
+
+
+                    </div>
+                </div>
+                <div style="height:10px">
+
+                </div>
+            </div>
+            </div>
+            if (companyInfo.JieSuan == "0")
+            {
+                <div id="commitBox" style="display: none">
+                    <input type="hidden" id="isOne" value="@(companyInfo.TaxId)" />
+                    <div style="height:30px;"></div>
+                    <!-------------填写企业信息的时候才有的提交按钮 ---------------->
+                    <div class="text_align_center">
+                        <button class="repayment_confirm" id="commitOpenAccount">
+                            提交
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <!-------------填写企业信息的时候才有的提交按 ---------------->
+            <!-------------展示企业信息的时候 状态  start--------->
+            if (companyInfo.JieSuan == "0" && companyInfo.OnceJieSuan == "1")
+            {
+                <div class="text_align_center" id="errorBox">
+                    <p class="red1 font_size_18 bold">
+                        企业信息审核失败 <img src="~/images/bohai/kaihu_tips.png" class="img_tips" />
+                    </p>
+                    <div style="height:30px;"></div>
+                    <div class="text_align_center">
+                        <button class="repayment_confirm" id="reCommit">
+                            重新验证
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <!-------------展示企业信息的时候 状态  end-------->
+
+            <div style="height:30px;"></div>
+        }
+
+
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        var once = "@companyInfo.OnceJieSuan";
+        var jiesuan = "@companyInfo.JieSuan";
+        if (once == "0") {
+            $('#commitBox').show();
+            $('#openInfo').show();
+        }
+        if (jiesuan == "1") {
+            $('#openInfo').show();
+        }
+    });
+
+    $(".account_type em").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+    $('#commitOpenAccount').click(function () {
+        var companyName = $('#companyName').val();
+        var realName = $('#realName').val();
+        var realCard = $('#realCard').val();
+        var type = $('.account_type').children(".active").data("type");
+        var isOne = $('#isOne').val();
+        var idCard = $('#idCard').val();
+        var licenseCode = "";
+        var taxId = "";
+        var contactUser = $('#contactUser').val();
+        var contactPhone = $('#contactPhone').val();
+        if (isOne != "") {
+            licenseCode = $('#licenseCode').val();
+            taxId = $('#taxId').val();
+        }
+        if (companyName == "" || companyName == undefined) {
+            layer.alert("请输入企业名称");
+            return false;
+        }
+        if (realName == "" || realName == undefined) {
+            layer.alert("请输入法人名称");
+            return false;
+        }
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (!reg.test(realCard)) {
+            layer.alert("身份证号码不正确");
+            return false;
+        }
+
+        if (type == "" || type == undefined) {
+            layer.alert("请选择账户类型");
+            return false;
+        }
+        if (isOne != "") {
+            if (licenseCode == "") {
+                layer.alert("请输入营业执照号");
+                return false;
+            }
+            if (taxId == "") {
+                layer.alert("请输入税务登记号");
+                return false;
+            }
+        }
+        if (idCard == "") {
+            layer.alert("请输入企业信息");
+            return false;
+        }
+        if (contactUser == "") {
+            layer.alert("请输入联系人");
+            return false;
+        }
+        if (contactPhone == "") {
+            layer.alert("请输入联系人手机号");
+            return false;
+        }
+        $.ajax({
+            url: 'JsOpenAccount',
+            data: {
+                "companyName": companyName, "realName": realName, "realCard": realCard, "type": type,
+                "licenseCode": licenseCode, "taxId": taxId, "idCard": idCard, "contactUser": contactUser, "contactPhone": contactPhone
+            },
+            type: 'POST',
+            beforeSend: function () {
+                layer.load(0, { shade: true, shade: 0.3 });
+            },
+            success: function (result) {
+                //延迟两秒执行为了等待结算异步处理结果
+                setTimeout(function () {
+                        layer.closeAll();
+                        if (result.success) {
+                            layer.alert(result.msg, function () {
+                                location.reload();
+                            });
+                        } else {
+                            layer.alert(result.msg);
+                        }
+                    },
+                    2000);
+            }
+        });
+    });
+    $("img.img_tips").mouseover(function() {
+        layer.tips('@companyInfo.JieSuanMsg',
+            this,
+            {
+                tips: [2, '#ec4a62']
+
+            });
+    });
+
+    $('#reCommit').click(function () {
+        $('#errorBox').hide();
+        $('#commitBox').show();
+        $('#openInfo').show();
+    });
+</script>
+
+

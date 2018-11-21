@@ -1,0 +1,31 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.LoanReturnModels
+@model ZFCTPC.Data.ApiModelReturn.LoanReturnModels.RLoanInvester
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="repayment_plan_table investment_record_table">
+    @if (Model != null)
+    {
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>投资人</th>
+                    <th>投资金额</th>
+                    <th>投资时间</th>
+                    <th>投资状态</th>
+
+                </tr>
+            </thead>
+            <tbody id="investerInfo">
+                <tr>
+                    <td>@(Model.Invester)</td>
+                    <td>@(Model.InvestMoney)</td>
+                    <td>@(Model.InvestTime.ToString("yyyy-MM-dd HH:mm:ss"))</td>
+                    <td>投资成功</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+
+</div>
+

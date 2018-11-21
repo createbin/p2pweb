@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "提现";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(9);
+    });
+</script>
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            @if (ViewBag.UserAttribute == 2)
+            {
+                <span class="font_size_16 font-weight">融资户提现</span>
+            }
+            else
+            {
+                <span class="font_size_16 font-weight">投资户提现</span>
+            }
+        </div>
+        <div class="my_assets_tab" style="width:280px;margin:auto;">
+            <p class="font_size_16">可用余额：¥<em class="red" id="RemainMoney">0.00</em>元</p>
+            <div style="height:20px"></div>
+            <div class="zfct_form_group">
+                <label>提现金额：</label>
+                <input id="Money" class="zfct_input_text3">
+                <span id="Validform_checktip">&nbsp;&nbsp;</span>
+            </div>
+            <div class="zfct_form_group">
+                <label style="width:70px"></label>
+                <button  onclick="PostWithdrawal();" value="" class="zfct_recharge_button" >提现</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        $.post("/MyAccount/RemainMoney", { userAttribute:@ViewBag.UserAttribute} ,function (result) {
+            $("#RemainMoney").html(result.msg);
+        });
+
+        $("#Money").keyup(function () {
+            var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+            var txt = '';
+            if (reg != null) {
+                txt = reg[0];
+            }
+            $(this).val(txt);
+        }).change(function () {
+            $(this).keypress();
+            var v = $(this).val();
+            if (/\.$/.test(v)) {
+                $(this).val(v.substr(0, v.length - 1));
+            }
+        });
+    });
+
+    function PostWithdrawal() {
+        //$.ajaxSetup({ async: false });  
+        var money = $.trim($("#Money").val());
+        if (isNaN(money) || money == "") {
+            layer.tips("请输入正确金额", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (parseFloat(money) > 100000000) {
+            layer.tips("金额必须小于一亿元", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (parseFloat(money) <= 0) {
+            layer.tips("金额必须大于零元", '#Validform_checktip', { tips: [2, "#ec4961"] });
+            return;
+        }
+        if (money) {
+            $.post("Withdrawal", { money: money,userAttribute:@ViewBag.UserAttribute }, function (result) {
+                if (result.success) {
+                    //layer.confirm('正在处理中。。。', {
+                    //    icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                    //        location.href = "RechargeAndWithdraw";
+                    //    }
+                    //}, function (index) {
+                    //    location.href = "RechargeAndWithdraw";
+                    //});
+                    //newWin(result.msg);   
+                    location.href = result.msg;
+                } else {
+                    layer.tips(result.msg, '#Validform_checktip', { tips: [2, "#ec4961"] });
+                }
+            });
+        } else {
+            layer.tips("请输入提现金额", '#Validform_checktip', { tips: [2, "#ec4961"] });
+        }
+    }
+
+    function newWin(url) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('style', 'display:none');
+        a.setAttribute('target', '_blank');
+        document.body.appendChild(a);
+        a.click();
+        a.parentNode.removeChild(a);
+    } 
+</script>

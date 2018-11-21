@@ -1,0 +1,199 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RRepayDetail
+@{
+    ViewData["Title"] = "融资管理-还款";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(2);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">还款</span>
+        </div>
+        <div style="height:30px;"></div>
+
+        <div class="daihuankuan_box">
+            <div style="height:20px;"></div>           
+            <p class="margin_left_50 margin_right_35">
+                <em class="margin_right_40">
+                    融资户户余额(元)
+                </em>
+                <em class="margin_right_15 red1 font_size_24">
+                    <font id="accountMoney">0</font> 
+                </em>
+                <a id="refreshBtn" style="cursor:pointer;" class="blue font_size_12">
+                    刷新
+                </a>
+            </p>
+            <div style="height:20px;"></div>     
+        </div>
+        
+
+        <div style="height:30px;"></div>
+        <div class="daihuankuan_box">
+            <div class="daihuankuan_title">
+                还款明细
+            </div>
+            <div style="height:30px;"></div>
+            <p class="padding_left_65">
+                <em class="width200">
+                    还款项目
+                </em>
+                <em>
+                    @(Model.LoanName)
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    还款期数
+                </em>
+                <em>
+                    @(Model.Period)期
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    还款截止日期
+                </em>
+                <em>
+                    @Model.RepayDate.ToString("yyyy-MM-dd")
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    应还本金
+                </em>
+                <em>
+                    @string.Format("{0:C}", Model.Principal)
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    应还利息
+                </em>
+                <em>
+                    @string.Format("{0:C}", Model.Interest)
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    应还罚金
+                </em>
+                <em>
+                    @string.Format("{0:C}", Model.LateFee)
+                </em>
+            </p>
+            <p class="padding_left_65">
+                <em class="width200">
+                    应还服务费
+                </em>
+                <em>
+                    @string.Format("{0:C}", Model.ServiceFee)
+                </em>
+            </p>
+            <p class="padding_left_65 border">
+                <em class="width200">
+                    还款总额
+                </em>
+                <em>
+                    <font class="red1">@string.Format("{0:C}", Model.CurrenyWaitPayMoney)</font>元
+                </em>
+            </p>
+
+            <p class="padding_left_65 ">
+                <label class="width200" style="display:inline-block">
+                    还款验证码
+                </label>
+                <input type="text" id="vercode" class="zfct_input_text2" name="" placeholder="短信验证码" value="" />
+                <a class="sendsms1" onclick="Sendsms(this)" href="javascript:void(0);">
+                    获取验证码
+                </a>
+
+            </p>
+
+        </div>
+        <div style="height:20px;"></div>
+        <div>
+            <button class="repayment_confirm" onclick="RePay(@(Model.id))">
+                确 认 还 款
+            </button>
+            <button class="repayment_cancle" onclick="javascript :history.back(-1);">
+                取消
+            </button>
+        </div>
+        <div style="height:20px"></div>
+    </div>
+</div>
+
+<script src="/js/Tools/zf.tools.js"></script>
+<script>
+    function RePay(id) {
+        var vercode = $("#vercode").val();
+        if (!$(".sendsms1").data("success")) {
+            layer.alert("请发送验证码!");
+        } else if (vercode == "") {
+            layer.alert("请输入验证码!");
+        } else {
+            $.ajax({
+                url: '/MyAccount/RepayNow',
+                data: { id: id, VerCode: vercode, isGuar:"@(ViewBag.IsGuar)"},
+                type:'POST',
+                beforeSend: function() {
+                    layer.load(0, { shade: true, shade: 0.3 });
+                },
+                success: function(result) {
+                    layer.closeAll();
+                    if (result.success) {
+                        layer.alert(result.msg, function(){
+                            location.href = "EnterpriseRepaymentPlan";
+                        });
+                    } else {
+                        layer.alert(result.msg);
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    function refreshMoney() {
+        $.ajax({
+            url: "/MyAccount/RemainMoney",
+            method: "POST",
+            data: {
+                userAttribute: 2
+            },
+            success: function (data) {
+                if (data.success) {
+                    $("#accountMoney").html(data.remainmoney);
+
+                } else {
+                    $("#accountMoney").html(0);
+                }
+            }
+        });
+
+    }
+
+    $("#refreshBtn").click(refreshMoney);
+    $(function () {
+        
+        refreshMoney();
+    })
+</script>

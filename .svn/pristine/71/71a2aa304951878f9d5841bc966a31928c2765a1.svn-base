@@ -1,0 +1,25 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserThirdPartInfo
+
+<div class="openaccount_bohai">
+    <dl>
+        <dd>
+            <label>姓名</label>
+            <input id="userName" placeholder="请输入姓名" />
+        </dd>
+        <dd>
+            <label>身份证号</label>
+            <input id="userCard" placeholder="请输入身份证号" />
+        </dd>
+        <dd>
+            <label>手机号</label>
+            <em>
+                @(Model.PhoneNo)
+            </em>
+        </dd>
+        <dd>
+            <button id="openJsAccount" class="">
+                开户
+            </button>
+        </dd>
+    </dl>
+</div>

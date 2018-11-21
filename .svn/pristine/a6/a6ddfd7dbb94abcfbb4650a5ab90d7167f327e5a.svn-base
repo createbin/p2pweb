@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "寒冬不惧，温暖来袭";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="warmwinter_box">
+    <div style="height:560px;"></div>
+    <div class="warmwinter_content">
+        <div class="warmwinter_title text_align_center">
+            <p>活动期间内,平台已投资用户<em style="color:#7ab0df">回款金额继续用作投资，可获得复投投资奖励。</em></p>
+        </div>
+        <div style="height:80px"></div>
+        <div class="warmwinter_money position-relative">
+            <div class="warmwinter_img">
+                <img src="~/images/activity/warmwinter/sd_img.png" />
+            </div>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>累计投资金额</th>
+                    <th>返现奖励</th>
+                </tr>
+                <tr>
+                    <td>
+                        20000≤N＜50000元
+                    </td>
+                    <td class="bold">
+                        88元
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        50000≤N＜100000元
+                    </td>
+                    <td class="bold">
+                        288元
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        100000≤N＜150000元
+                    </td>
+                    <td class="bold">
+                        588元
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-bottom-none">
+                        ≥150000元
+                    </td>
+                    <td class="border-bottom-none bold">
+                        888元
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="height:50px;"></div>
+        <div class="warmwinter_rule">
+            <div style="height:50px"></div>
+            <p style="font-size:24px; font-weight:bold;color:#7ab0df; text-align:center ">活动规则</p>
+            <div style="height:40px"></div>
+            <p>
+                <em>1</em>本次活动时间：2017年12月01日00:00:00--2017年12月31日23:59:59；
+            </p>
+            <p>
+                <em>2</em>本次活动与平台其它活动同时参与，包括邀请返现奖励，标的加息奖励，12月感恩回馈；
+            </p>
+            <p>
+                <em>3</em>本次活动仅限平台3月及以上标期参与；
+            </p>
+            <p>
+                <em>4</em>平台债权转让标不参加本次活动；
+            </p>
+            <p>
+                <em>5</em>本次活动解释权归中房创投所有，如有疑问请联系在线客服或拨打客服热线400-025-1002。
+            </p>
+            <div style="height:50px"></div>
+        </div>
+        <div style="height:50px;"></div>
+        <a href="/myinvest/recommendedlist" class="warm_winter_a">
+            立即领现金
+        </a>
+        <div style="height:40px;"></div>
+    </div>
+</div>

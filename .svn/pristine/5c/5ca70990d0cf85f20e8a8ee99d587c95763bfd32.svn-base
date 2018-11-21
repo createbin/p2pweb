@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "安全保障_五大风控保障确保资金安全_中房创投";
+    ViewData["Description"] = "数十年金融行业经验、24道严格风控程序、风险保障金保驾护航、银行资金存管、网站SSL加密保障、合法合规运营";
+    ViewData["Keywords"] = "安全保障,中房创投,P2P贷款,P2P借款,企业借款,企业贷款,抵押贷款,公司贷款,公司借款,公司融资,借款平台,网络贷款,网上贷款";
+
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<style>
+    .zfct_bg {
+       
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+<div class="security_banner">
+    <img src="~/images/banner/bg_safe.jpg" class="img-responsive" />
+</div>
+<div class="securitycenter_content">
+    <div style="height:65px"></div>
+    <div style="width:630px; float:left">
+        <p class="font_size_30 blue">股东背景</p>
+        <div style="height:45px"></div>
+        <p class="font_size_14">中房集团前身为中国房地产开发集团公司,现由国务院国资委直接管理。中房老龄产业发展集团为中房集团旗下直属子公司。集团依托于央企资源，致力于成为“颐养生态地产+金融互助平台+产业聚合链条”三驾马车并驱的综合性产业发展集团，其中，金融产业以中房创投、中古基金、普乾道恒三大金融模块为主体，共同构筑中房老龄金融事业新蓝图。</p>
+       
+    </div>
+    <img src="~/images/helpcenter/gudong.png" class="float_right margin_left_50" style="margin-top:60px" />
+    <div class="clear"></div>
+    <div style="height:65px"></div>
+</div>
+<div class="financial_security" id="financial_security">
+    <div style="height:65px"></div>
+    <div class="financial_security_content">
+        <img src="~/images/helpcenter/zijin.png" class="float_left margin_right_100" />
+        <div style="width:530px; float:right">
+            <p class="font_size_30 blue">资金安全保障</p>
+            <div style="height:45px"></div>
+            <p class="font_size_14 ">
+                成功上线银行存管系统，银行对用户资金进行独立管理与监督，平台无法触碰，实现平台资金与用户资金隔离，保证投资者资金安全，让投资理财更安心。
+            </p>
+           
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:65px"></div>
+</div>
+<div class="real_borrower">
+    <div style="height:90px"></div>
+    <div class="float_left">
+        <p class="font_size_30 blue">资金清晰透明</p>
+        <ul class="font_size_14">
+            <li><em class="blue">•</em>&nbsp;&nbsp;投资记录了如指掌</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;投资项目比比可见</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;借款人信息清晰可查</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;投资合同一目了然</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <img src="~/images/helpcenter/qingxitouming.png" class="float_right" />
+    <div class="clear"></div>
+    <div style="height:70px"></div>
+</div>
+<div class="financial_security" id="wind_system" >
+    <div style="height:65px"></div>
+    <div class="financial_security_content" style="width:960px">
+        <img src="~/images/helpcenter/engkong.png" class="float_left "  style="margin-right:70px; margin-top:40px;"/>
+        <div style="width:620px; float:right">
+            <p class="font_size_30 blue">风控体系保障</p>
+            <div style="height:45px"></div>
+            <ul>
+                <li class="margin_bottom_20"><em class="blue">•</em>&nbsp;&nbsp;<text class="margin_right_50">贷前审查</text><text>提出申请-实地考察-多方验证-评估授信</text></li>
+                <li class="margin_bottom_20"><em class="blue">•</em>&nbsp;&nbsp;<text class="margin_right_50">贷中流程</text><text>办理抵押-签订合同-借款发布</text></li>
+                <li class="margin_bottom_20"><em class="blue">•</em>&nbsp;&nbsp;<text class="margin_right_50">贷后流程</text><text>资金用途追踪-不定期回访-内部风险预警</text></li>
+                <li class="margin_bottom_20"><em class="blue">•</em>&nbsp;&nbsp;<text class="margin_right_50">逾期处理</text><text>风险保证金垫付-委外催收-法律诉讼-抵押物处置</text></li>
+                @*<li class="margin_bottom_20"><em class="blue">•</em>&nbsp;&nbsp;<text class="margin_right_35">风险保证金</text><text>中房创投在存管银行设立风险保证金账户，对可能存在的逾期现象进项先行赔付</text></li>*@
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:65px"></div>
+</div>
+<div class="real_borrower">
+    <div style="height:90px"></div>
+    <div class="float_left">
+        <p class="font_size_30 blue">信息数据安全</p>
+        <ul class="font_size_14">
+            <li><em class="blue">•</em>&nbsp;&nbsp;SSL数据加密</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;安全狗数据防护</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;安全骑士安全防护</li>
+            <li><em class="blue">•</em>&nbsp;&nbsp;服务器阿里云实时监测</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <img src="~/images/helpcenter/xinxi.png" class="float_right" />
+    <div class="clear"></div>
+    <div style="height:70px"></div>
+</div>
+

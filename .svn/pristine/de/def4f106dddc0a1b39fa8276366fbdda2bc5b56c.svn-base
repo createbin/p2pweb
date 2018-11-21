@@ -1,0 +1,129 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "忘记密码";
+}
+
+
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .right_suspension {
+        top: 60px !important;
+    }
+</style>
+
+<div class="zfct_register_box">
+    <div style="height:40px;"></div>
+    <div class="forgetpassword_box">
+        <p class="padding_left_65 font_size_18">重置密码</p>
+        <div style="height:50px;"></div>
+        <div class="forgetpassword_step">
+            <ul>
+                <li>
+                    <em class="forgetpassword_circle1">1</em><em class="gray1">验证身份</em>
+                </li>
+                <li class="forget_border_bottom">
+                    <em class="forgetpassword_circle">2</em><em class="">重置密码</em>
+                </li>
+                <li class="margin-right-none">
+                    <em class="forgetpassword_circle1">3</em><em class="gray1">重置成功</em>
+                </li>
+                <div class="clear"></div>
+            </ul>
+
+
+        </div>
+        <div style="height:50px;"></div>
+        <div class="zfct_form">
+            <input id="userPhone" type="hidden" value="@ViewBag.phone" />
+            <input id="phoneCode" type="hidden" value="@ViewBag.code" />
+            <div class="zfct_form_group">
+                <input type="password" id="password" class="zfct_input_text" name="password" placeholder="新密码" value="" />
+                <label class="form-tips error active">
+                    <div class="form_tips_content" id="password_notice">
+
+                    </div>
+                </label>
+            </div>
+            <div class="zfct_form_group">
+                <input type="password" id="surepassword" class="zfct_input_text" name="password" placeholder="确认新密码" value="" />
+                <label class="form-tips error active">
+                    <div class="form_tips_content" id="">
+                        
+                    </div>
+                </label>
+            </div>
+            <div style="height:20px;"></div>
+            <div class="zfct_form_group">
+                <button id="completeBtn" class="zfct_login_button">
+                    完成
+                </button>
+            </div>
+        </div>
+    </div>
+    <div style="height:40px;"></div>
+</div>
+<script type="text/javascript">
+    var passWordRegu = /^[A-Za-z0-9]{6,16}$/;//密码正则
+    $("#password").blur(function () {
+        var pwd = $("#password").val();
+        var passWordRe = new RegExp(passWordRegu);
+        if (pwd.length==0) {
+            $("#password_notice").html("");
+        }
+        if (passWordRe.test(pwd)) {
+            $("#password_notice").html("<i class='icon iconfont green4'>&#xe602;</i>");
+        } else {
+            $("#password_notice").html("密码格式不正确");
+        }
+    });
+    $("#surepassword").blur(function () { 
+        var pwd = $("#password").val();
+        var surePwd = $("#surepassword").val();
+        if (pwd != surePwd) {
+            $("#surepassword").html("两次密码输入不一致");
+        }
+    });
+    $("#completeBtn").click(function () {
+        var phone = $("#userPhone").val();
+        var code = $("#phoneCode").val();
+        var password = $("#password").val();
+        var surePwd = $("#surepassword").val();
+        var passWordRe = new RegExp(passWordRegu);
+        if (!passWordRe.test(password)) {
+            layer.alert("密码格式不正确");
+            return;
+        }
+        if (surePwd != password) {
+            layer.alert("两次密码输入不一致");
+            return;
+        }
+        $.ajax({
+            url: "ForgetPwd",
+            data: {
+                Phone: phone,
+                VerCode: code,
+                Password: password
+            },
+            success: function (data) {
+                console.log(data)
+                if (data.success) {
+                    console.log(1)
+                    window.location.href = "ForgetPassword3";
+                } else {
+                    layer.alert(data.msg);
+                }
+
+            }
+        });
+    });
+</script>
+
+
+
+

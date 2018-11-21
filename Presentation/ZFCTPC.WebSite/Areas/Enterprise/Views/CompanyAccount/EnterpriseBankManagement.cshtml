@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "企业资料-银行卡";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+       
+        AccordionActive(5);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">银行卡管理</span>
+        </div>
+        <div style="height:30px;"></div>
+        <div class="daihuankuan_box">           
+            <div class="daihuankuan_title">
+                企业银行卡
+            </div>             
+            <!-------------企业银行卡信息填写  start------------>
+            @*<div class="enterprise_form">
+                <div style="height:30px;"></div>
+                <form>
+                    <div class="zfct_form_group">
+                        <label>
+                            开户银行账号
+                        </label>
+                        <input type="text" placeholder="请输入开户银行账号" class="enterprise_input" />
+                    </div>
+                    <div class="zfct_form_group">
+                        <label>
+                            开户银行
+                        </label>
+                        <div class="bank_select" style="width:250px;">
+                            <select id="bankCode" style="width:250px">
+
+                                <option value="中国银行">
+                                    中国银行
+                                </option>
+                                <option value="交通银行">
+                                    交通银行
+                                </option>
+                                <option value="建设银行">
+                                    建设银行
+                                </option>
+                                <option value="招商银行">
+                                    招商银行
+                                </option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="zfct_form_group">
+                        <label>
+                            支行名称
+                        </label>
+                        <input type="text" placeholder="请输入支行名称" class="enterprise_input" />
+                    </div>
+                    
+                    <div class="zfct_form_group">
+                        <label>
+                            开户人
+                        </label>
+                        <input type="text" placeholder="请输入开户人" class="enterprise_input" />
+                    </div>
+                    <div class="zfct_form_group">
+                        <label>
+                            开户人身份证号
+                        </label>
+                        <input type="text" placeholder="请输入身份证号" class="enterprise_input" />
+                    </div>
+                    <div class="zfct_form_group">
+                        <label>
+                            开户留存手机号
+                        </label>
+                        <input type="text" placeholder="请输入留存手机号" class="enterprise_input" />
+                    </div>
+                    
+                    
+                </form>
+                <div style="height:20px;"></div>
+                <div>
+                    <button class="repayment_confirm" style="margin-left:0px">
+                        提交
+                    </button>
+                </div>
+                <div style="height:20px;"></div>
+            </div>*@
+            <!-------------企业银行卡信息填写  end------------>
+            <!-------------已绑定企业银行卡信息 展示信息 start------------>
+            <div class="enterprise_form">
+                <div style="height:30px;"></div>
+                    <div class="zfct_form_group">
+                        <label>
+                            开户银行账号
+                        </label>
+                        <em class="gray">
+                            127*****29289
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_20">
+                        <label>
+                            开户银行
+                        </label>
+                        <em class="gray margin_right_30">
+                            中国银行
+                        </em>
+                        <em class="gray">
+                            23333****3333
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_20">
+                        <label>
+                            支行名称
+                        </label>
+                        <em class="gray">
+                            南京收拾收拾
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_20">
+                        <label>
+                            开户人
+                        </label>
+                        <em class="gray">
+                            张三
+                        </em>
+                    </div>
+                    <div class="zfct_form_group position-relative margin_top_20">
+                        <label>
+                            开户人身份证
+                        </label>
+                        <em class=" gray">
+                            23333****3333
+                        </em>
+                    </div>
+                    <div class="zfct_form_group margin_top_30 margin_top_20">
+                        <label>
+                            开户预留手机号
+                        </label>
+                        <em class="gray margin_right_30">
+                            13212121
+                        </em>
+                        
+                    </div>                
+            </div>
+            <!-------------已绑定企业银行卡信息 展示信息 end------------>
+        </div>      
+      
+        <div style="height:20px"></div>
+    </div>
+</div>
+
+

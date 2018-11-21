@@ -1,0 +1,96 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "平台公告_关于我们_中房创投";
+    ViewData["Description"] = "让用户实时知晓中房创投的最新动态!中房创投,中房集团旗下,践行合规的互联网金融平台";
+    ViewData["Keywords"] = "平台公告,中房创投平台公告";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var systemNotice = ViewBag.SystemNotice != null ? ViewBag.SystemNotice as List<NewsDetail> : null;
+}
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>
+@*<div style="border-top:1px solid #f0f0f0"></div>*@
+
+<div class="aboutus_nav">
+    <ul>
+        @*<li class="border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li class="aboutus_nav_click"><a href="/AboutUs/PlatformAnnouncement">平台公告</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/OperationalReport">运营报告</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <li class=""><a href="/AboutUs/ContactUs">联系我们</a></li>*@
+        <li class="aboutus_nav_click border-left"><a href="/AboutUs/PlatformAnnouncement ">平台公告</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:20px;"></div>
+<div class="aboutus_content_announce aboutus_content">
+    <ul>
+        @if (systemNotice != null)
+        {
+            for (var i = 0; i < systemNotice.Count; i++)
+            {
+                <li>
+                    <a href="/AboutUs/PlatformDetail?id=@systemNotice.ElementAt(i).Id">
+                        <em class="  margin_right_5">•</em><em class="font_size_16 aboutus_content_em">@systemNotice.ElementAt(i).Title</em>
+                        @if (@systemNotice.ElementAt(i).CreateTime.ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd"))
+                        {
+                            <em class="new_border1">new</em>
+                        }
+
+                        <em class="font_size_12 float_right ">@systemNotice.ElementAt(i).CreateTime.ToString("yyyy-MM-dd")</em>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+<div style="height:50px;"></div>
+<div style="text-align:center">
+    <div class="pager_box">
+        <div id="pager" class="pager_div"></div>
+        <span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+    </div>
+</div>
+<div style="height:40px;"></div>
+<script>
+    $(".aboutus_content ul li").mouseover(function () {
+        $(this).siblings().removeClass("box-shadow");
+        $(this).addClass("box-shadow");
+
+    })
+    $(function () {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: @ViewBag.Count,
+            showData: @ViewBag.PageSize,
+            current:@ViewBag.CurrentPage,
+            coping: true,
+            prevContent:'<',
+            nextContent:'>'
+        });
+        function pageCallback(index,jq) {
+            location.href ="/AboutUs/PlatformAnnouncement?p="+index.getCurrent()+"&ps="+@ViewBag.PageSize;
+        }
+    })
+</script>

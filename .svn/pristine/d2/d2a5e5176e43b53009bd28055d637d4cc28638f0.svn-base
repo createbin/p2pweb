@@ -1,0 +1,145 @@
+﻿@using System.Security.Claims
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="~/js/menudown.js"></script>
+<style>
+    .right_suspension {
+        top: 60px !important;
+    }
+</style>
+<div class="zfct_account_page">
+    <div class="zfct_account_left_nav float_left">
+        <div style="height:40px;"></div>
+        <img src="@(User.FindFirst(ClaimTypes.UserData).Value)" class="img-margin" style="width:98px; height:98px; border-radius:50%" />
+        <div style="height:10px"></div>
+        <p class="text_align_center font_size_12">@User.FindFirst(ClaimTypes.Name).Value</p>
+        <div class="zfct_left_menu">
+            <ul id="accordion" class="accordion">
+                <li class="accordion_tab">
+                    <a href="/MyAccount/Index">
+                        <div class="link">
+
+                            <i class="icon iconfont margin_left_40">&#xe926;</i><em class="margin_left_10">账户总览</em>
+
+                        </div>
+                    </a>
+                </li>
+                <li id="accordion_tab_myloan" style="display:none;">
+                    <div class="link">
+                        <i class="icon iconfont margin_left_40">&#xe628;</i><em class="margin_left_10">我的借款</em><i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/MyLoan">
+                                我的借款
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/MyRepaymentPlan">
+                                还款计划
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/LoanStatistics">
+                                借款统计
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="accordion_tab">
+                    <a href="/MyAccount/MyInvestList">
+                        <div class="link">
+                            <i class="icon iconfont margin_left_40">&#xe65d;</i><em class="margin_left_10">我的投资</em>
+
+                        </div>
+                    </a>
+                </li>
+                <li class="accordion_tab">
+                    <a href="/MyAccount/ClaimsTransfer">
+                        <div class="link">
+                            <i class="icon iconfont margin_left_40">&#xe636;</i><em class="margin_left_10">债权转让</em>
+
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="icon iconfont margin_left_40">&#xe600;</i><em class="margin_left_10">资金管理</em><i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/OpenAccountInfo">
+                                实名认证
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/BankCardManage">
+                                银行存管
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/TransactionRecord">
+                                交易记录
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/RechargeAndWithdraw">
+                                充值提现
+                            </a>
+                        </li>
+                        <li class="accordion_tab">
+                            <a href="/MyAccount/MyRedEnvelope">
+                                我的红包
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="accordion_tab">
+                    <a href="/MyAccount/InvitationToReward">
+                        <div class="link">
+
+                            <i class="icon iconfont margin_left_40">&#xe812;</i><em class="margin_left_10">邀请奖励</em>
+
+                        </div>
+                    </a>
+
+                </li>
+                <li class="accordion_tab">
+                    <a href="/MyAccount/SecurityCenter">
+                        <div class="link">
+
+                            <i class="icon iconfont margin_left_40">&#xe60e;</i><em class="margin_left_10">安全中心</em>
+
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="clear"></div>
+<script>
+    function AccordionActive(id) {
+        var $this = $(".accordion_tab").eq(id);
+        $(".accordion_tab").removeClass("open")
+        $this.addClass("open");
+        if ($this.parent().is(".submenu")) {
+            $this.parent().show();
+            $this.parent().parent().addClass("open");
+        }
+        $.post("/MyAccount/HasLoan", function (data) {
+            if (data.result) {
+                $("#accordion_tab_myloan").show();
+            } else {
+                $("#accordion_tab_myloan").hide();
+            }
+        });
+    }
+</script>
+<div style="height:30px;"></div>
+</div>
+
+

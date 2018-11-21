@@ -1,0 +1,202 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Invites
+@using ZFCTPC.Data.ApiModelReturn.News
+@{
+    ViewData["Title"] = "邀请奖励";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    var statics = ViewBag.Statistics as InviteStatistics;
+    var abstracts = ViewBag.Abstracts as InviteMonthAbstract;
+    var monthDetails = ViewBag.Details as InviteMonthDetail;
+    List<tbAdvertising> banner = ViewBag.Banner != null ? ViewBag.Banner.ReturnData.NewList as List<tbAdvertising> : null;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(11);
+    });
+</script>
+
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+    <div class="invitation_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">邀请奖励</span>
+        </div>
+        <ul>
+            <li>累计奖励<em class="margin_left_20">¥&nbsp;<font class="red font_size_28">@(statics.AllReward)</font></em>&nbsp;&nbsp;元</li>
+            <li>累计邀请人数<em class="margin_left_20">¥&nbsp;<font class="red font_size_28">@(statics.InviteCount)</font></em>&nbsp;&nbsp;人</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div style="height:10px"></div>
+    @*<div class="invitation_banner" style="width:970px; height:250px;">
+        @if (banner != null&&banner.Count>0)
+        {
+            <a href="@banner.ElementAt(0).Skiplinks"><img src="@banner.ElementAt(0).ImageUrl" class="img-margin" width="970" height="250" /></a>
+        }
+        else
+        {
+            <img src="~/images/banner/invite_banner.jpg" class="img-margin img-responsive" />
+        }
+    </div>*@
+    @*<div style="height:10px"></div>*@
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">邀请方式</span>
+        </div>
+        <div class="invitation_text">
+            <p>立即注册中房创投，还可以得到50元红包，机会难得，赶紧看看啊 </p>
+            <p class="invitation_link" id="inviteUrl">@(statics.InviteUrl)</p>
+        </div>
+        <div style="height:20px;"></div>
+        <p class="padding_left_65 height_40">1.点击复制按钮，发送给好友，对方即可注册！<em class="invitation_copy" data-type="url" id="invitation_copy_url">复制</em></p>
+        <p class="padding_left_65 height_40">2.专属邀请码<em class="red font_size_28 margin_left_15" id="inviteCode">@(statics.InviteCode)</em><em class="invitation_copy" data-type="code" id="invitation_copy_code">复制</em></p>
+    </div>
+    <div style="height:10px"></div>
+    @*<div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">邀请明细</span>
+        </div>
+        @if (abstracts != null && abstracts.Count > 0)
+        {
+            int count = 0;
+            foreach (var view in abstracts.RewardOverviews)
+            {
+                <div class="invitation_details">
+                    <div class="invitation_title" data-year="@view.Year" data-month="@view.Month" data-exist="@(count)">
+                        <em>@(view.Year)年@(view.Month)月邀请结果<font class="v"></font></em>
+                        <em>当月奖励金额:&nbsp;&nbsp;<font class="red">¥@(view.MonthReward)</font>&nbsp;元</em>
+                        <em>注册:<font>@(view.RegisterCount)</font>&nbsp;人</em>
+                        <em>实名认证:<font>@(view.CertificationCount)</font>&nbsp;人</em>
+                        <em class="margin-right-none">投资:<font>@(view.InvestCount)</font>&nbsp;人</em>
+                        
+                    </div>
+                    <div style="height:20px;"></div>
+                    <div class="invitation_vcon" style="" data-time="@(view.Year)@(view.Month)">
+                        @if (count == 0)
+                        {
+                            foreach (var inviter in monthDetails.InvesterDetails)
+                            {
+                                <div class="">
+                                    <span>
+                                        <img src="~/images/invite_icon.png" /><em class="margin_left_10">@(inviter.UserName)</em>
+                                        <em class="margin_left_60">投资总额:&nbsp;&nbsp;<font class="red">¥@(inviter.InvestMoney)</font>&nbsp;元</em>
+                                    </span>
+                                    <div style="height: 10px"></div>
+                                    <div class="stepInfo">
+                                        <dl>
+                                            <dd></dd>
+                                            <dd></dd>
+                                        </dl>
+                                        <div class="stepIco stepIco1">
+                                            <div class="stepText">
+                                                注册<br />@(inviter.RegisterTime)
+                                            </div>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(inviter.CertificationTime))
+                                        {
+                                            <div class="stepIco stepIco2">
+                                                <div class="stepText">
+                                                    实名<br />@(inviter.CertificationTime)
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(inviter.InvestTime))
+                                        {
+                                            <div class="stepIco stepIco3">
+                                                <div class="stepText">
+                                                    投资<br />@(inviter.InvestTime)
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                count++;
+            }
+        }
+        <div style="height:10px"></div>
+    </div>*@
+</div>
+<script src="~/js/common/clipboard.min.js"></script>
+<script>
+    $(function () {
+        //菜单隐藏展开
+        var tabs_i = 0
+        $('.invitation_title').click(function () {
+            var _self = $(this);
+            var j = $('.invitation_title').index(_self);
+            if (tabs_i == j) return false; tabs_i = j;
+            $('.invitation_title em font.v').each(function (e) {
+                if (e == tabs_i) {
+                    $('em font.v', _self).removeClass('v01').addClass('v02');
+                } else {
+                    $(this).removeClass('v02').addClass('v01');
+                }
+            });
+            $('.invitation_vcon').slideUp().eq(tabs_i).slideDown();
+            var hasdata = $(this).data("exist");
+            if (hasdata != "0") {
+                var year = $(this).data("year");
+                var month = $(this).data("month");
+                $.ajax({
+                    url: '/myaccount/MonthInviterDetails',
+                    data: { "year": year, "month": month },
+                    type: 'POST',
+                    success: function (data) {
+                        var html = "";
+                        if (data.success === "000") {
+                            var info = JSON.parse(data.result);
+                            $.each(info,function(i,result) {
+                                html += "<div class=''><span><img src='/images/invite_icon.png'/><em class='margin_left_10'>" + result.userName + "</em>";
+                                html += "<em class='margin_left_60'>投资总额:&nbsp;&nbsp;<font class='red'>¥" + result.investMoney + "</font>&nbsp;元</em></span>";
+                                html += "<div style='height: 10px'></div><div class='stepInfo'><dl><dd></dd><dd></dd></dl>";
+                                html += "<div class='stepIco stepIco1'><div class='stepText'>注册<br />" + result.registerTime + "</div></div>";
+                                if (result.certificationTime !== "" && result.certificationTime !== null) {
+                                    html += "<div class='stepIco stepIco2'><div class='stepText'>实名<br />" + result.certificationTime + "</div></div>";
+                                }
+                                if (result.investTime !== "" && result.investTime!==null) {
+                                    html += "<div class='stepIco stepIco3'><div class='stepText'>投资<br />" + result.investTime + "</div></div>";
+                                }
+                                html += "</div></div>";
+                            });
+                            $(".invitation_vcon").eq(tabs_i).empty().append(html);
+
+                        }
+                        
+                    }
+                });
+                $(this).data("exist", "0");
+            }
+        });
+
+        var clipboard = new Clipboard('#invitation_copy_code',
+            {
+                target: function () {
+                    return document.querySelector('#inviteCode');
+                }
+            });
+        clipboard.on('success', function (e) {
+            layer.msg('复制成功');
+        });
+        var clipboard2 = new Clipboard('#invitation_copy_url',
+            {
+                target: function () {
+                    return document.querySelector('#inviteUrl');
+                }
+            });
+        clipboard2.on('success', function (e) {
+            layer.msg('复制成功');
+        });
+    })
+</script>

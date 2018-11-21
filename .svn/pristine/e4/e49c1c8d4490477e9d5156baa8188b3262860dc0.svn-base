@@ -1,0 +1,3445 @@
+﻿/**活动8  新年活动  stat*/
+body{
+    
+}
+.bold{
+    font-weight:bold;
+}
+.red{
+    color:#b52d17;
+}
+.baibaoxiang-content{
+    width:100%;
+   
+}
+.baoxiang_bg{
+    height:700px;
+}
+p.start_up_color {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+}
+.position-relative{
+    position:relative;
+}
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.pink-clound-bg{
+    width:100%;
+    background:url("/images/activity/thanksgiving/pink-cloud.png") center center no-repeat;
+    height:130px;
+
+}
+.pink-clound-bg1{
+    width:100%;
+    background:url("../images/activity/thanksgiving/pink-cloud-bottom.png") center center no-repeat;
+    height:34px;
+
+}
+.thanksgiving-banner1{
+       width:100%;
+       background:url("../../images/activity/newyear/banner_01.jpg") center center no-repeat;
+       height:197px;
+}
+.thanksgiving-banner2{
+     width:100%;
+    background:url("../../images/activity/newyear/banner_02.jpg") center center no-repeat;
+    height:197px;
+}
+.thanksgiving-banner3{
+     width:100%;
+       background:url("../../images/activity/newyear/banner_03.jpg") center center no-repeat;
+       height:196px;
+}
+.thanksgiving-banner4{
+     width:100%;
+       background:url("../../images/activity/newyear/banner_04.jpg") center center no-repeat;
+       height:125px;
+}
+button.first_invest {
+    width: 373px;
+    height: 94px;
+    background: url(../../images/activity/newyear/payment_button.png) no-repeat;
+    display: block;
+    margin: 0 auto;
+    font-size: 30px;
+    border: none;
+    color: #810410;
+}
+.dismantle-baibaoxiang {
+    margin: 0 auto;
+    width: 838px;
+    height: 247px;
+    background: url("../../images/activity/newyear/chai-baibaoxiang.png") center center no-repeat;
+    position: relative;
+}
+.dismantle-baibaoxiang dl{
+    float:left;
+    margin-left:5px;
+    margin-right:10px;
+    color:#fff;
+}
+.dismantle-baibaoxiang dl dd.font-size-26{
+    font-size:25px;
+}
+.dismantle-baibaoxiang dl dd.margin-bottom-20{
+    margin-bottom:20px;
+}
+.dismantle-baibaoxiang dl dd{
+    font-size:18px;
+    height:35px;
+}
+.dismantle-baibaoxiang dl.position-absoult1{
+    position:absolute;
+    left:340px;
+    top:50px;
+}
+.dismantle-baibaoxiang dl.position-absoult2{
+    position:absolute;
+    right:60px;
+    top:50px;
+}
+.dismantle-baibaoxiang dl dd button{
+    background:#e71f19;
+    font-size:32px;
+    color:#f6cf28;
+    border-radius:10px;
+    padding:7px 40px;
+    box-shadow:2px 2px 1px  2px #131137;
+    border:1px solid #F00;
+    margin-top:5px;
+}
+.winning-box {
+    width: 734px;
+    height: 466px;
+    background-image: url("../../images/activity/newyear/winning_bg.png");
+    margin: 0px auto;
+    padding: 110px 50px 60px 90px;
+}
+.activit_foot{
+    width:100%;  
+    background: #B30415;
+    padding:100px 0px;
+}
+.activity_foot_content {
+    width: 62%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    color: #fff;
+}
+.img-margin{
+    display:block;
+    margin:0 auto;
+}
+.yinbaoxiang{
+    width:1300px;
+    margin:0 auto;
+}
+.open_yinbaoxiang p.pink {
+    font-size: 24px;
+    color: #C1313F;
+    padding-top: 10px;
+    font-weight: bold;
+}
+.investment_button {
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 25px;
+    background: url("../../images/activity/newyear/payment_button3.png");
+    width: 175px;
+    height: 48px;
+    display: block;
+    position: absolute;
+    bottom: 109px;
+    left: 115px;
+    /* background: #b1b1b1; */
+}
+.open_baoxiang_button {
+    border: none;
+    color: #B30314;
+    font-size: 24px;
+    margin-top: 10px;
+    /* box-shadow: 2px 2px 0px 8px #29277b; */
+    /* background: #ff7a73; */
+    background: url(../../images/activity/newyear/open_baoxiang_button.png);
+    width: 238px;
+    height: 63px;
+    font-weight: bold;
+}
+button.ten_baoxiang_button {
+    border: none;
+    color: #FFCC52;
+    font-size: 24px;
+    margin-top: 10px;
+    background: url(../../images/activity/newyear/ten_open_big.png);
+    width: 238px;
+    height: 63px;
+    font-weight: bold;
+}
+.dismantle-baibaoxiang dl dd button {
+    border: none;
+    background: url(../../images/activity/newyear/open_right_button.png);
+    font-size: 32px;
+    width: 235px;
+    height: 63px;
+    color: #FFB831;
+    margin-top: 5px;
+    border-radius: 0px;
+    box-shadow: none;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+
+.yinbaoxiang_box_top {
+    width: 100%;
+    position: absolute;
+    top: 85px;
+    left: 130px;
+}
+.yinbaoxiang-img{
+   
+    float:left;
+}
+.open_yinbaoxiang{
+  
+    float:left;
+    text-align:left;
+    position:relative;
+    margin-left:425px;
+}
+
+.clear{
+    clear:both;
+}
+.margin-top-50{
+    margin-top:50px;
+
+}
+
+.open_yinbaoxiang p{
+    font-size:24px;
+    color:#fff;
+    padding-top:40px;
+}
+.open_yinbaoxiang p em{
+color: #B30415;
+}
+.jinbaoxiang{
+     width:1300px;
+    margin:0 auto;
+}
+.prize_box{
+    width:55%;
+    margin:0 auto;
+}
+.prize_box_contenyt{
+    width:100%;
+}
+.prize_name{
+    width:69%;
+    float:left;
+}
+.prize_pic{
+    width:31%;
+    float:right;
+}
+.prize_name em{
+    color:#f0e003;
+    font-size:45px;
+}
+.prize_name p{
+    font-size:40px;
+    font-weight:bold;
+    color:#fff;
+   margin-top:50px;
+   padding-left:30px;
+}
+.prize_name p:before{
+    content:"";
+    width:33px;
+    height:35px;
+    display:inline-block;
+    background:url("../../images/activity/yellow_dot.png");
+    vertical-align:middle;
+
+}
+.height30{
+    margin-top:30px;
+}
+
+.Top_Record{
+  height:480px;
+  overflow:hidden;
+}
+
+.topRec_List dl,.maquee{ width:100%; overflow:hidden; margin:0 auto; }
+.topRec_List dd{ float:left; text-align:center; border-bottom:1px solid #F00; color:red;}
+.topRec_List dl dd:nth-child(1){ width:18%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(2){ width:32%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(3){ width:50%; height:40px; line-height:40px; }
+.maquee{ height:470px;}
+.topRec_List ul{ width:100%; height:470px;}
+.topRec_List li{ width:100%; height:38px; line-height:38px; text-align:center; font-size:14px; border-bottom: 1px dashed #aaa;}
+.topRec_List li div{ float:left;}
+.topRec_List li div:nth-child(1){ width:18%;}
+.topRec_List li div:nth-child(2){ width:32%;}
+.topRec_List li div:nth-child(3){ width:50%;}
+.activity_foot_top{
+    width:100%;
+ 
+}
+
+
+
+.activity_dialog_overlay {
+    background: #000 none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:100;
+}
+.winning_kind {
+   
+    border-radius: 5px;
+    bottom: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    height: 0px;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 380px;
+    z-index: 1000002;
+    background:#b30415;
+    border:5px solid #f9c7d3;
+  
+}
+
+.activity_layer_close{
+    background: rgba(0, 0, 0, 0) url("../../images/activity/activity_close.png") no-repeat scroll 0 0;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    right: -47px;
+    top: -9px;
+    width: 40px;
+    z-index: 100003;
+}
+.activity_head{
+    position: absolute;
+    top: -45px;
+    font-size: 20px;
+    font-weight:bold;
+    color: white;
+    left: 24px;
+    letter-spacing:2px;
+
+}
+.activity_content img{
+    display:block;
+    margin:20px auto;
+   
+}
+.activity_content p{
+    text-align:center;
+    color:#fff;
+  
+    font-size:20px;
+} 
+.activity_content_box{
+    width:270px;
+    margin:0 auto;
+}
+.activity_content_box1{
+     width: 90px;
+    margin: 0 auto;
+
+}
+button.receive_prizes{
+    background: #ffb932 none repeat scroll 0 0;
+    border:none;
+    border-radius: 10px;
+    color: #fff;  
+    font-size: 17px;
+    margin: 15px auto;
+    padding: 5px 25px;
+
+}
+button.activity_address_button1{
+    background: #ffb932  none repeat scroll 0 0;
+    border:none;
+    border-radius: 10px;
+    color: #fff;  
+    font-size: 17px;
+    margin: 15px auto;
+    padding: 5px 25px;
+    margin-left:20px;
+}
+
+.winning100{
+    position: absolute;   
+    bottom: 73px;
+    right: 310px;
+    
+}
+em.prize_name_dot{
+    font-size:40px;
+    color:#eab837;
+}
+.ten_pumping{
+    border-radius: 5px;
+    bottom: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    height: 0px;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 725px;
+    z-index: 1000002;
+    background:#b30415;
+    border:5px solid #b30415;
+}
+.ten_activity_head{
+    position: absolute;
+    top: -45px;
+    font-size: 22px;
+    font-weight:bold;
+    color: white;
+    left: 24px;
+    letter-spacing:2px;
+}
+.ten_activity_content{
+    margin:15px auto;
+    padding:0px 10px;
+}
+.ten_activity_content ul li{
+    float:left;
+    width:130px;
+   
+    margin-left:5px;
+    margin-right:5px;
+    margin-top:10px;
+}
+.ten_activity_content ul li img{
+    display:block;
+    margin:0 auto;
+    width:130px;
+    height:142px;
+}
+.ten_activity_content ul li p{
+    text-align:center;
+    padding-top:8px;
+    color:#fff;
+}
+.ten_activity_content_box{
+   width:385px;
+   margin:20px auto 0 auto;
+}
+button.activity_confirm_button{
+    background: #ffb932 none repeat scroll 0 0;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+   
+    font-size: 20px;
+  
+    padding: 7px 50px;
+}
+button.activity_address_button{
+    background: #c89f5f none repeat scroll 0 0;
+    border: none;
+    border-radius: 10px;
+    color: #4c47ae;  
+    font-size: 20px;
+ 
+    padding: 7px 50px;
+    margin-left:20px;
+}
+.address_win{
+     bottom: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    height: 0px;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 725px;
+    z-index: 1000002;
+    background:#4c47ae;
+    border:5px solid #a09de6;
+}
+.shipping_address{
+    width:420px;
+    height:250px;
+    background:#b30415;
+    border:6px solid #ffb932;
+    border-radius:10px;
+    padding:20px 30px;
+    color:#ffb932;
+    bottom: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000002;
+}
+.shipping_address dl dd{
+    float:left;
+    margin-top:10px;
+    margin-bottom:20px;
+   line-height:35px;
+}
+input.text_address{
+    width:330px;
+    height:35px;
+    border-radius:8px;
+    background:#fff;
+    margin-left:20px;
+    border:none;
+    text-indent: 1em;
+}
+button.address_cancel{
+    background: #ffb932  none repeat scroll 0 0;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 17px;
+    margin: 15px auto;
+    padding: 5px 25px;
+}
+button.submit_address{
+    background: #ffb932 none repeat scroll 0 0;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 17px;
+    margin: 15px auto;
+    padding: 5px 25px;
+    margin-left:20px;
+}
+.bonus_record{
+    width:530px;
+    height:auto;
+    background:#b30415;
+    bottom: 0;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    
+    margin:auto;
+    position: fixed;
+    right: -530px;
+    top: 0;
+    z-index: 1000002;
+   
+}
+.my_winning_record{
+    cursor:pointer;
+}
+.ten_activity_content_box1{
+    width: 140px;
+    margin: 20px auto 0 auto;
+}
+.bonus_record_head{
+   
+    height:30px;
+    background:#ffb932;
+    color:#810511;
+    line-height:30px;
+    padding-left:30px;
+    font-size:14px;
+    margin-top:15px;
+}
+.bonus_record_head button{
+    float:right;
+    border:none;
+    background:url("../../images/activity/close_record.gif");
+    width:28px;
+    height:23px;
+    margin-right:22px;
+    margin-top:4px;
+}
+.bonus_record_content{
+    margin:20px 30px;
+}
+.bonus_record_content ul li{
+    float:left;
+    color:#fff;
+    font-size:16px;
+    width:50%;
+    text-align:center;
+}
+.bonus_record_table{
+    height:410px;
+    overflow-y: auto; 
+}
+.bonus_record_table ul li{
+    float:left;
+    
+    text-align:center;
+    height:35px;
+    line-height:35px;
+    color:#000;
+
+}
+.bonus_record_table ul li.red{
+    color:#ff0000;
+}
+ul.bonus_record_table_ul_bg1{
+
+    background:#ffffff;
+}
+ul.bonus_record_table_ul_bg2{
+
+    background:#e9e6e6;
+}
+.bonus_record_table ul li.bonus_record_table_li40{
+    width:179px;
+    border-right:1px solid #c5c2c2;
+  
+}
+.bonus_record_table ul li.bonus_record_table_li60{
+    width:270px;
+    border-left:2px solid #c5c2c2;
+}
+.bonus_record_table p{
+    text-align:center;
+    color:#f7ee00;
+    font-size:16px;
+}
+
+#preloader6{
+	position:relative;
+	width: 42px;
+	height: 42px;
+    margin:auto;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+	-webkit-animation: preloader_6 5s infinite linear;
+	-moz-animation: preloader_6 5s infinite linear;
+	-ms-animation: preloader_6 5s infinite linear;
+	animation: preloader_6 5s infinite linear;
+}
+#preloader6 span{
+	width:20px;
+	height:20px;
+	position:absolute;
+	background:red;
+	display:block;
+	-webkit-animation: preloader_6_span 1s infinite linear;
+	-moz-animation: preloader_6_span 1s infinite linear;
+	-ms-animation: preloader_6_span 1s infinite linear;
+	animation: preloader_6_span 1s infinite linear;
+}
+#preloader6 span:nth-child(1){
+background:#2ecc71;
+
+}
+#preloader6 span:nth-child(2){
+left:22px;
+background:#9b59b6;
+	-webkit-animation-delay: .2s;
+	-moz-animation-delay: .2s;
+	-ms-animation-delay: .2s;
+	animation-delay: .2s;
+
+}
+#preloader6 span:nth-child(3){
+top:22px;
+background:#3498db;
+	-webkit-animation-delay: .4s;
+	-moz-animation-delay: .4s;
+	-ms-animation-delay: .4s;
+	animation-delay: .4s;
+}
+#preloader6 span:nth-child(4){
+top:22px;
+left:22px;
+background:#f1c40f;
+	-webkit-animation-delay: .6s;
+	-moz-animation-delay: .6s;
+	-ms-animation-delay: .6s;
+	animation-delay: .6s;
+}
+
+@-webkit-keyframes preloader_6 {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+@-webkit-keyframes preloader_6_span {
+   0% { -webkit-transform:scale(1); }
+   50% { -webkit-transform:scale(0.5); }
+   100% { -webkit-transform:scale(1); }
+}
+
+
+@-moz-keyframes preloader_6 {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+@-moz-keyframes preloader_6_span {
+   0% { -moz-transform:scale(1); }
+   50% { -moz-transform:scale(0.5); }
+   100% { -moz-transform:scale(1); }
+}
+
+@-ms-keyframes preloader_6 {
+    from {-ms-transform: rotate(0deg);}
+    to {-ms-transform: rotate(360deg);}
+}
+@-ms-keyframes preloader_6_span {
+   0% { -ms-transform:scale(1); }
+   50% { -ms-transform:scale(0.5); }
+   100% { -ms-transform:scale(1); }
+}
+
+@-ms-keyframes preloader_6 {
+    from {-ms-transform: rotate(0deg);}
+    to {-ms-transform: rotate(360deg);}
+}
+@keyframes preloader_6_span {
+   0% { transform:scale(1); }
+   50% { transform:scale(0.5); }
+   100% { transform:scale(1); }
+}
+.activity_foot_content p{
+    font-size:18px;
+}
+.activity_foot_content_p{
+    border-bottom:1px dashed #fff;
+    position:relative;
+
+}
+.activity_foot_content_p span{
+    background: #B30415;
+    position:absolute;
+    top:-16px;
+    left:45%;
+    padding:0px 20px;
+
+}
+/*活动8新年活动  end*/
+
+/*活动9合伙人活动  start*/
+.partner-banner1{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_01.jpg") center center no-repeat;
+     height:129px;
+}
+.partner-banner2{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_02.jpg") center center no-repeat;
+     height:159px;
+}
+.partner-banner3{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_03.jpg") center center no-repeat;
+     height:2px;
+}
+.partner-banner4{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_04.jpg") center center no-repeat;
+     height:145px;
+}
+.partner-banner5{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_05.jpg") center center no-repeat;
+     height:151px;
+}
+.partner-banner6{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_06.jpg") center center no-repeat;
+     height:26px;
+}
+.partner-banner7{
+     width:100%;
+     background:url("../../images/activity/partner/partner-banner_07.jpg") center center no-repeat;
+     height:131px;
+}
+.partner-content{
+    width:1000px;
+    margin:0 auto;
+}
+.process-content{
+    background:#748cf6;
+    padding:40px;
+}
+.pc-process{
+   width:1000px;
+   margin:0 auto;
+   background:#748cf6;
+}
+.pc-process-content{
+   
+
+}
+.pc-process-content h2{
+    font-family:"微软雅黑";
+    padding:40px;
+}
+.pc-process-content img{
+    padding-left:15px;
+}
+.process-content h2{
+    font-family:"微软雅黑";
+}
+
+.process-content ul{
+   margin-left:20px;
+}
+.process-content ul li{
+    float:left;
+}
+.process-content dl.head-medal dt{
+    float:left;
+    width:33.3333%;
+    text-align:center;
+    color:#fff;
+    border-top:1px solid  #cccccc;
+    height:50px;
+    line-height:50px;
+    font-size:20px;
+    font-weight:normal;
+}
+.process-content dl.gold-medal dt{
+    float:left;
+    width:33.3333%;
+    text-align:center;
+    color:#fff;
+    border-top:1px solid  #cccccc;
+    height:200px;
+    font-size:20px;
+    font-weight:normal;
+  
+}
+.process-content dl.gold-medal dt.line-height-200{
+    line-height:200px;
+    font-size:30px;
+}
+.font-size-16{
+    font-size:16px;
+}
+.font-size-20{
+    font-size:20px;
+}
+.font-size-25{
+    font-size:25px;
+}
+.font-size-30{
+    font-size:32px;
+}
+.process-content dl.gold-medal dt img.img-margin{
+    display:block;
+    margin:20px auto 0 auto;
+}
+.copper-color{
+    color:#ddba9c;
+    font-size:20px;
+    margin-top:5px;
+}
+.silver-color{
+    color:#dfddd9;
+}
+
+.gold-color{
+    color:#f0d99d;
+}
+.process-content dl.awards-infor dt{
+    float:left;
+   
+    color:#fff;
+    border-top:1px solid  #cccccc;
+    height:200px;
+    font-size:18px;
+    font-weight:normal;
+  
+}
+.process-content dl.awards-infor dt img.img-margin{
+    display:block;
+    margin:60px auto 0 auto;
+}
+.example-content{
+    background:#748cf6 ;
+    padding:40px;
+
+}
+.example-content-box{
+     width:911px;
+     height:326px;
+     background:url(../../images/activity/partner/example-content.png);
+
+}
+.example-content-box p{
+    font-size:20px;
+    font-weight:normal;
+}
+.example-content-box dl{
+    margin-left:40px;
+    padding-top:110px;
+}
+.example-content-box dl dt{
+    float:left;
+    margin-right:30px;
+}
+.example-content-box dl dt span{
+    font-size:20px;
+    padding:10px 25px;
+    background:#b52d17;
+    text-align:center;
+    color:#fff;
+    font-weight:normal;
+}
+.active-objec-content{
+    background:#748cf6;
+    padding:40px 20px;
+}
+.active-objec-content p{
+    color:#fff;
+    font-size:20px;
+    font-weight:normal;
+    line-height:30px;
+}
+.font-size-12{
+    font-size:14px;
+}
+.stone-position{
+    position:absolute;
+    left:0px;
+    top:90px;
+}
+.stone-position1{
+     position:absolute;
+     left:1150px;  
+     top:300px;
+     transform:rotate(75deg);
+-ms-transform:rotate(75deg); 	/* IE 9 */
+-moz-transform:rotate(75deg); 	/* Firefox */
+-webkit-transform:rotate(75deg); /* Safari 和 Chrome */
+-o-transform:rotate(75deg); 	
+}
+.stone-position1 img{
+    width:80%;
+}
+.stone-position2{
+     position:absolute;
+     left:1200px;  
+     top:700px;
+     transform:rotate(70deg);
+-ms-transform:rotate(70deg); 	/* IE 9 */
+-moz-transform:rotate(70deg); 	/* Firefox */
+-webkit-transform:rotate(70deg); /* Safari 和 Chrome */
+-o-transform:rotate(70deg); 	
+}
+.stone-position2 img{
+    width:60%;
+}
+.stone-position3{
+     position:absolute;
+     left:50px;  
+     top:1300px;
+   	
+}
+.stone-position3 img{
+    width:70%;
+}
+.stone-position4{
+     position:absolute;
+     left:1250px;  
+     top:1400px;
+     
+}
+.stone-position5{
+     position:absolute;
+     left:50px;  
+     top:2450px;
+   	
+}
+.stone-position5 img{
+    width:70%;
+}
+
+/*活动9合伙人活动   end*/
+
+/*活动10大吉大利  start*/
+.goodluck-banner1{
+       width:100%;
+       background:url("../../images/activity/goodluck/good_luck_banner_01.jpg") center center no-repeat;
+       height:160px;
+}
+.goodluck-banner2{
+       width:100%;
+       background:url("../../images/activity/goodluck/good_luck_banner_02.jpg") center center no-repeat;
+       height:212px;
+}
+.goodluck-banner3{
+       width:100%;
+       background:url("../../images/activity/goodluck/good_luck_banner_03.jpg") center center no-repeat;
+       height:156px;
+}
+.goodluck-banner4{
+       width:100%;
+       background:url("../../images/activity/goodluck/good_luck_banner_04.jpg") center center no-repeat;
+       height:174px;
+}
+.gift-content{
+    width:1000px;
+    margin:0 auto;
+}
+.gift-content dl dt{
+    width:50%;
+    text-align:center;
+    font-size:22px;
+    border-bottom:1px solid #cccccc;
+    color:#fff;
+    float:left;
+    font-weight:normal;
+}
+.gift-content dl dt.height50{
+    height:50px;
+    line-height:50px;
+}
+.gift-content dl dt.height200{
+    height:200px;
+    line-height:200px;
+}
+.gift-content dl dt.font-size60{
+    font-size:60px;
+}
+.gift-content dl dt.border-left{
+    
+}
+.gift-content dl dt.border-right{
+   
+}
+.margin-top-10{
+    margin-top:10px;
+}
+img.img-margin1{
+    display:block;
+    margin:20px auto 0 auto;
+}
+dl.border-gray{
+    border-top:1px solid #cccccc;
+     border-left:1px solid #cccccc;
+      border-right:1px solid #cccccc;
+}
+.receive-prizes p{
+    line-height:40px;
+    font-weight:normal;
+    margin-bottom:0px;
+}
+/*活动10大吉大利  end*/
+
+/*活动1 送现金  start*/
+.red {
+    color: #ff0000;
+}
+.font_12 {
+    font-size:12px;
+}
+.font_16{
+    font-size:16px;
+}
+.font_18 {
+    font-size:18px;
+}
+.font_22 {
+    font-size: 22px;
+}
+.font_24 {
+    font-size: 24px;
+}
+.font_26 {
+    font-size: 26px;
+}
+    .font_32 {
+        font-size: 32px;
+    }
+.font_90{
+    font-size:90px;
+}
+.padding_left190 {
+    padding-left:190px;
+}
+.margin-right-15 {
+    margin-right:15px;
+}
+.text_center {
+    text-align: center;
+}
+    .text_left{
+        text-align:left!important;
+    } 
+    .margin_bottom_0 {
+        margin-bottom: 0px !important;
+    }
+.white {
+    color: #fff;
+}
+.red1 {
+    color: #f49f96;
+}
+
+.cash_box{
+    width:1275px;
+    margin:0 auto;
+
+}
+    .cash_box dl dd {
+        width: 425px;
+        height: 294px;
+        background: url(../../images/activity/sendcash/cash_bg.png) no-repeat;
+      
+        float: left;
+        margin-right: -10px;
+    }
+p.tongxinyuan:before{
+    content:"";
+    display:inline-block;
+    width:16px;
+    height:15px;
+    background:url(../../images/activity/sendcash/tongxinyuan.png) no-repeat;
+    vertical-align:-1px;
+    margin-right:5px;
+}
+.activity_rule {   
+    width: 930px;
+    height: 338px;
+    margin: 0 auto;
+    background: url(../../images/activity/sendcash/img_juxing.png) no-repeat;
+    position:relative;
+    z-index:10000;
+    
+}
+em.cash_border_circle {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #adb7f6;
+    font-size: 14px;
+    color: #7382ed;
+    line-height:23px;
+    text-align:center;
+    display:inline-block;
+    margin-right:10px;
+}
+.cash_footer {
+    margin-top:-250px;
+}
+.cash_button {
+    position: absolute;
+    width: 389px;
+    height: 129px;
+    background: url(../../images/activity/sendcash/btn_anniu.png) no-repeat;
+    bottom: 70px;
+    left: 39.5%;
+    cursor:pointer;
+}
+
+
+@media screen and (max-width: 1280px) {
+    .cash_footer {
+        margin-top: -200px;
+    }
+    .cash_button{
+        bottom:30px;
+    }
+}
+
+/*活动2  送现金  end*/
+
+/*活动14  零用贷  start*/
+.pocket-loan-boady {
+    background: #ecfcff;
+}
+.pocket-loan-bluecolor {
+    color: #0faffb;
+}
+.pocket-loan-banner {
+    width: 100%;
+    background: url("../../images/activity/pocketloan/pocketloan-banner.png") center center no-repeat;
+    height: 438px;
+}
+.pocketloan-box1 {
+    width: 700px;
+    padding: 40px 75px 30px 75px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 18px;
+    background-image: -webkit-linear-gradient(to right, #029cfe 0%, #18bbf8 50%);
+    background-image: linear-gradient(to right,#029cfe 0%, #18bbf8 50%);
+    background: -moz-linear-gradient(to right,#029cfe 0%, #18bbf8 50%); /* Firefox 3.6 - 15 */
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b8c4cb,endColorStr=red); /*IE 6 7 8*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+
+}
+    .pocketloan-box1 p{
+        text-align:center;
+    }
+    .pocketloan-box1 p text {
+        font-size: 20px;
+    }
+.pocketloan-box2{
+    width:1000px;
+    margin:0 auto;
+
+}
+.pocketloan-box2 p{
+    text-align:center;
+    font-size:36px;
+}
+.pocket-loan-box2-right dl dd {
+    line-height:50px;
+}
+    .pocket-loan-box2-right dl dd:before {
+        content: "";
+        display: inline-block;
+        width: 26px;
+        height: 25px;
+        background: url(../../images/activity/pocketloan/pocketloan-ticking.png);
+        vertical-align:middle;
+        margin-right:15px;
+    } 
+.pocket-loan-box2-right dl dd text.pocket-loan-box2-text {
+    color: #0099ff;
+    font-size: 18px;
+    padding-right: 35px;
+}
+.pocket-loan-box2-right dl dd text.pocket-loan-box2-text1{
+    font-size:16px;
+}
+    .pocket-loan-box2-right dl dd text.pocket-loan-box2-width {
+       position:absolute;
+       right:65px;
+       top:25px;
+       font-size:16px;
+    }
+.pocketloan-box3 {
+    background: #0099ff url(../../images/activity/pocketloan/pocketloan-box3.jpg) left bottom no-repeat;
+    height: 390px;
+    width: 100%;
+}
+.pocketloan-box3 p{
+    font-size:36px;
+    color:#fff;
+    text-align:center;
+}
+.pocketloan-box4{
+    width:1200px;
+    margin:0 auto;
+}
+    .pocketloan-box4 p {
+        text-align: center;
+        font-size: 36px;
+        color: #16b7f9;
+    }
+.pocketloan-box4-text {
+    width: 1040px;
+    padding: 20px 30px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 18px;
+    background-image: -webkit-linear-gradient(to right, #029cfe 0%, #18bbf8 50%);
+    background-image: linear-gradient(to right,#029cfe 0%, #18bbf8 50%);
+    background: -moz-linear-gradient(to right,#029cfe 0%, #18bbf8 50%); /* Firefox 3.6 - 15 */
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b8c4cb,endColorStr=red); /*IE 6 7 8*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.pocketloan-box4-text dl dd{
+    float:left;
+    width:14.2857%;
+    height:50px;
+    line-height:50px;
+    color:#fff;
+    font-size:18px;
+    text-align:center;
+}
+    .pocketloan-box4-text dl.border-bottom{
+        border-bottom:1px solid #fff;
+    }
+a.pocket-vote {
+    width: 371px;
+    height: 66px;
+    background: url(../../images/activity/pocketloan/pocket-vote.png);
+    margin:0 auto;
+    color:#fff;
+    font-size:24px;
+    text-align:center;
+    line-height:66px;
+    display:block;
+}
+
+/*左边悬浮  start*/
+.left-suspension {
+    width: 250px;
+    height: 219px;
+    background: url("../../images/left-suspension.png");
+    background-size: 250px 219px;
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    z-index: 100;
+}
+/*左边悬浮  end*/
+/*活动14  零用贷  end*/
+
+/*活动15  年度报告  start*/
+.annualreport-banner1 {
+    width: 100%;
+    background: url("../../images/activity/annualreport/report-banner1.jpg") center center no-repeat;
+    height: 242px;
+}
+.annualreport-banner2 {
+    width: 100%;
+    background: url("../../images/activity/annualreport/report-banner2.jpg") center center no-repeat;
+    height: 271px;
+}
+.annualreport-banner3 {
+    width: 100%;
+    background: url("../../images/activity/annualreport/report-banner3.jpg") center center no-repeat;
+    height: 389px;
+}
+
+.annualreport-box1 {
+    width: 1125px;
+    margin: -160px auto 0 auto;
+    background: #fff;
+    padding-top:40px;
+   
+}
+.annualreport-box1 p{
+    text-align:center;
+    font-size:16px;
+    color:#666;
+    line-height:30px;
+}
+    .annualreport-box1 p text{
+        color:#666;
+        font-size:18px;
+        font-weight:bold;
+    }
+.annualreport-box1-bottom {
+    background: #fff;
+    box-shadow: 0 10px 20px 0px #f5f5f5;
+    -webkit-box-shadow: 0 10px 20px 0px #f5f5f5;
+    -moz-box-shadow: 0 10px 20px 0px #f5f5f5;
+    margin-top: -10px;
+    padding-top: 10px;
+    padding-bottom:40px;
+}
+.annualreport-page1 {
+    width: 1126px;
+    height: 543px;
+    background: url("../../images/activity/annualreport/report-page1.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+}
+.annualreport-page1-num {
+    padding-left:40px;
+}
+.annualreport-page1-top {
+    padding-left: 40px;
+    padding-top: 10px;
+}
+.annualreport-page1-num p {
+    font-size: 22px;
+    color: #333333;
+    font-weight:300;
+}
+.annualreport-page1-num1 div {
+    width: 298px;
+    height: 96px;
+    background: url("../../images/activity/annualreport/report-page1-kuang1.png") center center no-repeat;
+    color: #ffcc00;
+    font-size:48px;
+    font-weight:bold;
+    line-height:96px;
+    text-align:center;
+}
+.annualreport-page1-num2 div {
+    width: 298px;
+    height: 96px;
+    background: url("../../images/activity/annualreport/report-page1-kuang1.png") center center no-repeat;
+    color: #ffcc00;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 96px;
+    text-align: center;
+}
+.annualreport-page1-num2 {
+    margin-left:40px;
+}
+.annualreport-page1-num2 div {
+    width: 405px;
+    height: 96px;
+    background: url("../../images/activity/annualreport/report-page1-kuang2.png") center center no-repeat;
+    color: #ffcc00;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 96px;
+    text-align: center;   
+}
+.annualreport-page1-num3 {
+    margin-left: 40px;
+}
+.annualreport-page1-num3 div {
+    width: 274px;
+    height: 96px;
+    background: url("../../images/activity/annualreport/report-page1-kuang3.png") center center no-repeat;
+    color: #ffcc00;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 96px;
+    text-align: center;    
+}
+.annualreport-page2 {
+    width: 1087px;
+    height: 337px;
+    background: url("../../images/activity/annualreport/report-page2.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+.annualreport-page3 {
+    width: 1087px;
+    height: 490px;
+    background: url("../../images/activity/annualreport/report-page3.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+.annualreport-page4 {
+    width: 1057px;
+    height: 843px;
+    background: url("../../images/activity/annualreport/report-page4.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-right: 30px;
+}
+.annualreport-page4-right table {
+    width: 200px;
+    font-size: 21px;
+    color: #666666;
+    margin-top:150px;
+}
+.annualreport-page4-right table tr {
+   height:50px;
+}
+    .annualreport-page4-right table tr.red {
+        color: #ff6666;
+    }
+    .annualreport-page4-right table tr.yellow {
+        color: #ff9900;
+    }
+    .annualreport-page4-right table tr.green {
+        color: #00d2bc;
+    }
+    .annualreport-page4-right table tr.purple {
+        color: #49559f;
+    }
+.annualreport-page5 {
+    width: 1127px;
+    height: 472px;
+    background: url("../../images/activity/annualreport/report-page5.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+}
+.annualreport-page6 {
+    width: 1057px;
+    height: 440px;
+    background: url("../../images/activity/annualreport/report-page6.jpg") center center no-repeat;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-right: 30px;
+}
+.annualreport-page6-right div.bg-red {
+    width: 436px;
+    height:62px;
+    background: url("../../images/activity/annualreport/report-page6-top1.png") center center no-repeat;
+    font-size: 22px;
+    color: #ff6666;
+    padding-top:30px;
+    padding-left:120px;
+}
+.annualreport-page6-right div.bg-yellow {
+    width: 436px;
+   
+    background: url("../../images/activity/annualreport/report-page6-top2.png") center center no-repeat;
+    font-size: 22px;
+    color: #ff9900;
+    padding-top: 20px;
+    padding-left: 120px;
+}
+.annualreport-page6-right div.bg-green {
+    width: 430px;
+    height: 52px;
+    background: url("../../images/activity/annualreport/report-page6-top3.png") center center no-repeat;
+    font-size: 22px;
+    color: #00d2bc;
+    padding-top: 20px;
+    padding-left: 120px;
+}
+
+.annualreport-page6-right div {
+    width: 430px;
+    height: 52px;
+    font-size: 22px;
+    color: #666;
+    padding-top: 20px;
+    padding-left: 120px;
+}
+.annualreport-page6-right div text{
+    padding-left:15px;
+    padding-right:15px;
+}
+.annualreport-page7 {
+    width: 1047px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.annualreport-page8 {
+    width: 1047px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom:40px;
+}
+.annualreport-page8 img{
+    display:block;
+}
+.annualreport-page9 {
+    width: 1007px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -webkit-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    -moz-box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding-left: 80px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+}
+    .annualreport-page9 dl dd {
+        float:left;
+        font-size:16px;
+        margin-bottom:30px;
+        
+    }
+    .annualreport-page9 dl dd text{
+        
+        font-size: 24px;
+        padding-left:10px;
+    }
+
+        .annualreport-page9 dl dd.annualreport-page9-icon1:before {
+            content: "";
+            display: inline-block;
+            width: 49px;
+            height: 58px;
+            background: url("../../images/activity/annualreport/report-page9-icon1.png") center center no-repeat;
+            margin-right:10px;
+            vertical-align:middle;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon2 {
+            margin-left:100px;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon3 {
+            margin-left: 100px;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon5 {
+            margin-left: 100px;
+        }
+
+        .annualreport-page9 dl dd.annualreport-page9-icon6 {
+            margin-left: 55px;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon2:before {
+            content: "";
+            display: inline-block;
+            width: 52px;
+            height: 59px;
+            background: url("../../images/activity/annualreport/report-page9-icon2.png") center center no-repeat;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon3:before {
+            content: "";
+            display: inline-block;
+            width: 52px;
+            height: 59px;
+            background: url("../../images/activity/annualreport/report-page9-icon3.png") center center no-repeat;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon4:before {
+            content: "";
+            display: inline-block;
+            width: 52px;
+            height: 59px;
+            background: url("../../images/activity/annualreport/report-page9-icon4.png") center center no-repeat;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon5:before {
+            content: "";
+            display: inline-block;
+            width: 52px;
+            height: 59px;
+            background: url("../../images/activity/annualreport/report-page9-icon5.png") center center no-repeat;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .annualreport-page9 dl dd.annualreport-page9-icon6:before {
+            content: "";
+            display: inline-block;
+            width: 52px;
+            height: 59px;
+            background: url("../../images/activity/annualreport/report-page9-icon6.png") center center no-repeat;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+.annualreport-page10 {
+    width: 1047px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 1px 1px 30px 3px #f8f8f8;
+    padding:40px;
+}
+.annualreport-page10-right p {
+    width: 700px;
+    font-size: 15px;
+    line-height: 30px;
+    color: #666666;
+
+}
+.annualreport-page10-right h1 {
+    color: #666666;
+    font-weight:bold;
+}
+
+/*时间轴 start*/
+.projectmain {
+    position:relative;
+    padding-left:30px;
+}
+.projectmain_star {
+    position:absolute;
+    top:0px;
+    left:124px;
+}
+#time_axis {
+    width: 95%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#jingzhan {
+    background-image: url(../../images/activity/annualreport/report-line.png);
+    background-repeat: repeat-y;
+    background-position: 140px center;
+    padding-top: 10px;
+    height:1050px;
+}
+
+.activity_time {
+    /*display: -webkit-box;
+    display: -moz-box;
+    display: box;*/
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 20px;
+    line-height: 20px;
+    color: #8c8c8c;
+}
+
+.time-margin-top10 {
+    margin-top: 10px;
+}
+.time-margin-top20 {
+    margin-top: 20px;
+}
+.time-margin-top30 {
+    margin-top: 30px;
+}
+
+.time-margin-top110 {
+    margin-top: 110px;
+}
+.time-margin-top180 {
+    margin-top: 180px;
+}
+.time:nth-child(1) {
+    margin-top: 0;
+}
+
+.t_cur {
+    color: #3191dd;
+}
+
+    .t_cur .t_2 {
+        background-color: #314775;
+    }
+
+.t_1 {
+    width: 100px;
+    color: #666666;
+    text-align:right;
+}
+
+.t_2 {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border: 2px solid #dedede;
+    border-radius: 50%;
+    margin-right: 30px;
+    margin-left:34px;
+}
+
+.t_3 {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    color: #666666;
+}
+.projectmain section.font_16 {
+    font-size:15px;
+}
+/*时间轴  end*/
+/*活动15  年度报告  end*/
+
+/*活动6  返现  start*/
+.cash_back_banner1 {
+    width: 100%;
+    background: url("../../images/activity/cashback/cashback_banner_01.jpg") center center no-repeat;
+    height: 205px;
+}
+.cash_back_banner2 {
+    width: 100%;
+    background: url("../../images/activity/cashback/cashback_banner_02.jpg") center center no-repeat;
+    height: 236px;
+}
+.cash_back_banner3 {
+    width: 100%;
+    background: url("../../images/activity/cashback/cashback_banner_03.jpg") center center no-repeat;
+    height: 292px;
+}
+.cash_back_banner4 {
+    width: 100%;
+    background: url("../../images/activity/cashback/cashback_banner_04.jpg") center center no-repeat;
+    height: 228px;
+}
+
+.cash_back_body {
+    background: #560a76;
+    letter-spacing:2px;
+}
+.cash_back_box1 {
+    width: 1122px;
+    background: #8106a1;
+    border-radius:10px;
+    margin:0 auto;  
+    margin-top:-180px;
+    color:#fff;
+    padding-bottom:30px;
+}
+.activity_detail_title{
+   position:absolute;
+   top:-27px;
+   left:20px;
+}
+.orange {
+    color: #ffe400;
+}
+.activity_detail_content p{
+    padding-left:30px;
+    padding-right:60px;
+    line-height:40px;
+}
+.activity_detail_example {
+    padding: 50px 50px 30px 80px;
+    border-radius: 10px;
+    border: 2px dashed #d3a8de;
+    margin-left:200px;
+    margin-right:60px;
+}
+    .activity_detail_example p{
+        line-height:40px;
+    }
+    .example_circle {
+        width: 77px;
+        height: 77px;
+        border-radius: 50%;
+        background: #ffe400;
+        color: #6b0586;
+        font-size: 24px;
+        line-height: 77px;
+        position: absolute;
+        left: -34px;
+        top: 82px;
+        text-align: center;
+    }
+.cash_back_box2 {
+    width: 1122px;
+    background: #8106a1;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: #fff;
+    padding-bottom: 30px;
+}
+.invitation_mode_title{
+    position:absolute;
+    left:438px;
+    top:-42px;
+}
+.invitation_mode_content p{
+    line-height:50px;
+    padding-left:30px;
+    padding-right:30px;
+}
+.cash_back_box3 {
+    width: 1062px;
+    background: #8106a1;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: #fff;
+    padding:40px 30px;
+}
+
+.cash_back_box3 p{
+    line-height:40px;
+} 
+.orange1 {
+    color: #c083d0;
+}
+a.getcode {
+    display: block;
+    margin: 0 auto;
+    width: 333px;
+    height: 70px;
+    background: url(../../images/activity/cashback/getactivity_code.png);
+    
+}
+/*活动6  返现  end*/
+
+/*南京银行存管  start*/
+.njbank_banner1{
+    width:100%;
+    height:285px;
+    background:url(../../images/topic/njbank/njbank_banner1.jpg) center center;
+}
+
+.njbank_banner2 {
+    width: 100%;
+    height: 202px;
+    background: url(../../images/topic/njbank/njbank_banner2.jpg) center center;
+}
+.njbank_banner3 {
+    width: 100%;
+    height: 276px;
+    background: url(../../images/topic/njbank/njbank_banner3.jpg) center center;
+}
+/*南京银行存管  end*/
+
+/*活动2  stra*/
+.hoceremony_banner1{
+    width:100%;
+    height:149px;
+    background:url(../../images/activity/hoceremony/hoceremony_banner1.jpg) center center;
+}
+
+.hoceremony_banner2 {
+    width: 100%;
+    height: 158px;
+    background: url(../../images/activity/hoceremony/hoceremony_banner2.jpg) center center;
+}
+.hoceremony_banner3 {
+    width: 100%;
+    height: 174px;
+    background: url(../../images/activity/hoceremony/hoceremony_banner3.jpg) center center;
+}
+.hoceremony_banner4 {
+    width: 100%;
+    height: 171px;
+    background: url(../../images/activity/hoceremony/hoceremony_banner4.jpg) center center;
+}
+.hoceremony_banner5 {
+    width: 100%;
+    height: 137px;
+    background: url(../../images/activity/hoceremony/hoceremony_banner5.jpg) center center;
+}
+.hoceremony_img02 {
+    width: 100%;
+    height: 261px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_02.jpg) center center;
+}
+.hoceremony_img03 {
+    width: 100%;
+    height: 350px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_03.jpg) center center;
+}
+.hoceremony_img04 {
+    width: 100%;
+    height: 324px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_04.jpg) center center;
+}
+.hoceremony_img05 {
+    width: 100%;
+    height: 384px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_05.jpg) center center;
+}
+.hoceremony_img06 {
+    width: 100%;
+    height: 358px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_06.jpg) center center;
+}
+.hoceremony_img07 {
+    width: 100%;
+    height: 420px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_07.jpg) center center;
+}
+.hoceremony_img08 {
+    width: 100%;
+    height: 993px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_08.jpg) center center;
+}
+.hoceremony_img09 {
+    width: 100%;
+    height: 383px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_09.jpg) center center;
+}
+.hoceremony_img10 {
+    width: 100%;
+    height: 822px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_10.jpg) center center;
+}
+.hoceremony_img11 {
+    width: 100%;
+    height: 148px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_11.jpg) center center;
+}
+.hoceremony_img12 {
+    width: 100%;
+    height: 654px;
+    background: url(../../images/activity/hoceremony/hoceremony_img_12.jpg) center center;
+}
+.activity2_rule {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px 0px 40px;
+}
+.activity2_rule p{
+    height:40px;
+}
+.activity2_infor{
+    width:920px;
+    margin:0 auto;
+    padding:80px 40px 80px 40px;
+    background:#fff;
+    border-radius:20px;
+    position:relative;
+}
+    .activity2_infor p em{
+        color:#f00;
+        vertical-align:11px;
+    }
+    .activity2_infor a.activity2_infor_a {
+        background: #fd4e00;
+        color: #fff;
+        padding: 25px 130px;
+        font-size: 26px;
+        border-radius: 40px;
+        position: absolute;
+        bottom: -28px;
+        left: 310px;
+    }
+
+.activity2_infor_table {
+    border: 1px solid #e87843;
+    border-radius: 10px;
+}
+    .activity2_infor_table ul li {
+        border-bottom: 1px solid #e87843;
+        height:80px;
+        line-height:80px;
+    }
+    .activity2_infor_table ul li p{
+        width:50%;
+        text-align:center;
+        font-size:18px;
+    }
+.hoceremony_tab {
+    width: 920px;
+    margin: 0 auto;
+    padding: 50px 40px 80px 40px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+.hoceremony_tab ul li{
+    float:left;
+    margin-right:30px;
+    cursor:pointer;
+}
+    .hoceremony_tab ul li.selected p {
+        color: #e87843;
+    }
+    .hoceremony_tab ul li img {
+        vertical-align: middle;
+    }
+    .hoceremony_tab ul li p {
+       font-size:16px;
+    }
+.hoceremony_tab_box1 table {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #e87843;
+}
+    .hoceremony_tab_box1 table tr th {
+        width: 25%;
+        height: 80px;
+       
+        text-align: center;
+        color: #999;
+        font-size: 18px;
+        border-bottom: 1px solid #e87843;
+        border-right: 1px solid #e87843;
+    }
+    .hoceremony_tab_box1 table tr td {
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 18px;
+        border-bottom: 1px solid #e87843;
+        border-right: 1px solid #e87843;
+        font-weight:700;
+    }
+em.sanjiao{
+    position:absolute;
+    width:26px;
+    height:16px;
+    background:url(../../images/activity/hoceremony/sanjiao.png) no-repeat;
+    top:-15px;
+    left:53px;
+}
+.hoceremony_tab_box2 em {
+    left: 270px;
+}
+.hoceremony_tab_box3 em {
+    left: 465px;
+}
+.hoceremony_tab_box4 em {
+    left: 655px;
+}
+.hoceremony_tab_box5 em {
+    left: 815px;
+}
+.hoceremony_tab_box1 table tr td dl dd{
+    float:left;
+    margin-right:5px;
+    margin-left:8px;
+    cursor:pointer;
+   
+}
+.hoceremony_tab_box1 table tr td dl dd img{
+   vertical-align:-4px;
+}
+    .hoceremony_tab_box1 table tr td dl dd i.tuijian {
+        position: absolute;
+        right: -20px;
+        top: 15px;
+        width:16px;
+        height:16px;
+        background:url(../../images/activity/hoceremony/tuijian.png) no-repeat;
+    }
+a.activity_invest_now {
+    background: #fd4e00;
+    color: #fff;
+    padding: 25px 130px;
+    font-size: 26px;
+    border-radius: 40px;
+    position: absolute;
+    bottom: -108px;
+    left: 310px;
+}
+/*活动2 end*/
+
+/*活动3 感恩节活动 start*/
+
+.thanksgiving_box {
+    width: 100%;
+    height: 3886px;
+    background: #d8806c url(../../images/activity/thanksgiving/thanksgiving_banner.png) center center no-repeat;
+   
+}
+.thanksgiving_content{
+    width:1208px;
+    margin:0 auto;
+
+}
+.thanksgiving_xinf{
+    width:1136px;
+    height:949px;
+    background:url(../../images/activity/thanksgiving/thanksgiving_xinf.png) center center no-repeat;
+    margin:0 auto;
+}
+@font-face {
+    font-family: "sourcehan";
+    src: url(sourcehan.otf);
+}
+
+.sourcehan {
+    font-family: "sourcehan" !important;   
+    font-style: normal;
+}
+.thanksgiving_xinf h4{
+    margin-left:60px;
+}
+.thanksgiving_xinf p {
+    margin-left: 60px;
+    text-indent: 1em;
+    line-height: 50px;
+    border-bottom: 1px solid #bab0a4;
+    width:980px;
+    color:#333;
+}
+.thanksgiving_info_box {
+    width: 1060px;
+    margin: 0 auto;
+    background: #fbeddd;
+    border-radius:10px;
+    padding:30px;
+}
+.thanksgiving_info_title {
+    width: 786px;
+    height: 58px;
+    line-height: 58px;
+    border: 2px solid #c95c66;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+    .thanksgiving_info_title p em {
+        color: #c95c66;
+        margin-right: 70px;
+        font-weight: 700;
+        
+    }
+    .thanksgiving_info_title p em img{
+        vertical-align:middle;
+    }
+.thanksgiving_info_title1 {
+    width: 790px;
+    height: 60px;
+    line-height: 58px;
+    color: #fbeddd;
+    background: #c95c66;
+    margin:0 auto;
+    border-radius:10px;
+}
+.thanksgiving_info_title2 {
+    width: 746px;    
+    border: 2px solid #c95c66;
+    border-radius: 10px;
+    margin: 0 auto;
+   padding:50px 0px 30px 40px;
+}
+.cc95 {
+    color: #c95c66;
+}
+a.thanksgiving_invest {
+    display: block;
+    width: 266px;
+    height: 62px;
+    margin: 0 auto;
+    background: #000000;
+    background: -moz-linear-gradient(top, #cb5d73 0%, #d8806c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb5d73), color-stop(100%,#d8806c));
+    background: -webkit-linear-gradient(top, #cb5d73 0%,#d8806c 100%);
+    background: -o-linear-gradient(top, #cb5d73 0%,#d8806c 100%);
+    background: -ms-linear-gradient(top, #cb5d73 0%,#d8806c 100%);
+    background: linear-gradient(to bottom, #cb5d73 0%,#d8806c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb5d73', endColorstr='#d8806c',GradientType=0 );
+    color:#fff;
+    border-radius:10px;
+    line-height:62px;
+    text-align:center;
+    font-size:16px;
+}
+.thanksgiving_rule_content {
+    width: 900px;
+    margin: 0 auto;
+    background: #fbeddd;
+    border-radius: 10px;
+    padding: 30px 80px;
+}
+.thanksgiving_rule_content p{
+    height:40px;
+    line-height:40px;
+}
+    .thanksgiving_rule_content p em {
+        color: #fff;
+        font-size: 12px;
+        width: 22px;
+        height: 22px;
+        border-radius: 22px;
+        background: #c95c66;
+        margin-right:15px;
+        display:inline-block;
+        line-height:22px;
+        text-align:center;
+    }
+.thanksgiving_info_title2 em.position_absoult_1 {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    border-radius: 52px;
+    color: #fff;
+    font-size: 20px;
+    background: #c95c66;
+    left:350px;
+    top:-25px;
+}
+.thanksgiving_info_title2 em.position_absoult_2 {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    border-radius: 52px;
+    color: #fff;
+    font-size: 20px;
+    background: #c95c66;
+    left: 420px;
+    top: -25px;
+}
+/*活动3 感恩节活动 end*/
+
+/*活动4  感恩钜惠  start*/
+.thanksgivingh_box {
+    width: 100%;
+    background: #6b2f82 url(../../images/activity/thanksgivinghuge/thanksgivingh_bg.jpg) no-repeat center top;
+    background-size: 100% auto;
+}
+.activity_box1{
+    width:1148px;
+    height:2015px;
+    background:url(../../images/activity/thanksgivinghuge/bg_act1.png) no-repeat;
+    margin: 0 auto;
+}
+.activity_box2 {
+    width: 1148px;
+    height: 901px;
+    background: url(../../images/activity/thanksgivinghuge/bg_act2.png) no-repeat;
+    margin: 0 auto;
+}
+.activity_box3 {
+    width: 1148px;
+    height: 2725px;
+    background: url(../../images/activity/thanksgivinghuge/bg_act3.png) no-repeat;
+    margin: 0 auto;
+}
+.activity_box1 p, .activity_box2 p, .activity_box3 p {
+    margin-left: 125px;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.thanksgivingh_invest_button{
+    display:block;
+    width:418px;
+    height:149px;
+    background:url(../../images/activity/thanksgivinghuge/invest_now.png) no-repeat;
+    margin:0 auto;
+}
+.thanksgivingh_login_button {
+    display: block;
+    width: 424px;
+    height: 155px;
+    background: url(../../images/activity/thanksgivinghuge/btn_img_act2.png) no-repeat;
+    margin: 0 auto;
+}
+.activity_box3 table{
+    width:898px;
+    margin:0 auto;
+    border-radius:10px;
+    height:425px;
+    background:url(../../images/activity/thanksgivinghuge/table_bg.png) no-repeat;
+}
+    .activity_box3 table tr th {
+        border-bottom: 1px solid #c27e9f;
+        height: 70px;
+        border-right: 1px solid #c27e9f;
+    }
+    .activity_box3 table tr td {
+        height: 70px;
+        border-bottom: 1px solid #c27e9f;
+        border-right: 1px solid #c27e9f;
+        text-align: center;
+    }
+        .activity_box3 table tr td img {
+            display: inline-block;
+            vertical-align: -14px;
+            margin-right: 15px;
+        }
+.activity_box4{
+    width:1028px;
+    height:535px;
+    background:url(../../images/activity/thanksgivinghuge/bg_guize.png) no-repeat;
+    margin:0 auto;
+}
+.activity_box4 p{
+    color:#fff;
+    font-size:16px;
+    height:45px;
+   
+    margin-left:140px;
+    position:relative;
+}
+    .activity_box4 p em {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: #ffbd3f;
+        border-radius:50%;      
+        line-height:22px;
+        text-align:center;
+        font-size:12px;
+        left:-40px;
+       
+
+    }
+    .activity_box4 div.example {
+        background: rgba(255,255,255,0.2);
+        /*opacity: 0.2;*/
+        padding: 10px;
+        border-radius: 20px;
+        color: #ffbd3f;
+        font-size: 18px;
+        width: 750px;
+        margin-left: 120px;
+        margin-bottom: 10px;
+    }
+.thanksgivingh_marquee {
+    position: fixed;
+    left: 50px;
+    top: 55%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 0px 10px;
+    width: 280px;
+    height: 40px;
+    text-align: center;
+    color: #fff;
+    z-index: 10001;
+}
+    .thanksgivingh_marquee ul {
+        height:40px;
+        width:100%;
+        position:relative;
+        overflow: hidden;
+        
+    }
+    .thanksgivingh_marquee ul li {
+        height: 40px;
+        line-height: 40px;
+    }
+.thanksgiving_nav {
+    position: fixed;
+    left: 50px;
+    top: 55%;
+}
+.thanksgiving_nav ul li.nav_bg{
+    width:302px;
+    height:73px;
+    background:url(../../images/activity/thanksgivinghuge/nav_bg.png) no-repeat;   
+    text-align:center;
+    margin-bottom:10px;
+}
+.thanksgiving_nav ul li.nav_bg1 {
+    width: 302px;
+    height: 73px;
+    background: url(../../images/activity/thanksgivinghuge/nav_bg1.png) no-repeat;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.thanksgiving_nav ul li.nav_bg img {
+    margin-top: 25px;
+}
+.thanksgivingh_box a{
+    color:#fff;
+
+}
+.thanksgivingh_box a:hover{
+    color:#fff;
+}
+/*活动4  感恩钜惠  end*/
+
+/*活动7  寒冬不惧 start*/
+.warmwinter_box {
+    width: 100%;
+    background: #b3d7fc url(../../images/activity/warmwinter/winer_bg.jpg) no-repeat center top;
+    background-size: 100% auto;
+}
+.warmwinter_content{
+    width:1100px;
+    margin:0 auto;
+}
+.warmwinter_title{
+    width:1061px;
+    height:131px;
+    margin:0 auto;
+    background:url(../../images/activity/warmwinter/winer_title.png) no-repeat;
+}
+.warmwinter_title p{
+    font-size:24px;
+    padding-top:55px;
+}
+.warmwinter_money {
+    width: 1046px;
+    margin: 0 auto;
+    border: 11px solid #7ab0df;
+    border-radius:30px;
+    height:530px;
+    background:#fff;
+}
+.warmwinter_money table{
+    width:100%;
+}
+    .warmwinter_money table tr th {
+        border-bottom: 2px solid #7ab0df;
+        color: #7ab0df;
+        width:50%;
+        text-align:center;
+        height:108px;
+        font-size:24px;
+    }
+    .warmwinter_money table tr td {
+        width:50%;
+        text-align:center;
+        border-bottom: 2px solid #7ab0df;
+        height:103px;
+       font-size:24px;
+    }
+.warmwinter_img {
+    position: absolute;
+    right: 10px;
+    top: -87px;
+}
+.warmwinter_rule {
+    width: 868px;
+    border: 10px solid #7ab0df;
+    background: #fff;
+    border-radius: 30px;
+    margin:0 auto;
+}
+.warmwinter_rule p{
+    font-size:18px;
+    line-height:40px;
+    padding-left:60px;
+}
+    .warmwinter_rule p em {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+        background: #7ab0df;
+        margin-right:7px;
+        border-radius:50%;
+        display:inline-block;
+    }
+a.warm_winter_a {
+    display: block;
+    font-size: 32px;
+    color: #fff;
+    width:350px;
+    padding: 22px 0px;
+    border: 10px solid #fff;
+    border-radius: 50px;
+    background: #f34b4a;
+    margin:0 auto;
+    text-align:center;
+}
+/*活动7 寒冬不惧  end*/
+
+/*渤海银行 start*/
+.bohai_content {
+    width: 100%;
+    background: #0f1139;
+}
+.bohai_banner{
+    width:100%;
+    height:763px;
+    background:url(../../images/activity/bohai/bohai_banner.jpg) center center no-repeat;
+}
+.bohai_box1  dl{
+    width:1070px;
+    margin: 0 auto;
+}
+.bohai_box1 dl dd {
+    float: left;
+    width: 500px;
+    height: 265px;
+    background: #fff;
+    border-radius: 10px;
+    margin-right: 70px;
+}
+.bohai_box2{
+    width:1055px;
+    margin:0 auto;
+}
+.bohai_box2 dl dd{
+    width:305px;
+    margin-right:70px;
+    border-radius:10px;
+    background:#fff;
+    height:405px;
+    float:left;
+}
+.bohai_box4 {
+    width: 100%;
+    background: #5f3253;
+}
+.bohai_box4_content{
+    width:1100px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:10px;
+
+}
+.bohai_box4_content ul li{
+    width:50%;
+    float:left;
+
+}
+.bohai_img{
+    width:100%;
+    height:123px;
+    background:url(../../images/activity/bohai/bohai_img.jpg) no-repeat;
+} 
+.bohai_kuang {
+    width: 896px;
+    height: 397px;
+    margin: 0 auto;
+    background: url(../../images/activity/bohai/bohai_kuang.png) no-repeat;
+}
+.bohai_kuang ul li{
+    width:50%;
+    font-size:16px;
+}
+.bohai_kuang ul li p{
+    
+}
+    .bohai_kuang ul li.bohai_kuangli1 p{
+        height:60px;      
+        width:225px;
+        text-align:center;
+        margin-left:35px;
+    }
+    .bohai_kuang ul li.bohai_kuangli2 p {
+        height: 60px;
+        width: 285px;
+        text-align: center;
+        margin-left: 140px;
+    }
+/*渤海银行end*/
+
+/*活动9  双旦活动 start*/
+.double_banner{
+    width:100%;
+    height:858px;
+    background:url(../../images/activity/doubleonce/double_banner.jpg) center center no-repeat;
+}
+.double_banner_title {
+    position:absolute;
+    top:56%;
+    left:50%;
+    margin-top:-55px;
+    margin-left:-357.5px;
+}
+.double_content {
+    width: 100%;
+    background: #890d0d url(../../images/activity/doubleonce/double_content.jpg) no-repeat center top;
+    background-size: 100% auto;
+}
+.double_yellow {
+    color: #ffc92e;
+}
+.double_yellow1 {
+    color: #fd952a;
+}
+.double_gray {
+    color: #cbcbc9;
+}
+    .double_box1 {
+        width: 1068px;
+        height: 688px;
+        background: url(../../images/activity/doubleonce/double_box1_bg.png) no-repeat;
+        margin: 0 auto;
+    }
+.double_div {
+    width: 930px;
+    margin: 0 auto;
+}
+    .double_div > div:nth-child(1) {
+        background: #ffc92e;
+        padding:30px 75px 0px 75px;
+        border-radius:10px;
+        height:243px;
+
+    }
+    .double_div> div:nth-child(2) {
+        padding: 40px 50px 0px 50px;
+        border-radius: 10px;
+        height: 227px;
+        border: 3px dashed #d5a5a3;
+    }
+        .double_div div:nth-child(1) p.title1 {
+            padding: 18px 80px;
+            margin: 0 auto;
+            background: #5d8627;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            box-shadow: 0px 4px 1px #325700;
+        }
+        p.play:after{
+            content:"";
+            display:inline-block;
+            width:18px;
+            height:18px;
+            background:url(../../images/activity/doubleonce/play.png) no-repeat;
+            vertical-align:middle;
+            margin-right:10px;
+        }
+p.example1 {
+    width: 370px;
+    line-height: 40px;
+    color: #fff;
+}
+.double_box2 {
+    width: 1068px;
+    height: 2078px;
+    background: url(../../images/activity/doubleonce/double_box2_bg.png) no-repeat;
+    margin: 0 auto;
+}
+    .double_box2 ul {
+        width:920px;
+        margin:0 auto;
+    }
+    .double_box2 ul li {
+        float: left;        
+    }
+    .double_box2 ul li img{
+        display:block;
+        margin:0 auto;
+    }
+.double_box3_table {
+    width: 1108px;
+    height: 629px;
+    background: url(../../images/activity/doubleonce/bg_paihangb.png) no-repeat;
+    margin: 0 auto;
+   color:#fff;
+   font-size:20px;
+}
+    .double_box3_table table{
+        width:100%;
+    }
+    .double_box3_table tr.thead th {
+        height: 118px;
+        padding-top: 50px;
+    }
+    .double_box3_table tr td{
+        height:92px;
+        line-height:92px;
+        text-align:center;
+    }
+    .double_box3_table tr td img{
+        vertical-align:middle;
+        margin-left:-70px;
+    }
+a.double_login{
+    display:block;
+    width:405px;
+    height:102px;
+    background:url(../../images/activity/doubleonce/btn_bg_login.png) no-repeat;
+    font-size:36px;
+    font-weight:bold;
+    color:#fff;
+    text-align:center;
+    line-height:102px;
+    margin:0 auto;
+    letter-spacing:5px;
+}
+a.double_invest {
+    display: block;
+    width: 405px;
+    height: 102px;
+    background: url(../../images/activity/doubleonce/btn_bg_touzi.png) no-repeat;
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    line-height: 102px;
+    margin: 0 auto;
+    letter-spacing: 5px;
+}
+.double_box4 {
+    width: 1068px;
+    height: 499px;
+    background: url(../../images/activity/doubleonce/double_box3_bg.png) no-repeat;
+    margin: 0 auto;
+}
+    .double_box4 p {
+        color: #fff;
+        font-size: 16px;
+       
+        margin-left: 170px;
+        position: relative;
+        margin-right:140px;
+        line-height:38px;
+    }
+
+        .double_box4 p em {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: #ffc92e;
+            border-radius: 50%;
+            line-height: 22px;
+            text-align: center;
+            font-size: 12px;
+            left: -40px;
+            color:#333;
+            top:8px;
+        }
+/*活动9  双旦活动  end*/
+
+/*活动10  迎新活动 start*/
+.newyear_content {
+    width: 100%;
+    background: #d74657;
+}
+.newyear_banner {
+    width: 100%;
+    height: 675px;
+    background: url(../../images/activity/newyear/newyear_banner.jpg) center center no-repeat;
+}
+
+.newyear_box1_content {
+    width:1105px;
+    height:454px;
+    margin:0 auto;
+    background:url(../../images/activity/newyear/newyear_box1_bg1.png) no-repeat;
+}
+.newyear_box1_content ul li{
+    width:50%;
+    float:left;
+
+}
+    .newyear_box1_content ul li:first-child {
+        width: 48%;
+        border-right: 5px solid #eb7b41;
+    }
+.newyear_box1_tips {
+    background: #d74657;
+    padding: 10px 12px;
+    margin: 0 auto;
+    display:inline-block;
+
+}
+    .newyear_box1_tips p {
+        height: 45px;
+        line-height: 45px;
+        border: 2px dashed #ffead5;
+        width: 480px;
+        margin: 0 auto;
+        text-align: center;
+        color: #ffead5;
+        font-size:18px;
+    }
+.newyear_box2_content {
+    width: 1104px;
+    height: 594px;
+    margin: 0 auto;
+    background: url(../../images/activity/newyear/newyear_box1_bg2.png) no-repeat;
+}
+.newyear_box2_content_table {
+    width:954px;
+    margin:0 auto;
+
+}
+.newyear_box2_content_table table {
+    width: 100%;
+    background:#d74657;
+    color:#fff;
+
+}
+    .newyear_box2_content_table table tr th {
+        font-size: 20px;
+        height: 62px;
+        border-right: 1px solid #ffead5;
+        text-align: center;
+        border-bottom: 1px solid #ffead5;
+    }
+    .newyear_box2_content_table table tr td {
+        font-size: 20px;
+        height: 55px;
+        border-right: 1px solid #ffead5;
+        text-align: center;
+        border-bottom: 1px solid #ffead5;
+    }
+.newyear_box3_content {
+    width: 1104px;
+    height: 794px;
+    margin: 0 auto;
+    background: url(../../images/activity/newyear/newyear_box2_bg3.png) no-repeat;
+}
+.newyear_box4_content {
+    width: 1104px;
+    height: 694px;
+    margin: 0 auto;
+    background: url(../../images/activity/newyear/newyear_box4_bg4.png) no-repeat;
+}
+a.newyear_button_invest {
+    display: block;
+    background: #fdd37f;
+    width:330px;
+    height:80px;
+    border-radius:48px;
+    margin:0 auto;
+    line-height:80px;
+    color:#d74657;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    padding:10px;
+}
+    a.newyear_button_invest em, a.newyear_button_login em {
+        display: block;
+        width: 328px;
+        height: 78px;
+        border: 2px solid #d74657;
+        border-radius: 48px;
+    }
+a.newyear_button_login {
+    display: block;
+    background: #ffead5;
+    width: 330px;
+    height: 80px;
+    border-radius: 48px;
+    margin: 0 auto;
+    line-height: 80px;
+    color: #b50a12;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 10px;
+}
+.newyear_box5 {
+    width: 1104px;
+    height: 515px;
+    margin: 0 auto;
+    background: url(../../images/activity/newyear/newyear_box5_bg5.png) no-repeat;
+}
+.newyear_box5 p{
+    font-size:18px;
+    height:40px;
+    line-height:40px;
+    margin-left:95px;
+}
+.fireworks1 {
+    position: absolute;
+    width: 157px;
+    height: 152px;
+    background: url(../../images/activity/newyear/fireworks1.png);
+    left: 140px;
+    top: 675px;
+}
+.fireworks2{
+    position:absolute;
+    width:171px;
+    height:174px;
+    background:url(../../images/activity/newyear/fireworks.png);
+    right:140px;
+    top:1255px;
+}
+.fireworks3 {
+    position: absolute;
+    width: 171px;
+    height: 174px;
+    background: url(../../images/activity/newyear/fireworks.png);
+    left: -50px;
+    top: 1940px;
+}
+.fireworks4 {
+    position: absolute;
+    width: 157px;
+    height: 152px;
+    background: url(../../images/activity/newyear/fireworks1.png);
+    right: 0px;
+    top: 2550px;
+}
+.fireworks5 {
+    position: absolute;
+    width: 157px;
+    height: 152px;
+    background: url(../../images/activity/newyear/fireworks1.png);
+    left: 240px;
+    bottom: 600px;
+}
+.fireworks6 {
+    position: absolute;
+    width: 171px;
+    height: 174px;
+    background: url(../../images/activity/newyear/fireworks.png);
+    right: 200px;
+    bottom: 100px;
+}
+/*活动10  迎新活动  end*/
+
+/*活动11  开店大吉  start*/
+.openyear_bg{
+    width:100%;
+    background:url(../../images/activity/openyear/openyear_banner.jpg) center top no-repeat;
+    background-size:100% auto;
+}
+.openyear_table{
+    width:990px;
+    height:260px;
+    background:#ffead5;
+    margin:0 auto;
+    padding:45px 50px;
+}
+.openyear_table table{
+    width:100%;
+
+}
+    .openyear_table table tr td{
+        
+        height:60px;
+        line-height:60px;
+        color:#cd0b03;
+        font-size:24px;
+        text-align:center;
+    }
+.openyear_rule {
+    width: 990px;
+    height: 260px;
+    background: #ffead5;
+    margin: 0 auto;
+    padding: 45px 50px;
+}
+.openyear_rule p{
+    font-size:18px;
+    height:35px;
+    line-height:35px;
+}
+em.open_yellow {
+    color: #ffcc66;
+}
+/*活动11  开店大吉  end*/
+
+/*活动12  开年红  strat*/
+.goodstart_box {
+    width: 100%;
+    background: #782150 url(../../images/activity/goodstart/goodstart_bg.jpg) no-repeat center top;
+    background-size: 100% auto;
+}
+.goodstart_text2 {
+    position: absolute;
+    top: 35px;
+    left: 380px;
+    width:435px;
+    text-align:center;
+}
+.goodstart_yellow {
+    color: #ffcc99;
+}
+.goodstart_page2{
+    width:1200px;
+    margin:0 auto;
+}
+.goodstart_rule {
+    width: 997px;
+    padding: 40px 0px;
+    
+    margin: 0 auto;
+    color: #fff;
+    border-radius: 10px;
+    background-image: -webkit-linear-gradient(to left, #AD132C, #881D45);
+    background-image: linear-gradient(to left,#AD132C, #881D45);
+}
+    .goodstart_rule p{
+        margin-left:140px;
+        font-size:16px;
+        line-height:45px;
+    }
+    .goodstart_rule p em {
+        background: #FAE4AD;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: #cc0033;
+        line-height: 30px;
+        text-align: center;
+        margin-right: 20px;
+        display:inline-block;
+    }
+a.goodstart_button {
+    width: 265px;
+    height: 60px;
+    border-radius: 70px;
+    display: block;
+    margin: 0 auto;
+    color: #F2D8B2;
+    background-image: -webkit-linear-gradient(to right, #FF6C00, #C80B19);
+    background-image: linear-gradient(to right,#FF6C00, #C80B19);
+    line-height:60px;
+    text-align:center;
+    font-size:20px;
+}
+a.goodstart_button:hover{
+    color:#fff;
+}
+/*活动12 开年红  end*/
+/* 活动13  投资有奖励  start*/
+.rewards_box {
+    width: 100%;
+    background: url(../../images/activity/haverewards/haverewards_bg.jpg) center top no-repeat;
+    background-size: 100% auto;
+}
+.rewards_more{
+    width:1000px;
+    height:678px;
+    background:url(../../images/activity/haverewards/rewards_more.png) no-repeat;
+    margin:0 auto;
+}
+    .rewards_more p, .rewards_team  p{
+        width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        color: #fff;
+        line-height: 30px;
+    }
+        .rewards_more p em, .rewards_team p em{
+            color: #ffff99;
+            font-size: 22px;
+        }
+a.rewards_a {
+    display: block;
+    width: 250px;
+    height: 60px;
+    margin: 0 auto;
+    color: #cc3300;
+    background: #FFD600;
+    border-radius:70px;
+    text-align:center;
+    line-height:60px;
+    font-size:22px;
+}
+.rewards_team, .rewards_rule {
+    width: 848px;
+    background: #FF787D;
+    border-radius: 20px;
+    padding: 30px 60px;
+    margin: 0 auto;
+}
+    .rewards_team table {
+        width: 766px;
+        margin: 0 auto;
+        border: 1px solid #fff;
+        border-collapse: collapse;
+    }
+    .rewards_team table tr td{
+        width:25%;
+        color:#fff;
+        font-size:18px;
+        height:50px;
+        line-height:50px;
+        text-align:center;
+        font-weight:bold;
+        border:1px solid #fff;
+
+    }
+        .rewards_team table tr td.reward_yellow {
+            color: #ffffcc
+        }
+.reward_yellow {
+    color: #ffffcc
+}
+.rewards_rule p{
+    color:#fff;
+    font-size:16px;
+    line-height:40px;
+}
+.rewards_link{
+    width:100%;
+    padding:20px 0px;
+    border:1px dashed #fff;
+    border-radius:300px;
+}
+.rewards_button {
+    width: 250px;
+    height: 60px;
+    line-height: 60px;
+    color: #ffffcc;
+    font-size: 22px;
+    text-align: center;
+    background: #4A67AC;
+    display:block;
+    margin:0 auto;
+    border-radius:60px;
+}
+.rewards_link p.invitation_link {
+    width:100%;
+    text-align:center;
+    color:#fff;
+   
+}
+.rewards_link p.invitation_link em{
+    font-size:14px;
+}
+    .rewards_link p.invitation_link em.reward_copy {
+        margin-left: 30px;
+        background: #4A67AC;
+        padding:8px 30px;
+        border-radius:10px;
+        color:#fff;
+        cursor:pointer;
+    }
+/*活动13  投资有奖励   end*/
+
+/*活动14  三重好礼 stat*/
+.triplegift_box {
+    width: 100%;
+    background: url(../../images/activity/triplegift/triplegift_bg.jpg) center top no-repeat;
+    background-size: 100% auto;
+}
+.triplegift_jiaxi {
+    width: 1070px;
+    padding: 30px 0px;
+    background: #FFEAD5;
+    border-radius: 30px;
+    margin: 0 auto;
+    box-shadow: 10px 10px 0px 0px #C79462;
+}
+    .triplegift_jiaxi ul {
+        overflow:hidden;
+    }
+        .triplegift_jiaxi ul li {
+            width: 50%;
+            text-align: center;
+            float: left;
+            height: 60px;
+            line-height: 60px;
+            color: #cc0000;
+            font-size:22px;
+        }
+a.triple_link {
+    display: block;
+    width: 360px;
+    height: 80px;
+    background: #FFEAD5;
+    margin: 0 auto;
+    color: #cc0000;
+    font-size:30px;
+    font-weight:bold;
+    text-align:center;
+    line-height:80px;
+    border-radius:15px;
+}
+.triplegift_jiaxi p.rule_p{
+    color:#333;
+    padding-left:50px;
+    height:40px;
+    font-size:16px;
+}
+/*活动14  三重好礼  end*/
+
+/*活动5  三重大礼 闹元宵  start*/
+.lantern_bg {
+    width: 100%;
+    background: #F5AE5E url(../../images/activity/lanternfestival/lantern_bg1.jpg) no-repeat center top;
+    background-size: 100% auto;
+}
+.lantern_box1 {
+    width: 995px;
+    padding: 45px;
+    background: #FDDFB1;
+    margin:0 auto;
+    border-radius:10px;
+
+}
+.lantern_box2 {
+    width: 1085px;
+    padding: 65px 0px 40px 0px;
+    background: #FDDFB1;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+    .lanter_red {
+        color: #cc0033;
+    }
+.lantern_box1_content1 {
+    border: 1px solid #C6AF8B;
+    font-size:18px;
+    line-height:35px;
+    padding:25px 65px;
+}
+.lantern_box1 em{
+    position:absolute;
+    left:-30px;
+}
+.lantern_box2 p{
+    font-size:20px;
+    color:#000;
+    opacity:0.65;
+}
+.lantern_box2 ul {
+    width:750px;
+    margin:0 auto;
+
+}
+.lantern_box2 ul li {
+    float: left;
+    width: 49%;
+    border: 1px solid #C6AF8B;
+    box-sizing: border-box;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+  
+    font-weight: bold;
+    margin-bottom: 1.5px;
+    margin-right: 1.5px;
+}
+.lantern_rule {
+    width: 857px;
+    padding: 65px 114px 65px 114px;
+    background: #FDDFB1;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.lantern_rule p{
+    line-height:40px;
+}
+.lianjie{
+    width:1290px;
+    margin:0 auto;
+    margin-top:-20px;
+    
+}
+/*活动5 三重大礼  闹元宵  end*/
+/*2018 运营报告 start*/
+.report_banner{
+    width:100%;
+    background:url(../../images/activity/operationreport/operationreport_banner.jpg) center center no-repeat;
+    height:775px;
+
+}
+.report_box {
+    width: 1130px;
+    margin: 0px auto;
+    margin-top: -77px;
+    background: #fff;
+    padding: 40px 0px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  
+}
+    .report_box p {
+        width: 875px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 40px;
+        margin: 0 auto;
+    }
+.report_box2, .report_box3, .report_box4, .report_box5, .report_box6, .report_box7, .report_box2018 {
+    width: 1130px;
+    margin: 0px auto;
+    padding: 50px 0px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    background: #fff;
+}
+.report_box3 ul li{
+    width:50%;
+    float:left;
+
+
+}
+.report_blue {
+    color: #1d97f6;
+}
+.report_red {
+    color: #ff3c00;
+}
+.report_box3 ul li dl{
+    width:360px;
+    margin:0 auto;
+}
+    .report_box3 ul li dl dd {
+        width: 33.333%;
+        float: left;
+        border-right: 1px solid #ededed;
+        text-align:center;
+        box-sizing:border-box;
+    }
+        .report_box3 ul li dl dd p:nth-of-type(1){
+            margin-bottom:15px;
+        }
+        .report_box3 ul li dl dd:last-of-type {
+            border-right: none !important;
+        }
+.report_box4 ul li{
+    float:left;
+}
+.report_box7 ul li{
+    width:14.2857%;
+    float:left;
+
+}
+
+.report_foot {
+    width: 100%;
+    background: url(../../images/activity/operationreport/operationreport_footer.jpg) center 180px no-repeat;
+    height: 700px;   
+}
+.report_box5 #jingzhan {
+    background-image: url(../../images/activity/operationreport/report-line.png);
+    background-repeat: repeat-y;
+    background-position: 500px center;
+    padding-top: 0px;
+   height:auto;
+    margin-top:-20px;
+}
+.report_box5 .t_1{
+    width:450px;
+   
+}
+.report_box5 .t_2 {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right: 30px;
+    margin-left: 22px;
+    background: #1d97f6;
+    border: none;
+    border-color: none;
+    line-height: 58px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+}
+.report_box5 .t_3 p{
+    width:500px;
+}
+/*2018 运营报告  end*/
+
+/*2018年 2月份运营报告  strat*/
+.report201802_banner {
+    width: 100%;
+    background: url(../../images/activity/report201802/repor201802_banner.jpg) center center no-repeat;
+    height: 770px;
+}
+.report_box2018 dl.dl_xingzuo {
+    width:326px;
+    margin:0 auto;
+}
+.report_box2018 dl.dl_xingzuo dd{
+    width: 163px;
+    float:left;
+    font-size:22px;
+}
+.report_box2018 dl.dl_xingzuo1 {
+    width:1050px;
+    margin:0 auto;
+
+}
+.report_box2018 dl.dl_xingzuo1 dd {
+    width: 105px;
+    float: left;
+    font-size: 16px;
+}
+.report_box2018 ul li {
+    width: 16.6667%;
+    float: left;
+}
+.report2018_foot {
+    width: 100%;
+    background: url(../../images/activity/report201802/repor201802_foot.jpg) center 80px no-repeat;
+    height: 323px;
+}
+/*2018年 2月份运营报告  end*/

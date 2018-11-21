@@ -1,0 +1,162 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "忘记密码";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+    .right_suspension {
+        top: 60px !important;
+    }
+    #sendSms,#verifyBtn:hover {
+        cursor: pointer;
+    }
+</style>
+
+<div class="zfct_register_box">
+    <div style="height:40px;"></div>
+    <div class="forgetpassword_box">
+        <p class="padding_left_65 font_size_18">重置密码</p>
+        <div style="height:50px;"></div>
+        <div class="forgetpassword_step">
+            <ul>
+                <li class="forget_border_bottom">
+                    <em class="forgetpassword_circle">1</em><em class="">验证身份</em>
+                </li>
+                <li>
+                    <em class="forgetpassword_circle1">2</em><em class="gray1">重置密码</em>
+                </li>
+                <li class="margin-right-none">
+                    <em class="forgetpassword_circle1">3</em><em class="gray1">重置成功</em>
+                </li>
+                <div class="clear"></div>
+            </ul>
+           
+            
+        </div>
+        <div style="height:50px;"></div>
+        <div class="zfct_form">
+            <div class="zfct_form_group" >
+                <input type="text" id="userPhone" class="zfct_input_text" name="userPhone" placeholder="手机号" value="" />
+                <label class="form-tips error active">
+                    <div class="form_tips_content" id="userPhone_notice">
+                        
+                    </div>
+                </label>
+            </div>
+            <div class="zfct_form_group">
+                <input type="text" id="verification" class="zfct_input_text1" name="verification" placeholder="短信验证码" value="" />
+                @*<input type="button" value="获取验证码" id="sendSms" class="sendsms" style="width:120px;" onclick="SendPhone()" />*@
+                <a id="sendSms" class="sendsms" onclick="SendPhone()">
+                    获取短信验证码
+                </a>
+                <label class="form-tips error active">
+                    <div class="form_tips_content" id="phoneVerifyCodeNotice">
+
+                    </div>
+                </label>
+            </div>
+            <div style="height:20px;"></div>
+            <div class="zfct_form_group">
+                <button id="verifyBtn" class="zfct_login_button">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>    
+    <div style="height:40px;"></div>
+</div>
+
+<script type="text/javascript">
+    var phoneRegu = /^[1]+\d{10}$/;//手机号正则
+    var wait = 120;
+    function time(o) {
+        if (wait == 0) {
+            wait = 120;
+            $(o).attr("onclick","SendPhone()");
+            $(o).html("获取验证码");
+        }
+        else {
+            console.log(wait);
+            wait--;
+            $(o).attr("onclick", "");
+            $(o).html("重新发送(" + wait + ")");
+            timeout = setTimeout(function () { time(o) }, 1000)
+        }
+    }
+    $("#userPhone").blur(function () {
+        var userPhone = $("#userPhone").val();
+        if (userPhone.length == 0) {
+            $("#userPhone_notice").html("");
+            return;
+        }
+        var phoneRe = new RegExp(phoneRegu);
+        if (phoneRe.test(userPhone)) {
+            $.ajax({
+                url: "PhoneIsExit",
+                data: {
+                    phone: userPhone
+                },
+                success: function (data) {
+                    if (!data.success) {
+                        $("#userPhone_notice").html("<i class='icon iconfont green4'>&#xe602;</i>");
+                    } else {
+                        $("#userPhone_notice").html("手机号码不存在");
+                    }
+                }
+            });
+        } else {
+            $("#userPhone_notice").html("手机号码格式不正确");
+        }
+    });
+    function SendPhone() { 
+        var userPhone = $("#userPhone").val();
+        var phoneRe = new RegExp(phoneRegu);
+        if (phoneRe.test(userPhone)) {
+            $.ajax({
+                url: "ForgetPwdPhoneCode",
+                data: {
+                    phone: userPhone
+                },
+                success: function (data) {
+                    if (data.success) {
+                        time($("#sendSms"));
+                    } else {
+                        layer.alert(data.msg);
+                    }
+                }
+            });
+        } else {
+            layer.alert("手机号码格式不正确");
+        }
+    }
+    $("#verifyBtn").click(function () { 
+        var userPhone = $("#userPhone").val();
+        var code = $("#verification").val();
+        var phoneRe = new RegExp(phoneRegu);
+        if (phoneRe.test(userPhone))
+        {
+            $.ajax({
+                url: "PhoneCode",
+                data: {
+                    PhoneNumber: userPhone,
+                    VerCode: code
+                },
+                success: function (data) {
+                    if (data.isSuccess) {
+                        window.location.href = "ForgetPassword2?phone=" + userPhone + "&code=" + code;
+                    } else {
+                        layer.alert(data.msg);
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+
+

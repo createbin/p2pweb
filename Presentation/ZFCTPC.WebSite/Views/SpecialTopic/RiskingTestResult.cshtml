@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "风险测试结果";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+
+<div class="risking_box">
+    <p class="text_align_center font_size_24">您当前的风险承受能力</p>
+    <div style="height:35px"></div>
+    @if (ViewBag.investType == "保守型")
+    {
+        <p class="blue font_size_24 text_align_center">
+            保守型
+        </p>
+        <div style="height:35px"></div>
+        <p style="width:480px; margin:0 auto; line-height:25px;">
+            您的风险承受能力较弱，投资时需要谨慎小心，同时也需要注意本金安全，建议您选择低风险的理财产品。
+        </p>
+    }
+    else if (ViewBag.investType == "稳健型")
+    {
+        <p class="blue font_size_24 text_align_center">
+            稳健型
+        </p>
+        <div style="height:35px"></div>
+        <p style="width:480px; margin:0 auto; line-height:25px;">
+            您有一定的风险承受能力，希望获得较好的投资收益，所以较好收益但中等风险的投资产品比较适合您。
+        </p>
+    }
+    else
+    {
+        <p class="blue font_size_24 text_align_center">
+            激进型
+        </p>
+        <div style="height:35px"></div>
+        <p style="width:480px; margin:0 auto; line-height:25px;">
+            您的风险承受能力较高，是个激进型选手。在投资过程中，冒着高风险去获取更高的投资回报，保存积极进取的投资理念。适合风险高但收益也很高的投资产品。
+        </p>
+
+    }
+
+    <div style="height:35px"></div>
+    <div class="text_align_center">
+        @if (ViewBag.redirctType == 1)
+        {
+            <a href="/Home/Index" class="risking_determine">
+                确定
+            </a>
+        }
+        else if (ViewBag.redirctType == 2)
+        {
+            <a href="/MyAccount/SecurityCenter" class="risking_determine">
+                确定
+            </a>
+        }
+        else if (ViewBag.redirctType == 3)
+        {
+            <a href="/MyInvest/InvestDetail?loanId=@ViewBag.ItemId" clas class="risking_determine">
+                确定
+            </a>
+        }
+        else
+        {
+            <a href="/Transfer/TransferDetail?transferId=@ViewBag.ItemId" class="risking_determine">
+                确定
+            </a>
+        }
+
+        <div style="height:10px"></div>
+        <a href="RiskingTest?redirctType=@ViewBag.redirctType&itemid=@ViewBag.ItemId" class="blue">重新测评</a>
+    </div>
+</div>

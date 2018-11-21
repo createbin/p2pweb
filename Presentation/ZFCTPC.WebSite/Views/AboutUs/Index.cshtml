@@ -1,0 +1,445 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.News
+@{
+    ViewData["Title"] = "公司简介_关于我们_中房创投";
+    ViewData["Description"] = "中房创投(chinazfct.com)于2016年4月正式上线，由南京中乾惠诚投资管理有限公司创立，隶属于中房集团，践行合规的互联网金融平台";
+    ViewData["Keywords"] = "公司简介,中房创投公司介绍,中房创投高管风采";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    //NewsReturnModel leader = ViewBag.leader != null ? ViewBag.leader.ReturnData as NewsReturnModel : null;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+@*<div class="aboutus_banner">
+    <img src="~/images/banner/aboutus_banner.jpg" class="img-responsive" />
+</div>*@
+<div style="border-top:1px solid #f0f0f0"></div>
+
+<div class="aboutus_nav">
+    <ul>
+        @*<li class="aboutus_nav_click border-left"><a href="/AboutUs/Index">公司简介</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>*@
+        <li class="aboutus_nav_click border-left"><a href="/AboutUs/PlatformAnnouncement ">平台公告</a></li>
+        <li><a href="/AboutUs/GroupDynamics">集团动态</a></li>
+        <li><a href="/AboutUs/PresidentColumn">总裁专栏</a></li>
+        <li><a href="/AboutUs/IndustryNews">行业动态</a></li>
+        <li><a href="/AboutUs/EnterpriseInsideMagazine">企业内刊</a></li>
+        @*<li><a href="/AboutUs/OperationalReport">运营报告</a></li>*@
+       
+        @*<li class=""><a href="/AboutUs/ContactUs">联系我们</a></li>*@
+        <div class="clear"></div>
+    </ul>
+</div>
+
+@*<div class="company_infor">
+    <img src="~/images/company_title.png" />
+    <h3 class="font_size_16 text_align_center">关于公司</h3>
+    <div style="height:40px"></div>
+    <p class="text_align_center">中房创投成立于2015年12月，总部位于江苏南京。</p>
+    <p class="text_align_center">2016年4月18日正式上线，与恒丰银行成功签订协议后于2016年8月正式上线资金银行存管系统；致力于为大众提供更安全、更便捷、更</p>
+    <p class="text_align_center">高收益的一站式投资管理服务，承诺以工匠之心来守护客户的财富与幸福。</p>
+    <p class="text_align_center">中房创投结合金融全球化发展与信息技术创新手段，以健全的风险管控体系为基础，通过有效的信用模型和大数据挖掘，逐步建立并完善</p>
+    <p class="text_align_center">符合时代特征的个人财富保值、增值金融投资体系，致力于打造最具规范性的财富管理机构，推动国内互联网金融行业和谐发展。</p>
+    <div style="height:25px;"></div>
+    <p class="text_align_center">中房创投是国资委直属央企中房集团旗下专业化的互联网金融信息服务平台，依托母公司中房集团多年积累的优质客户资源及产业链布局</p>
+    <p class="text_align_center">优势，中房创投致力打造规范、专业、高效的互联网金融信息服务平台。一方面，为投资者提供优质的财富增值渠道，另一方面，专注于</p>
+    <p class="text_align_center">特色资产，为中小微企业和供应链上下游企业提供一揽子金融信息解决方案。</p>
+    <div style="height:10px"></div>
+    <img src="~/images/executive_team.png" />
+    <h3 class="font_size_16 text_align_center">高管团队</h3>
+    <div style="height:40px"></div>
+    <div class="executive_team">
+        <dl class="white">
+           
+            <dd class="position-relative">
+                <img src="~/images/photo_chenmin@2x.png" />
+                <p class="font_size_16 bold position-absolute-p">陈敏</p>
+                <p class="font_size_14 position-absolute-p1">高级顾问</p>
+                <span></span>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房集团常务副总裁</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房集团联合投资股份有限公司副总经理</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房老龄产业发展集团董事长</p>
+            </dd>
+            <dd class="position-relative margin-right-none">
+                <img src="~/images/photo_tianfeng@2x.png" />
+                <p class="font_size_16 bold position-absolute-p">田峰</p>
+                <p class="font_size_14 position-absolute-p1">总裁</p>
+                <span></span>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房老龄产业发展南京有限公司总裁</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房创投创始人兼CEO</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>国内权威业务审核和风险监控专家</p>
+            </dd>
+            <dd class="position-relative">
+                <img src="~/images/photo_chenning@2x.png" />
+                <p class="font_size_16 bold position-absolute-p">陈宁</p>
+                <p class="font_size_14 position-absolute-p1">高级顾问</p>
+                <span></span>
+                <p><em class="margin_right_10 margin_left_30">•</em>中房中融社区服务股份有限公司总经理</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>南京普乾道恒资产管理有限公司董事长</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>高级金融精算师</p>
+            </dd>
+            <dd class="position-relative margin-right-none">
+                <img src="~/images/photo_gaoshan@2x.png" />
+                <p class="font_size_16 bold position-absolute-p">高山</p>
+                <p class="font_size_14 position-absolute-p1">风控总监</p>
+                <span></span>
+                <p><em class="margin_right_10 margin_left_30">•</em>曾任江苏省农业银行高管</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>中国长城资产管理南京地区总经理</p>
+                <p><em class="margin_right_10 margin_left_30">•</em>红岭创投风控总监</p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/shareholder_background.png" />
+    <h3 class="font_size_16 text_align_center">股东背景</h3>
+    <div style="height:10px"></div>
+    <div class="shareholder_background">
+        <img src="~/images/img_zfll@2x.png" />
+        <div class="shareholder_background_right float_right">
+            <div style="height:45px;"></div>
+            <p class="font_size_16 bold">中房老龄产业发展集团</p>
+            <div style="height:40px;"></div>
+            <p>
+                中房老龄产业发展集团为中房集团旗下直属子公司，主要从事老龄产业服务、社区服务、
+                金融投资管理咨询服务等。集团依托于央企资源，积极开展创新养老服务模式，联合专业养老产业投资伙伴，
+                建设老年公寓、老龄住宅，发展老龄服务产业，健康保健产业等，促进中国老龄事业全面发展。
+            </p>
+            <div style="height:20px"></div>
+            <p>
+                中房老龄集团立志打造地产、金融和养老产业共同驱动的3.0新中房产业发展模式，即“颐养生态地产+金融互助平台+产业聚合链条”三驾马车的综合性产业发展集团，
+                力求为促进我国老龄产业的健康发展做出表率。其中，金融产业以中房创投、中古基金、普乾道恒三大金融模块为主体，
+                共同构筑中房老龄金融事业新蓝图。
+            </p>
+
+        </div>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/company_culture.png" />
+    <h3 class="font_size_16 text_align_center">企业文化</h3>
+    <div style="height:20px"></div>
+    <div class="company_culture white text_align_center">
+        <dl>
+            <dd>
+                <div style="height:40px;"></div>
+                <img src="~/images/gs_introduction.png" class="img-margin" />
+                <div style="height:10px;"></div>
+                <p class="font_size_16 bold">核心内涵</p>
+                <div style="height:20px;"></div>
+                <p>敬畏&nbsp;&nbsp;诚信&nbsp;&nbsp;和谐&nbsp;&nbsp;合作</p>
+            </dd>
+            <dd>
+                <div style="height:40px;"></div>
+                <img src="~/images/business_philosophy.png" class="img-margin" />
+                <div style="height:10px;"></div>
+                <p class="font_size_16 bold">经营理念</p>
+                <div style="height:20px;"></div>
+                <p>秉承国家重点央企稳健、创新精神</p>
+            </dd>
+            <dd class="margin-right-none">
+                <div style="height:40px;"></div>
+                <img src="~/images/value_proposition.png" class="img-margin" />
+                <div style="height:10px;"></div>
+                <p class="font_size_16 bold">价值主张</p>
+                <div style="height:20px;"></div>
+                <p>以人为本，服务于民</p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div style="height:40px;"></div>
+    <img src="~/images/development_journey.png" />
+    <h3 class="font_size_16 text_align_center">发展历程</h3>
+    <div style="height:40px;"></div>
+    <div class="development_journey">
+        <main class="projectmain">
+            <div class="projectmain-star">
+                2015
+            </div>
+            <div class="projectmain-star1">
+                2016
+            </div>
+            <div class="projectmain-star2">
+                2017
+            </div>
+            <section class="font_16">
+                <div id="time_axis ">
+
+
+                    <div id="jingzhan">
+                       
+                        <div class="time time-margin-top60">
+                            <div class="t_1"></div>
+                            <div class="t_2" style="margin-top:35px; border:1px solid #fd9940"></div>
+                            <div class="t_3 bold">
+                                <p class="position-relative">
+                                    <em class="font_size_12 yellow margin_right_15">2015.12</em>
+                                    <em class="font_size_14">中房集团旗下首家央企互金平台中房创投注册成立，总部设于江苏南京</em>
+                                    <i class="icon iconfont white position-absolute-i">&#xe70d;</i>
+                                </p>
+                               
+                            </div>
+                        </div>
+
+                        <div class="time time-margin-top120">
+                           <div class="t_1"></div>
+                            <div class="t_2" style="margin-top:32px; border:1px solid #32be85"></div>
+                            <div class="t_3 bold"> 
+                                <p class="position-relative">
+                                    <em class="font_size_12 yellow margin_right_15 green4">2016.11</em>
+                                    <span class="font_size_14">
+                                        <em class="">中房创投走进南京明心学校，开启关爱自闭症儿童</em><br />
+                                        <em class=" padding_left_65">公益行动</em><br />
+                                        <em class="padding_left_65">中房创投吉祥物征名活动开启，诞生标志性萌物</em><br />
+                                        <em class="padding_left_65">”智多鑫”</em><br />
+                                        <em class="padding_left_65">中房创投APP发布，正式布局移动端应用市场。</em>
+                                    </span>
+                                    <i class="icon iconfont white position-absolute-i">&#xe70d;</i>
+                                </p>
+                            </div>
+                        </div>                        
+                        <div class="time time-margin-top10">
+                            <div class="t_1 " >
+                                <p class="position-relative" >                                    
+                                    <span class="font_size_14 bold">
+                                        <em class="bold">中房创投恒丰银行资金存管上线，快速晋升国内银</em><em class="green4 margin_left_15 font_size_12">2016.07</em><br />
+                                        <em class=" bold text_align_left">行存管平台第一梯队</em>                                       
+                                    </span>
+                                    <i class="icon iconfont white position-absolute-i1">&#xe70d;</i>
+                                </p>
+                            </div>
+                            <div class="t_2" style="margin-top:32px;border:1px solid #32be85"></div>
+                            <div class="t_3">
+                                
+                            </div>
+                        </div>
+                       
+                        <div class="time time-margin-top10">
+                            <div class="t_1"></div>
+                            <div class="t_2" style="margin-top:35px; border:1px solid #32be85"></div>
+                            <div class="t_3 bold">
+                                <p class="position-relative">
+                                    <em class="font_size_12 green4 margin_right_15">2016.04</em>
+                                    <em class="font_size_14">国字号”中房创投平台正式上线，引起业内外广</em><br />
+                                    <em class="padding_left_65">泛关注</em>
+                                    <i class="icon iconfont white position-absolute-i">&#xe70d;</i>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="time time-margin-top110">
+                            <div class="t_1 " style=" ">
+                                <p class="position-relative">
+                                    <span class="font_size_14 bold">
+                                        <em class="bold">中房创投接入网贷之家数据评级系统</em><em class="red1 margin_left_15 font_size_12">2017.06</em><br />
+                                      
+                                    </span>
+                                    <i class="icon iconfont white position-absolute-i1">&#xe70d;</i>
+                                </p>
+                            </div>
+                            <div class="t_2" style="margin-top:32px;border:1px solid #ec4961"></div>
+                            <div class="t_3">
+
+                            </div>
+                        </div>
+                        <div class="time time-margin-top10">
+                            <div class="t_1"></div>
+                            <div class="t_2" style="margin-top:35px; border:1px solid #ec4961"></div>
+                            <div class="t_3 bold">
+                                <p class="position-relative">
+                                    <em class="font_size_12 red1 margin_right_15">2017.04</em>
+                                    <em class="font_size_14">中房创投在南京明心学校挂牌成立“爱心教育实</em><br />
+                                    <em class="padding_left_65">践基地”</em>
+                                    <i class="icon iconfont white position-absolute-i">&#xe70d;</i>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div style="height:100px;"></div>
+</div>*@
+
+<div class="company_infor_box1 white">
+    <div style="height:55px;"></div>
+    <p class="font_size_30  text_align_center">公司简介</p>
+    <div style="height:55px;"></div>
+    <p class="font_size_14">
+        中房创投成立于2016年1月13日，总部位于江苏南京。2016年4月18日正式上线，与恒丰银行成功签订协议后于2016年8月正式上线资金银行存管系统；致力于为大众提供更安全、更便捷、更高收益的一站式投资管理服务，承诺以工匠之心来守护客户的财富与幸福。中房创投结合金融全球化发展与信息技术创新手段， 以健全的风险管控体系为基础，通过有效的信用模型和大数据挖掘，逐步建立并完善符合时代特征的个人财富保值、 增值金融投资体系，致力于打造最具规范性的财富管理机构，推动国内互联网金融行业和谐发展。 
+    </p>
+    <div style="height:30px;"></div>
+    <p>
+        中房创投是国资委直属央企中房集团旗下专业化的互联网金融信息服务平台，依托母公司中房集团多年积累的优质客户资源及产业链布局优势，中房创投致力打造规范、专业、高效的互联网金融信息服务平台。一方面，为投资者提供优质的财富增值渠道，另一方面，专注于特色资产，为中小微企业和供应链上下游企业提供一揽子金融信息解决方案。
+    </p>
+</div>
+@*<div class="company_infor_box2">
+    <div style="height:55px;"></div>
+    <p class="text_align_center font_size_30">高管团队</p>
+    <div style="height:55px;"></div>
+    <div class="company_infor">
+        <ul>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/tianzong_img.png" />
+                <div style="height:20px"></div>
+                <p class="font_size_16 bold">田峰</p>
+                <div style="height:10px;"></div>
+                <p class="font_size_14 font-weight">总裁</p>
+                <div style="height:20px;"></div>
+                <p class="font-weight">中房老龄产业发展南京有限公司总裁</p>
+                <p class="font-weight">中房创投创始人兼CEO</p>
+                <p class="font-weight">国内权威业务审核和风险监控专家</p>
+            </li>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/chengning_img.png" />
+                <div style="height:20px"></div>
+                <p class="font_size_16 bold">陈宁</p>
+                <div style="height:10px;"></div>
+                <p class="font_size_14 font-weight">顾问</p>
+                <div style="height:20px;"></div>
+                <p class="font-weight">中房中融社区服务股份有限公司总经理</p>
+                <p class="font-weight">南京普乾道恒资产管理有限公司董事长</p>
+                <p class="font-weight">高级金融精算师</p>
+            </li>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/gaoshan_img.png" />
+                <div style="height:20px"></div>
+                <p class="font_size_16 bold">高山</p>
+                <div style="height:10px;"></div>
+                <p class="font_size_14 font-weight">风控总监</p>
+                <div style="height:20px;"></div>
+                <p class="font-weight">曾任江苏省农业银行高管</p>
+                <p class="font-weight">中国长城资产管理南京地区总经理</p>
+                <p class="font-weight">红岭创投风控总监</p>
+            </li>
+            <div class="clear"></div>
+        </ul>
+        
+    </div>
+    <div style="height:55px"></div>
+</div>*@
+@*<div class="company_infor_box3 white">
+    <div style="height:55px;"></div>
+    <p class="font_size_30  text_align_center">股东背景</p>
+    <div style="height:55px"></div>
+    <div class="company_infor_box3_box">
+        <img src="~/images/helpcenter/logo.png" class="float_left"/>
+        <div class="float_right margin_left_60">
+            <div style="height:40px;"></div>
+            <p class="font_size_16">中房老龄产业发展集团</p>
+            <div style="height:25px"></div>
+            <p class="font_size_14">
+                中房集团前身为中国房地产开发集团公司,现由国务院国资委直接管理。中房老龄产业发展集团为中房集团旗下直属子公司。集团依托于央企资源，致力于成为“颐养生态地产+金融互助平台+产业聚合链条”三驾马车并驱的综合性产业发展集团，其中，金融产业以中房创投、中古基金、普乾道恒三大金融模块为主体，共同构筑中房老龄金融事业新蓝图。
+            </p>
+            <div style="height:25px"></div>           
+        </div>
+    </div>
+
+</div>*@
+@*<div class="company_infor_box2 text_align_center">
+    <div style="height:55px;"></div>
+    <p class="text_align_center font_size_30">组织架构</p>
+    <div style="height:55px;"></div>
+    <img src="~/images/helpcenter/zuzhijg.png" />
+    <div style="height:55px"></div>
+</div>*@
+<div class="company_infor_box2 ">
+    <div style="height:55px;"></div>
+    <p class="font_size_30  text_align_center">企业文化</p>
+    <div style="height:55px"></div>
+    <div class="company_infor">
+        <ul>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/qiyewenhua.png" />
+                <div style="height:30px"></div>
+                <p class="font_size_16 bold">核心内涵</p>
+                <div style="height:25px"></div>
+                <p class="font-weight">敬畏&nbsp; &nbsp;诚信&nbsp; &nbsp;和谐&nbsp; &nbsp;合作</p>
+            </li>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/qiyewenhua2.png" />
+                <div style="height:30px"></div>
+                <p class="font_size_16 bold">经营理念</p>
+                <div style="height:25px"></div>
+                <p class="font-weight">秉承国家重点央企稳健、创新精神</p>
+
+            </li>
+            <li class="text_align_center">
+                <img src="~/images/helpcenter/qiyewenhua3.png" />
+
+                <div style="height:30px"></div>
+                <p class="font_size_16 bold">价值主张</p>
+                <div style="height:25px"></div>
+                <p class="font-weight">以人为本，服务于民</p>
+
+            </li>
+            <div class="clear"></div>
+        </ul>
+
+    </div>
+    <div style="height:55px"></div>
+</div>
+<div class="company_infor_box4 white">
+    <div style="height:55px;"></div>
+    <p class="text_align_center font_size_30">发展历程</p>
+    <div style="height:55px;"></div>
+    <div class="development_path white position-relative">
+        <img src="~/images/helpcenter/jindutiao.png" class="img-margin"/>
+        <ul class="ul1">
+            <li class="text_align_center">
+                <p class="font_size_14 bold" style="padding-left:10px">2016年1月</p>
+                <div style="height:15px"></div>
+                <p>中房集团旗下首家央企互金平台中房</p>
+                <p>创投成立,总部设于江苏南京</p>
+            </li>
+            <li class="text_align_center" >
+                <p class="font_size_14 bold">2016年4月</p>
+                <div style="height:15px"></div>
+                <p>“国字号”中房创投平台正式上线，引</p>
+                <p>起业内外广泛关注</p>
+            </li>
+            <li class="text_align_center">
+                <p class="font_size_14 bold">2016年7月</p>
+                <div style="height:15px"></div>
+                <p>中房创投恒丰银行资金存管上线，快速</p>
+                <p>晋升国内银行存管平台第一梯队</p>
+            </li>
+            <div style="clear"></div>
+        </ul>
+        <ul class="ul2">
+            <li class="text_align_center">
+                <p class="font_size_14 bold" style="padding-left:45px">2017年6月</p>
+                <div style="height:15px"></div>
+                <p style="padding-left:45px">中房创投接入网贷之家数据评级系统</p>
+               
+            </li>
+            <li class="text_align_center" style="width:305px; margin-right:55px;">
+                <p class="font_size_14 bold" style="padding-left:45px">2017年4月</p>
+                <div style="height:15px"></div>
+                <p style="padding-left:45px">中房创投在南京明心学校挂牌成立</p>
+                <p style="padding-left:45px">“爱心教育实践基地”</p>
+            </li>
+            <li class="text_align_center">
+                <p class="font_size_14 bold">2016年11月</p>
+                <div style="height:15px"></div>
+                <p>中房创投走进南京明心学校，开启关爱自闭症儿童公益行动</p>
+                <p>中房创投吉祥物征名活动开启，诞生标志性萌物”智多鑫”</p>
+                <p>中房创投APP发布，正式布局移动端应用市场</p>
+            </li>
+            <div style="clear"></div>
+        </ul>
+    </div>
+</div>
+
+

@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewData["Title"] = "管理团队";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<div style="height:20px;"></div>
+
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(4);
+    })
+</script>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_20 bold">管理团队</p>
+        <div style="height:40px;"></div>
+        <div>
+            <img src="~/images/helpcenter/tianzong_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">田峰</em> &nbsp;&nbsp;&nbsp;中房创投总裁&nbsp;&nbsp;创始人</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">资深私募基金管理人，国内权威业务审核和风险监控专家，拥有20余年金融行业从业经历及</p>
+                <p class="gray line_height_24">企业管理经验，曾任大型国有金融机构部门经理、首席分析师，在证券投资、互联网金融等</p>
+                <p class="gray line_height_24">领域具有丰富的一线实践和研究经验，管理资产累计超过500亿。</p>
+                <p class="gray line_height_24">在财经专业期刊媒体上发表文章近百篇,多次被人民日报、新华社、新华日报、证券时报等主</p>
+                <p class="gray line_height_24">流媒体报道。现任中房老龄产业发展南京有限公司总裁，于2016年创立中房创投。</p>
+                <p class="gray line_height_24"></p>
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+        <div style="height:30px;"></div>
+        <div>
+            <img src="~/images/helpcenter/chengmin_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">陈敏</em> &nbsp;&nbsp;&nbsp;首席顾问</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">国家标准化管理委员会委员；中房集团常务副总裁；中房集团联合投资股份有限公司副总经</p>
+                <p class="gray line_height_24">理；中房老龄产业发展集团董事长。现任中房创投首席顾问。</p>
+
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+        <div style="height:30px;"></div>      
+        <div>
+            <img src="~/images/helpcenter/liwanli_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">李婉利</em> &nbsp;&nbsp;&nbsp;副总裁&nbsp;&nbsp;首席合规官</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">毕业于华东师范大学，硕士，中共党员，有近8年私人财富管理和资产配置相关从业经验，对</p>
+                <p class="gray line_height_24">金融行业的财务管理、风险管理、运营管理、品牌管理有丰富的实操经验和深入认识，对互联</p>
+                <p class="gray line_height_24">网+思维有独特见解。擅长风险控制，能够准确把握国家互联网相关行业政策，为企业产品合</p>
+                <p class="gray line_height_24">规发展提供战略指导。2016年加入中房创投，任副总裁。</p>
+                <p class="gray line_height_24"></p>
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+        <div style="height:30px;"></div>
+        <div>
+            <img src="~/images/helpcenter/chengning_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">陈宁</em> &nbsp;&nbsp;&nbsp;首席风险官</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">国家级金融风险控制专家；CFA 北美特许金融分析师；高级金融精算师；大型国有金融机构</p>
+                <p class="gray line_height_24">产品研发专家；著名金融投资人；曾任大型国有资产管理集团首席风控；拥有30余年金融行</p>
+                <p class="gray line_height_24">业从业经历及企业管理经验；在金融投资领域极具建树，善于资本运作。曾参与多家公司上</p>
+                <p class="gray line_height_24">市计划，并作为多项国家级金融制度改革与金融政策制定专家组成员，2016年加入中房创投</p>
+                <p class="gray line_height_24">现任首席风险官。</p>
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>      
+        <div style="height:30px;"></div>
+        <div>
+            <img src="~/images/helpcenter/jiangzy_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">姜增毅</em> &nbsp;&nbsp;&nbsp;风控总监</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">东南大学金融系本科毕业，南京大学MBA，曾任中国建设银行江苏省分行风控经理，负责</p>
+                <p class="gray line_height_24">省内中小企业风险尽调、制度设计、合规管理、预警系统开发维护、风险客户处置化解工作，</p>
+                <p class="gray line_height_24">牵头多个预警监测、风险识别及内控管理项目，拥有十年以上中小企业信贷业务风险管理和</p>
+                <p class="gray line_height_24">反欺诈实战经验。精通风险管理流程和国内金融法律法规，熟悉风险计量方法和风险缓释技</p>
+                <p class="gray line_height_24">术，善于挖掘和识别风险信号和风险特征，在金融业务风险管理方面经验丰富。2017年加入</p>
+                <p class="gray line_height_24">中房创投，任风控总监。</p>
+                <p class="gray line_height_24"></p>
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+        <div style="height:30px;"></div>
+        <div>
+            <img src="~/images/helpcenter/wqb_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">王强斌</em> &nbsp;&nbsp;&nbsp;技术总监</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">拥有一流高科技公司部门管理与项目管理经验，主攻模式识别与数据分析，在金融、数据分</p>
+                <p class="gray line_height_24">析与计算机软件等领域有着多年从业经验，参与、管理过多项模式识别与数据计算类项目开</p>
+                <p class="gray line_height_24">发。擅长复合数据统计分析及系统架构，主导构建了中房创投信息服务平台、大数据分析与</p>
+                <p class="gray line_height_24">CRM系统等。2016年加入中房创投，任技术总监。</p>
+                <p class="gray line_height_24"></p>
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+        <div style="height:30px;"></div>
+        <div>
+            <img src="~/images/helpcenter/lcl_pic.png" class="float_left" style="display:block" />
+            <div class="float_left margin_left_50">
+                <div style="height:20px;"></div>
+                <p><em class="blue font_size_22">刘春兰</em> &nbsp;&nbsp;&nbsp;财务总监</p>
+                <div style="height:30px"></div>
+                <p class="gray line_height_24">15年财务经理以上职务从业经验，精通多个领域的财务管理工作，涵盖传统金融、互联网金</p>
+                <p class="gray line_height_24">融、信息技术、农业、快消、制造和运输等行业，在金融行业全面预算管理、企业内控管理、</p>
+                <p class="gray line_height_24">作业成本管理等方面均有着丰富的工作经验。具有融资筹资、上市规划等项目经历，2016年</p>
+                <p class="gray line_height_24">加入中房创投，任财务总监。</p>
+          
+            </div>
+            <div class="clear"></div>
+            <div style="height:30px;"></div>
+            <img src="~/images/helpcenter/border_bottom_xu.png" />
+        </div>
+    </div>
+</div>
+

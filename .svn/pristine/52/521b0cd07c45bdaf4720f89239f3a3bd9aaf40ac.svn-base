@@ -1,0 +1,136 @@
+﻿@model List<ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RMyLoanPlanModel>
+@if (Model == null || Model.Count() == 0)
+{
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+}
+else
+{
+    if (ViewData["type"].ToString().Equals("0"))
+    {
+       
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span class="my_loan_name" title="@item.LoanName">@item.LoanName</span>
+                   
+                </td>
+                <td>@item.PayDate.Value.ToString("yyyy-MM-dd")</td>
+                <td>@(item.Period)期</td>
+                <td>@string.Format("{0:C}", item.PayMoney)</td>
+                <td>@string.Format("{0:C}", item.PayRate)</td>
+                <td>@string.Format("{0:C}", item.PayPrincipal)</td>
+                <td>@string.Format("{0:C}", item.PayServiceFee)</td>
+                <td>@item.CollectType</td>
+                <td>@item.CollectDate.Value.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+        <input id="TotalData0" type="hidden" value="@ViewData["TotalData"].ToString()" />
+    }
+    if (ViewData["type"].ToString().Equals("1"))
+    {
+       
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span class="my_loan_name" title="@item.LoanName">
+                        @item.LoanName
+                    </span>
+               
+                </td>
+                <td>@item.PayDate.Value.ToString("yyyy-MM-dd")</td>
+                <td>@(item.Period)期</td>
+                <td>@string.Format("{0:C}", item.PayMoney)</td>
+                <td>@string.Format("{0:C}", item.PayRate)</td>
+                <td>@string.Format("{0:C}", item.PayPrincipal)</td>
+                <td>@string.Format("{0:C}", item.PayServiceFee)</td>
+                <td>@item.CollectType</td>
+                <td>
+                    @if (item.IsUsing)
+                    {
+                        <button class="repayPlan1" disabled>还款</button>
+                    }
+                    else
+                    {
+                        <a id="repaymentBtn" href="#" onclick="repayment(@item.Id)" class="yellow font_size_12">还款</a>
+                    }
+                    
+                </td>
+            </tr>
+        }
+        <input id="TotalData1" type="hidden" value="@ViewData["TotalData"].ToString()" />
+        <script type="text/javascript">
+
+            function repayment(id) {
+                $.ajax({
+                    url: "/MyAccount/VerifyRepaymentAuth?id=" + id,
+                    success: function (data) {
+                        if (data.success) {
+                            window.location.href = "/MyAccount/RepaymentNow?id=" + id;
+                        } else {
+                            //var index = layer.alert(data.msg);
+                            $("#red_envelopes_mask").css("display", "block");
+                            $("#red_envelopes_content").css("display", "block")
+                        }
+                    }
+                });
+
+            }
+
+            //$("#repaymentBtn").click(function (id) {
+            //    $.ajax({
+            //        url: "/MyAccount/VerifyRepaymentAuth?id=" + id,
+            //        success: function (data) {
+            //            if (data.success) {
+            //                window.location.href = "MyAccount/RepaymentNow?id=" + id;
+            //            } else {
+            //                var index = layer.alert(data.msg);
+            //                setTimeout(function () {
+            //                    layer.close(index);
+            //                    $("#red_envelopes_mask").css("display", "block");
+            //                    $("#red_envelopes_content").css("display", "block")
+            //                },3000)
+            //            }
+            //        }
+            //    });
+            //});
+
+            function show() {
+
+
+            }
+        </script>
+    }
+
+    if (ViewData["type"].ToString().Equals("2"))
+    {
+        
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PayDate.Value.ToString("yyyy-MM-dd")</td>
+                <td>@(item.Period)期</td>
+                <td>@string.Format("{0:C}", item.PayMoney)</td>
+                <td>@string.Format("{0:C}", item.PayRate)</td>
+                <td>@string.Format("{0:C}", item.PayPrincipal)</td>
+                <td>@string.Format("{0:C}", item.PayServiceFee)</td>
+                <td>@item.CollectType</td>
+                <td>未结清</td>
+                @if (item.CollectDate == null)
+                {
+                    <td>/</td>
+                }
+                else
+                {
+                    <td>@item.CollectDate.Value.ToString("yyyy-MM-dd")</td>
+                }
+                <td><a href="/MyAccount/RepaymentNow?id=@(item.Id)" class="yellow font_size_12">还款</a></td>
+            </tr>
+        }
+        <input id="TotalData2" type="hidden" value="@ViewData["TotalData"].ToString()" />
+    }
+}
+

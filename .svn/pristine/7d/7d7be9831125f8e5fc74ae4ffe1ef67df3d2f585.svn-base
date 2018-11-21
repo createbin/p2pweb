@@ -1,0 +1,244 @@
+﻿@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@{
+    ViewData["Title"] = "融资管理-还款计划";
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    var lastRepays = ViewBag.LastRepay as ReturnPageData<RMyLoanPlanModel>;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        AccordionActive(2);
+    })
+</script>
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    待还款
+                </li>
+                <li>
+                    已结清
+                </li>
+              
+                <div class="clear"></div>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="my_collect_page">
+        <div class="daihuankuan">
+            <div style="height:30px;"></div>
+            @if (lastRepays == null || lastRepays.Total <= 0)
+            {
+                //无最近需要还款
+            }
+            else
+            {
+                <!--------------快速还款  strat------------>
+                <div class="daihuankuan_table">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td colspan="6">
+                                快速还款(近7天)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                还款项目
+                            </td>
+                            <td>
+                                还款期数
+                            </td>
+                            <td>
+                                应还日期
+                            </td>
+                            <td>
+                                还款总额(元)
+                            </td>
+                            <td>
+                                还款状态
+                            </td>
+                            <td>
+                                操作
+                            </td>
+                        </tr>
+                        @foreach (var lastRepay in lastRepays.PagingData.ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @(lastRepay.LoanName)
+                                </td>
+                                <td>
+                                    @(lastRepay.Period)期
+                                </td>
+                                <td>
+                                    @(lastRepay.PayDate.Value.ToString("yyyy-MM-dd"))
+                                </td>
+                                <td>
+                                    @(lastRepay.PayPrincipal+lastRepay.PayServiceFee)
+                                </td>
+                                @if (lastRepay.CollectType == "已逾期")
+                                {
+                                    <td class="red1">
+                                        @(lastRepay.CollectType)
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @(lastRepay.CollectType)
+                                    </td>
+                                }
+                                <td>
+                                    @if (!lastRepay.IsUsing)
+                                    {
+                                        <a href="javascript:void(0);" data-planid="@(lastRepay.Id)" class="blue repayPlan">还款</a>
+
+                                    }
+                                    else
+                                    {
+                                        <button class="repayPlan1" disabled>还款</button>
+                                    }
+                                </td>
+                                <!----------银行处理中时  还款按钮禁止状态----------->
+                                @*<td>
+                                    <button   class="repayPlan1" disabled>还款</button>
+                                </td>*@
+                                <!----------银行处理中时  还款按钮禁止状态----------->
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+
+            <div style="height:15px;"></div>
+            <!--------------快速还款  end------------>
+            <!--------------待还款项目 start--------->
+            <div class="daihuankuan_box" >
+                <div class="daihuankuan_title">
+                    待还款项目
+                </div>
+                <div id="waitPayPlan"></div>
+            </div>
+            <div style="height:50px;"></div>
+            <!--------------待还款项目 end--------->
+        </div>
+        <div class="yijieqing" style="display:none">
+            <div style="height:30px;"></div>
+
+            <!--------------待还款项目 start--------->
+            <div class="daihuankuan_box">
+                <div class="daihuankuan_title">
+                    已结清项目
+                </div>
+                <div id="payedPlan"></div>
+                <div style="text-align: center;margin-top:10px">
+                    <div class="pager_box">
+                        <div id="pager" class="pager_div"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="height:50px;"></div>
+            <!--------------待还款项目 end--------->
+        </div>
+        
+    </div>
+</div>
+<!-----------蒙层  start------------->
+<div id="red_envelopes_mask" class="red_envelopes_mask" style="display:none"></div>
+<!-----------蒙层  end------------->
+<!------------授权金额不足 弹框 start-------->
+<div id="red_envelopes_content" class="shouquan_money_box" style="display:none">
+    <div class="invest_tips_header1">
+        <p class="text_align_center  line_height_60 ">
+            <img src="~/images/shouquan_warning.png" style="padding-top:30px"/>
+        </p>
+        <button class="close_windown1" id="closeInvestTips" style="top:27px"></button>
+    </div>
+    <div style="height:40px"></div>
+    <p class="text_align_center font_size_16"style="width:60%; margin:0 auto">
+        授权金额不足，无法进行还款操作，请提高缴费和还款的授权金额，再进行还款操作。
+    </p>
+    <div style="height:30px;"></div>
+    <a href="/Enterprise/CompanyAccount/EnterpriseAManagement" class="gotoshouquan">
+        前往提高授权金额
+    </a>
+</div> 
+<!------------授权金额不足 弹框 end-------->
+
+<script>
+    var total = 0;
+    $(function() {
+        $('#waitPayPlan').load("_PartialWaitPayLoan");
+        $('#payedPlan').load("_PartialPayedLoan", { page: 1, pageSize: 5 }, function() {
+            total = $('#total').val();
+            setPager(total);
+        });
+    });
+    var isFisrt = 0;
+
+    $(".my_assets_title ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        var index = $(this).index();
+        $(".my_collect_page > div").eq(index).show().siblings().hide();
+    });
+    $('.repayPlan').click(function () {
+        var loanId = $(this).data("planid");
+        $.ajax({
+            url: "VerifyRepaymentAuth?id=" + loanId,
+            success: function (data) {
+                console.log(data);
+                if (data.success) {
+                    location.href = "EnterpriseRepayment?loanId=" + loanId;
+                    //window.location.href = "/MyAccount/RepaymentNow?id=" + id;
+                } else {
+                    //var index = layer.alert(data.msg);
+                    setTimeout(function () {
+                        //layer.close(index);
+                        $("#red_envelopes_mask").css("display", "block");
+                        $("#red_envelopes_content").css("display", "block")
+                    }, 3000);
+                }
+            }
+        });
+
+        
+        
+    });
+
+    $("#closeInvestTips").click(function () { 
+        $(".red_envelopes_mask").hide();
+        $(".shouquan_money_box").hide();
+    })
+
+    function pageCallback(index, jq) {
+        initTable(index);
+    }
+    function setPager(totalpage) {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: totalpage,
+            showData: 5,
+            coping: true,
+            prevContent: '<',
+            nextContent: '>'
+        });
+    }
+    function initTable(index) {
+        $('#payedPlan').load("_PartialPayedLoan", { page: index.getCurrent(), pageSize: 5});
+    }
+</script>
+

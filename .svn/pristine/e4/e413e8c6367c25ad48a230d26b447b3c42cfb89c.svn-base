@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewData["Title"] = "新手指引";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<script>
+    $(function () {
+        navActive(3);
+    })
+</script>
+
+<div class="newhand_banner">
+    <img src="~/images/banner/new_hand_banner_01.jpg" class="img-responsive" />
+    <img src="~/images/banner/new_hand_banner_02.jpg" class="img-responsive" />
+    <img src="~/images/banner/new_hand_banner_03.jpg" class="img-responsive" />
+    <img src="~/images/banner/new_hand_banner_04.jpg" class="img-responsive" />
+</div>
+<div style="height:50px"></div>
+<div class="select_zfct text_align_center">
+    <span class="blue5"><em class="blue6 font_size_50 padding_top_10 margin_right_20" style="vertical-align:-9px">◆</em><em class="font_size_30 bold">为什么选择</em><em class="font_size_40 bold">中房创投</em><em class="blue6 font_size_50 padding_top_10 margin_left_20" style="vertical-align:-9px">◆</em></span>
+    <div style="height:45px"></div>
+    <dl>
+        <dd>
+            <img src="~/images/newhand/newhand_circle1.png" class="img-responsive" />
+            <div style="height:15px"></div>
+            <p class="blue5 font_size_18 text_align_center bold">低门槛&nbsp;&nbsp;高收益</p>
+            <div style="height:10px"></div>
+            <p class="font_size_14 text_align_center">100元起投</p>
+            <p class="font_size_14 text_align_center">预期收益高于银行出借产品3倍</p>
+        </dd>
+        <dd>
+            <img src="~/images/newhand/newhand_circle2.png" class="img-responsive" />
+            <div style="height:15px"></div>
+            <p class="blue5 font_size_18 text_align_center bold">资金存管&nbsp;&nbsp;风险保障</p>
+            <div style="height:10px"></div>
+            <p class="font_size_14 text_align_center">银行资金存管</p>
+            <p class="font_size_14 text_align_center">用户资金第三方独立托管</p>
+        </dd>
+        <dd>
+            <img src="~/images/newhand/newhand_circle3.png" class="img-responsive" />
+            <div style="height:15px"></div>
+            <p class="blue5 font_size_18 text_align_center bold">真实债权&nbsp;&nbsp;信息公开</p>
+            <div style="height:10px"></div>
+            <p class="font_size_14 text_align_center">真实债权&nbsp;&nbsp;信息公开 </p>
+            <p class="font_size_14 text_align_center">资金去向清晰透明</p>
+        </dd>
+        <dd>
+            <img src="~/images/newhand/newhand_circle4.png" class="img-responsive" />
+            <div style="height:15px"></div>
+            <p class="blue5 font_size_18 text_align_center bold">多重风控保障</p>
+            <div style="height:10px"></div>
+            <p class="font_size_14 text_align_center">严格的项目风控</p>
+            <p class="font_size_14 text_align_center">多重的还款保证</p>
+        </dd>
+        <dd>
+            <img src="~/images/newhand/newhand_circle5.png" class="img-responsive" />
+            <div style="height:15px"></div>
+            <p class="blue5 font_size_18 text_align_center bold">优质资产</p>
+            <div style="height:10px"></div>
+            <p class="font_size_14 text_align_center">安全可靠</p>
+            <p class="font_size_14 text_align_center">收益稳健</p>
+        </dd>
+        <div class="clear"></div>
+    </dl>
+</div>
+<div style="height:50px;"></div>
+<div class="companystrength text_align_center">
+    <span class="blue5"><em class="blue6 font_size_50 padding_top_10 margin_right_20" style="vertical-align:-9px">◆</em><em class="font_size_30 bold">企业实力</em><em class="blue6 font_size_50 padding_top_10 margin_left_20" style="vertical-align:-9px">◆</em></span>
+    <div style="height:45px"></div>
+    <dl>
+        <dd>
+            <img src="~/images/newhand/logo_zf.png" />
+            <div style="height:22px"></div>
+            <p style="border-bottom:1px solid #d1d3d3"></p>
+            <div style="height:25px"></div>
+            <p class="font_size_16">实力股东</p>
+            <div style="height:5px;"></div>
+            <p class="font_size_16">中房集团旗下重点单位</p>
+        </dd>
+        <dd>
+            <div style="height:40px"></div>
+            <img src="~/images/newhand/logo_gzyh.png" />
+            <div style="height:22px"></div>
+            <p style="border-bottom:1px solid #d1d3d3"></p>
+            <div style="height:40px"></div>
+            <p class="font_size_16">银行资金存管</p>
+           
+        </dd>
+        <dd class="margin-right-none">
+            <img src="~/images/newhand/logo_djhd.png" />
+            <div style="height:35px"></div>
+            <p style="border-bottom:1px solid #d1d3d3"></p>
+            <div style="height:25px"></div>
+            <p class="font_size_16">德恒律师事务所</p>
+            <div style="height:5px;"></div>
+            <p class="font_size_16">DeHeng Law Offices</p>
+        </dd>
+        <div class="clear"></div>
+    </dl>
+    <div style="height:70px"></div>
+   
+  
+</div>
+<div style="height:40px;"></div>
+<div class="four_steps_open text_align_center">
+    <span class="blue5"><em class="blue6 font_size_50 padding_top_10 margin_right_20" style="vertical-align:-9px">◆</em><em class="font_size_30 bold">四步开启稳健理财</em><em class="blue6 font_size_50 padding_top_10 margin_left_20" style="vertical-align:-9px">◆</em></span>
+    <div style="height:40px"></div>
+    <dl>
+        <dd>
+            <img src="~/images/newhand/icon_1.png" class="img-margin" />
+            <p class="margin_top_15 text_align_center margin_top_15 font_size_16">免费注册账号</p>
+        </dd>
+        <dd>
+            <div style="height:70px;"></div>
+            <img src="~/images/newhand/right_arrow.png" />
+        </dd>
+        <dd>
+            <img src="~/images/newhand/icon_2.png" class="img-margin" />
+          
+            <p class="margin_top_15 text_align_center margin_top_15 font_size_16">绑卡实名认证后进行充值</p>
+        </dd>
+        <dd>
+            <div style="height:70px;"></div>
+            <img src="~/images/newhand/right_arrow.png" />
+        </dd>
+        <dd>
+            <img src="~/images/newhand/icon_3.png" class="img-margin" />           
+            <p class="margin_top_15 text_align_center margin_top_15 font_size_16">选择心仪项目进行投资</p>
+        </dd>
+        <dd>
+            <div style="height:70px;"></div>
+            <img src="~/images/newhand/right_arrow.png" />
+        </dd>
+        <dd class="margin_right_none">
+            <img src="~/images/newhand/icon_4.png" class="img-margin" />
+            <p class="margin_top_15 text_align_center margin_top_15 font_size_16">收益到账即可提现</p>
+        </dd>
+        <div class="clear"></div>
+    </dl>
+
+</div>
+<div style="height:70px"></div>
+<div class="newhand_welfare_box">
+    
+    <div class="newhand_welfare text_align_center">
+        <span class="blue5"><em class="blue6 font_size_50 padding_top_10 margin_right_20" style="vertical-align:-9px">◆</em><em class="font_size_30 bold">新手福利</em><em class="blue6 font_size_50 padding_top_10 margin_left_20" style="vertical-align:-9px">◆</em></span>
+        <div style="height:30px;"></div>
+        <dl>           
+              <dd>
+                   <img src="~/images/newhand/img_hongbao.png" />                   
+              </dd>
+            
+              <dd>
+                   <img src="~/images/newhand/img_hongbao2.png" />                  
+               </dd>            
+            <div class="clear"></div>
+        </dl>
+        <div style="height:20px;"></div>
+        <div style="text-align:center">
+            <a href="/Customer/Register" class="newhandguide_a">
+                立即领取
+            </a>
+        </div>
+      
+        <div style="height:50px;"></div>
+    </div>
+</div>

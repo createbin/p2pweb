@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewData["Title"] = "信息披露-公司简介";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(0);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <di class="business_box">
+        <p class="text_align_center font_size_24 bold">公司简介</p>
+        <div style="height:40px;"></div>
+        <div class="companyinfo_bg1">
+            <div style="height:40px;"></div>
+            <p class="text_align_center font_size_18 bold">工匠之心 守护财富</p>
+            <div style="height:30px;"></div>
+            <p>
+                中房创投成立于2016年，总部位于江苏南京，运营主体为南京中乾惠诚投资管理有限公司，是中房老龄产业发展集团旗下的网络借贷信息中介平台，依托母公司“颐养生态地产+金融互助平台+产业聚合链条”的综合性产业资源，为中小微企业和个人用户提供一站式金融信息服务。
+            </p>
+            <div style="height:30px;"></div>
+            <p>
+                中房创投自创立以来，承诺以工匠之心守护客户的财富与幸福，签订银行资金存管协议，落实银行存管属地化，推动行业安全规范化。始终致力于用最安全的风控保障，最前沿的信息技术，最高效的运营能力推动平台稳步、合规、安全发展。
+            </p>
+            <div style="height:35px;"></div>
+            <ul>
+                <li>
+                    <img src="~/images/public/company_circle1.png" />
+                    <div class="float_right">
+                        <p class="font_size_18 bold">
+                            拥抱监管 合规运营
+                        </p>
+                        <div style="height:15px;"></div>
+                        <p>
+                            中房创投自觉遵守国家金融监管法律法规，严格遵守地方政府出台的各项规章制度，始终拥抱监管，推动平台合规运营。
+                        </p>
+                    </div>
+
+                </li>
+                <li>
+                    <img src="~/images/public/company_circle2.png" />
+                    <div class="float_right">
+                        <p class="font_size_18 bold">
+                            工匠之心 公益之心
+                        </p>
+                        <div style="height:15px;"></div>
+                        <p>
+                            中房创投坚持发扬金融业“工匠精神”，追求做专、做精、做细、做实的“匠气”作风；秉承认真、敬业、钻研、执着的“匠人”精神。热心社会公益，积极承担社会责任。
+                        </p>
+                    </div>
+
+                </li>
+                <li>
+                    <img src="~/images/public/company_circle3.png" />
+                    <div class="float_right">
+                        <p class="font_size_18 bold">
+                            信息透明 阳光成长
+                        </p>
+                        <div style="height:15px;"></div>
+                        <p>
+                            多渠道、多角度，定期披露平台运营数据，明确公示费用标准、借款人信息、风险提示等，始终致力于将平台置于透明化、阳光化的市场环境中。
+                        </p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div style="height:60px;"></div>
+        <p class="text_align_center font_size_24 bold">发展历程</p>
+        <div style="height:50px;"></div>
+        <div class="companyinfo_bg2">
+            <div style="height:45px;"></div>
+            <div class="company_course">
+                <section>
+                    <div id="time_axis" class="white">
+
+
+                        <div id="jingzhan">
+                            <div class="time position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2016年01月</em><em class="margin_left_50 position-absolute-em2">中房集团旗下首家央企互金平台中房创投注册成立，总部设于江苏南京。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2016年04月</em><em class="margin_left_50 position-absolute-em2">"国字号"中房创投平台正式上线，引起业内外广泛关注。</em></div>
+                            </div>
+
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2016年07月</em><em class="margin_left_50 position-absolute-em2">中房创投恒丰银行资金存管上线，快速晋升国内银行存管平台第一梯队。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3">
+                                    <em class="bold">2016年11月</em><em class="margin_left_50 position-absolute-em1">
+                                        中房创投走进南京明心学校，开启关爱自闭症儿童公益行动
+                                        中房创投吉祥物征名活动开启，诞生标志性萌物”智多鑫”
+                                        中房创投APP发布，正式布局移动端应用市场。
+                                    </em>
+                                </div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2017年04月</em><em class="margin_left_50 position-absolute-em2">中房创投在南京明心学校挂牌成立“爱心教育实践基地”。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2017年06月</em><em class="margin_left_50 position-absolute-em1">中房创投荣升为中国中小商业企业协会理事单位，并受邀出席北京“一带一路”沿线国家中小企业合作论坛。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2017年06月</em><em class="margin_left_50 position-absolute-em1">中房创投联合阿依土豆公益服务中心共同举办“2012~2017阿依土豆凉山支教分享会”，宣布建立员工义务支教长效机制。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2017年11月</em><em class="margin_left_50 position-absolute-em1">中房创投受邀参加第九届金融科技与支付创新2017年度盛会，探讨“网贷平台良性发展之道”。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2017年12月</em><em class="margin_left_50 position-absolute-em1">中房创投与渤海银行签订合作协议，落实银行存管属地化。中房创投加入江苏省互金协会，安全合规再升级。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2018年03月</em><em class="margin_left_50 position-absolute-em1">中房创投联合南京市六合区残疾人联合会共同举办“拥抱大自然，同在星空下”世界自闭症宣传日主题活动。</em></div>
+                            </div>
+                            <div class="time time-margin-top50 position-relative">
+                                <div class="t_1"></div>
+                                <div class="t_2"></div>
+                                <div class="t_3"><em class="bold">2018年06月</em><em class="margin_left_50 position-absolute-em1">中房创投总裁田峰应邀参加2018世界中小企业大会暨第二届“一带一路”沿线国家中小企业合作论坛。</em></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div style="height:45px;"></div>
+        </div>
+    </di>
+</div>
+

@@ -1,0 +1,73 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.InvestModelReturns
+<div class="invest_detail_top_right float_right">
+    <div class="zfct_form_group margin_bottom_30 font_size_13">
+        <label class="width100 gray ">账户余额</label>
+        @if (ViewBag.IsLogin)
+        {
+            <!---------登录后显示余额-------->
+            <label class="width150">            
+                ¥&nbsp;<em class="" id="remainInvestMoney">@(ViewBag.RemainMoney)</em>&nbsp;元            
+            </label>
+            <!---------登录后显示余额-------->
+            <!--------登录后显示立即充值  start---------->
+            <a href="" class="recharge_now" id="recharge_now">
+               立即充值
+            </a>
+            <!--------登录后显示立即充值  end---------->
+        }
+        else
+        {
+            <label class="width150">
+                <em>登录后显示</em>            
+            </label>
+            <button class="login_now" id="recharge_now">
+                立即登录
+            </button>
+        }
+    </div>
+    <div class="zfct_form_group margin_bottom_30 font_size_13">
+        <label class="width100 gray ">投资金额</label>
+        <label class="width150 red1 bold">
+            ¥&nbsp;<em class="font_size_15" id="nInvestMoney"></em>&nbsp;元
+        </label>
+    </div>
+    <div class="zfct_form_group margin_bottom_35 font_size_13">
+        <label class="width100 gray ">预期收益</label>
+        <label class="width150 red1 bold">
+            ¥&nbsp;<em class="font_size_15" id="intrest"></em>&nbsp;元
+        </label>
+    </div>
+    <div class="zfct_form_group margin_bottom_30 position-relative">
+        <label class="width100 gray ">投资份数</label>
+        <span class="width115 position-relative" style="display:inline-block">
+            <input type="text" class="input_num" id="investMoney" value="1" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
+            <em class="position_fen">份</em>
+            <em class="position_jian">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </em>
+            <em class="position_jia">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </em>
+        </span>
+        
+        <span class="allmoney" id="moneyAllIn">
+            全额
+        </span>
+    </div>
+    <div class="zfct_form_group margin_bottom_35 position-relative">
+        <label class="width100 gray ">选择优惠</label>
+        <input type="text" id="redUse" name="castmoney" value="@(!ViewBag.IsLogin ? "请登录":ViewBag.RedCount>0?"输入金额后选择红包":"无可用红包")" class="cast_input_type cast_click_input" style="cursor:pointer;pointer-events:auto" />
+        <i class="icon iconfont position_down" style="pointer-events:none">&#xea33;</i>
+    </div>
+    <div class="zfct_form_group">
+        <a href="javascript:viod(0);" class="invest_now" id="invest" style="background:#fd9940!important">
+            立即投资
+        </a>
+    </div>
+    <div class="zfct_form_group margin_bottom_15">
+        <div class="checkbox checkbox-info checkbox-circle ">            
+            <em class="gray1">投资即表示接受&nbsp;<font class="gray2 bottom_line">隐私政策</font>&nbsp;<a href="javascript:void(0);" class="gray1" onclick="javascript:OpenWindow('/TermsPrivacy/PrivacyPolicy', 800, 500, true) ">(阅读)</a></em>
+        </div>
+    </div>
+    
+</div>

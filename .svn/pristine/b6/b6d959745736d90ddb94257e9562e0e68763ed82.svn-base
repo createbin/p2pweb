@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewData["Title"] = "2018年4月份运营报告";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+<div class="report201804_banner">
+   
+</div>
+<div class="report_box">
+    <p>
+        当四月轻扣大门而来，时间紧跟着四季的脚步，一朝一夕皆是春的气息，带着迷人与芬芳，溢满于鼻息之间，举手投足都是春的眷恋。中房创投在四月的春风里，正踏着稳健的步伐，向合规备案一步步迈进。
+    </p>
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2">
+    <img src="~/images/activity/report201804/report_title1.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <img src="~/images/activity/report201804/report_echart1.png" class="img-margin" />
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2">
+    <img src="~/images/activity/report201804/report_title2.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <img src="~/images/activity/report201804/report_echart2.png" class="img-margin" />
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2">
+    <img src="~/images/activity/report201804/report_title3.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <img src="~/images/activity/report201804/report_echart3.png" class="img-margin" />
+</div>
+<div style="height:15px;"></div>
+<div class="report_box4">
+    <img src="~/images/activity/report201804/report_title4.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <ul>
+        <li style="width:45%">
+            <img src="~/images/activity/report201803/female.png" class="img-margin" />
+            <p class="font_size_22 margin_top_15 text_align_center">男性投资人数占比：31.51%</p>
+            <div style="height:35px;"></div>
+            <img src="~/images/activity/report201803/male.png" class="img-margin" />
+            <p class="font_size_22 margin_top_15 text_align_center">女性投资人数占比：68.49%</p>
+        </li>
+        <li style="width:55%">
+            <img src="~/images/activity/report201804/report_echart4.png" class="img-margin" />
+        </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2">
+    <img src="~/images/activity/report201804/report_title5.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <img src="~/images/activity/report201804/report_echart5.png" class="img-margin" />
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2018">
+    <dl class="dl_xingzuo">
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_tiancheng.png" class="img-margin" />
+            <div style="height:25px;"></div>
+            <p class="text_align_center">天秤座14人</p>
+            <div style="height:15px;"></div>
+            <p class="text_align_center">
+                18.18%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_shizi.png" class="img-margin" />
+            <div style="height:25px;"></div>
+            <p class="text_align_center">狮子座9人</p>
+            <div style="height:15px;"></div>
+            <p class="text_align_center">
+                12.33%
+            </p>
+        </dd>
+        <div class="clear"></div>
+    </dl>
+    <div style="height:65px;"></div>
+    <dl class="dl_xingzuo1">
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_chunv.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">处女座5人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_mojie.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">摩羯座6个</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_sheshou.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">射手座6人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_shuangyu.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">双鱼座6人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_shuiping.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">水瓶座6人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_tianxie.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">天蝎座6人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                8.22%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_jinniu.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">金牛座4人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                5.48%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_juxie.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">巨蟹座4人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                5.48%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_baiyang.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">白羊座3人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                4.11%
+            </p>
+        </dd>
+        <dd>
+            <img src="~/images/activity/report201804/xingzuo_shuangzi.png" class="img-margin" />
+            <div style="height:15px;"></div>
+            <p class="text_align_center">双子座3人</p>
+            <div style="height:5px;"></div>
+            <p class="text_align_center">
+                4.11%
+            </p>
+        </dd>
+        <div class="clear"></div>
+    </dl>
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2">
+    <img src="~/images/activity/report201804/report_title7.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <img src="~/images/activity/report201804/report_echart6.png" class="img-margin" />
+</div>
+<div style="height:15px;"></div>
+<div class="report_box2018">
+    <img src="~/images/activity/report201802/report_title8.png" class="img-margin" />
+    <div style="height:50px;"></div>
+    <ul>
+        <li>
+            <img src="~/images/activity/report201802/report_icon1.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                26
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                处理疑难问题
+            </p>
+        </li>
+        <li>
+            <img src="~/images/activity/report201802/report_icon2.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                253
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                微信咨询
+            </p>
+        </li>
+        <li>
+            <img src="~/images/activity/report201802/report_icon3.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                52
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                接听客服电话
+            </p>
+        </li>
+        <li>
+            <img src="~/images/activity/report201802/report_icon4.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                0
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                回复客服邮件
+            </p>
+        </li>
+        <li>
+            <img src="~/images/activity/report201802/report_icon5.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                3
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                回复并处理后台问题
+            </p>
+        </li>
+        <li>
+            <img src="~/images/activity/report201802/report_icon6.png" class="img-margin" />
+            <p class="font_size_24 bold text_align_center gray1 margin_top_25">
+                2
+            </p>
+            <p class="font_size_15 text_align_center margin_top_10">
+                受理在线咨询
+            </p>
+        </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:15px"></div>
+<div class="report2018_foot1">
+    <div class="report_box" style="margin-top:0px;">
+        <p>
+            人生的路，走走停停，不与春风诉别离，不与百花争艳，让花开的声音，伴着恬淡的心绪，中房创投以更加合规、安全、透明的姿态陪您走过每一天。
+        </p>
+    </div>
+</div>
+
+
+

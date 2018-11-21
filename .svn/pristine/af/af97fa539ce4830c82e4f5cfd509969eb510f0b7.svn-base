@@ -1,0 +1,344 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.Promotion
+@{
+    ViewData["Title"] = "帮助中心列表";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    var register = ViewBag.Register as List<NewsDetail>;
+    var bind = ViewBag.Bind as List<NewsDetail>;
+    var login = ViewBag.Login as List<NewsDetail>;
+    var pwdAndSafe = ViewBag.PwdAndSafe as List<NewsDetail>;
+    var account = ViewBag.Account as List<NewsDetail>;
+    var recharge = ViewBag.Recharge as List<NewsDetail>;
+    var invest = ViewBag.Invest as List<NewsDetail>;
+    var cash = ViewBag.Cash as List<NewsDetail>;
+    var payment = ViewBag.Payment as List<NewsDetail>;
+    var debt = ViewBag.Debt as List<NewsDetail>;
+    var red = ViewBag.Red as List<NewsDetail>;
+    var fee = ViewBag.Fee as List<NewsDetail>;
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+<div style="height:30px"></div>
+<div class="zfct_helppage">
+    <span><a href="/Home/Index">首页</a>&nbsp;>&nbsp;<a href="/HelpCenter/Index">帮助中心</a>&nbsp;>&nbsp;帮助中心列表</span>
+    <div style="height:30px;"></div>
+    <div class="helpcenter_box">
+        <ul class="helpcenter_tab">
+            <li class="active" id="register">注册</li>
+            <li id="bind">绑定</li>
+            <li id="login">登录</li>
+            <li id="pwdAndSafe">密码与安全</li>
+            <li id="account">开户</li>
+            <li id="recharge">充值</li>
+            <li id="invest">投资</li>
+            <li id="cash">提现</li>
+            <li id="payment">回款</li>
+            <li id="debt">债权转让</li>
+            <li id="red">红包</li>
+            <li id="fee">收费标准</li>
+        </ul>
+        <div class="helpcenter_content">
+            <div class="">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">注册</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (register != null)
+                    {
+                        for (int i = 0; i < register.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@register.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(register.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">绑定</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (bind!=null)
+                    {
+                        for (int i = 0; i < bind.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@bind.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon">
+                                @Html.Raw(bind.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">登录</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (login != null)
+                    {
+                        for (int i = 0; i < login.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@login.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(login.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">密码与安全</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (pwdAndSafe != null)
+                    {
+                        for (int i = 0; i < pwdAndSafe.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@pwdAndSafe.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(pwdAndSafe.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">开户</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (account != null)
+                    {
+                        for (int i = 0; i < account.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@account.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(account.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">充值</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (recharge != null)
+                    {
+                        for (int i = 0; i < recharge.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@recharge.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(recharge.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">投资</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (invest != null)
+                    {
+                        for (int i = 0; i < invest.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@invest.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(invest.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">提现</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (cash != null)
+                    {
+                        for (int i = 0; i < cash.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@cash.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(cash.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">回款</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (payment != null)
+                    {
+                        for (int i = 0; i < payment.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@payment.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(payment.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">债权转让</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (debt != null)
+                    {
+                        for (int i = 0; i < debt.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@debt.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(debt.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">红包</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (red != null)
+                    {
+                        for (int i = 0; i < red.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@red.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(red.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="display-none">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">收费标准</span>
+                </div>
+                <div class="helpcenter_text">
+                    @if (fee != null)
+                    {
+                        for (int i = 0; i < fee.Count; i++)
+                        {
+                            <div class="helpcenter_title">
+                                <em class="v"></em>@fee.ElementAt(i).Title
+                            </div>
+                            <div class="helpcenter_vcon ">
+                                @Html.Raw(fee.ElementAt(i).Short)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div style="height:30px;"></div>
+
+<script type="text/javascript">
+    function Tab(tab) {
+        $(".v").each(function () {
+            $(this).removeClass("v02").addClass("v01");
+        });
+        $(".helpcenter_title ").each(function () {
+            $(this).removeClass("helpcenter_titleblue");
+        });
+        $(".helpcenter_vcon ").css("display", "none");
+        var $div_li = $(" ul.helpcenter_tab li");
+        var index = $div_li.index($(tab));
+        $(tab).addClass("active")
+            .siblings().removeClass("active");
+
+        $("div.helpcenter_content > div")
+            .eq(index).show()
+            .siblings().hide();
+    };
+    Tab(@Html.Raw(ViewBag.Tab));
+</script>
+
+<script>
+    $(function () {
+        //菜单隐藏展开
+        var tabs_i = -1;
+        $('.helpcenter_title').click(function () {
+            var _self = $(this);
+            var j = $('.helpcenter_title').index(_self);
+            if (tabs_i == j) return false; tabs_i = j;
+            $('.helpcenter_title  em.v').each(function (e) {
+                if (e == tabs_i) {
+                    $('em.v', _self).removeClass('v01').addClass('v02');
+                    $(this).parent().addClass("helpcenter_titleblue");
+                } else {
+                    $(this).removeClass('v02').addClass('v01');
+                    $(this).parent().removeClass("helpcenter_titleblue");
+                }
+            });
+            $('.helpcenter_vcon').slideUp().eq(tabs_i).slideDown();
+        });
+        var $div_li = $(" ul.helpcenter_tab li");
+        $div_li.click(function () {
+            $(this).addClass("active")
+                .siblings().removeClass("active");
+            var index = $div_li.index(this);
+            $("div.helpcenter_content > div")
+                .eq(index).show()
+                .siblings().hide();
+        }).hover(function () {
+            $(this).addClass("hover");
+        },
+            function () {
+                $(this).removeClass("hover");
+            });
+    })
+</script>
+@if (string.IsNullOrEmpty(ViewBag.Tab))
+{
+    <script type="text/javascript">
+        $("div.helpcenter_content > div")
+            .eq(0).show()
+            .siblings().hide();
+    </script>
+}
+
+
+

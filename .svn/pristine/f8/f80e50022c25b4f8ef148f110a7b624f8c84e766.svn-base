@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewData["Title"] = "债权转让";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {background: #f0f0f0;}
+</style>
+
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(5);
+    })
+</script>
+@if (!string.IsNullOrEmpty(ViewBag.msg))
+{
+    <script>
+        layer.alert("@ViewBag.msg");
+    </script>
+}
+
+<input type="hidden" id="maxRate" value="100" />
+<input type="hidden" id="minRate" value="90" />
+<div style="height:20px;"></div>
+<div class="zfct_investmentlist float_right">
+
+    <div class="invest_table">
+        <div class="my_assets_title">
+            <span class="font_size_16 font-weight">债权转让</span>
+        </div>
+        <div class="my_assets_tab">
+            <ul>
+                <li class="selected">可转让</li>
+                <li>转出中</li>
+                <li>已转让</li>
+                <li>已转入</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="my_assets_tab_box">
+                <div class="my_assets_tab_box1">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:120px">项目名称</th>
+                                <th>期数</th>
+                                <th>下个还款日</th>
+                                <th>年利率</th>
+                                <th>待收本息</th>
+                                <th>可转份额</th>
+                                <th>折让率</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transfer_can">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <div class="my_assets_tab_box1 display-none">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:120px">项目名称</th>
+                                <th>剩余期数</th>
+                                <th >可转份额</th>
+                                <th >折让率</th>
+                                <th >手续费</th>
+                                <th >转让价格</th>
+                                <th>年化收益率</th>
+                                <th>认购债权</th>
+                                <th>认购进度</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transfer_tender">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="my_assets_tab_box1 display-none">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:120px">项目名称</th>
+                                <th>剩余期数</th>
+                                <th>可转份额</th>
+                                <th>折让率</th>
+                                <th>手续费</th>
+                                <th>转让价格</th>
+                                <th>年化收益率</th>
+                                <th>认购债权</th>
+                                <th>认购进度</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transfer_tebdered">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="my_assets_tab_box1 display-none">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="">
+                                <th style="width:120px">项目名称</th>
+                                <th>剩余期数</th>
+                                <th>转让债权</th>
+                                <th>折让率</th>
+                                <th>年化收益率</th>
+                                <th>认购债权</th>
+                                <th>认购进度</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transfer_settled">
+                            <tr><td align="center" colspan="99"><img src="~/images/loading.gif" alt="loading" /></td></tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center;margin-top:10px">
+                <div class="pager_box">
+                    <div id="pager" class="pager_div"></div>
+                </div>
+            </div>
+            <div class="margin_top_20 font_size_12 gray1">
+                <p>债权转让规则:</p>
+                <p>1、投资人持有标的满30个自然日方可发起转让，标的还款期（还息或者还本）前后3个自然日不可转让，距离最后一次还本日期前14个自然日内不可转让</p>
+                <p>2、单个投资人同一时间最多可进行1笔债权转让</p>
+                <p>3、标的折让率：折让后本金最低不可低于原本金的9折。(举例：转让本金10000元，如果设置折让率98%，则转出价格为9800元，转让后转让人实际可得金额为9800元。)</p>
+                <p>4、债权转让手续费：平台收取债权转出人的管理费用，收费标准：转让本金*0.5%。在债权转让成功后扣除，债权转让不成功则不收费。
+举例：转让本金10000元，转让成功后，平台会扣除10000元*0.5%=50元的管理费。</p>
+                <p>债权转让时间(债权转让时间为7天，如7天内未满标，则转让失败，可再次发起转让。)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="openaccount display-none" id="openAccount">
+    <div class="position-relative">
+        <img src="~/images/zqzr.png" width="70" height="59" class="img-responsive img-margin" style="margin-top:15px;" />
+        <div style="height:20px"></div>       
+        <p class="font_size_14 " style="width:250px; margin:0 auto">债权本金<em class="float_right gray1 font_size_13 text_align_center" style="width:150px;"></em></p>
+        <p class="font_size_14 margin_top_20"style="width:250px; margin:0 auto">转让金额<em class="float_right gray1 font_size_13 text_align_center " style="width:150px;"></em></p>
+        <p class="font_size_14 margin_top_20 "style="width:250px; margin:0 auto">实际到账金额<text class="float_right font_size_13 gray1 text_align_center " style="width:150px;"><em class=""></em>(手续费<em></em>)</text></p>
+        <div style="height:40px;"></div>
+        <div class="zfct_form_group">
+            <button id="transfer" class="open_account margin_left_20 margin_right_15" style="cursor:pointer">
+                确认转让
+            </button>
+            <button class="cancel_account margin_right_20" onclick="$('#openAccount').hide();" style="cursor:pointer">
+                取消转让
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var type = 3;
+    $(function () {
+
+        var $div_li = $("div.my_assets_tab ul li");
+        $div_li.click(function () {
+            $(this).addClass("selected")
+                .siblings().removeClass("selected");
+            var index = $div_li.index(this);
+            if (index == 0) {
+                type = 3;
+                $("#transfer_can").load("/MyAccount/ClaimsTransferData", { Type: type }, function (data) {
+                    var totalpage = $("#TotalData3").val();
+                    setPager(totalpage);
+                });
+            }
+            if (index == 1) {
+                type = 0;
+                $("#transfer_tender").load("/MyAccount/ClaimsTransferData", { Type: type }, function (data) {
+                    var totalpage = $("#TotalData0").val();
+                    setPager(totalpage);
+                });
+            }
+            if (index == 2 && !$("#transfer_tebdered").data("isLoad")) {
+                type = 1;
+                $("#transfer_tebdered").load("/MyAccount/ClaimsTransferData", { Type: type }, function (data) {
+                    var totalpage = $("#TotalData1").val();
+                    setPager(totalpage);
+                });
+            }
+            if (index == 3 && !$("#transfer_settled").data("isLoad")) {
+                type = 2;
+                $("#transfer_settled").load("/MyAccount/ClaimsTransferData", { Type: type }, function (data) {
+                    var totalpage = $("#TotalData2").val();
+                    setPager(totalpage);
+                });
+            }
+            $("div.my_assets_tab_box > div")
+                .eq(index).show()
+                .siblings().hide();
+        }).hover(function () {
+            $(this).addClass("hover");
+        }, function () {
+            $(this).removeClass("hover");
+            });
+        $div_li.eq(@ViewBag.TabId).trigger("click");
+    });
+    function pageCallback(index, jq) {
+        initTable(index);
+    }
+
+    function initTable(index) {
+        if (type == 0) {
+            $("#transfer_tender").load("/MyAccount/ClaimsTransferData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+        }
+        if (type == 1) {
+            $("#transfer_tebdered").load("/MyAccount/ClaimsTransferData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+        }
+        if (type == 2) {
+            $("#transfer_settled").load("/MyAccount/ClaimsTransferData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+        }
+        if (type == 3) {
+            $("#transfer_can").load("/MyAccount/ClaimsTransferData", { Page: index.getCurrent(), PageSize: 5, Type: type });
+        }
+
+    }
+
+    function setPager(totalpage) {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: totalpage,
+            showData: 5,
+            coping: true,
+            prevContent: '<',
+            nextContent: '>'
+        });
+    }
+    function DownInvestFile(id) {
+        $.post("/MyAccount/InvesterFile", { id: id }, function (result) {
+            if (result.success) {
+                newWin(result.msg);
+            } else {
+                layer.alert(result.msg);
+            }
+        });
+    }
+
+    function newWin(url) {
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('style', 'display:none');
+        a.setAttribute('target', '_blank');
+        document.body.appendChild(a);
+        a.click();
+        a.parentNode.removeChild(a);
+    } 
+    </script>
+
+<script>
+    $(function () {
+        var minRate = $("input#minRate").val();
+        var maxRate = $("input#maxRate").val();
+        $("#transfer_can").on("click",".reduce_num",function () {
+           
+            var discount = $(this).next("input.discount").val();          
+            discount = parseFloat(discount);
+            if (discount <= minRate) {
+                $(this).next("input.discount").val(minRate);
+            } else if (minRate < discount < maxRate){
+                var discount_reduce = discount - 1;
+                discount = discount_reduce;
+                $(this).next("input.discount").val(discount);
+            } 
+          
+
+        })
+        $("#transfer_can").on("click", ".add_num",function () {
+            var discount = $(this).prev("input.discount").val();
+            discount = parseFloat(discount);
+            if (discount >= maxRate){
+                $(this).prev("input.discount").val(maxRate);
+            } else if (minRate<discount < maxRate) {
+                var discount_add = discount + 1;
+                discount = discount_add;
+                $(this).prev("input.discount").val(discount);
+            
+            }
+        })
+    })
+  
+</script>
+
+<script type="text/javascript">
+    var maxRate = 100;
+    var minRate = 90;
+    var MyAction = {
+        DoTransfer: function (i, investId, idualMoney) {
+            var exp = /^([1-9][\d]{0,7}|0)$/;
+            if ($.trim($("#discount" + i).val()) == "") {
+                layer.alert("转让折让率不能为空");
+                return;
+            }
+            var discount = parseFloat($("#discount" + i).val());
+            if (discount > maxRate) {
+                layer.alert("折让率不能大于系统设置的最大折让率" + maxRate);
+                return;
+            }
+            if (discount < minRate) {
+                layer.alert("折让率不能小于系统设置的最小折让率" + minRate);
+                return;
+            }
+            if (!exp.test($("#discount" + i).val())) {
+                $("#discount" + i).focus();
+                layer.alert("折让率格式不正确,必须为整数！");
+                return;
+            }
+            $.post("/MyAccount/TransferFee?discount=" + discount + "&idualMoney=" + idualMoney, function (data) {
+                $("#openAccount").find("em").eq(0).html(idualMoney);
+                $("#openAccount").find("em").eq(1).html(data.transferMoney);
+                $("#openAccount").find("em").eq(2).html(data.actualMoney);
+                $("#openAccount").find("em").eq(3).html(data.transferFee);
+                $("#openAccount").show();
+                $("#transfer").click(function () {
+                    $("#openAccount").hide();
+                    $.post("/MyAccount/DoTransferData?id=" + investId + "&discount=" + discount + "&idualMoney=" + idualMoney, function (data) {
+                        if (data.success) {
+                            layer.confirm(data.msg, {
+                                icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                                    $("div.my_assets_tab ul li").eq(0).trigger('click');
+                                    layer.close(index);
+                                }
+                            }, function (index) {
+                                $("div.my_assets_tab ul li").eq(0).trigger('click');
+                                layer.close(index);
+                            });
+                        } else {
+                            layer.alert(data.msg);
+                        }
+                    });
+                });
+            });
+        },
+        Recall: function (transferId, i) {
+            $.post("/MyAccount/RecallTransfer?id=" + transferId, function (data) {
+                if (data.success) {
+                    layer.confirm(data.msg, {
+                        icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                            $("div.my_assets_tab ul li").eq(0).trigger('click');
+                            layer.close(index);
+                        } }, function (index) {
+                        $("div.my_assets_tab ul li").eq(0).trigger('click');
+                        layer.close(index); 
+                    });
+                } else { 
+                    layer.alert(data.msg);
+                }
+            });
+        }
+    };
+
+</script>

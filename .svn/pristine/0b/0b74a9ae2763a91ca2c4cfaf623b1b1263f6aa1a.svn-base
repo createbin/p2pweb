@@ -1,0 +1,118 @@
+﻿@using ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels
+@{
+    ViewData["Title"] = "实名认证";
+    Layout = "~/Views/Shared/_MyAccountLeft.cshtml";
+    var baseInfo = ViewBag.UserBase as RUserThirdPartInfo;
+}
+<script>
+    $(function () {
+        navActive(5);
+        AccordionActive(6);
+
+    })
+</script>
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+
+<div style="height:20px;"></div>
+
+<div class="zfct_investmentlist float_right">
+    <div class="invest_table">
+        @*<div class="my_assets_title">
+                <span class="font_size_16 font-weight">实名认证</span>
+            </div>*@
+        <div class="my_assets_title">
+            <dl class="float_left">
+                <dd class="active" style="width:75px;">
+                    我的投资户
+                </dd>
+                <dd>
+                    我的融资户
+                </dd>
+
+                <div class="clear"></div>
+            </dl>
+            <img src="~/images/bohai/bohai_logo.png" class="float_right" style="padding-top:12px" width="250" height="34" />
+            <div class="clear"></div>
+        </div>
+        <div class="my_assets_tab">
+            <!---------我的投资户start------------>
+            <div>
+
+                <div style="height:10px"></div>
+                <div id="openAccountInfo" style="display: @(baseInfo.OnceJieSuan=="0"?"block":"none")">
+                    @Html.Partial("_PartialOpenAccount", baseInfo)
+                </div>
+                <div id="openAccountInfoed" style="display: @(baseInfo.OnceJieSuan=="1"?"block":"none")">
+                    @Html.Partial("_PartialOpenAccounted", baseInfo)
+                </div>
+            </div>
+            <!---------我的投资户end------------>
+            <!---------我的融资户start------------>
+            <div style="display:none">
+                <div style="height:10px"></div>
+                <div id="openAccountInfo" style="display: @(baseInfo.OnceJieSuan=="0"?"block":"none")">
+                    @Html.Partial("_PartialOpenAccount", baseInfo)
+                </div>
+                <div id="openAccountInfoed" style="display: @(baseInfo.OnceJieSuan=="1"?"block":"none")">
+                    @Html.Partial("_PartialOpenAccounted", baseInfo)
+                </div>
+            </div>
+            <!---------我的融资户end------------>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    $("#kaihu_tips").mouseover(function () {
+        var tip = $('#errorTip').val();
+        layer.tips(tip, this, { tips: [2, '#ec4961'] });
+    })
+</script>
+
+<script>
+
+    $(function() {
+        $('#openJsAccount').click(function () {
+             var name = $('#userName').val();
+            var idCard = $('#userCard').val();
+            if (name == "" || name == undefined || idCard == "" || idCard == undefined) {
+                alert("请填写姓名或身份证信息");
+                return false;
+            }else {
+                $.ajax({
+                    url: "/MyAccount/OpenAccount",
+                    data: { "name": name, "idCard": idCard },
+                    type: 'POST',
+                    success: function(data) {
+                        layer.confirm(data.msg, {
+                            icon: 3, title: '提示', btn: '确定', cancel: function (index) {
+                                layer.close(index);
+                                location.reload();
+                            }
+                        }, function (index) {
+                            layer.close(index);
+                            location.reload();
+                        });
+                    }
+                });
+            }
+
+         });
+        
+        $('#retry').click(function() {
+            $('#openAccountInfoed').hide();
+            $('#openAccountInfo').show();
+        });
+        $(".my_assets_title dl dd").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            var _index = $(this).index();
+            $(".my_assets_tab > div").eq(_index).show().siblings().hide();
+        });
+    });
+</script>

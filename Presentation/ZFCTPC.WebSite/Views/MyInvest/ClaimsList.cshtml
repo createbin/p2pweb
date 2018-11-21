@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewData["Title"] = "债权标";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(2);
+    })
+</script>
+
+<div class="recommend_bg">
+    <img src="~/images/banner/recommend_bg.jpg" class="img-responsive" />
+</div>
+<div class="invest_class">
+    <ul class="recommend_class_box font_size_18">
+        <li>
+            <img src="~/images/recommend_gray.png" />
+            <em class="margin_left_24 gray1">推荐标</em>
+        </li>
+        <li class="border-right-none">
+            <img src="~/images/claims_select.png" />
+            <em class="margin_left_24 blue">债权标</em>
+        </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+
+<div style="height:20px"></div>
+<div class="invest_list">
+    <div class="claims_list_box">
+        <div class="claims_list_box_head">
+            <p class="font_size_16 blue ">
+                智选计划第12期
+            </p>
+        </div>
+        <div style="height:34px"></div>
+        <ul>
+            <li style="width:280px">
+                <p class="roboto red"><em class="font_size_30">19.9</em><em class="font_size_24">+0.5%</em></p>
+                <p class="gray1 font_size_12 margin_top_10">预期年化收益率</p>
+            </li>
+            <li style="width:265px">
+                <p class="roboto font_size_24"><em>120</em>天</p>
+                <p class="gray1 font_size_12 margin_top_15">剩余天数</p>
+            </li>
+            <li style="width:285px">
+                <p class="roboto font_size_14"><em>189,850</em>元</p>
+                <p class="gray1 font_size_12 margin_top_15">转让金额</p>
+            </li>
+            <li style="width:180px">
+                <p class="roboto font_size_14">2017.11.30</p>
+                <p class="gray1 font_size_12 margin_top_15">下一个回款日</p>
+            </li>
+            <li class="border-right-none">
+                <button class="recommend_button_invest">
+                    转让中
+                </button>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="claims_list_box">
+        <div class="claims_list_box_head">
+            <p class="font_size_16 blue ">
+                智选计划第12期
+            </p>
+        </div>
+        <div style="height:34px"></div>
+        <ul>
+            <li style="width:280px">
+                <p class="roboto red"><em class="font_size_30">19.9</em><em class="font_size_24">+0.5%</em></p>
+                <p class="gray1 font_size_12 margin_top_10">预期年化收益率</p>
+            </li>
+            <li style="width:265px">
+                <p class="roboto font_size_24"><em>120</em>天</p>
+                <p class="gray1 font_size_12 margin_top_15">剩余天数</p>
+            </li>
+            <li style="width:285px">
+                <p class="roboto font_size_14"><em>189,850</em>元</p>
+                <p class="gray1 font_size_12 margin_top_15">转让金额</p>
+            </li>
+            <li style="width:180px">
+                <p class="roboto font_size_14">2017.11.30</p>
+                <p class="gray1 font_size_12 margin_top_15">下一个回款日</p>
+            </li>
+            <li class="border-right-none">
+                <button class="recommend_button_invest">
+                    转让中
+                </button>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <!-------------已转让--------------->
+    <div class="claims_list_box1">
+        <div class="recommend_list_box_recharge">
+
+        </div>
+        <div class="claims_list_box_head">
+            <p class="font_size_16 blue ">
+                智选计划第12期
+            </p>
+        </div>
+        <div style="height:34px"></div>
+        <ul>
+            <li style="width:280px">
+                <p class="roboto red"><em class="font_size_30">19.9</em><em class="font_size_24">+0.5%</em></p>
+                <p class="gray1 font_size_12 margin_top_10">预期年化收益率</p>
+            </li>
+            <li style="width:265px">
+                <p class="roboto font_size_24"><em>120</em>天</p>
+                <p class="gray1 font_size_12 margin_top_15">剩余天数</p>
+            </li>
+            <li style="width:285px">
+                <p class="roboto font_size_14"><em>189,850</em>元</p>
+                <p class="gray1 font_size_12 margin_top_15">转让金额</p>
+            </li>
+            <li style="width:180px">
+                <p class="roboto font_size_14">2017.11.30</p>
+                <p class="gray1 font_size_12 margin_top_15">下一个回款日</p>
+            </li>
+            <li class="border-right-none">
+                <button class="recommend_button_recharge">
+                    已转让
+                </button>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+
+    <div class="recommend_page">
+        <p class="font_size_13 gray1">中房创投提醒您：理财有风险，投资需谨慎！</p>
+        <div style="height:50px"></div>
+
+        @*<div style="text-align:center">
+            <div class="pager_box">
+                <div id="pager" class="pager_div"></div><span class="totle_num">共@((ViewBag.Count + ViewBag.PageSize - 1) / ViewBag.PageSize)页</span>
+
+            </div>
+        </div>*@
+        <div style="height:50px"></div>
+    </div>
+</div>
+
+<div style="height:40px;"></div>

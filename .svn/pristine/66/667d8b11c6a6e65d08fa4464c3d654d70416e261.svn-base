@@ -1,0 +1,464 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RFinancingAccount
+@{
+    Layout = "../Shared/_EnterpriseMyAccountLeft.cshtml";
+    ViewData["Title"] = "个人账户";
+}
+
+<script src="~/js/echarts/echarts.simple.min.js"></script>
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        AccordionActive(0);
+    })
+</script>
+<div style="height:20px;"></div>
+
+<div class="zfct_account_box float_right">
+    <!--------请完善企业信息  start--------------->
+    @if (!ViewBag.JieSuan || !ViewBag.BoHai)
+    {
+        <div>
+            <div class="enterprise_account_box">
+                <span class="font_size_16" style="line-height:120px;">
+                    为了更好的为您服务，请先完善企业资料
+                </span>
+                <span>
+                    <button class="gotoperfect" id="openAccount">
+                        去完善
+                    </button>
+                </span>
+
+            </div>
+            <div style="height:10px"></div>
+        </div>
+    }    
+    <!-----------请完善企业信息--------------->
+    <!-----------我的资产  start------------------>
+    <div class="my_assets">
+        <div class="my_assets_title">
+            <ul>
+                <li class="active">
+                    企业融资户
+                </li>
+                <li>
+                    企业投资户
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="my_assets_page">
+        <!----------企业融资户start---------------------->
+        <div>
+            <div class="enterprise_account_box1">
+                <div class="my_assets_num">
+                    <div style="height:20px;"></div>
+                    <span class="margin_left_20 font_size_16 ">
+                        融资户总资产（元）
+                        <em class="red1 margin_left_20 font_size_30" id="financingBalance">0.00</em><a class="blue margin_left_15 font_size_12" onclick="FinancingBalance(1);" style="cursor:pointer;">刷新</a>
+                        @*<em class="red1 margin_left_40 font_size_20">无</em>*@
+                    </span>
+                   
+                    <span class="float_right">
+                        @if (!ViewBag.JieSuan || !ViewBag.BoHai)
+                        {
+                            <!-------不可转账状态------->
+                            <button class="gotoperfect_none" disabled style="margin-top:15px">
+                                    投资户转账充值
+                            </button>
+                            <!--------不可提现状态按钮--------->
+                            @*<a class="zfct_withdraw">提现</a>*@
+                        }
+                        else
+                        {
+                             <!-------可转账状态------->
+                            <a href="TransferRecharge" class="zfct_recharge" style="padding:8px 30px">投资户转账充值</a>
+                            <!--------可提现状态按钮--------->
+                            @*<a href="" class="zfct_withdraw_active">提现</a>*@
+                        }
+                    </span>
+                    <div style="height:20px;"></div>
+                </div>
+                <div style="height:25px;"></div>
+                <dl>
+                    <dd class="margin_left_30">
+                        <p class="font_size_14 my_assets_details_icon"><img src="/images/explanation_icon.png" class="explanation">可用金额</p>
+                        <p class="font_size_14 margin_top_15">¥&nbsp;<text class="red font_size_20" id="fenable_amount">0.00</text>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_14 my_assets_details_icon"><img src="/images/explanation_icon.png" class="explanation">冻结金额</p>
+                        <p class="font_size_14 margin_top_15">¥&nbsp;<text class="red font_size_20" id="ffreezing_amount">0.00</text>&nbsp;元</p>
+                    </dd>
+                </dl>
+                <div style="height:25px;"></div>
+            </div>
+            <div style="height:10px"></div>
+            <div class="enterprise_money">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">企业融资</span>
+                    <span class="font_size_12 float_right" style="padding-right:30px;">
+                        剩余待还总金额：<em class="red1">@Model.WaitPayAllMoney</em>
+                    </span>
+                </div>
+                @*<dl>
+                        <dd>
+                            <p>
+                                下一期还款日期
+                            </p>
+                            <p class="red1 margin_top_25 font_size_20" >
+                                无
+                            </p>
+                        </dd>
+                        <dd>
+                            <p>
+                                下一期还款总金额（元）
+                            </p>
+                            <p class="red1 margin_top_25 font_size_20">
+                                无
+                            </p>
+                        </dd>
+                        <dd>
+                            <button class="gotoperfect_none" disabled>
+                                立即还款
+                            </button>
+                            <button class="repayment_now" >
+                                立即还款
+                            </button>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>*@
+                <div class="my_loan_box">
+                    <div class="float_left">
+                        <p class="next_money_day">
+                            <em>下一期还款日期</em>
+                            @if (Model.SurplusDays > 3)
+                            {
+                                <span class="next_money_position ">
+                                    剩余<em>@Model.SurplusDays</em>天
+                                </span>
+                            }
+                            else
+                            {
+                                <!-------剩余天数少于等于3 用下面这个样式------->
+                            <span class=" next_money_position1">
+                                    剩余<em>@Model.SurplusDays</em>天
+                                </span>
+                            }
+                        </p>
+
+                        <p class="red1 font_size_20 margin_top_25">
+                            <em>@Model.NextPayDate</em>
+                            <em style="display:none">无</em>
+                        </p>
+                    </div>
+                    <div class="float_left">
+                        <p>
+                            下一期还款总金额（元）
+                        </p>
+                        <p class="red1 font_size_20 margin_top_25">
+                            <em>@Model.NextPayMoney</em>
+                            <em style="display:none">无</em>
+                        </p>
+                    </div>
+                    <div class="float_left">
+                        @if (!ViewBag.JieSuan || !ViewBag.BoHai)
+                        {
+                            <!-------不可还款状态  --------->
+                            <button class="gotoperfect_none" disabled style="margin-top:0px;line-height:35px">
+                                立即还款
+                            </button>
+                        }
+                        else
+                        {
+                            <!-------可还款状态  --------->
+                            <a href="EnterpriseRepaymentPlan" class="repayment_btn">
+                                立即还款
+                            </a>
+                        }
+
+                        
+                    </div>
+                </div>
+                <dl>
+                    <dd>
+                        <a href="CorporateFinancing">
+                            <p>
+                                募集中
+                            </p>
+                            <p class="margin_top_15">
+                                <em class="red1 font_size_20 padding_right_5">@Model.BiddingCount</em>笔
+                            </p>
+                        </a>
+                       
+                    </dd>
+                    <dd>
+                        <a href="CorporateFinancing">
+                            <p>
+                                满标中
+                            </p>
+                            <p class="margin_top_15">
+                                <em class="red1 font_size_20 padding_right_5">@Model.FullCount</em>笔
+                            </p>
+                        </a>
+                       
+                    </dd>
+                    <dd>
+                        <a href="EnterpriseRepaymentPlan">
+                            <p>
+                                还款中
+                            </p>
+                            <p class="margin_top_15">
+                                <em class="red1 font_size_20 padding_right_5">@Model.RepaymentCount</em>笔
+                            </p>
+                        </a>
+                       
+                    </dd>
+                    <dd>
+                        <a href="EnterpriseRepaymentPlan">
+                            <p>
+                                已结清
+                            </p>
+                            <p class="margin_top_15">
+                                <em class="red1 font_size_20 padding_right_5">@Model.ClearedCount</em>笔
+                            </p>
+                        </a>
+                       
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+                <div class="my_loan_details_bottom font_size_12 gray">
+                    累计融资<em>@(Model.LoanCount)</em>笔，共计：¥<em class="black font-weight">@Model.LoanMoney</em>元
+                    <a href="EnterpriseFinanceStatistics" class=" float_right margin_right_30">
+                        查看详情
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <!----------企业融资户end---------------------->
+        <!----------企业投资户start---------------------->
+        <div style="display:none">
+            <div class="enterprise_account_box1">
+                <div class="my_assets_num">
+                    <div style="height:20px;"></div>
+                    <span class="font_size_16 margin_left_25">
+                        账户余额（元）
+                        <em class="red1 margin_left_20 font_size_30" id="investorBalance">0.00</em><a class="blue margin_left_15 font_size_12" onclick="FinancingBalance(0);" style="cursor:pointer;">刷新</a>
+                        @*<em class="red1 margin_left_40 font_size_20">无</em>*@
+                    </span>
+                    <span class="float_right margin_right_20">
+
+                        <!--------不可充值状态按钮--------->
+                        @*<button href="" disabled class="gotoperfect_none" style="margin-top:0px;line-height:35px">充值</button>*@
+                        <!--------不可充值状态按钮--------->
+                        <!--------可充值状态按钮--------->
+                        <a href="EnterpriseRecharge" class="zfct_withdraw_active">充值</a>
+                        <!--------可充值状态按钮--------->
+                    </span>
+                    <div style="height:20px;"></div>
+                </div>
+             
+                <div style="height:25px;"></div>
+                <dl>
+                    <dd class="margin_left_30">
+                        <p class="font_size_14 my_assets_details_icon"><img src="/images/explanation_icon.png" class="explanation">可用金额</p>
+                        <p class="font_size_14 margin_top_15">¥&nbsp;<text class="red font_size_20" id="ienable_amount">0.00</text>&nbsp;元</p>
+                    </dd>
+                    <dd>
+                        <p class="font_size_14 my_assets_details_icon"><img src="/images/explanation_icon.png" class="explanation">冻结金额</p>
+                        <p class="font_size_14 margin_top_15">¥&nbsp;<text class="red font_size_20" id="ifreezing_amount">0.00</text>&nbsp;元</p>
+                    </dd>
+                </dl>
+                <div style="height:25px;"></div>
+            </div>
+            <div style="height:10px"></div>
+            @*<div class="enterprise_money">
+                <div class="my_assets_title">
+                    <span class="font_size_16 font-weight">充值记录</span>
+
+                </div>
+                <!----------暂无数据 start-------------->
+                <div style="display:none">
+                    <div style="height:40px"></div>
+                    <img src="~/images/enterprise/nojilu.png" class="img-margin" />
+                    <p class="text_align_center margin_top_10">
+                        暂无数据
+                    </p>
+                    <div style="height:40px"></div>
+                </div>
+                <!----------暂无数据 end-------------->
+                <!-----------有充值记录 start------------>
+                <div class="recharge_record">
+                    <div style="height:20px;"></div>
+                    <div class="recharge_shaixuan">
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li class="margin_right_15">交易时间</li>
+                                    <li><a href="#" class="datetype click" onclick="setTime(1);">所有</a></li>
+                                    <li><a href="#" class="datetype" onclick="setTime(2);">今天</a></li>
+                                    <li><a href="#" class="datetype" onclick="setTime(3);">最近一周</a></li>
+                                    <li><a href="#" class="datetype" onclick="setTime(4);">一个月</a></li>
+                                    <li><a href="#" class="datetype" onclick="setTime(5);">二个月</a></li>
+                                    <li><a href="#" class="datetype" onclick="setTime(6);">三个月</a></li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li class="margin_right_15">交易类型</li>
+                                    <li><a href="#" class="tradetype click" onclick="setType(2);">全部</a></li>
+                                    <li><a href="#" class="tradetype" onclick="setType(3);">充值</a></li>
+                                    <li><a href="#" class="tradetype" onclick="setType(4);">提现</a></li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="my_assets_tab">
+                        <div class="my_assets_tab_box my_assets_tab_box_signal">
+                            <div class="my_assets_tab_box1">
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr class="">
+                                            <th>交易流水号</th>
+                                            <th>交易类型</th>
+                                            <th>交易金额</th>
+                                            <th>账户余额</th>
+                                            <th>交易状态</th>
+                                            <th>交易时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="transactionrecordlist"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="text-align: center;margin-top:10px">
+                            <div class="pager_box">
+                                <div id="pager" class="pager_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-----------有充值记录 end------------>
+            </div>*@
+        </div>
+        <!----------企业投资户end---------------------->
+    </div>
+    <!----------我的资产  end------------------->
+</div>
+
+<script>
+    var datetype = 1;
+    var type = 2;
+    var Pagination;
+    var jiesuan = '@ViewBag.JieSuan';
+    var bohai = '@ViewBag.BoHai';
+    $('#openAccount').click(function() {
+        if (jiesuan== "False") {
+            location.href = "EnterpriseOpenAccount";
+            return;
+        }
+        if (bohai == "False") {
+            location.href = "EnterprisepBankDepository";
+            return;
+        }
+    })
+
+    $(".my_assets_title ul li").click(function () {
+        var index = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".my_assets_page > div").eq(index).show().siblings().hide();
+    });
+
+
+    function FinancingBalance(userType) {
+        $.post("CompanyRechargeSyn", {"userType":userType}, function (result) {
+            if (result.success) {
+                $("#financingBalance").html(result.balance);
+            }
+        });
+    }
+
+
+    function setTime(data) {
+        if (data != datetype) {
+            datetype = data;
+            $(".datetype").removeClass("click");
+            $(".datetype").eq(data - 1).addClass("click");
+            $("#transactionrecordlist").load("/MyAccount/TransactionRecordData", { Type: type, DateType: datetype }, function () {
+                setPager();
+            });
+        }
+    }
+
+
+
+    function setType(data) {
+        if (data != type) {
+            type = data;
+            $(".tradetype").removeClass("click");
+            if (data == 2)
+                $(".tradetype").eq(0).addClass("click");
+            else
+                $(".tradetype").eq(data - 2).addClass("click");
+            $("#transactionrecordlist").load("/MyAccount/TransactionRecordData", { Type: type, DateType: datetype }, function () {
+                setPager();
+            });
+        }
+    }
+
+    function pageCallback(index, jq) {
+        initTable(index);
+    }
+
+    function initTable(index) {
+        $("#transactionrecordlist").load("/MyAccount/TransactionRecordData", { Page: index.getCurrent(), PageSize: 5, Type: type, DateType: datetype });
+    }
+
+    function setPager() {
+        $('#pager').pagination({
+            callback: pageCallback,
+            totalData: $("#TotalData").val(),
+            showData: 5,
+            coping: true,
+            prevContent: '<',
+            nextContent: '>'
+        });
+    }
+
+    $(function () {
+        $.post("/MyAccount/MyAccountBH", { userAttribute: 1 }, function (result) {
+            if (result.success) {
+                $("#investorBalance").html(result.accountMoney);
+                $("#ifreezing_amount").html(result.freezing_amount);
+                $("#ienable_amount").html(result.enable_amount);
+            }
+        });
+
+        $.post("/MyAccount/MyAccountBH", { userAttribute: 2 }, function (result) {
+            if (result.success) {
+                $("#financingBalance").html(result.accountMoney);
+                $("#ffreezing_amount").html(result.freezing_amount);
+                $("#fenable_amount").html(result.enable_amount);
+            }
+        });
+
+        $("#transactionrecordlist").load("/MyAccount/TransactionRecordData", { Type: 2 }, function () {
+            setPager();
+        });
+    })
+</script>
+
+

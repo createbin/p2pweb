@@ -1,0 +1,199 @@
+﻿@using System.Security.Claims
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="~/js/menudown.js"></script>
+
+<style>
+    .right_suspension {
+        top: 60px !important;
+    }
+</style>
+<div class="zfct_account_page">
+    <div style="height:20px;"></div>
+    <p>您所在的位置: <a href="../Home" class="gray1">首页</a> <em class="gray1">></em> <a href="../InfoPublic">信息披露</a></p>
+    <div class="zfct_account_left_nav float_left" style=" background-color:#fff">
+       
+        <dl>
+            @*<dd class="default">
+                <a href="../InfoPublic/">
+                    数据统计
+                 </a>
+            </dd>*@
+            <dd>
+                <p class="default">关于我们</p>
+                <ul class="infopublic_ul">
+                    <li class="infopublic_li default2">
+                        <a href="../InfoPublic/CompanyInfo">
+                            公司简介
+                        </a>
+                    </li>
+                    <li  class="infopublic_li">
+                        <a href="../InfoPublic/BusinessInfo">
+                            工商信息
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/RecordInfo">
+                            备案信息
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/OwnershipStruct">
+                            股权结构
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/ManagementTeam">
+                            管理团队
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/Organization">
+                            组织架构
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/MajorIssues">
+                            重大事项
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/OperatChannel">
+                            营运渠道
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/AuditReview">
+                            审核审计
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/Investors">
+                            收费标准
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/ContactUs">
+                            联系我们
+                        </a>
+                    </li>
+                    <li class="infopublic_li">
+                        <a href="../InfoPublic/ManagementSystem">
+                            管理制度
+                        </a>
+                    </li>
+                </ul>
+            </dd>
+            <dd>
+                <p>
+                    运营统计
+                </p>
+                <ul class="infopublic_ul">
+                    <li class="infopublic_li default2">
+                        <a href="../InfoPublic/">
+                            数据统计
+                        </a>                    
+                    </li>
+                    <li class="infopublic_li ">
+                        <a href="../InfoPublic/OperationReport">
+                            运营报告
+                        </a>
+                    </li>
+                </ul>
+
+            </dd>
+            <dd>
+                <p >
+                    安全保障
+                </p>
+                <ul class="infopublic_ul">
+                    <li class="infopublic_li default2">
+                        <a href="../InfoPublic/Security">
+                            安全保障
+                        </a>
+                    </li>
+                    <li class="infopublic_li ">
+                        <a href="../InfoPublic/riskControl">
+                            风险控制
+                        </a>
+                    </li>
+                </ul>
+                
+            </dd>
+            <dd>
+                <p>
+                    投资者教育
+                </p>
+                <ul class="infopublic_ul">
+                    <li class="infopublic_li default2">
+                        <a href="../InfoPublic/LegalCompliance">
+                            合法合规
+                        </a>
+                    </li>
+                    <li class="infopublic_li ">
+                        <a href="../InfoPublic/PoliciesRegular">
+                            政策法规
+                        </a>
+                    </li>
+                    <li class="infopublic_li ">
+                        <a href="../InfoPublic/RiskWarning">
+                            风险提示
+                        </a>
+                    </li>
+                    <li class="infopublic_li ">
+                        <a href="../InfoPublic/RegulatoryAuthorities">
+                            监管部门
+                        </a>
+                    </li>
+                </ul>
+
+            </dd>
+            <dd>
+                <a href="../InfoPublic/LetterCommitment">
+                    <p>
+                        信披承诺书
+                    </p>
+                </a>
+                
+            </dd>
+        </dl>
+     
+
+    </div>
+    @RenderBody()
+    <div class="clear"></div>
+
+<div style="height:30px;"></div>
+</div>
+
+
+<script>
+    function PublicActive(id) {
+        var $this = $(".infopublic_li").eq(id);
+        $(".infopublic_li").removeClass("clicked");
+        $this.addClass("clicked");
+        $this.parent().parent().siblings().find("p").removeClass("default");
+        $this.parent().siblings("p").addClass("default");       
+    }
+    function LastActive(id) {
+        var $this_dd = $(".zfct_account_left_nav dl dd").eq(id);
+        $this_dd.addClass("default").siblings().find("p").removeClass("default");
+       
+
+    }
+    function LastActive1(id) {
+        var $this_dd = $(".zfct_account_left_nav dl dd").eq(id);
+        $this_dd.find("p").addClass("default");
+        $this_dd.siblings().find("p").removeClass("default");
+    }
+    function FirstActive(id) {
+        //var $this_dd = $(".zfct_account_left_nav dl dd").find("ul.infopublic_ul li.default2");
+
+        var $this_dd = $(".zfct_account_left_nav dl dd").find("ul.infopublic_ul li.default2").eq(id);
+        console.log($this_dd);
+        $this_dd.parent().parent().siblings().find("ul.infopublic_ul li.default2").addClass("default1");
+
+    }
+</script>

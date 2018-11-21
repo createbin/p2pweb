@@ -1,0 +1,61 @@
+﻿@using ZFCTPC.Data.ApiModelReturn
+@using ZFCTPC.Data.ApiModelReturn.LoanReturnModels
+@{ 
+    var recomand = ViewBag.Recomand as  List<RLoanAbstract>;
+}
+@if (recomand != null&&recomand.Count>0)
+{
+    <div class="invest_detail_none float_right">
+        <div class="invest_detail_top_title">
+                <span>
+                    @ViewBag.ShowInfo
+                </span>
+        </div>
+        <div class="invest_detail_lunbo">
+            <ul class="hiSlider hiSlider1">
+                @foreach (var re in recomand)
+                {
+                    <li class="hiSlider-item">
+                        <div class="position-relative">
+                            <div style="height: 30px;"></div>
+                            <p class="font_size_16 bold text_align_center">
+                                @(re.LoanName)
+                            </p>
+                            <p class="red margin_top_20 font_size_18 text_align_center">
+                                <em class="font_size_30">@(re.YearRate)</em>%
+                            </p>
+                            <p class=" font_size_14 text_align_center">预期年化收益率</p>
+                            <div style="height: 25px;"></div>
+                            <span class="font_size_14">
+                                <em><font class="font_size_20">@(re.Period)</font>个月</em>
+                                <em class="float_right">¥&nbsp;<font class="font_size_20">@(re.LeastMoney)</font>元</em>
+                            </span>
+                            <span class="font_size_14 margin_top_10">
+                                <em>投资期限</em>
+                                <em class="float_right">起投金额</em>
+                            </span>
+                            <button class="invest_detail_login partialInvest" data-loanid="@(re.LoanId)">
+                                @(ViewBag.IsLogin ? re.LoanState : "立即登录")
+                            </button>
+                            <div class="recommend_much">
+                                <img src="~/images/recommend_much.png" />
+                            </div>
+
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <div class=" float_right invest_detail_none">
+        <div class="invest_detail_lunbo_box">
+            <div style="height: 100px;"></div>
+            <img src="~/images/coffee_icon.png" class="img-margin" />
+            <p class="text_align_center font_size_18 gray1 margin_top_20">其他优质项目正在加急审核中</p>
+        </div>
+    </div>
+}
+

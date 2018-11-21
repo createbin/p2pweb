@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "工商信息";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+<script>
+    $(function () { 
+        navActive(3);
+        FirstActive(0);
+        PublicActive(1);
+    })
+</script>
+<div style="height:20px;"></div>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_20 bold">工商信息</p>
+        <div style="height:40px;"></div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="table_border_right">公司全称</td>
+                <td class="table_border_right">南京中乾惠诚投资管理有限公司</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">平台简称</td>
+                <td class="table_border_right">中房创投</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">注册资本</td>
+                <td class="table_border_right">50000000元人民币</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">实缴资本</td>
+                <td class="table_border_right">17220000元人民币</td>
+            </tr>
+            
+            <tr>
+                <td class="table_border_right">注册地址</td>
+                <td class="table_border_right">南京市建邺区庐山路188号1606</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">成立时间</td>
+                <td class="table_border_right">2016/1/13</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">经营期限</td>
+                <td class="table_border_right">2016/01/13-2036/01/12</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">经营状态</td>
+                <td class="table_border_right">开业</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">法定代表人</td>
+                <td class="table_border_right">邱波</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">经营范围</td>
+                <td class="table_border_right">投资管理；金融信息咨询服务；受托银行业数据信息处理的金融外包服务；<br />
+信息技术服务；软件技术研发；市场调查；投资咨询</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">平台上线时间</td>
+                <td class="table_border_right">
+                    2016/4/18
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">营业执照</td>
+                <td class="table_border_right">
+                   <img src="~/images/public/yyzz_icon.png" class="check_yyzz"/><em class="clcik_yyzz">点击查看营业执照</em>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">统一社会信用代码</td>
+                <td class="table_border_right">91320105MA1MEBAY76</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">注册协议模板</td>
+                <td class="table_border_right"><a href="http://www.chinazfct.com/Areas/Agreement/yinsitiaokuan.docx"><em class="blue ">隐私条款</em></a><a href="http://www.chinazfct.com/Areas/Agreement/zhucexieyi.docx"><em class="blue margin_left_40">注册协议</em></a></td>
+            </tr>
+           
+        </table>
+    </div>
+</div>
+<div id="risk_mask" class="risk_mask" style="display:none;"></div>
+<div class="yyzz_box" style="display:none">
+    <img src="~/images/public/yyzz.png" />
+    <img src="~/images/close_down.png" class="yyzz_box_close" />
+</div>
+
+<script>
+    $("img.check_yyzz").click(function () {
+        $("#risk_mask").show();
+        $(".yyzz_box").show();
+    });
+    $("em.clcik_yyzz").click(function () {
+        $("#risk_mask").show();
+        $(".yyzz_box").show();
+    });
+    $(".yyzz_box_close").click(function () { 
+        $("#risk_mask").hide();
+        $(".yyzz_box").hide();
+    })
+</script>
+

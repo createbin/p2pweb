@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "股权结构";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(3);
+    })
+</script>
+<div style="height:20px;"></div>
+
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_20 bold">股权结构</p>
+        <div style="height:40px;"></div>
+        <img src="~/images/struct_img.png" class="img-margin" />
+        <div style="height:20px;"></div>
+        <img src="~/images/zfold.png"  class="float_left" style="display:block"/>
+        <div class="float_left margin_left_30" style="width:600px">
+            <div style="height:20px"></div>
+            <span>中房中融老龄产业发展南京有限公司</span>
+            <div style="height:30px;"></div>
+            <p class="font_size_13 gray1">
+                中房集团前身为中国房地产开发集团公司,现由国务院国资委直接管理。中房老龄产业发展集团为中房集团旗下直属子公司。集团依托于央企资源，致力于成为“颐养生态地产+金融互助平台+产业聚合链条”三驾马车并驱的综合性产业发展集团，其中以中房创投、中房社区为重点板块，深耕金融服务、社区服务、互助经济等领域，共筑集团新蓝图。
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

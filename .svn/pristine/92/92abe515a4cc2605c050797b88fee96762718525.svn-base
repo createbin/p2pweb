@@ -1,0 +1,174 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewData["Title"] = "投资列表";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+</style>
+
+<div class="invest_lubo">
+     <ul class="invest_lubo_box">
+          <li style=" opacity: 1;filter:alpha(opacity=100);"><a href="" style="background:url(../images/banner/invest_banner1.jpg) center top no-repeat"></a></li>
+          <li><a href="" style="background:url(../images/banner/invest_banner1.jpg) center top no-repeat"></a></li>
+          <li><a href="" style="background:url(../images/banner/invest_banner1.jpg) center top no-repeat"></a></li>
+      </ul>
+
+</div>
+
+<div class="invest_class">
+    <ul class="invest_class_box">
+        <li >
+            <em class="newer_num">12</em>
+            <img src="~/images/icon_cainiao-select.png" class="img-margin" />
+            <p class="blue">菜鸟计划</p>
+        </li>
+        <li>
+            <img src="~/images/icon_zhixuan.png" class="img-margin" />
+            <p>智选计划</p>
+        </li>
+        <li>
+            <img src="~/images/icon_dream.png" class="img-margin" />
+            <p>梦想计划</p>
+        </li>
+        <li>
+            <img src="~/images/icon_zhaiquan.png" class="img-margin"/>
+            <p>梦想计划</p>
+        </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+<div style="height:10px;"></div>
+<div class="invest_list">
+    <div class="invest_list_box">
+        <span class="invest_list_box_title">
+            <em class="font_size_16">菜鸟计划100期</em>
+            <em class="newer_only margin_left_15">新手专享</em>
+            <em class="red_envelopes margin_left_10">红包</em>
+        </span>
+        <div class="invest_list_content">
+            <dl>
+                <dd class="width_210 text_align_center">
+                    <p class="red "><text class="font_size_45">10.9</text>%</p>
+                    <p class="font_size_14 margin_top_15 ">预期年化收益率</p>
+                </dd>
+                <dd class="width_170 text_align_center">
+                    <div style="height:15px;"></div>
+                    <p class="font_size_16">¥<text class="font_size_24">100</text>&nbsp;元</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">起投金额</p>
+                </dd>
+                <dd class="width_145 text_align_center">
+                    <div style="height:15px;"></div>
+                    <p class="font_size_16"><text class="font_size_24">1</text>&nbsp;个月</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">投资期限</p>
+                </dd>
+                <dd class="width_210 text_align_center">
+                    <div style="height:15px"></div>
+                    <p class="font_size_16">¥<text class="font_size_24">12,922</text>&nbsp;元</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">剩余可投</p>
+                </dd>
+                <dd class="width_230 ">
+                    <div style="height:15px;"></div>
+                    <!---------进度条 start---------->
+                    <div class="zfct_progress" style="padding:0px 18px">
+
+                        <div class="progress_bar invest_progress_bar">
+                            <div class="pro-bar">
+                                <span class="progress-bar-inner progress-bar-inner-blue" style="background-color: #1a9bfc; width: 50%;" data-value="50" data-percentage-value="50"></span>
+                                <div style="height:17px;"></div>
+                                <span class="font_size_12 position-relative ">
+                                    <em  class="text-left">进度</em>
+                                    <em class="progress-bar-percentage">50%</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------进度条 end--------------------->
+                </dd>
+                <dd class="width235">
+                    <div style="height:15px;"></div>
+                    <button class="invest_list_button">
+                        立即投资
+                    </button>
+                </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+    </div>
+    <div class="invest_list_box">
+        <span class="invest_list_box_title">
+            <em class="font_size_16">菜鸟计划100期</em>
+            <em class="newer_only margin_left_15">新手专享</em>
+            <em class="red_envelopes margin_left_10">红包</em>
+        </span>
+        <div class="invest_list_content">
+            <dl>
+                <dd class="width_210 text_align_center">
+                    <p class="red "><text class="font_size_45">10.9</text>%</p>
+                    <p class="font_size_14 margin_top_15 ">预期年化收益率</p>
+                </dd>
+                <dd class="width_170 text_align_center">
+                    <div style="height:15px;"></div>
+                    <p class="font_size_16">¥<text class="font_size_24">100</text>&nbsp;元</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">起投金额</p>
+                </dd>
+                <dd class="width_145 text_align_center">
+                    <div style="height:15px;"></div>
+                    <p class="font_size_16"><text class="font_size_24">1</text>&nbsp;个月</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">投资期限</p>
+                </dd>
+                <dd class="width_210 text_align_center">
+                    <div style="height:15px"></div>
+                    <p class="font_size_16">¥<text class="font_size_24">12,922</text>&nbsp;元</p>
+                    <p class="font_size_14 margin_top_10 text_align_center">剩余可投</p>
+                </dd>
+                <dd class="width_230 ">
+                    <div style="height:15px;"></div>
+                    <!---------进度条 start---------->
+                    <div class="zfct_progress" style="padding:0px 18px">
+
+                        <div class="progress_bar invest_progress_bar">
+                            <div class="pro-bar">
+                                <span class="progress-bar-inner progress-bar-inner-blue" style="background-color: #1a9bfc; width: 50%;" data-value="50" data-percentage-value="50"></span>
+                                <div style="height:17px;"></div>
+                                <span class="font_size_12 position-relative ">
+                                    <em class="text-left">进度</em>
+                                    <em class="progress-bar-percentage">50%</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------进度条 end--------------------->
+                </dd>
+                <dd class="width235">
+                    <div style="height:15px;"></div>
+                    <button class="invest_list_button">
+                        立即投资
+                    </button>
+                </dd>
+                <div class="clear"></div>
+            </dl>
+        </div>
+    </div>
+
+</div>
+<div style="height:20px;"></div>
+<div class="invest_tips">
+    <p class="font_size_12 gray">中房创投提醒您：理财非存款，投资需谨慎！</p>
+</div>
+
+<script src="~/js/lubotu.js"></script>
+
+<script>
+
+    $(function () {
+        $(".invest_lubo").lubo({
+
+        });//banner轮播
+    })
+</script>
+
+

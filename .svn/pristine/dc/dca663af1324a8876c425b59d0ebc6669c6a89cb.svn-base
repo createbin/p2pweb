@@ -1,0 +1,42 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserThirdPartInfo
+
+<dl>
+    <dd>
+        <label>姓名</label>
+        <em class="bold">
+            @Model.RealName
+        </em>
+    </dd>
+    <dd>
+        <label>身份证号</label>
+        <em class="bold">
+            @Model.IdCard
+        </em>
+    </dd>
+    <dd>
+        <label>银行预存手机号</label>
+        <em class="bold">
+            @Model.PhoneNo
+        </em>
+    </dd>
+    <dd>
+        <label>开户银行</label>
+        <div class="bank_select">
+            <select id="bankCode">
+                @foreach (var bank in ViewBag.BankList.BankInfos)
+                {
+                    <option value="@(bank.BankCode)">@(bank.BankName)</option>
+                }
+            </select>
+        </div>
+    </dd>
+    <dd>
+        <label>开户银行账号</label>
+        <input id="bankNumber" type="text" placeholder="请输入开户银行账号" />
+    </dd>
+    <dd>
+        <button class="bangka" id="toBH">
+            前往渤海银行绑卡
+        </button>
+    </dd>
+</dl>

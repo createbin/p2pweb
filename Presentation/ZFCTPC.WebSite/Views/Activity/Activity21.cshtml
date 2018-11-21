@@ -1,0 +1,169 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "红包升级页面";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+    ViewBag.IsLogin = User.FindFirst(ClaimTypes.Name) != null;
+}
+
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+
+<div class="redpacketrules_bg">
+   <div class="redpacketrules_banner">
+       <img src="~/images/activity/redpacketrules/redpacket_text.png" class="redpacketrules_img" />
+   </div>
+    <div style="height:50px;"></div>
+    <div class="redpacketrules_box1">
+        <img src="~/images/activity/redpacketrules/redpacket_title1.png" class="img-margin" />
+        <div style="height:20px;"></div>
+        <img src="~/images/activity/redpacketrules/redpacket_pic.png" class="img-margin img-responsive" />
+    </div>
+    <div style="height:50px"></div>
+    <div class="redpacketrules_box2">
+        <img src="~/images/activity/redpacketrules/redpacket_title2.png" class="img-margin" />
+        <div style="height:20px;"></div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>
+                    红包类型
+                </th>
+                <th>
+                    升级前
+                </th>
+                <th colspan="2">
+                    升级后
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    生日红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/shenji.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    回款红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/shenji.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    注册红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/shenji.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    实名红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/cha.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/xinzeng.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    首投红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/cha.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/xinzeng.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    季度回馈红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/cha.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/xinzeng.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    定期红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/cha.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/xinzeng.png" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    节日红包
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/cha.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/gou.png" />
+                </td>
+                <td>
+                    <img src="~/images/activity/redpacketrules/xinzeng.png" />
+                </td>
+            </tr>
+        </table>
+        <div style="height:20px;"></div>
+        <p style="color:#e00000" class="font_size_16">
+            * 所有红包，新手专享标与债权转让不可使用
+        </p>
+        <div style="height:50px"></div>
+        @if (!ViewBag.IsLogin)
+        {
+            <a href="/Customer/Register" class="redpacket_button">
+            </a>
+        }
+        else
+        {
+            <a href="/myinvest/recommendedlist" class="redpacket_button1">
+            </a>
+        }
+    </div>
+    <div style="height:50px;"></div>
+    <div class="redpacketrules_foot">
+
+    </div>
+</div> 

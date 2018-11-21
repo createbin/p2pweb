@@ -1,0 +1,54 @@
+﻿@model ZFCTPC.Data.ApiModelReturn.MyAccountReturnModels.RUserThirdPartInfo
+<!------实名认证 状态  start------------------>
+<div class="openaccount_bohai" id="openBanked">
+    <dl>
+        <dd>
+            <label>姓名</label>
+            <em class="bold">
+                @(Model.RealName)
+            </em>
+        </dd>
+        <dd>
+            <label>身上类型</label>
+            <em class="bold">
+                
+            </em>
+        </dd>
+        <dd>
+            <label>身份证号</label>
+            <em class="bold">
+                @(Model.IdCard)
+            </em>
+        </dd>
+        <dd>
+            <label>手机号</label>
+            <em class="bold">
+                @(Model.PhoneNo)
+            </em>
+        </dd>
+        <dd>
+            <label>开户银行</label>
+            <em class="bold">
+                @(Model.BankName)
+            </em>
+        </dd>
+        <dd>
+            <label>开户银行账号</label>
+            <em class="bold">
+                @(Model.BankNo)
+            </em>
+        </dd>
+        <dd>
+            <label>开户状态</label>
+            <em class="bold">
+                <font class="red1">开户失败<img src="~/images/bohai/kaihu_tips.png" id="kaihu_tips" /></font>
+            </em>
+        </dd>
+        <dd>
+            <button class="kaihu_again" id="retryOpen">
+                重新开户
+            </button>
+        </dd>
+    </dl>
+</div>
+<!------实名认证 状态  end------------------>

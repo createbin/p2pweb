@@ -1,0 +1,300 @@
+﻿
+@{
+    ViewData["Title"] = "中房创投年度运营报告";
+    Layout = "~/Views/Shared/_LayoutHeadFoot.cshtml";
+}
+<link href="~/css/activities/newyear.css" rel="stylesheet" />
+
+<div class="annualreport-body">
+    <div class="annualreport-banner">
+        <div class="annualreport-banner1">
+
+        </div>
+        <div class="annualreport-banner2">
+
+        </div>
+        <div class="annualreport-banner3">
+
+        </div>
+    </div>
+    <div class="annualreport-box1">
+        <div class="annualreport-box1-top">
+            <p>这是最好的时代，也是最坏的时代。</p>
+            <p>2016年以来，国家各项监管政策落地，行业加速淘汰，对互联网金融是机遇也是挑战。</p>
+            <p>这一年，中房创投不断严格要求企业自律、紧跟政策变化积极调整业务模式，作为新生平台，在互联网金融的动荡之年仍然实现<text>稳健发展。</text></p>
+
+        </div>
+        <div class="annualreport-box1-bottom">
+            <p>2017年3月底，中房创投借助母公司中房集团的资源优势，<text>全面接入国企优质资产端，</text>加强企业发展保障的同时顺利实现转型升级。</p>
+            <p>目前，平台累计<text>交易额突破3千万元，并喜获多项荣誉。</text></p>
+            <p>一路走来，欣喜有大家的相伴，我们感谢每一位投资人和借款人对平台的信任，让我们交了一份满意的答卷。</p>
+        </div>
+    </div>
+    <div style="height:20px;"></div>
+    <div class="annualreport-page1">
+        <img src="~/images/activity/annualreport/report-page1-top.png" class="annualreport-page1-top" />
+        <div style="height:30px;"></div>
+        <div class="annualreport-page1-num">
+            <div class="annualreport-page1-num1 float-left">
+                <p>累积注册人数</p>
+                <div>10549</div>
+            </div>
+            <div class="annualreport-page1-num2 float-left">
+                <p>累积总投资额</p>
+                <div>30,010,002</div>
+            </div>
+            <div class="annualreport-page1-num3 float-left">
+                <p>每位用户平均投资额</p>
+                <div>3,259</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page2">
+        <div class="annualreport-page2-img-left float-left">
+            <img src="~/images/activity/annualreport/report-page2-left.png" class="" />
+        </div>
+        <div class="annualreport-page2-img-right float-left">
+            <img src="~/images/activity/annualreport/report-page2-right.png" class="" />
+        </div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page3">
+        <img src="~/images/activity/annualreport/report-page3-top.png" class="" />
+        <div style="height:20px"></div>
+        <img src="~/images/activity/annualreport/report-page3-bottom.png" class="" />
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page4">
+        <div class="annualreport-page4-left float-left">
+            <img src="~/images/activity/annualreport/report-page4-left.png" class="" />
+        </div>
+        <div class="annualreport-page4-right float-right">
+            <table border="0">
+                <tr class="red">
+                    <td>1.江苏省</td>
+                    <td>31%</td>
+                </tr>
+                <tr class="yellow">
+                    <td>2.安徽省</td>
+                    <td>10%</td>
+                </tr>
+                <tr class="green">
+                    <td>3.河南省</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>4.四川省</td>
+                    <td>7%</td>
+                </tr>
+                <tr>
+                    <td>5.山东省</td>
+                    <td>6%</td>
+                </tr>
+                <tr>
+                    <td>6.湖北省</td>
+                    <td>4%</td>
+                </tr>
+                <tr>
+                    <td>7.河北省</td>
+                    <td>3%</td>
+                </tr>
+                <tr>
+                    <td>8.江西省</td>
+                    <td>3%</td>
+                </tr>
+                <tr>
+                    <td>9.上海</td>
+                    <td>2%</td>
+                </tr>
+                <tr>
+                    <td>10.黑龙江</td>
+                    <td>2%</td>
+                </tr>
+                <tr class="purple">
+                    <td>其他省份占比</td>
+                    <td>25%</td>
+                </tr>
+            </table>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page5">
+
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page6">
+        <div class="annualreport-page6-left float-left">
+            <img src="~/images/activity/annualreport/report-page5-left.png" class="" />
+        </div>
+        <div class="annualreport-page6-right float-right">
+            <div style="height:15px;"></div>
+            <div class="bg-red">
+                1. 李先生<text>138xxxxxx63</text>500,000 元
+            </div>
+            <div class="bg-yellow">
+                2. 张女士<text>158xxxxxx06</text>180,000 元
+            </div>
+            <div class="bg-green">3. 王女士<text>136xxxxxx27</text>120,000 元</div>
+            <div class="bg-none">4. 吴女士<text>137xxxxxx48</text>90,003 元</div>
+            <div class="bg-none" style="height:40px; padding-top:0px">5. 李先生<text>159xxxxxx25</text>80,005 元</div>
+
+        </div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page7">
+        <img src="~/images/activity/annualreport/report-page7-title.png" class="img-margin" />
+        <div style="height:30px"></div>
+        <main class="projectmain">
+            <div class="projectmain_star">
+                <img src="~/images/activity/annualreport/report-page7-star.png" />
+            </div>
+            <section class="font_16">
+                <div id="time_axis ">
+
+
+                    <div id="jingzhan">
+                        <div class="activity_time ">
+                            <div class="t_1 bold" style="font-size:16px;color:#ff6666">2016.04.18</div>
+                            <div class="t_2"></div>
+                            <div class="t_3 bold">中房创投正式上线</div>
+                        </div>
+                        <div class="activity_time time-margin-top20">
+                            <div class="t_1 bold">2016.05</div>
+                            <div class="t_2"></div>
+                            <div class="t_3 bold">
+                                <p>中房创投与恒丰银行签订资金存管协议，引领行业合规潮流</p>
+                                <img src="~/images/activity/annualreport/report-page7-img.jpg" />
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top180">
+                            <div class="t_1 bold">2016.06</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">上海迪士尼亲子活动“有父同养，有富同享”父亲节专场活动</div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2016.07</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                共赢欧洲杯 全民共狂欢”欧洲杯活动
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2016.08</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">"壕友，就要晒出来！"盛夏活动</div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2016.10</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">"金秋盛惠，蟹蟹有礼"活动</div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2016.11</div>
+                            <div class="t_2"></div>
+                            <div class="t_3 bold">
+                                <p>中房创投APP正式进驻ios系统</p>
+                                <img src="~/images/activity/annualreport/report-page7-img2.jpg" />
+
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top180">
+                            <div class="t_1"></div>
+                            <div class="t_2"></div>
+                            <div class="t_3">中房创投吉祥物征名活动</div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1"></div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                <p>中房创投走进南京明心学校，关爱自闭症儿童</p>
+                                <img src="~/images/activity/annualreport/report-page7-img3.jpg" />
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top180">
+                            <div class="t_1 bold">2016.12</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                <p>年终感恩回馈活动</p>
+
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2017.01</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                <p>"新年除旧岁，好礼拿到爽"活动</p>
+
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1"></div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                <p>"中房合伙人计划"正式发布</p>
+
+                            </div>
+                        </div>
+                        <div class="activity_time time-margin-top30">
+                            <div class="t_1 bold">2017.04</div>
+                            <div class="t_2"></div>
+                            <div class="t_3">
+                                <p>中房创投在南京明心学校挂牌成立"爱心教育实践基地"</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div style="height:30px;"></div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page8">
+
+        <img src="~/images/activity/annualreport/report-page8-title.png" class="img-margin" />
+        <div style="height:30px;"></div>
+        <div class="annualreport-page8-left float-left">
+            <img src="~/images/activity/annualreport/report-page8-text1.jpg" class="" />
+            <div style="height:10px"></div>
+            <img src="~/images/activity/annualreport/report-page8-text3.jpg" class="" />
+        </div>
+        <div class="annualreport-page8-left float-right">
+            <img src="~/images/activity/annualreport/report-page8-text2.jpg" class="" />
+            <div style="height:10px;"></div>
+            <img src="~/images/activity/annualreport/report-page8-text4.jpg" class="" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="height:25px;"></div>
+    <div class="annualreport-page9">
+        <dl>
+            <dd class="annualreport-page9-icon1">处理疑难问题<text>1,870+</text></dd>
+            <dd class="annualreport-page9-icon2">微信咨询<text>12,580+</text></dd>
+            <dd class="annualreport-page9-icon3">接听客服电话<text>14,460+</text></dd>
+            <dd class="annualreport-page9-icon4">回复客服邮件<text>1,270+</text></dd>
+            <dd class="annualreport-page9-icon5">回复并处理后台问题<text>830+</text></dd>
+            <dd class="annualreport-page9-icon6">受理在线咨询<text>12150+</text></dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <div style="height:25px"></div>
+    <div class="annualreport-page10">
+        <div class="annualreport-page10-left float-left">
+            <img src="~/images/activity/annualreport/report-page10-logo.png" />
+        </div>
+        <div class="annualreport-page10-right float-right">
+            <p>
+                随着国监管政策的落地和实施，网贷行业逐渐步入规范发展新时代,“合规”将成为行业变革的主旋律。2017年，中房创投积极拥抱监管，
+                不忘初心，秉持“将投资人的利益放在首位”的理念，致力于中小微企业及个人提供安全、高效、便捷的普惠金融服务，积极维护互联网金融的健康生态。
+            </p>
+            <div style="height:10px;"></div>
+            <h1>2017，撸起袖子，加油干！</h1>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

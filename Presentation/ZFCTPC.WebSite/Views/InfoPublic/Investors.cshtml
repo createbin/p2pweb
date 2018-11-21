@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "投资人";
+    Layout = "~/Views/Shared/_InfoPublicLeft.cshtml";
+}
+
+<style>
+    .zfct_bg {
+        background: #f0f0f0;
+    }
+
+    .layui-layer {
+        width: auto !important;
+        border: 1px solid #eecb6f;
+    }
+</style>
+
+<script>
+    $(function () {
+        navActive(3);
+        FirstActive(0);
+        PublicActive(9);
+    })
+</script>
+<div style="height:20px"></div>
+<div class="zfct_account_box float_right padding_top_60 padding_bottom_60 white_bg">
+    <div class="business_box">
+        <p class="text_align_center font_size_24">投资人收费标准</p>
+        <div style="height:40px;"></div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="table_border_right">业务类型</td>
+                <td class="">收费标准</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">注册</td>
+                <td class="">免费</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">存管账户</td>
+                <td class="">免费</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">投标</td>
+                <td class="">免费</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">债权转让</td>
+                <td class="">按实际成交债权金额的0.5%收取服务费用</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">利息管理费</td>
+                <td class="">免费</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">充值</td>
+                <td class="">免费</td>
+            </tr>
+            <tr>
+                <td class="table_border_right">
+                      提现(具体以第三方支付机构为准)
+                </td>
+                <td class="">
+                    <dl>
+                        <dd>普通提现(下一个工作日到账)</dd>
+                        <dd class="border-right-none">2元</dd>
+                        <dd class="border-bottom-none">即时提现(实时到账)</dd>
+                        <dd class="border-bottom-none border-right-none">提现金额*0.5‰/天+2元</dd>
+                    </dl>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
